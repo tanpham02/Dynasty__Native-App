@@ -13,6 +13,8 @@ import Promotions from './components/Promotions';
 import Search from './components/Search';
 import UserHeader from './components/UserHeader';
 import styles from './styles';
+import { useEffect } from 'react';
+import { globalLoading } from '@/components/GlobalLoading';
 
 const categoriesData: ProductCategoryType[] = [
   {
@@ -100,8 +102,12 @@ const HomeScreen = () => {
 
   const copyToClipboard = async () => {
     await Clipboard.setStringAsync('hello world');
-    Alert.alert("Đã copy");
+    Alert.alert('Đã copy');
   };
+
+  useEffect(() => {
+    globalLoading.show();
+  }, []);
 
   return (
     <>

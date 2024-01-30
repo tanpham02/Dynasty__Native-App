@@ -1,22 +1,17 @@
-import { navigate } from "App";
-import { PathName } from "src/constants";
-import {
-  Image,
-  SafeAreaView,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import styles from "./styles";
-import FlagViSvg from "src/assets/svg/flag_vi.svg";
-import AppleSvg from "src/assets/svg/apple.svg";
-import FacebookSvg from "src/assets/svg/facebook.svg";
-import GoogleSvg from "src/assets/svg/google.svg";
-import LinearGradientButton from "src/components/Button/LinearGradientButton";
-import useStatusBarForAndroid from "src/hooks/useStatusBarForAndroid";
-import theme from "src/themes";
-import DynastyLogoNoBg from "src/assets/images/dynasty-logo-no-bg.png";
+import { navigate } from 'App';
+import { PathName } from 'src/constants';
+import { Image, SafeAreaView, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import styles from './styles';
+import FlagViSvg from 'src/assets/svg/flag_vi.svg';
+import AppleSvg from 'src/assets/svg/apple.svg';
+import FacebookSvg from 'src/assets/svg/facebook.svg';
+import GoogleSvg from 'src/assets/svg/google.svg';
+import LinearGradientButton from 'src/components/Button/LinearGradientButton';
+import useStatusBarForAndroid from 'src/hooks/useStatusBarForAndroid';
+import theme from 'src/themes';
+import DynastyLogoNoBg from 'src/assets/images/dynasty-logo-no-bg.png';
+import { useEffect } from 'react';
+import { globalLoading } from '@/components/GlobalLoading';
 
 const SignInScreen = () => {
   useStatusBarForAndroid();
@@ -25,9 +20,7 @@ const SignInScreen = () => {
     <View style={styles.container}>
       <View style={styles.headerContent}>
         <Image source={DynastyLogoNoBg} style={styles.headerLogo} />
-        <Text style={{ fontSize: 30, fontFamily: theme.fontFamily.bold }}>
-          Phạm Văn Tân
-        </Text>
+        <Text style={{ fontSize: 30, fontFamily: theme.fontFamily.bold }}>Phạm Văn Tân</Text>
       </View>
       <View style={styles.body}>
         <View style={styles.inputContainer}>
@@ -40,11 +33,7 @@ const SignInScreen = () => {
           />
         </View>
         <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.inputPassword}
-            placeholder="Mật khẩu"
-            secureTextEntry={true}
-          />
+          <TextInput style={styles.inputPassword} placeholder="Mật khẩu" secureTextEntry={true} />
         </View>
         <LinearGradientButton
           title="Đăng nhập"

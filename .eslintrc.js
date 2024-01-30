@@ -9,6 +9,7 @@ module.exports = {
     'eslint-config-prettier',
     'prettier',
   ],
+  parser: '@typescript-eslint/parser',
   rule: {
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
@@ -44,5 +45,5 @@ module.exports = {
       },
     ],
   },
-  ignorePatterns: ['.eslintrc.cjs'],
+  ignorePatterns: ['.eslintrc.js'],
 };

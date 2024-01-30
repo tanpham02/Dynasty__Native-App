@@ -2,26 +2,24 @@ import {
   NavigationContainer,
   StackActions,
   createNavigationContainerRef,
-  useFocusEffect,
-} from "@react-navigation/native";
-import * as Font from "expo-font";
-import { useCallback, useEffect, useState } from "react";
-import { LogBox, StatusBar, useColorScheme } from "react-native";
-import AnimatedSplash from "react-native-animated-splash-screen";
-import FlashMessage from "react-native-flash-message";
-import { QueryClient, QueryClientProvider } from "react-query";
-import BottomSheetModal from "src/components/BottomSheetModal";
+} from '@react-navigation/native';
+import * as Font from 'expo-font';
+import { useEffect, useState } from 'react';
+import { LogBox, useColorScheme } from 'react-native';
+import AnimatedSplash from 'react-native-animated-splash-screen';
+import FlashMessage from 'react-native-flash-message';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import BottomSheetModal from 'src/components/BottomSheetModal';
+import { TamaguiProvider, Theme } from 'tamagui';
+import { Provider } from 'react-redux';
 
-import { TamaguiProvider, Theme } from "tamagui";
-import config from "./tamagui.config";
-
-import TokenManager from "src/helpers/tokenManager";
-import RootStackNavigator from "src/navigation/RootStackNavigator";
-
-import SplashLogo from "src/assets/images/splash-screen.png";
-
-import { heightScreen, widthScreen } from "@/utils/systemUtils";
-// import store from 'src/redux/store';
+import config from './tamagui.config';
+import TokenManager from 'src/helpers/tokenManager';
+import RootStackNavigator from 'src/navigation/RootStackNavigator';
+import SplashLogo from 'src/assets/images/splash-screen.png';
+import GlobalLoading, { globalLoadingRef } from '@/components/GlobalLoading';
+import { heightScreen, widthScreen } from '@/utils/systemUtils';
+import store from 'src/redux/store';
 
 LogBox.ignoreAllLogs();
 export const tokenManager = TokenManager.getInstance();
@@ -83,14 +81,14 @@ export default function App() {
 
   const loadFont = async () => {
     await Font.loadAsync({
-      "Nunito-Black": require("src/assets/fonts/Nunito-Black.ttf"),
-      "Nunito-Bold": require("src/assets/fonts/Nunito-Bold.ttf"),
-      "Nunito-ExtraBold": require("src/assets/fonts/Nunito-ExtraBold.ttf"),
-      "Nunito-SemiBold": require("src/assets/fonts/Nunito-SemiBold.ttf"),
-      "Nunito-Medium": require("src/assets/fonts/Nunito-Medium.ttf"),
-      "Nunito-Regular": require("src/assets/fonts/Nunito-Regular.ttf"),
-      "Nunito-Light": require("src/assets/fonts/Nunito-Light.ttf"),
-      "Nunito-ExtraLight": require("src/assets/fonts/Nunito-ExtraLight.ttf"),
+      'Nunito-Black': require('src/assets/fonts/Nunito-Black.ttf'),
+      'Nunito-Bold': require('src/assets/fonts/Nunito-Bold.ttf'),
+      'Nunito-ExtraBold': require('src/assets/fonts/Nunito-ExtraBold.ttf'),
+      'Nunito-SemiBold': require('src/assets/fonts/Nunito-SemiBold.ttf'),
+      'Nunito-Medium': require('src/assets/fonts/Nunito-Medium.ttf'),
+      'Nunito-Regular': require('src/assets/fonts/Nunito-Regular.ttf'),
+      'Nunito-Light': require('src/assets/fonts/Nunito-Light.ttf'),
+      'Nunito-ExtraLight': require('src/assets/fonts/Nunito-ExtraLight.ttf'),
     });
 
     setFontsLoaded(true);
@@ -108,27 +106,28 @@ export default function App() {
 
   return (
     <TamaguiProvider config={config}>
-      <Theme name={colorScheme === "dark" ? "dark" : "light"}>
+      <Theme name={colorScheme === 'dark' ? 'dark' : 'light'}>
         <QueryClientProvider client={queryClient}>
-          {/* <Provider store={store}> */}
-          <NavigationContainer ref={navigationRef}>
-            <AnimatedSplash
-              translucent={true}
-              disableBackgroundImage={false}
-              isLoaded={isLoaded}
-              logoImage={SplashLogo}
-              backgroundColor={"#FAFBDB"}
-              logoHeight={heightScreen}
-              logoWidth={widthScreen}
-            >
-              <>
-                <RootStackNavigator />
-                <FlashMessage position="bottom" floating />
-                <BottomSheetModal />
-              </>
-            </AnimatedSplash>
-          </NavigationContainer>
-          {/* </Provider> */}
+          <Provider store={store}>
+            <NavigationContainer ref={navigationRef}>
+              <AnimatedSplash
+                translucent={true}
+                disableBackgroundImage={false}
+                isLoaded={isLoaded}
+                logoImage={SplashLogo}
+                backgroundColor={'#FAFBDB'}
+                logoHeight={heightScreen}
+                logoWidth={widthScreen}
+              >
+                <>
+                  <RootStackNavigator />
+                  <FlashMessage position="bottom" floating />
+                  <BottomSheetModal />
+                </>
+              </AnimatedSplash>
+            </NavigationContainer>
+            <GlobalLoading ref={globalLoadingRef} />
+          </Provider>
         </QueryClientProvider>
       </Theme>
     </TamaguiProvider>
