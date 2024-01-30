@@ -7,6 +7,7 @@
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
+    "devtools": "react-devtools",
     "ts:check": "tsc",
     "lint": "eslint .",
     "lint:fix": "eslint --fix --ext .js,.jsx,.ts,.tsx"
@@ -25,6 +26,7 @@
     "@tamagui/babel-plugin": "^1.88.15",
     "@tamagui/config": "^1.88.15",
     "@tamagui/font-inter": "^1.88.15",
+    "@tamagui/lucide-icons": "^1.88.17",
     "@tamagui/shorthands": "^1.88.15",
     "@tamagui/themes": "^1.88.15",
     "axios": "^0.24.0",

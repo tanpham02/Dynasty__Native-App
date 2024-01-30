@@ -16,7 +16,7 @@ import { Provider } from 'react-redux';
 import config from './tamagui.config';
 import TokenManager from 'src/helpers/tokenManager';
 import RootStackNavigator from 'src/navigation/RootStackNavigator';
-import SplashLogo from 'src/assets/images/splash-screen.png';
+import SplashLogo from 'src/assets/images/logo/splash-screen.png';
 import GlobalLoading, { globalLoadingRef } from '@/components/GlobalLoading';
 import { heightScreen, widthScreen } from '@/utils/systemUtils';
 import store from 'src/redux/store';
