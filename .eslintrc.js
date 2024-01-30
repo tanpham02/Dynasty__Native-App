@@ -1,0 +1,48 @@
+module.exports = {
+  root: true,
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint', 'prettier'],
+  extends: [
+    '@react-native-community',
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'eslint-config-prettier',
+    'prettier',
+  ],
+  rule: {
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/strict-boolean-expressions': [
+      2,
+      {
+        allowString: false,
+        allowNumber: false,
+      },
+    ],
+    'prettier/prettier': [
+      'warn',
+      {
+        arrowParens: 'always',
+        bracketSameLine: false,
+        bracketSpacing: true,
+        semi: true,
+        experimentalTernaries: false,
+        singleQuote: true,
+        jsxSingleQuote: false,
+        quoteProps: 'as-needed',
+        trailingComma: 'all',
+        singleAttributePerLine: false,
+        htmlWhitespaceSensitivity: 'css',
+        vueIndentScriptAndStyle: false,
+        proseWrap: 'preserve',
+        insertPragma: false,
+        printWidth: 100,
+        requirePragma: false,
+        tabWidth: 2,
+        useTabs: false,
+        embeddedLanguageFormatting: 'auto',
+      },
+    ],
+  },
+  ignorePatterns: ['.eslintrc.cjs'],
+};
