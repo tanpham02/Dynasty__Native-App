@@ -1,70 +1,71 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {LocalStorageKey} from 'src/constants';
+import { LocalStorageKey } from 'src/constants';
 
 class TokenManager {
-  private accessToken: string | null = null;
-  private refreshToken: string | null = null;
-  private userId: string | null = null;
-  public initialized: boolean = false;
-  private static instance: TokenManager | null = null;
+    private accessToken: string | null = null;
+    private refreshToken: string | null = null;
+    private userId: string | null = null;
+    public initialized: boolean = false;
+    private static instance: TokenManager | null = null;
 
-  private constructor() {}
+    private constructor() { }
 
-  public static getInstance(): TokenManager {
-    if (!TokenManager.instance) {
-      TokenManager.instance = new TokenManager();
-    }
-    return TokenManager.instance;
-  }
+    public static getInstance(): TokenManager {
+        if (!TokenManager.instance) {
+            TokenManager.instance = new TokenManager();
+        }
 
-  public async initialize(): Promise<void> {
-    if (this.initialized) {
-      return;
+        return TokenManager.instance;
     }
 
-    // Fetch the access token from AsyncStorage if it hasn't been fetched already
-    this.accessToken =
-      (await AsyncStorage.getItem(LocalStorageKey.ACCESS_TOKEN_KEY)) || '';
-    this.refreshToken =
-      (await AsyncStorage.getItem(LocalStorageKey.REFRESH_TOKEN_KEY)) || '';
-    this.initialized = true;
-  }
+    public async initialize(): Promise<void> {
+        if (this.initialized) {
+            return;
+        }
 
-  public getAccessToken(): string | null {
-    return this.accessToken;
-  }
+        // Fetch the access token from AsyncStorage if it hasn't been fetched already
+        this.accessToken =
+            (await AsyncStorage.getItem(LocalStorageKey.ACCESS_TOKEN_KEY)) || '';
+        this.refreshToken =
+            (await AsyncStorage.getItem(LocalStorageKey.REFRESH_TOKEN_KEY)) || '';
+        this.initialized = true;
+    }
 
-  public async setAccessToken(newAccessToken: string): Promise<void> {
-    this.accessToken = newAccessToken;
+    public getAccessToken(): string | null {
+        return this.accessToken;
+    }
 
-    await AsyncStorage.setItem(
-      LocalStorageKey.ACCESS_TOKEN_KEY,
-      newAccessToken,
-    );
-  }
+    public async setAccessToken(newAccessToken: string): Promise<void> {
+        this.accessToken = newAccessToken;
 
-  public getUserId(): string | null {
-    return this.userId;
-  }
+        await AsyncStorage.setItem(
+            LocalStorageKey.ACCESS_TOKEN_KEY,
+            newAccessToken,
+        );
+    }
 
-  public async setUserId(newUserId: string): Promise<void> {
-    this.userId = newUserId;
+    public getUserId(): string | null {
+        return this.userId;
+    }
 
-    await AsyncStorage.setItem(LocalStorageKey.USER_ID_KEY, newUserId);
-  }
+    public async setUserId(newUserId: string): Promise<void> {
+        this.userId = newUserId;
 
-  public getRefreshToken(): string | null {
-    return this.refreshToken;
-  }
+        await AsyncStorage.setItem(LocalStorageKey.USER_ID_KEY, newUserId);
+    }
 
-  public async setRefreshToken(newRefreshToken: string): Promise<void> {
-    this.refreshToken = newRefreshToken;
+    public getRefreshToken(): string | null {
+        return this.refreshToken;
+    }
 
-    await AsyncStorage.setItem(
-      LocalStorageKey.REFRESH_TOKEN_KEY,
-      newRefreshToken,
-    );
-  }
+    public async setRefreshToken(newRefreshToken: string): Promise<void> {
+        this.refreshToken = newRefreshToken;
+
+        await AsyncStorage.setItem(
+            LocalStorageKey.REFRESH_TOKEN_KEY,
+            newRefreshToken,
+        );
+    }
 }
 
 export default TokenManager;
