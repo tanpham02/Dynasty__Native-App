@@ -1,0 +1,5 @@
+export { default as Menu } from "./menu.svg"
+export { default as Mobile } from "./mobile.svg"
+export { default as Offer } from "./offer.svg"
+export { default as Pizza } from "./pizza.svg"
+export { default as FlagVi } from "./flag_vi.svg"

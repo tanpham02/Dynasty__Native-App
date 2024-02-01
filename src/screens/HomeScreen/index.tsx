@@ -1,141 +1,27 @@
-import { Animated, ImageBackground, View, Alert } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import useStatusBarForAndroid from 'src/hooks/useStatusBarForAndroid';
-import theme from 'src/themes';
-import * as Clipboard from 'expo-clipboard';
-import BannerSlider from './components/BannerSlider';
-import ExchangePoints from './components/ExchangePoints';
-import MenuGroup from './components/MenuGroup';
-import ProductCategory from './components/ProductCategory';
-import { ProductCategoryType } from './components/ProductCategory/types';
-import ProductHot from './components/ProductHot';
-import Promotions from './components/Promotions';
-import Search from './components/Search';
-import UserHeader from './components/UserHeader';
-import styles from './styles';
-import { useEffect } from 'react';
-import { globalLoading } from '@/components/GlobalLoading';
+import { Text } from 'tamagui';
 
-const categoriesData: ProductCategoryType[] = [
-  {
-    title: 'Món mới phải thử',
-    readMore: true,
-    products: [
-      {
-        bannerImage: require('src/assets/images/home-screen-images/product-test.png'),
-        productName: 'Trà Chanh Mật Ong Giã tay',
-        productPrice: 35000,
-      },
-      {
-        bannerImage: require('src/assets/images/home-screen-images/product-test.png'),
-        productName: 'Trà Chanh Mật Ong Giã tay',
-        productPrice: 35000,
-      },
-      {
-        bannerImage: require('src/assets/images/home-screen-images/product-test.png'),
-        productName: 'Trà Chanh Mật Ong Giã tay',
-        productPrice: 35000,
-      },
-      {
-        bannerImage: require('src/assets/images/home-screen-images/product-test.png'),
-        productName: 'Trà Chanh Mật Ong Giã tay',
-        productPrice: 35000,
-      },
-    ],
-  },
-  {
-    title: 'Trà sữa',
-    readMore: true,
-    products: [
-      {
-        bannerImage: require('src/assets/images/home-screen-images/product-test.png'),
-        productName: 'Trà Chanh Mật Ong Giã tay',
-        productPrice: 35000,
-      },
-      {
-        bannerImage: require('src/assets/images/home-screen-images/product-test.png'),
-        productName: 'Trà Chanh Mật Ong Giã tay',
-        productPrice: 35000,
-      },
-      {
-        bannerImage: require('src/assets/images/home-screen-images/product-test.png'),
-        productName: 'Trà Chanh Mật Ong Giã tay',
-        productPrice: 35000,
-      },
-      {
-        bannerImage: require('src/assets/images/home-screen-images/product-test.png'),
-        productName: 'Trà Chanh Mật Ong Giã tay',
-        productPrice: 35000,
-      },
-    ],
-  },
-  {
-    title: 'Cafe',
-    readMore: true,
-    products: [
-      {
-        bannerImage: require('src/assets/images/home-screen-images/product-test.png'),
-        productName: 'Trà Chanh Mật Ong Giã tay',
-        productPrice: 35000,
-      },
-      {
-        bannerImage: require('src/assets/images/home-screen-images/product-test.png'),
-        productName: 'Trà Chanh Mật Ong Giã tay',
-        productPrice: 35000,
-      },
-      {
-        bannerImage: require('src/assets/images/home-screen-images/product-test.png'),
-        productName: 'Trà Chanh Mật Ong Giã tay',
-        productPrice: 35000,
-      },
-      {
-        bannerImage: require('src/assets/images/home-screen-images/product-test.png'),
-        productName: 'Trà Chanh Mật Ong Giã tay',
-        productPrice: 35000,
-      },
-    ],
-  },
-];
+import { Svg } from '@/assets';
+import { Animated, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import styles from 'src/styles';
 
 const HomeScreen = () => {
-  useStatusBarForAndroid();
-
-  const copyToClipboard = async () => {
-    await Clipboard.setStringAsync('hello world');
-    Alert.alert('Đã copy');
-  };
-
-  useEffect(() => {
-    globalLoading.show();
-  }, []);
-
   return (
     <>
-      <View style={{ flex: 1 }}>
+      <View className="flex-1">
         <Animated.ScrollView scrollEventThrottle={16}>
-          <View
-            style={{
-              flex: 1,
-              backgroundColor: theme.colors.background,
-            }}
-          >
-            <ImageBackground
-              source={require('../../assets/images/home-screen-images/background-image.png')}
-              style={styles.imageBackground}
-              imageStyle={{ resizeMode: 'cover' }}
-            ></ImageBackground>
-            <SafeAreaView style={styles.container}>
-              <UserHeader />
-              <View style={styles.contentView}>
-                <MenuGroup />
-                <BannerSlider />
-                <ExchangePoints />
-                <ProductHot />
-                <Promotions />
-                <Search />
-                {categoriesData.map((item, index) => (
-                  <ProductCategory productCategory={item} key={index} />
-                ))}
+          <View className="flex-1">
+            <SafeAreaView>
+              <View className="flex-row justify-between">
+                <View
+                  className="flex-row items-center border border-zinc-100 py-2 px-4 rounded-lg bg-white"
+                  style={styles.shadow}
+                >
+                  <Svg.Menu width={20} height={20} />
+                  <Text className="text-red-500 font-nunito-500">Select Location</Text>
+                </View>
+                <View></View>
+                <View></View>
               </View>
             </SafeAreaView>
           </View>

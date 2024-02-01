@@ -17,6 +17,7 @@ import TokenManager from 'src/helpers/tokenManager';
 import RootStackNavigator from 'src/navigation/RootStackNavigator';
 import store from 'src/redux/store';
 import config from './tamagui.config';
+import { Font as MyFont } from 'src/assets';
 
 LogBox.ignoreAllLogs();
 export const tokenManager = TokenManager.getInstance();
@@ -25,7 +26,7 @@ export const navigationRef = createNavigationContainerRef();
 
 export const navigate = (name: string, params?: any) => {
   if (navigationRef.isReady()) {
-    navigationRef.navigate(name as never, params as never);
+    navigationRef.navigate((name as any, params as any) as never);
   }
 };
 
@@ -80,14 +81,14 @@ export default function App() {
 
   const loadFont = async () => {
     await Font.loadAsync({
-      'Nunito-Black': require('src/assets/fonts/Nunito-Black.ttf'),
-      'Nunito-Bold': require('src/assets/fonts/Nunito-Bold.ttf'),
-      'Nunito-ExtraBold': require('src/assets/fonts/Nunito-ExtraBold.ttf'),
-      'Nunito-SemiBold': require('src/assets/fonts/Nunito-SemiBold.ttf'),
-      'Nunito-Medium': require('src/assets/fonts/Nunito-Medium.ttf'),
-      'Nunito-Regular': require('src/assets/fonts/Nunito-Regular.ttf'),
-      'Nunito-Light': require('src/assets/fonts/Nunito-Light.ttf'),
-      'Nunito-ExtraLight': require('src/assets/fonts/Nunito-ExtraLight.ttf'),
+      'Nunito-Black': MyFont.NunitoBlack,
+      'Nunito-ExtraBold': MyFont.NunitoExtraBold,
+      'Nunito-Bold': MyFont.NunitoBold,
+      'Nunito-SemiBold': MyFont.NunitoSemiBold,
+      'Nunito-Medium': MyFont.NunitoMedium,
+      'Nunito-Regular': MyFont.NunitoRegular,
+      'Nunito-Light': MyFont.NunitoLight,
+      'Nunito-ExtraLight': MyFont.NunitoExtraLight,
     });
 
     setFontsLoaded(true);
