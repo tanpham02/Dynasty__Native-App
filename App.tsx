@@ -1,8 +1,4 @@
-import {
-  NavigationContainer,
-  StackActions,
-  createNavigationContainerRef,
-} from '@react-navigation/native';
+import { NavigationContainer, createNavigationContainerRef } from '@react-navigation/native';
 import * as Font from 'expo-font';
 import { useEffect, useRef, useState } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
@@ -11,13 +7,13 @@ import BottomSheetModal from 'src/components/BottomSheetModal';
 import { TamaguiProvider, Theme } from 'tamagui';
 
 import GlobalLoading, { globalLoadingRef } from '@/components/GlobalLoading';
-import FlashMessage from 'react-native-flash-message';
 import { LogBox, useColorScheme } from 'react-native';
+import FlashMessage from 'react-native-flash-message';
+import { Font as MyFont } from 'src/assets';
 import TokenManager from 'src/helpers/tokenManager';
 import RootStackNavigator from 'src/navigation/RootStackNavigator';
 import store from 'src/redux/store';
 import config from './tamagui.config';
-import { Font as MyFont } from 'src/assets';
 
 LogBox.ignoreAllLogs();
 export const tokenManager = TokenManager.getInstance();

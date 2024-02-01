@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {LocalStorageKey} from 'src/constants';
+import { LocalStorageKey } from 'src/constants';
 
 class TokenManager {
   private accessToken: string | null = null;
@@ -10,6 +10,7 @@ class TokenManager {
 
   private constructor() {}
 
+  // khởi tạo nơi lưu trữ
   public static getInstance(): TokenManager {
     if (!TokenManager.instance) {
       TokenManager.instance = new TokenManager();
@@ -23,10 +24,8 @@ class TokenManager {
     }
 
     // Fetch the access token from AsyncStorage if it hasn't been fetched already
-    this.accessToken =
-      (await AsyncStorage.getItem(LocalStorageKey.ACCESS_TOKEN_KEY)) || '';
-    this.refreshToken =
-      (await AsyncStorage.getItem(LocalStorageKey.REFRESH_TOKEN_KEY)) || '';
+    this.accessToken = (await AsyncStorage.getItem(LocalStorageKey.ACCESS_TOKEN_KEY)) || '';
+    this.refreshToken = (await AsyncStorage.getItem(LocalStorageKey.REFRESH_TOKEN_KEY)) || '';
     this.initialized = true;
   }
 
@@ -37,10 +36,7 @@ class TokenManager {
   public async setAccessToken(newAccessToken: string): Promise<void> {
     this.accessToken = newAccessToken;
 
-    await AsyncStorage.setItem(
-      LocalStorageKey.ACCESS_TOKEN_KEY,
-      newAccessToken,
-    );
+    await AsyncStorage.setItem(LocalStorageKey.ACCESS_TOKEN_KEY, newAccessToken);
   }
 
   public getUserId(): string | null {
@@ -60,10 +56,7 @@ class TokenManager {
   public async setRefreshToken(newRefreshToken: string): Promise<void> {
     this.refreshToken = newRefreshToken;
 
-    await AsyncStorage.setItem(
-      LocalStorageKey.REFRESH_TOKEN_KEY,
-      newRefreshToken,
-    );
+    await AsyncStorage.setItem(LocalStorageKey.REFRESH_TOKEN_KEY, newRefreshToken);
   }
 }
 

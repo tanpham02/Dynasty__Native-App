@@ -1,4 +1,3 @@
-import { navigate } from 'App';
 import { PathName } from 'src/constants';
 import {
   Image,
