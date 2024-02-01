@@ -1,6 +1,6 @@
-import {Dimensions} from 'react-native';
+import { Dimensions } from 'react-native';
 
-import {NativeModules} from 'react-native';
+import { NativeModules } from 'react-native';
 
 interface SettingsManager {
   AppleLanguages?: string[];
@@ -19,8 +19,7 @@ export const getSystemLocale = (): string => {
     NativeModules.SettingsManager.settings &&
     (NativeModules.SettingsManager.settings as SettingsManager).AppleLanguages
   ) {
-    locale = (NativeModules.SettingsManager.settings as SettingsManager)
-      .AppleLanguages[0];
+    locale = (NativeModules.SettingsManager.settings as SettingsManager).AppleLanguages[0];
   }
   // Android
   else if (NativeModules.I18nManager) {
@@ -40,4 +39,4 @@ export const {
   height: heightScreen,
   scale: scaleScreen,
   fontScale: fontScaleScreen,
-} = Dimensions.get('screen');
+} = Dimensions.get('window');

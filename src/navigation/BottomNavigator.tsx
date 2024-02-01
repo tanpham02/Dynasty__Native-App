@@ -2,11 +2,11 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { PathName } from 'src/constants';
 import theme from 'src/themes';
 
-import HomeBottomNavigationIcon from 'src/assets/svg/bottom-navigation-icons/home-bottom-menu-icon.svg';
-import OrderBottomNavigationIcon from 'src/assets/svg/bottom-navigation-icons/order-bottom-menu-icon.svg';
-import StoreBottomNavigationIcon from 'src/assets/svg/bottom-navigation-icons/store-bottom-menu-icon.svg';
-import PromotionBottomNavigationIcon from 'src/assets/svg/bottom-navigation-icons/promotion-bottom-menu-icon.svg';
-import OtherBottomNavigationIcon from 'src/assets/svg/bottom-navigation-icons/other-bottom-menu-icon.svg';
+import HomeBottomNavigationIcon from '@/assets/svg/pizza.svg';
+import OrderBottomNavigationIcon from '@/assets/svg/pizza.svg';
+import StoreBottomNavigationIcon from '@/assets/svg/pizza.svg';
+import PromotionBottomNavigationIcon from '@/assets/svg/pizza.svg';
+import OtherBottomNavigationIcon from '@/assets/svg/pizza.svg';
 
 import { HomeScreen, OrderScreen, OtherScreen, PromotionScreen, StoreScreen } from 'src/screens';
 

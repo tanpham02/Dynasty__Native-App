@@ -1,7 +1,7 @@
 import { BottomSheetMethods } from '@devvie/bottom-sheet';
 import React from 'react';
 import { FlatList, TouchableOpacity, View } from 'react-native';
-import CloseSvg from 'src/assets/svg/close-icon.svg';
+import CloseSvg from '@/assets/svg/pizza.svg';
 import BottomSheet from 'src/components/customs/BottomSheet';
 import Text from 'src/components/customs/Text';
 import theme from 'src/themes';
@@ -13,27 +13,27 @@ import { PaymentFlatListItemProps } from './components/PaymentFlatListItem/types
 export const paymentBottomSheetModalRef = React.createRef<BottomSheetMethods>();
 
 const data: PaymentFlatListItemProps[] = [
-    {
-        title: "VnPay",
-        image: require('src/assets/images/payment-screen-images/vn-pay.png'),
-        checked: true
-    },
-    {
-        title: "ZaloPay",
-        image: require('src/assets/images/payment-screen-images/zalo-pay.png'),
-        checked: false
-    },
-    {
-        title: "Momo",
-        image: require('src/assets/images/payment-screen-images/momo.png'),
-        checked: false
-    },
-    {
-        title: "Tiền mặt",
-        image: require('src/assets/images/payment-screen-images/cash.png'),
-        checked: false
-    }
-]
+  {
+    title: 'VnPay',
+    image: require('src/assets/images/payment-screen-images/vn-pay.png'),
+    checked: true,
+  },
+  {
+    title: 'ZaloPay',
+    image: require('src/assets/images/payment-screen-images/zalo-pay.png'),
+    checked: false,
+  },
+  {
+    title: 'Momo',
+    image: require('src/assets/images/payment-screen-images/momo.png'),
+    checked: false,
+  },
+  {
+    title: 'Tiền mặt',
+    image: require('src/assets/images/payment-screen-images/cash.png'),
+    checked: false,
+  },
+];
 
 const PaymentBottomSheetModal = React.forwardRef<BottomSheetMethods, PaymentBottomSheetModalProps>(
   (__props, ref) => {
@@ -70,7 +70,7 @@ const PaymentBottomSheetModal = React.forwardRef<BottomSheetMethods, PaymentBott
         </View>
       </BottomSheet>
     );
-  }
+  },
 );
 
 export default PaymentBottomSheetModal;

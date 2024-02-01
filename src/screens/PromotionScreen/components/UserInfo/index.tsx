@@ -1,10 +1,10 @@
 import { navigate } from 'App';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Alert, Image, Share, Text, TouchableOpacity, View } from 'react-native';
-import CopySvg from 'src/assets/svg/copy-icon.svg';
-import RewardSvg from 'src/assets/svg/reward-icon.svg';
-import ShareSvg from 'src/assets/svg/share-icon.svg';
-import StartSvg from 'src/assets/svg/start-icon.svg';
+import CopySvg from '@/assets/svg/pizza.svg';
+import RewardSvg from '@/assets/svg/pizza.svg';
+import ShareSvg from '@/assets/svg/pizza.svg';
+import StartSvg from '@/assets/svg/pizza.svg';
 import LinearGradientButton from 'src/components/Button/LinearGradientButton';
 import { PathName } from 'src/constants';
 import theme from 'src/themes';
@@ -33,7 +33,7 @@ const UserInfo = () => {
 
   const copyToClipboard = async () => {
     await Clipboard.setStringAsync('hello world');
-    Alert.alert("Đã copy");
+    Alert.alert('Đã copy');
   };
 
   return (

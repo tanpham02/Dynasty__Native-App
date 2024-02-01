@@ -1,9 +1,9 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import { Image, TouchableOpacity, View } from 'react-native';
-import CopySvg from 'src/assets/svg/copy-icon.svg';
-import RewardSvg from 'src/assets/svg/reward-icon.svg';
-import ShareSvg from 'src/assets/svg/share-icon.svg';
-import StartSvg from 'src/assets/svg/start-icon.svg';
+import CopySvg from '@/assets/svg/pizza.svg';
+import RewardSvg from '@/assets/svg/pizza.svg';
+import ShareSvg from '@/assets/svg/pizza.svg';
+import StartSvg from '@/assets/svg/pizza.svg';
 import { Text } from 'src/components';
 import NotificationSvg from 'src/components/svg/NotificationSvg';
 import theme from 'src/themes';

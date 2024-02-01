@@ -7,7 +7,7 @@ import {
   View,
   Image,
 } from 'react-native';
-import CloseSvg from 'src/assets/svg/close-icon.svg';
+import CloseSvg from '@/assets/svg/pizza.svg';
 import { MyStatusBar, ScrollView, Text } from 'src/components';
 import theme from 'src/themes';
 import styles from './styles';

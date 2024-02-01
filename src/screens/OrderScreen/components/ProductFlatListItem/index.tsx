@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image, TouchableOpacity, View } from 'react-native';
-import CartSvg from 'src/assets/svg/cart-icon.svg';
+import CartSvg from '@/assets/svg/pizza.svg';
 import { Text } from 'src/components';
 import LinearGradientButton from 'src/components/Button/LinearGradientButton';
 import styles from './styles';

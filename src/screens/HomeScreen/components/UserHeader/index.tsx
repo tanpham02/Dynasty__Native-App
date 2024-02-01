@@ -1,9 +1,9 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import { Alert, Image, Share, TouchableOpacity, View } from 'react-native';
-import CopySvg from 'src/assets/svg/copy-icon.svg';
-import RewardSvg from 'src/assets/svg/reward-icon.svg';
-import ShareSvg from 'src/assets/svg/share-icon.svg';
-import StartSvg from 'src/assets/svg/start-icon.svg';
+import CopySvg from '@/assets/svg/pizza.svg';
+import RewardSvg from '@/assets/svg/pizza.svg';
+import ShareSvg from '@/assets/svg/pizza.svg';
+import StartSvg from '@/assets/svg/pizza.svg';
 import { Text } from 'src/components';
 import NotificationSvg from 'src/components/svg/NotificationSvg';
 import theme from 'src/themes';
@@ -13,12 +13,10 @@ import { navigate } from 'App';
 import { PathName } from 'src/constants';
 
 const UserHeader = () => {
-
   const onShare = async () => {
     try {
       const result = await Share.share({
-        message:
-          'React Native | A framework for building native apps using React',
+        message: 'React Native | A framework for building native apps using React',
       });
       if (result.action === Share.sharedAction) {
         if (result.activityType) {

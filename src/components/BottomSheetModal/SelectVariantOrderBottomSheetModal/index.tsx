@@ -1,7 +1,7 @@
 import { BottomSheetMethods } from '@devvie/bottom-sheet';
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
-import CloseSvg from 'src/assets/svg/close-icon.svg';
+import CloseSvg from '@/assets/svg/pizza.svg';
 import LinearGradientButton from 'src/components/Button/LinearGradientButton';
 import BottomSheet from 'src/components/customs/BottomSheet';
 import ScrollView from 'src/components/customs/ScrollView';

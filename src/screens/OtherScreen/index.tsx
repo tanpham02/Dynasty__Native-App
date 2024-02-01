@@ -6,11 +6,11 @@ import UserHeader from './components/UserHeader';
 import UtilitiesGroup from './components/UtilitiesGroup';
 import MenuGroup from './components/MenuGroup';
 import { MenuGroupItem } from './components/MenuGroup/type';
-import PhoneSvg from 'src/assets/svg/phone.svg';
-import UserSvg from 'src/assets/svg/user.svg';
-import LocationSvg from 'src/assets/svg/location.svg';
-import InfoSvg from 'src/assets/svg/info.svg';
-import LogoutSvg from 'src/assets/svg/logout.svg';
+import PhoneSvg from '@/assets/svg/pizza.svg';
+import UserSvg from '@/assets/svg/pizza.svg';
+import LocationSvg from '@/assets/svg/pizza.svg';
+import InfoSvg from '@/assets/svg/pizza.svg';
+import LogoutSvg from '@/assets/svg/pizza.svg';
 import { PathName } from 'src/constants';
 
 const contactMenus: MenuGroupItem[] = [

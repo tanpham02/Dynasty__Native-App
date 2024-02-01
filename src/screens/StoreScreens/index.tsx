@@ -1,8 +1,8 @@
 import { FlatList, Image, TouchableOpacity, View } from 'react-native';
-import ListSvg from 'src/assets/svg/list-icon.svg';
-import MapSvg from 'src/assets/svg/maps-icon.svg';
-import SearchInputSvg from 'src/assets/svg/search-input-icon.svg';
-import StarSvg from 'src/assets/svg/star-icon.svg';
+import ListSvg from '@/assets/svg/pizza.svg';
+import MapSvg from '@/assets/svg/pizza.svg';
+import SearchInputSvg from '@/assets/svg/pizza.svg';
+import StarSvg from '@/assets/svg/pizza.svg';
 import { Text, TextInput } from 'src/components';
 import { PrimaryLayout } from 'src/components/Layout';
 

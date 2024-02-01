@@ -1,12 +1,12 @@
 import { Image, TouchableOpacity, View } from 'react-native';
 import { SecondLayout } from 'src/components/Layout';
-import CloseSvg from 'src/assets/svg/close-icon.svg';
+import CloseSvg from '@/assets/svg/pizza.svg';
 import styles from './styles';
 import theme from 'src/themes';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { goBack } from 'App';
 import { Text } from 'src/components';
-import CopySvg from 'src/assets/svg/copy-icon.svg';
+import CopySvg from '@/assets/svg/pizza.svg';
 import LinearGradientButton from 'src/components/Button/LinearGradientButton';
 
 const PromotionDetailScreen = () => {

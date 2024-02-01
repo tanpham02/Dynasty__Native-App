@@ -10,7 +10,7 @@ import {
   ViewStyle,
 } from 'react-native';
 import { MyStatusBar, ScrollView, Text } from 'src/components';
-import RewardSvg from 'src/assets/svg/reward-icon.svg';
+import RewardSvg from '@/assets/svg/pizza.svg';
 import NotificationSvg from 'src/components/svg/NotificationSvg';
 
 import { goBack, navigate } from '../../../../App';

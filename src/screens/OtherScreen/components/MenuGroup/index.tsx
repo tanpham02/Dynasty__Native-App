@@ -3,7 +3,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import styles from './styles';
 import { MenuGroupProps } from './type';
-import NextArrowSvg from 'src/assets/svg/next-arrow.svg';
+import NextArrowSvg from '@/assets/svg/pizza.svg';
 import { navigate } from 'App';
 
 const MenuGroup = ({ label, items }: MenuGroupProps) => {

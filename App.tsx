@@ -4,22 +4,19 @@ import {
   createNavigationContainerRef,
 } from '@react-navigation/native';
 import * as Font from 'expo-font';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { LogBox, useColorScheme } from 'react-native';
-import AnimatedSplash from 'react-native-animated-splash-screen';
 import FlashMessage from 'react-native-flash-message';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { Provider } from 'react-redux';
 import BottomSheetModal from 'src/components/BottomSheetModal';
 import { TamaguiProvider, Theme } from 'tamagui';
-import { Provider } from 'react-redux';
 
-import config from './tamagui.config';
+import GlobalLoading, { globalLoadingRef } from '@/components/GlobalLoading';
 import TokenManager from 'src/helpers/tokenManager';
 import RootStackNavigator from 'src/navigation/RootStackNavigator';
-import SplashLogo from 'src/assets/images/logo/splash-screen.png';
-import GlobalLoading, { globalLoadingRef } from '@/components/GlobalLoading';
-import { heightScreen, widthScreen } from '@/utils/systemUtils';
 import store from 'src/redux/store';
+import config from './tamagui.config';
 
 LogBox.ignoreAllLogs();
 export const tokenManager = TokenManager.getInstance();
@@ -72,6 +69,8 @@ export const queryClient = new QueryClient();
 export default function App() {
   const colorScheme = useColorScheme();
 
+  const timeoutRef = useRef(null);
+
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const [fontsLoaded, setFontsLoaded] = useState(false);
 
@@ -95,9 +94,11 @@ export default function App() {
   };
 
   useEffect(() => {
-    setTimeout(() => {
+    timeoutRef.current = setTimeout(() => {
       setIsLoaded(true);
-    }, 2500);
+    }, 3000);
+
+    return () => clearTimeout(timeoutRef.current);
   }, []);
 
   if (!fontsLoaded) {
@@ -110,21 +111,22 @@ export default function App() {
         <QueryClientProvider client={queryClient}>
           <Provider store={store}>
             <NavigationContainer ref={navigationRef}>
-              <AnimatedSplash
+              {/* <AnimatedSplash
                 translucent={true}
                 disableBackgroundImage={false}
                 isLoaded={isLoaded}
                 logoImage={SplashLogo}
-                backgroundColor={'#FAFBDB'}
+                // backgroundColor={'#006a31'}
+                // disableBackgroundImage={true}r
                 logoHeight={heightScreen}
-                logoWidth={widthScreen}
-              >
-                <>
-                  <RootStackNavigator />
-                  <FlashMessage position="bottom" floating />
-                  <BottomSheetModal />
-                </>
-              </AnimatedSplash>
+                logoWidth={widthScreen + 100}
+              > */}
+              <>
+                <RootStackNavigator />
+                <FlashMessage position="bottom" floating />
+                <BottomSheetModal />
+              </>
+              {/* </AnimatedSplash> */}
             </NavigationContainer>
             <GlobalLoading ref={globalLoadingRef} />
           </Provider>

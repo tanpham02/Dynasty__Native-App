@@ -23,6 +23,7 @@ module.exports = {
         secondary: '#d52415',
         'gray-1': '#8c8c8c',
         'gray-2': '#eeeeee',
+        'gray-3': '#c3c3c3',
       },
       zIndex: {
         999999: '999999',

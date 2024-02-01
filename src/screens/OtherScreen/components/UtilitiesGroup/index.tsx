@@ -1,9 +1,9 @@
 import { Text, TouchableOpacity, View } from 'react-native';
 import styles from './styles';
-import UtilitiesMoneySvg from 'src/assets/svg/utilities-money.svg';
-import UtilitiesNoteSvg from 'src/assets/svg/utilities-note.svg';
-import UtilitiesRankSvg from 'src/assets/svg/utilities-rank.svg';
-import UtilitiesStarSvg from 'src/assets/svg/utilities-star.svg';
+import UtilitiesMoneySvg from '@/assets/svg/pizza.svg';
+import UtilitiesNoteSvg from '@/assets/svg/pizza.svg';
+import UtilitiesRankSvg from '@/assets/svg/pizza.svg';
+import UtilitiesStarSvg from '@/assets/svg/pizza.svg';
 
 const utilities = [
   {

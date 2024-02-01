@@ -5,10 +5,10 @@
     "slug": "dynasty-pizza-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./src/assets/images/dynasty-logo.png",
+    "icon": "./src/assets/images/logo/dynasty-logo.png",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./src/assets/images/splash-screen.png",
+      "image": "./src/assets/images/logo/splash-screen.png",
       "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
@@ -19,13 +19,13 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./src/assets/images/dynasty-logo.png",
+        "foregroundImage": "./src/assets/images/logo/dynasty-logo.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.vtaan.dynastypizzaapp"
     },
     "web": {
-      "favicon": "./src/assets/images/dynasty-logo.png"
+      "favicon": "./src/assets/images/logo/dynasty-logo.png"
     },
     "experiments": {
       "tsconfigPaths": true

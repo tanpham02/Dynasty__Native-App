@@ -1,19 +1,19 @@
 import { useIsFocused } from '@react-navigation/native';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { Platform, StatusBar } from 'react-native';
 
-const useStatusBarForAndroid = () => {
+const useStatusBarForAndroid = (currentColor?: any) => {
   const isFocus = useIsFocused();
 
   useEffect(() => {
     setTimeout(() => {
       if (Platform.OS === 'android') {
         StatusBar.setBarStyle('dark-content');
-        StatusBar.setBackgroundColor('transparent');
+        StatusBar.setBackgroundColor(currentColor ?? 'transparent');
         StatusBar.setTranslucent(true);
       }
-    }, 2000);
-  }, [isFocus]);
+    }, 4000);
+  }, [isFocus, currentColor]);
 };
 
 export default useStatusBarForAndroid;

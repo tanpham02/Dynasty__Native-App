@@ -1,6 +1,6 @@
 import { View, TouchableOpacity, FlatList } from 'react-native';
 import { Text, TextInput } from 'src/components';
-import SearchSvg from 'src/assets/svg/search-icon.svg';
+import SearchSvg from '@/assets/svg/pizza.svg';
 import styles from './styles';
 import theme from 'src/themes';
 
