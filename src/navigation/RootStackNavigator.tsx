@@ -3,6 +3,7 @@ import React from 'react';
 import { PathName } from 'src/constants';
 import {
   ExchangePointDetailScreen,
+  HomeScreen,
   MyPromotionScreen,
   NotificationScreen,
   PromotionDetailScreen,
@@ -51,16 +52,17 @@ const RootStackNavigator = () => {
       {/* Main Screen */}
       <RootStack.Screen
         name={PathName.PATH_SCREEN.MAIN}
-        component={BottomNavigator}
+        component={HomeScreen}
         options={optionsRoot}
       />
 
-      {/* Notification Screen */}
       <RootStack.Screen
         name={PathName.PATH_SCREEN.STORE_DETAIL_SCREEN}
         component={StoreScreen}
         options={optionsRoot}
       />
+
+      {/* Notification Screen */}
 
       {/* Notification Screen */}
       <RootStack.Screen
