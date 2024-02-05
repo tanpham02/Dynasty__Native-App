@@ -24,6 +24,8 @@ module.exports = {
         'gray-1': '#8c8c8c',
         'gray-2': '#eeeeee',
         'gray-3': '#c3c3c3',
+        'gray-4': '#f7faff',
+        'gray-5': '#f5faff',
       },
       zIndex: {
         999999: '999999',
