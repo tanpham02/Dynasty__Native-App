@@ -1,9 +1,9 @@
+import React from 'react';
+import { TouchableOpacity, View } from 'react-native';
+import { Text } from 'tamagui';
+
 import { Svg } from '@/assets';
 import styles from '@/styles';
-import React from 'react';
-import { TouchableOpacity } from 'react-native';
-import { View } from 'react-native';
-import { Text } from 'tamagui';
 
 const Header = () => {
   return (
