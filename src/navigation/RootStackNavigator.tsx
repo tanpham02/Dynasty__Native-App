@@ -12,6 +12,7 @@ import {
 } from 'src/screens';
 import BottomNavigator from './BottomNavigator';
 import AboutUsScreen from 'src/screens/OtherScreen/AboutUsScreen';
+import DeliveryScreen from '@/screens/DeliveryScreen';
 
 const RootStack = createStackNavigator();
 
@@ -93,6 +94,11 @@ const RootStackNavigator = () => {
         name={PathName.PATH_SCREEN.ABOUT_US_SCREEN}
         component={AboutUsScreen}
         options={optionForBottomSheet}
+      />
+      <RootStack.Screen
+        name={PathName.PATH_SCREEN.DELIVERY_SCREEN}
+        component={DeliveryScreen}
+        options={optionsMain}
       />
     </RootStack.Navigator>
   );

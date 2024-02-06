@@ -5,7 +5,7 @@ import { navigationRef } from "App";
 
 export const navigate = (name: string, params?: Object) => {
     if (navigationRef.isReady()) {
-        navigationRef.navigate((name as any, params as any) as never);
+        navigationRef.navigate(name as any, params as any);
     }
 };
 
