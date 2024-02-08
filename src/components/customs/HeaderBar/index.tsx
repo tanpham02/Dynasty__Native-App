@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     color: theme.colors.textBold,
     textAlign: 'center',
     alignSelf: 'center',
+    marginStart: -25,
   },
   wrapperHeader: {
     flexDirection: 'row',

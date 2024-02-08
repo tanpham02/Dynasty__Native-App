@@ -27,7 +27,7 @@ const categories = [
 
 const HomeCategory = () => {
   return (
-    <View className="mt-4">
+    <View className="mt-4 mx-3">
       <View className="flex-row justify-between items-center">
         <Text className="font-nunito-700 text-sm">Khám phá Menu</Text>
         <TouchableOpacity className="flex-row items-center gap-1">

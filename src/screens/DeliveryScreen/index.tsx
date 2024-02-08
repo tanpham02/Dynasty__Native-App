@@ -83,7 +83,6 @@ const DeliveryScreen = () => {
         longitude: location.coords.longitude,
       });
     }
-    console.log('🚀 ~ location:', location);
   };
 
   const handleMakerLocation = (e) => {

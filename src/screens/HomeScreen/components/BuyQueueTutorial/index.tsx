@@ -8,7 +8,7 @@ import BuyQueueStep from '../BuyQueueStep';
 const BuyQueueTutorial = () => {
   return (
     <View
-      className="mt-4 border border-gray-200 rounded-lg p-4 bg-gray-5"
+      className="mt-4 border border-gray-200 rounded-lg p-4 bg-gray-5 mx-3"
       style={[
         styles.shadowX,
         {

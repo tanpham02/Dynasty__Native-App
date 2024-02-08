@@ -1,13 +1,17 @@
-import { Svg } from '@/assets';
-import styles from '@/styles';
-import React from 'react';
-import { TouchableOpacity } from 'react-native';
-import { View } from 'react-native';
 import { Text } from 'tamagui';
 
+import { Svg } from '@/assets';
+import styles from '@/styles';
+import { TouchableOpacity } from 'react-native';
+import { View } from 'react-native';
+import { navigate } from '@/utils/navigationUtil';
+import { PATH_SCREEN } from '@/constants/pathName';
+
 const Header = () => {
+  const goToNotificationScreen = () => navigate(PATH_SCREEN.NOTIFICATION_SCREEN);
+
   return (
-    <View className="flex-row justify-between items-center gap-3">
+    <View className="flex-row justify-between items-center gap-3 px-3">
       <TouchableOpacity
         className="flex-row flex-1 items-center border border-zinc-200 py-2 px-4 rounded-lg bg-gray-5 my-2"
         style={styles.shadowX}
@@ -21,13 +25,14 @@ const Header = () => {
           <Svg.ArrowDown width={14} height={14} className="text-white" />
         </View>
       </TouchableOpacity>
-      <TouchableOpacity
+      {/* <TouchableOpacity
         style={styles.shadowX}
         className="w-12 h-12 bg-gray-5 rounded-full justify-center items-center m-1 border border-zinc-200"
       >
         <Svg.QrCode width={20} height={20} />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <TouchableOpacity
+        onPress={goToNotificationScreen}
         style={styles.shadowX}
         className="w-12 h-12 bg-gray-5 rounded-lg justify-center items-center m-1 border border-zinc-200"
       >
