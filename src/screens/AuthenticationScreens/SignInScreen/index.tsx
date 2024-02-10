@@ -1,31 +1,13 @@
-import { PathName } from 'src/constants';
-import {
-  Image,
-  SafeAreaView,
-  TextInput,
-  TouchableOpacity,
-  View,
-  Text,
-  TouchableHighlight,
-} from 'react-native';
-import styles from './styles';
-import FlagViSvg from '@/assets/svg/flag_vi.svg';
-import AppleSvg from '@/assets/svg/pizza.svg';
-import FacebookSvg from '@/assets/svg/pizza.svg';
-import GoogleSvg from '@/assets/svg/pizza.svg';
-import LinearGradientButton from '@/components/Button/LinearGradientButton';
-import useStatusBarForAndroid from '@/hooks/useStatusBarForAndroid';
-import theme from '@/themes';
 import DynastyLogoBgWhite from '@/assets/images/logo/logo-bg-white.png';
-import PizzaBgLeft from '@/assets/images/logo/pizza-hai-san-cao-cap.png';
 import PizzaBgRight from '@/assets/images/logo/pizza-5-loai-thit-va-rau-cu.png';
-import { Button, Input, Separator, XStack, YStack } from 'tamagui';
-import { useId } from 'react';
-import SVG from 'react-native-svg';
-import PizzaSvg from '@/assets/svg/pizza.svg';
-import OfferSvg from '@/assets/svg/offer.svg';
+import PizzaBgLeft from '@/assets/images/logo/pizza-hai-san-cao-cap.png';
+import FlagViSvg from '@/assets/svg/flag_vi.svg';
 import MobileSvg from '@/assets/svg/mobile.svg';
-import { Controller, useForm } from 'react-hook-form';
+import OfferSvg from '@/assets/svg/offer.svg';
+import PizzaSvg from '@/assets/svg/pizza.svg';
+import useStatusBarForAndroid from '@/hooks/useStatusBarForAndroid';
+import { useForm } from 'react-hook-form';
+import { Image, Text, TouchableHighlight, View } from 'react-native';
 
 const SignInScreen = () => {
   useStatusBarForAndroid();
@@ -34,19 +16,16 @@ const SignInScreen = () => {
 
   const topIntroduce = [
     {
-      id: useId(),
       title: 'Great',
       description: 'Food & Taste',
       icon: PizzaSvg,
     },
     {
-      id: useId(),
       title: 'Great',
       description: 'Offers & Deals',
       icon: OfferSvg,
     },
     {
-      id: useId(),
       title: 'Easy',
       description: 'Ordering',
       icon: MobileSvg,
@@ -77,8 +56,8 @@ const SignInScreen = () => {
           <Text className="font-nunito-700 text-white text-xl">awesome new features</Text>
 
           <View className="flex justify-between items-center flex-row space-x-3 mt-4">
-            {topIntroduce.map((item) => (
-              <View key={item.id} className="flex justify-between items-center flex-row space-x-1">
+            {topIntroduce.map((item, index) => (
+              <View key={index} className="flex justify-between items-center flex-row space-x-1">
                 <item.icon width={23} height={23} color="#fff" />
                 <View className="flex justify-between">
                   <Text className="text-white text-xs">{item.title}</Text>
@@ -112,39 +91,32 @@ const SignInScreen = () => {
             <FlagViSvg />
             <Text className="font-nunito-700 !text-[13px]">+84</Text>
           </View>
-          <Separator
-            alignSelf="stretch"
-            vertical
-            marginVertical={8}
-            marginLeft={22}
-            borderColor={'red'}
-          />
-          <Input
+
+          {/* <Input
             className="flex-1 text-black bg-white placeholder:!font-nunito-700 placeholder:!text-[15px]"
             placeholder="Mobile number*"
             keyboardType="numeric"
-            borderColor={'transparent'}
-          />
+            borderColor="transparent"
+          /> */}
         </View>
 
-        <TouchableHighlight>
+        {/* <TouchableHighlight>
           <Button
-            size="$4"
             style={{
-              elevation: 5,
+              elevation: 10,
               shadowOffset: {
                 width: 0,
                 height: 2,
               },
               shadowOpacity: 0.8,
-              shadowRadius: 5,
+              shadowRadius: 6,
               shadowColor: '#c3c3c3',
             }}
             className="text-secondary font-nunito-500 my-8 bg-zinc-100 border-[0.22px] border-secondary"
           >
             SEND OTP
           </Button>
-        </TouchableHighlight>
+        </TouchableHighlight> */}
       </View>
 
       {/* <View style={styles.body

@@ -6,4 +6,5 @@ export interface BuyActionItemProps {
     label: string
     onPress(): void,
     isActive?: boolean
+    wrapperClassName?: string
 }

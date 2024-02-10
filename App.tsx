@@ -1,21 +1,16 @@
-import { useEffect, useRef, useState } from 'react';
-import { Provider } from 'react-redux';
+import { useEffect, useState } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { TamaguiProvider, Theme } from 'tamagui';
+import { Provider } from 'react-redux';
 
-import { NavigationContainer, createNavigationContainerRef } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import * as Font from 'expo-font';
-import BottomSheetModal from 'src/components/BottomSheetModal';
 import GlobalLoading, { globalLoadingRef } from '@/components/GlobalLoading';
+import { NavigationContainer, createNavigationContainerRef } from '@react-navigation/native';
+import * as Font from 'expo-font';
 import { LogBox, useColorScheme } from 'react-native';
 import FlashMessage from 'react-native-flash-message';
 import { Font as MyFont } from 'src/assets';
 import TokenManager from 'src/helpers/tokenManager';
 import RootStackNavigator from 'src/navigation/RootStackNavigator';
 import store from 'src/redux/store';
-import config from './tamagui.config';
-import SideBar from '@/components/SideBar';
 
 LogBox.ignoreAllLogs();
 export const tokenManager = TokenManager.getInstance();
@@ -36,14 +31,9 @@ export const getParams = (): GetParams => {
 
 export const queryClient = new QueryClient();
 
-const Drawer = createDrawerNavigator();
-
 export default function App() {
   const colorScheme = useColorScheme();
 
-  const timeoutRef = useRef(null);
-
-  const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const [fontsLoaded, setFontsLoaded] = useState(false);
 
   useEffect(() => {
@@ -65,48 +55,19 @@ export default function App() {
     setFontsLoaded(true);
   };
 
-  useEffect(() => {
-    timeoutRef.current = setTimeout(() => {
-      setIsLoaded(true);
-    }, 3000);
-
-    return () => clearTimeout(timeoutRef.current);
-  }, []);
-
   if (!fontsLoaded) {
     return null;
   }
 
   return (
-    <TamaguiProvider config={config}>
-      <Theme name={colorScheme === 'dark' ? 'dark' : 'light'}>
-        <QueryClientProvider client={queryClient}>
-          <Provider store={store}>
-            <NavigationContainer ref={navigationRef}>
-              <RootStackNavigator />
-              <FlashMessage position="bottom" floating />
-              <BottomSheetModal />
-              {/* <AnimatedSplash
-                translucent={true}
-                disableBackgroundImage={false}
-                isLoaded={isLoaded}
-                logoImage={SplashLogo}
-                // backgroundColor={'#006a31'}
-                // disableBackgroundImage={true}r
-                logoHeight={heightScreen}
-                logoWidth={widthScreen + 100}
-              > */}
-              <>
-                <RootStackNavigator />
-                <FlashMessage position="bottom" floating duration={2000} />
-                <BottomSheetModal />
-              </>
-              {/* </AnimatedSplash> */}
-            </NavigationContainer>
-            <GlobalLoading ref={globalLoadingRef} />
-          </Provider>
-        </QueryClientProvider>
-      </Theme>
-    </TamaguiProvider>
+    <QueryClientProvider client={queryClient}>
+      <Provider store={store}>
+        <NavigationContainer ref={navigationRef}>
+          <RootStackNavigator />
+          <FlashMessage position="bottom" floating />
+        </NavigationContainer>
+        <GlobalLoading ref={globalLoadingRef} />
+      </Provider>
+    </QueryClientProvider>
   );
 }

@@ -1,6 +1,5 @@
-import { Image, View } from 'react-native';
+import { Image, Text, View } from 'react-native';
 import { BuyQueueStepProps } from './type';
-import { Text } from 'tamagui';
 
 const BuyQueueStep = ({ source, label, index }: BuyQueueStepProps) => {
   return (

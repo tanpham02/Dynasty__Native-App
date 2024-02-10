@@ -13,10 +13,10 @@ import { MyStatusBar, ScrollView, Text } from 'src/components';
 import RewardSvg from '@/assets/svg/pizza.svg';
 import NotificationSvg from 'src/components/svg/NotificationSvg';
 
-import { goBack, navigate } from '../../../../App';
 import styles from './styles';
 import theme from 'src/themes';
 import { PathName } from 'src/constants';
+import { navigate } from '@/utils/navigationUtil';
 
 interface Props {
   statusBarBackgroundColor?: ColorValue;

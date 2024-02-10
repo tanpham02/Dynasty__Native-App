@@ -1,7 +1,6 @@
-import { Image } from 'tamagui';
 import LoaderBikeGif from '@/assets/gif/loader-bike.gif';
 import { createRef, forwardRef, useImperativeHandle, useState } from 'react';
-import { View, Platform } from 'react-native';
+import { View, Platform, Image } from 'react-native';
 
 export const globalLoadingRef = createRef<{
   show: () => void;

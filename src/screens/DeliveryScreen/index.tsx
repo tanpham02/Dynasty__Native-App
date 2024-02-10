@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
-import { Text, Input } from 'tamagui';
+import { Text, TextInput } from 'react-native';
 
 import { Svg } from '@/assets';
 import { MyStatusBar } from '@/components';
@@ -94,18 +94,18 @@ const DeliveryScreen = () => {
 
   return (
     <>
-      <MyStatusBar backgroundColor="transparent" />
       <SafeAreaView className="flex-1 bg-gray-5">
         <View className="flex-row items-center mx-3">
           <TouchableOpacity
             onPress={goBackToPrevScreen}
             style={styles.shadowX}
-            className="bg-gray-5 w-10 h-10 rounded-lg items-center justify-center"
+            className="bg-gray-5 w-[45px] h-[45px] rounded-lg items-center justify-center mr-6"
           >
-            <Svg.ArrowLeft width={20} height={20} />
+            <Svg.ArrowLeft width={22} height={22} />
           </TouchableOpacity>
           {buyActions.map((buyAction, index) => (
             <BuyActionItem
+              wrapperClassName="mr-3"
               key={index}
               {...buyAction}
               onPress={() => setTabActiveKey(index)}
@@ -114,7 +114,7 @@ const DeliveryScreen = () => {
           ))}
         </View>
         <View className="mx-4 mt-4 flex-row items-center">
-          <Input placeholder="Nhập địa điểm của bạn" className="flex-1 bg-white" />
+          {/* <Input placeholder="Nhập địa điểm của bạn" className="flex-1 bg-white" /> */}
           <TouchableOpacity
             className="w-10 h-10 items-center justify-center bg-gray-5 rounded-lg ml-1"
             style={styles.shadowX}

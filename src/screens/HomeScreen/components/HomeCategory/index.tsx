@@ -1,6 +1,4 @@
-import { Text } from 'tamagui';
-
-import { TouchableOpacity, View } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 import { Svg } from '@/assets';
 import HomeCategoryItem from '../HomeCategoryItem';
 

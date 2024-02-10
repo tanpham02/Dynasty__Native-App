@@ -1,8 +1,7 @@
 import { Svg } from '@/assets';
 import styles from '@/styles';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native';
-import { Text } from 'tamagui';
 import { HomeCategoryItemProps } from './type';
 
 const HomeCategoryItem = ({ name }: HomeCategoryItemProps) => {

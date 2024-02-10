@@ -1,6 +1,5 @@
 import { Svg } from '@/assets';
-import { TouchableOpacity, View } from 'react-native';
-import { Text } from 'tamagui';
+import { Text, TouchableOpacity, View } from 'react-native';
 import ProductItem from '../ProductItem';
 import { FlatList } from 'react-native';
 

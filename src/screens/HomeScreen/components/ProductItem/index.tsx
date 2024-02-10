@@ -1,8 +1,7 @@
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import ProductTestImage from '@/assets/images/logo/pizza-5-loai-thit-va-rau-cu.png';
-import { Text } from 'tamagui';
-import { Image, View } from 'react-native';
+import { Image, Text, View } from 'react-native';
 import styles from '@/styles';
 import { formatMoneyVND } from '@/utils/numberUtils';
 
