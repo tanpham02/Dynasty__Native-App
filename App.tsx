@@ -15,7 +15,6 @@ import TokenManager from 'src/helpers/tokenManager';
 import RootStackNavigator from 'src/navigation/RootStackNavigator';
 import store from 'src/redux/store';
 import config from './tamagui.config';
-import SideBar from '@/components/SideBar';
 
 LogBox.ignoreAllLogs();
 export const tokenManager = TokenManager.getInstance();

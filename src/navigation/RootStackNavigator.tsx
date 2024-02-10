@@ -42,11 +42,11 @@ const RootStackNavigator = () => {
       initialRouteName={routeName}
     >
       {/* Authentication Screens */}
-      {/* <RootStack.Screen
+      <RootStack.Screen
         name={PathName.PATH_SCREEN.SIGN_IN_SCREEN}
         component={SignInScreen}
         options={optionsRoot}
-      /> */}
+      />
       {/* <RootStack.Screen
           name={PathName.PATH_SCREEN.REGISTER_SCREEN}
           component={RegisterScreen}
