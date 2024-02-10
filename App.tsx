@@ -95,7 +95,11 @@ export default function App() {
                 logoHeight={heightScreen}
                 logoWidth={widthScreen + 100}
               > */}
-
+              <>
+                <RootStackNavigator />
+                <FlashMessage position="bottom" floating duration={2000} />
+                <BottomSheetModal />
+              </>
               {/* </AnimatedSplash> */}
             </NavigationContainer>
             <GlobalLoading ref={globalLoadingRef} />
