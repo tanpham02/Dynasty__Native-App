@@ -8,7 +8,7 @@ import styles from '@/styles';
 import { Button, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import BuyActionItem from '../HomeScreen/components/BuyActionItem';
-import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView, { MapPressEvent, Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import { heightScreen, widthScreen } from '@/utils/systemUtils';
 import * as Location from 'expo-location';
 import { showMessage } from 'react-native-flash-message';
@@ -36,10 +36,12 @@ const DeliveryScreen = () => {
     longitude: null,
   });
 
+  // for first login
   useEffect(() => {
     getCurrentLocation();
   }, []);
 
+  // when select location (being limited)
   const { data: userLocationInfo } = useQuery({
     queryKey: [QUERY_KEY.LOCATION, coordinate],
     queryFn: async () => {
@@ -65,6 +67,7 @@ const DeliveryScreen = () => {
 
   const goBackToPrevScreen = () => goBack();
 
+  // for first login
   const getCurrentLocation = async () => {
     let { status } = await Location.requestForegroundPermissionsAsync();
     if (status !== 'granted') {
@@ -85,8 +88,7 @@ const DeliveryScreen = () => {
     }
   };
 
-  const handleMakerLocation = (e) => {
-    console.log(e.nativeEvent.coordinate);
+  const handleMakerLocation = (e: MapPressEvent) => {
     setCoordinate(e.nativeEvent.coordinate);
   };
 
