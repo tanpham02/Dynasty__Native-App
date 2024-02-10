@@ -9,14 +9,14 @@ import {
   ProductList,
 } from './components';
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
   return (
     <>
       <View className="flex-1 bg-gray-4">
         <View className="flex-1 py-2">
           <SafeAreaView>
             <View className="pb-4">
-              <Header />
+              <Header navigation={navigation} />
               <Animated.ScrollView
                 scrollEventThrottle={16}
                 showsVerticalScrollIndicator={false}

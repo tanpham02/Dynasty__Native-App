@@ -7,17 +7,23 @@ import { View } from 'react-native';
 import { navigate } from '@/utils/navigationUtil';
 import { PATH_SCREEN } from '@/constants/pathName';
 
-const Header = () => {
+const Header = ({ navigation }) => {
   const goToNotificationScreen = () => navigate(PATH_SCREEN.NOTIFICATION_SCREEN);
+  const openSidebar = () => navigation.openDrawer();
 
   return (
     <View className="flex-row justify-between items-center gap-3 px-3">
       <TouchableOpacity
-        className="flex-row flex-1 items-center border border-zinc-200 py-2 px-4 rounded-lg bg-gray-5 my-2"
+        className="flex-row flex-1 items-center border border-zinc-200 rounded-lg bg-gray-5 my-2 py-1 px-4"
         style={styles.shadowX}
       >
-        <Svg.Menu width={20} height={20} className="text-zinc-500" />
-        <View className="mr-2 ml-4 flex-1">
+        <Svg.Menu
+          width={30}
+          height={30}
+          className="text-zinc-500 py-2 px-4"
+          onPress={openSidebar}
+        />
+        <View className="mr-2 ml-4 flex-1 py-1">
           <Text className="text-zinc-800 font-nunito-700 uppercase text-xs">Chọn vị trí</Text>
           <Text className="text-zinc-500 font-nunito-500 text-xs">Nhận chính xác giá...</Text>
         </View>
