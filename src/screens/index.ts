@@ -9,17 +9,19 @@ import NotificationScreen from './NotificationScreen';
 import MyPromotionScreen from './MyPromotionScreen';
 import PromotionDetailScreen from './PromotionDetailScreen';
 import ExchangePointDetailScreen from './ExchangePointDetailScreen';
+import DeliveryScreen from './DeliveryScreen';
 
 export {
-  HomeScreen,
-  OrderScreen,
-  OtherScreen,
-  PromotionScreen,
-  RegisterScreen,
-  SignInScreen,
-  StoreScreen,
-  NotificationScreen,
-  MyPromotionScreen,
-  PromotionDetailScreen,
-  ExchangePointDetailScreen
+    HomeScreen,
+    OrderScreen,
+    OtherScreen,
+    PromotionScreen,
+    RegisterScreen,
+    SignInScreen,
+    StoreScreen,
+    NotificationScreen,
+    MyPromotionScreen,
+    PromotionDetailScreen,
+    ExchangePointDetailScreen,
+    DeliveryScreen
 };

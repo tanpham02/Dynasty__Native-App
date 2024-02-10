@@ -1,8 +1,17 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
-import { ColorValue, SafeAreaView, StatusBarStyle, StyleProp, View, ViewStyle } from 'react-native';
+import { Svg } from '@/assets';
+import styles from '@/styles';
+import { goBack } from '@/utils/navigationUtil';
+import {
+  ColorValue,
+  SafeAreaView,
+  StatusBarStyle,
+  StyleProp,
+  TouchableOpacity,
+  View,
+  ViewStyle,
+} from 'react-native';
 import { HeaderBar, MyStatusBar } from 'src/components';
-import { goBack } from '../../../../App';
 
 interface Props {
   statusBarBackgroundColor?: ColorValue;
@@ -16,16 +25,24 @@ const SecondLayout = (props: Props) => {
   return (
     <>
       <MyStatusBar
-        backgroundColor={props.statusBarBackgroundColor || 'white'}
+        backgroundColor={props.statusBarBackgroundColor || 'transparent'}
         barStyle={props.barStyle || 'dark-content'}
       />
-      <SafeAreaView style={[{ flex: 1 }]}>
+      <SafeAreaView className="flex-1 bg-gray-5">
         <HeaderBar
           title={props.title}
           onBack={() => {
             props.goBack ? props.goBack() : goBack();
           }}
         />
+        {/* <View className="mx-3 mt-2">
+          <TouchableOpacity
+            style={styles.shadowX}
+            className="w-10 h-10 items-center justify-center bg-gray-5 rounded-lg"
+          >
+            <Svg.ArrowLeft width={25} height={25} />
+          </TouchableOpacity>
+        </View> */}
         <View style={[props.style, { flex: 1 }]}>{props.children}</View>
       </SafeAreaView>
     </>

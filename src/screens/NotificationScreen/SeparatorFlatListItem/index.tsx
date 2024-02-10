@@ -10,6 +10,6 @@ export default SeparatorFlatListItem;
 const styles = StyleSheet.create({
   container: {
     borderWidth: 0.5,
-    borderColor: theme.colors.borderBox,
+    borderColor: theme.colors.border,
   },
 });

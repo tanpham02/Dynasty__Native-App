@@ -13,22 +13,29 @@ const HomeScreen = () => {
   return (
     <>
       <View className="flex-1 bg-gray-4">
-        <Animated.ScrollView scrollEventThrottle={16}>
-          <View className="flex-1 py-2">
-            <SafeAreaView>
-              <View className="px-3 pb-4">
-                <Header />
-                <BuyAction />
-                <HomeSlider />
-                <HomeCategory />
-                <BuyQueueTutorial />
-                <ProductList />
-                <ProductList />
-                <ProductList />
-              </View>
-            </SafeAreaView>
-          </View>
-        </Animated.ScrollView>
+        <View className="flex-1 py-2">
+          <SafeAreaView>
+            <View className="pb-4">
+              <Header />
+              <Animated.ScrollView
+                scrollEventThrottle={16}
+                showsVerticalScrollIndicator={false}
+                showsHorizontalScrollIndicator={false}
+                keyboardShouldPersistTaps="always"
+              >
+                <View className="flex-1 mt-2">
+                  <BuyAction />
+                  <HomeSlider />
+                  <HomeCategory />
+                  <BuyQueueTutorial />
+                  <ProductList />
+                  <ProductList />
+                  <ProductList />
+                </View>
+              </Animated.ScrollView>
+            </View>
+          </SafeAreaView>
+        </View>
       </View>
     </>
   );
