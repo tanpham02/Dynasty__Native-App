@@ -1,7 +1,6 @@
-import { Text } from 'tamagui';
 
 import styles from '@/styles';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 import { buyQueueSteps } from './data';
 import BuyQueueStep from '../BuyQueueStep';
 

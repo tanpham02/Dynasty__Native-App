@@ -1,13 +1,10 @@
-import { Text } from 'tamagui';
-
-import Logo from '@/assets/images/logo/dynasty-logo.png';
-import { Image, TouchableOpacity, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { Svg } from '@/assets';
-import ScrollView from '../customs/ScrollView';
+import { PATH_SCREEN } from '@/constants/pathName';
 import styles from '@/styles';
 import { navigate } from '@/utils/navigationUtil';
-import { PATH_SCREEN } from '@/constants/pathName';
+import { Text, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import ScrollView from '../customs/ScrollView';
 
 const sidebarMenus = [
   {

@@ -1,12 +1,12 @@
 {
   "expo": {
     "name": "dynasty-pizza-app",
-    "description": "Welcome To Dynasty Pizza!\n Order food online in Vietnam! It's so easy to use, fast and convenient. Try our new, online app which contains our entire takeaway menu. Dynasty Pizza is located in Vietnam. You can now order online, all your favourite dishes and many more delicious options, and have them delivered straight to your door in no time at all.\n Here at Dynasty Pizza we are constantly striving to improve our service and quality in order to give our customers the very best experience. As a result, we are finally proud to unveil and introduce our latest improvement, our new online ordering app! You can now relax at home and order your favourite, freshly prepared meals from Dynasty Pizza online. You can even pay online! Dynasty Pizza in Vietnam will always be offering great food at affordable prices.\n Please feel free to browse our new app and place your order online. Remember to check our new online ordering site to get up to date prices and exclusive special offers, limited to our online customers only!\n Thank you for visiting Dynasty Pizza in Vietnam. We hope you enjoy our online ordering app and your food.",
+    "description": "Welcome To Dynasty Pizza!\n Order food online in Vietnam! It's so easy to use, fast and convenient. Try our new, online app which contains our entire takeaway menu. Dynasty Pizza is located in Vietnam. You can now order online, all your favorite dishes and many more delicious options, and have them delivered straight to your door in no time at all.\n Here at Dynasty Pizza we are constantly striving to improve our service and quality in order to give our customers the very best experience. As a result, we are finally proud to unveil and introduce our latest improvement, our new online ordering app! You can now relax at home and order your favorite, freshly prepared meals from Dynasty Pizza online. You can even pay online! Dynasty Pizza in Vietnam will always be offering great food at affordable prices.\n Please feel free to browse our new app and place your order online. Remember to check our new online ordering site to get up to date prices and exclusive special offers, limited to our online customers only!\n Thank you for visiting Dynasty Pizza in Vietnam. We hope you enjoy our online ordering app and your food.",
     "slug": "dynasty-pizza-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./src/assets/images/logo/dynasty-logo.png",
-    "userInterfaceStyle": "automatic",
+    "userInterfaceStyle": "light",
     "splash": {
       "image": "./src/assets/images/logo/splash-screen.png",
       "resizeMode": "cover",
