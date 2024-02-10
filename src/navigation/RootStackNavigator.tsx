@@ -1,5 +1,5 @@
 import { CardStyleInterpolators, createStackNavigator } from '@react-navigation/stack';
-import React from 'react';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import { PathName } from 'src/constants';
 import {
   ExchangePointDetailScreen,
@@ -13,8 +13,10 @@ import {
 import BottomNavigator from './BottomNavigator';
 import AboutUsScreen from 'src/screens/OtherScreen/AboutUsScreen';
 import DeliveryScreen from '@/screens/DeliveryScreen';
+import SideBar from '@/components/SideBar';
 
 const RootStack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
 const optionsMain = {
   cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
@@ -32,10 +34,11 @@ const RootStackNavigator = () => {
   let routeName: string;
 
   return (
-    <RootStack.Navigator
+    <Drawer.Navigator
       screenOptions={{
         headerShown: false,
       }}
+      drawerContent={() => <SideBar />}
       initialRouteName={routeName}
     >
       {/* Authentication Screens */}
@@ -51,10 +54,10 @@ const RootStackNavigator = () => {
         /> */}
 
       {/* Main Screen */}
-      <RootStack.Screen
+      <Drawer.Screen
         name={PathName.PATH_SCREEN.MAIN}
         component={HomeScreen}
-        options={optionsRoot}
+        // options={optionsRoot}
       />
 
       <RootStack.Screen
@@ -100,7 +103,7 @@ const RootStackNavigator = () => {
         component={DeliveryScreen}
         options={optionsMain}
       />
-    </RootStack.Navigator>
+    </Drawer.Navigator>
   );
 };
 
