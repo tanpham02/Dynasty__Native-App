@@ -7,7 +7,8 @@ import OfferSvg from '@/assets/svg/offer.svg';
 import PizzaSvg from '@/assets/svg/pizza.svg';
 import useStatusBarForAndroid from '@/hooks/useStatusBarForAndroid';
 import { useForm } from 'react-hook-form';
-import { Image, Text, TouchableHighlight, View } from 'react-native';
+import { Image, Text, View, SafeAreaView } from 'react-native';
+import { Box, Input } from 'native-base';
 
 const SignInScreen = () => {
   useStatusBarForAndroid();
@@ -33,7 +34,7 @@ const SignInScreen = () => {
   ];
 
   return (
-    <View className="flex flex-1 ">
+    <Box flex={1}>
       <View className="!bg-primary relative flex-1 flex justify-center items-center ">
         <Image
           source={PizzaBgLeft}
@@ -78,6 +79,7 @@ const SignInScreen = () => {
       </View>
 
       <View className="bg-gray-2 h-[45%]"></View>
+
       <View className="absolute top-[45%] left-4 right-4 bottom-12 bg-white rounded-2xl shadow-2xl p-6">
         <View className="space-y-.5">
           <Text className="font-nunito-500 text-[17px]">Enter your Mobile number</Text>
@@ -86,19 +88,23 @@ const SignInScreen = () => {
           </Text>
         </View>
 
-        <View className="flex flex-row rounded-md bg-white shadow-2xl mt-6 py-1 px-2">
+        <Box flexDirection="row">
           <View className="flex flex-row items-center space-x-1 rounded-md pr-5 bg-primary/5 ">
             <FlagViSvg />
             <Text className="font-nunito-700 !text-[13px]">+84</Text>
           </View>
 
-          {/* <Input
-            className="flex-1 text-black bg-white placeholder:!font-nunito-700 placeholder:!text-[15px]"
+          <Input
+            className="text-black bg-white placeholder:!font-nunito-700 placeholder:!text-[15px]"
             placeholder="Mobile number*"
+            width="100%"
+            variant="unstyled"
+            flex={1}
             keyboardType="numeric"
-            borderColor="transparent"
-          /> */}
-        </View>
+            // type="text"
+            // height="100%"
+          />
+        </Box>
 
         {/* <TouchableHighlight>
           <Button
@@ -119,7 +125,7 @@ const SignInScreen = () => {
         </TouchableHighlight> */}
       </View>
 
-      {/* <View style={styles.body
+      {/* <Box style={styles.body
         <View style={styles.inputContainer}>
           <FlagViSvg style={styles.flag} />
           <Text style={styles.inputPhoneNumberCode}>+84</Text>s
@@ -149,7 +155,7 @@ const SignInScreen = () => {
           <GoogleSvg style={styles.socialLoginButton} />
         </TouchableOpacity>
       </View> */}
-    </View>
+    </Box>
   );
 };
 
