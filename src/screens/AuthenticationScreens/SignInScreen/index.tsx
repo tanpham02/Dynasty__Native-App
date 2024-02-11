@@ -1,3 +1,4 @@
+import { Svg } from '@/assets';
 import DynastyLogoBgWhite from '@/assets/images/logo/logo-bg-white.png';
 import PizzaBgRight from '@/assets/images/logo/pizza-5-loai-thit-va-rau-cu.png';
 import PizzaBgLeft from '@/assets/images/logo/pizza-hai-san-cao-cap.png';
@@ -5,13 +6,14 @@ import FlagViSvg from '@/assets/svg/flag_vi.svg';
 import MobileSvg from '@/assets/svg/mobile.svg';
 import OfferSvg from '@/assets/svg/offer.svg';
 import PizzaSvg from '@/assets/svg/pizza.svg';
-import useStatusBarForAndroid from '@/hooks/useStatusBarForAndroid';
+import styles from '@/styles';
+import { Box, Checkbox, Divider, Flex, Input, Text } from 'native-base';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Image, Text, View, SafeAreaView } from 'react-native';
-import { Box, Input } from 'native-base';
+import { Image, TouchableOpacity, View } from 'react-native';
 
 const SignInScreen = () => {
-  useStatusBarForAndroid();
+  const [isAgreeReceiveOffer, setIsAgreeReceiveOffer] = useState<boolean>(true);
 
   const {} = useForm();
 
@@ -32,6 +34,8 @@ const SignInScreen = () => {
       icon: MobileSvg,
     },
   ];
+
+  const handleChangeCheckedReceiveOffer = () => setIsAgreeReceiveOffer(!isAgreeReceiveOffer);
 
   return (
     <Box flex={1}>
@@ -78,9 +82,9 @@ const SignInScreen = () => {
         />
       </View>
 
-      <View className="bg-gray-2 h-[45%]"></View>
+      <View className="bg-gray-6 h-[45%]"></View>
 
-      <View className="absolute top-[45%] left-4 right-4 bottom-12 bg-white rounded-2xl shadow-2xl p-6">
+      <View className="absolute top-[45%] left-4 right-4 bottom-12 bg-gray-7 rounded-2xl shadow-2xl p-6">
         <View className="space-y-.5">
           <Text className="font-nunito-500 text-[17px]">Enter your Mobile number</Text>
           <Text className="font-nunito-500 text-sm text-gray-1">
@@ -88,73 +92,67 @@ const SignInScreen = () => {
           </Text>
         </View>
 
-        <Box flexDirection="row">
-          <View className="flex flex-row items-center space-x-1 rounded-md pr-5 bg-primary/5 ">
+        <Box
+          flexDirection="row"
+          className="h-12 flex items-center bg-white rounded-lg p-1.5 mt-3"
+          style={styles.shadowX}
+        >
+          <View className="flex flex-row items-center space-x-1 rounded-lg px-2 bg-gray-7 h-full">
             <FlagViSvg />
             <Text className="font-nunito-700 !text-[13px]">+84</Text>
           </View>
 
+          <Divider orientation="vertical" thickness="1" className="bg-secondary ml-2 mr-1" />
           <Input
             className="text-black bg-white placeholder:!font-nunito-700 placeholder:!text-[15px]"
             placeholder="Mobile number*"
             width="100%"
             variant="unstyled"
-            flex={1}
+            flex="1"
             keyboardType="numeric"
-            // type="text"
-            // height="100%"
           />
         </Box>
 
-        {/* <TouchableHighlight>
-          <Button
-            style={{
-              elevation: 10,
-              shadowOffset: {
-                width: 0,
-                height: 2,
-              },
-              shadowOpacity: 0.8,
-              shadowRadius: 6,
-              shadowColor: '#c3c3c3',
-            }}
-            className="text-secondary font-nunito-500 my-8 bg-zinc-100 border-[0.22px] border-secondary"
-          >
-            SEND OTP
-          </Button>
-        </TouchableHighlight> */}
-      </View>
+        <TouchableOpacity
+          style={styles.shadowX}
+          className="bg-gray-7 rounded-lg py-3 mt-8 border border-[#faf1f3]"
+        >
+          <Text className="text-secondary font-nunito-600 text-[15px] text-center">SEND OTP</Text>
+        </TouchableOpacity>
 
-      {/* <Box style={styles.body
-        <View style={styles.inputContainer}>
-          <FlagViSvg style={styles.flag} />
-          <Text style={styles.inputPhoneNumberCode}>+84</Text>s
-          <TextInput
-            style={styles.inputPhoneNumber}
-            placeholder="Nhập số điện thoại"
-            keyboardType="numeric"
-          />
-        </View>
-        <View style={styles.inputContainer}>
-          <TextInput style={styles.inputPassword} placeholder="Mật khẩu" secureTextEntry={true} />
-        </View>
-        <LinearGradientButton
-          title="Đăng nhập"
-          style={styles.loginButton}
-          onPress={() => navigate(PathName.PATH_SCREEN.MAIN)}
-        />
-      </View> */}
-      {/* <View style={styles.loginWithSocialContainerButton}>
-        <TouchableOpacity>
-          <AppleSvg style={styles.socialLoginButton} />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <FacebookSvg style={styles.socialLoginButton} />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <GoogleSvg style={styles.socialLoginButton} />
-        </TouchableOpacity>
-      </View> */}
+        <Flex className="flex-row items-center gap-2 mt-1.5">
+          <TouchableOpacity>
+            <Checkbox
+              className={`rounded-lg`}
+              onChange={handleChangeCheckedReceiveOffer}
+              value=""
+              isChecked={isAgreeReceiveOffer}
+              colorScheme="danger"
+              size="sm"
+            />
+          </TouchableOpacity>
+          <Text onPress={handleChangeCheckedReceiveOffer} className="text-xs font-nunito-500">
+            By clicking i agree to receive marketing offers
+          </Text>
+        </Flex>
+
+        <Box className="mt-5">
+          <Text className="mb-3 font-nunito-600">Login with Social Media Accounts</Text>
+          <TouchableOpacity style={styles.shadowX} className="bg-white flex flex-row rounded-lg">
+            <Box className="flex-row items-center justify-center w-fit mx-auto py-2 ">
+              <Svg.GoogleSvg width={30} height={30} className="mr-2" />
+              <Text className="text-[15px] font-nunito-500">Google</Text>
+            </Box>
+          </TouchableOpacity>
+        </Box>
+
+        <Box className="absolute bottom-5 left-5 right-5 flex-row justify-between items-center">
+          <Text className="uppercase text-[10px] font-nunito-500 text-[#1476e1]">
+            Terms & Conditions
+          </Text>
+          <Text className="uppercase text-[10px] font-nunito-500">Skip Login</Text>
+        </Box>
+      </View>
     </Box>
   );
 };

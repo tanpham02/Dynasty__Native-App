@@ -17,3 +17,4 @@ export { default as Call } from "./call.svg"
 export { default as UserPlus } from "./user-plus.svg"
 export { default as Star } from "./star.svg"
 export { default as StarSolid } from "./star-solid.svg"
+export { default as GoogleSvg } from './google-icon.svg';
