@@ -6,7 +6,9 @@ import FlagViSvg from '@/assets/svg/flag_vi.svg';
 import MobileSvg from '@/assets/svg/mobile.svg';
 import OfferSvg from '@/assets/svg/offer.svg';
 import PizzaSvg from '@/assets/svg/pizza.svg';
+import { PATH_SCREEN } from '@/constants/pathName';
 import styles from '@/styles';
+import { navigate } from '@/utils/navigationUtil';
 import { Box, Checkbox, Divider, Flex, Input, Text } from 'native-base';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -147,10 +149,19 @@ const SignInScreen = () => {
         </Box>
 
         <Box className="absolute bottom-5 left-5 right-5 flex-row justify-between items-center">
-          <Text className="uppercase text-[10px] font-nunito-500 text-[#1476e1]">
-            Terms & Conditions
-          </Text>
-          <Text className="uppercase text-[10px] font-nunito-500">Skip Login</Text>
+          <TouchableOpacity>
+            <Text className="uppercase text-[10px] font-nunito-500 text-[#1476e1]">
+              Terms & Conditions
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text
+              onPress={() => navigate(PATH_SCREEN.MAIN)}
+              className="uppercase text-[10px] font-nunito-500"
+            >
+              Skip Login
+            </Text>
+          </TouchableOpacity>
         </Box>
       </View>
     </Box>
