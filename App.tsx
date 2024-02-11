@@ -4,6 +4,8 @@ import { Provider } from 'react-redux';
 
 import GlobalLoading, { globalLoadingRef } from '@/components/GlobalLoading';
 import { NavigationContainer, createNavigationContainerRef } from '@react-navigation/native';
+import { NativeBaseProvider } from 'native-base';
+
 import * as Font from 'expo-font';
 import { LogBox, useColorScheme } from 'react-native';
 import FlashMessage from 'react-native-flash-message';
@@ -60,14 +62,16 @@ export default function App() {
   }
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <Provider store={store}>
-        <NavigationContainer ref={navigationRef}>
-          <RootStackNavigator />
-          <FlashMessage position="bottom" floating />
-        </NavigationContainer>
-        <GlobalLoading ref={globalLoadingRef} />
-      </Provider>
-    </QueryClientProvider>
+    <NativeBaseProvider>
+      <QueryClientProvider client={queryClient}>
+        <Provider store={store}>
+          <NavigationContainer ref={navigationRef}>
+            <RootStackNavigator />
+            <FlashMessage position="bottom" floating />
+          </NavigationContainer>
+          <GlobalLoading ref={globalLoadingRef} />
+        </Provider>
+      </QueryClientProvider>
+    </NativeBaseProvider>
   );
 }
