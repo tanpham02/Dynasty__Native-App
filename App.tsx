@@ -9,10 +9,10 @@ import { NativeBaseProvider } from 'native-base';
 import * as Font from 'expo-font';
 import { LogBox, useColorScheme } from 'react-native';
 import FlashMessage from 'react-native-flash-message';
-import { Font as MyFont } from 'src/assets';
-import TokenManager from 'src/helpers/tokenManager';
-import RootStackNavigator from 'src/navigation/RootStackNavigator';
-import store from 'src/redux/store';
+import { Font as MyFont } from '@/assets';
+import TokenManager from '@/helpers/tokenManager';
+import RootStackNavigator from '@/navigation/RootStackNavigator';
+import store from '@/redux/store';
 
 LogBox.ignoreAllLogs();
 export const tokenManager = TokenManager.getInstance();
