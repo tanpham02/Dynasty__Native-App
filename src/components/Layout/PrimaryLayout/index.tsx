@@ -1,66 +1,47 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import { Flex } from 'native-base';
+import { ReactNode } from 'react';
+
+import { Svg } from '@/assets';
+import styles from '@/styles';
+import { MyStatusBar } from '@/components';
 import {
   ColorValue,
   SafeAreaView,
   StatusBarStyle,
   StyleProp,
+  Text,
   TouchableOpacity,
   View,
   ViewStyle,
 } from 'react-native';
-import { MyStatusBar, ScrollView, Text } from 'src/components';
-import RewardSvg from '@/assets/svg/pizza.svg';
-import NotificationSvg from 'src/components/svg/NotificationSvg';
-
-import styles from './styles';
-import theme from 'src/themes';
-import { PathName } from 'src/constants';
-import { navigate } from '@/utils/navigationUtil';
 
 interface Props {
   statusBarBackgroundColor?: ColorValue;
   barStyle?: null | StatusBarStyle | undefined;
-  headerBarStyle?: StyleProp<ViewStyle>;
+  headerBarClass?: string;
   style?: StyleProp<ViewStyle>;
   goBack?(): void;
   title?: string;
-  children?: JSX.Element | JSX.Element[];
+  children?: ReactNode;
+  className?: string;
 }
 
 interface HeaderBarProps {
   title?: string;
-  style?: StyleProp<ViewStyle>;
+  className?: string;
 }
 
 const HeaderBar = (props: HeaderBarProps) => {
-  const { title, style } = props;
+  const { title, className } = props;
 
   return (
-    <View style={[styles.headerView, style]}>
-      <View style={styles.notificationTextView}>
-        <Text style={styles.notificationText}>{title || ''}</Text>
-      </View>
-      <View style={styles.notificationBtnGroupView}>
-        <TouchableOpacity
-          style={[styles.rewardBtn, theme.stylesPrimary.shadow]}
-          onPress={() => navigate(PathName.PATH_SCREEN.MY_PROMOTION_SCREEN)}
-        >
-          <View style={styles.rewardView}>
-            <RewardSvg height="20" width="20" color={theme.colors.primarySecond} />
-            <Text style={styles.totalRewardText}>9</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.notificationBtn, theme.stylesPrimary.shadow]}
-          onPress={() => navigate(PathName.PATH_SCREEN.NOTIFICATION_SCREEN)}
-        >
-          <View>
-            <NotificationSvg height="20" width="20" showNotification />
-          </View>
-        </TouchableOpacity>
-      </View>
-    </View>
+    <Flex className={`flex-row p-2 items-center gap-3 ${className}`}>
+      <TouchableOpacity className="bg-gray-5 p-2 rounded-lg" style={styles.shadowX}>
+        <Svg.ArrowLeft width={20} height={20} />
+      </TouchableOpacity>
+      <Text className="font-nunito-700 text-lg">{title || ''}</Text>
+    </Flex>
   );
 };
 
@@ -71,9 +52,9 @@ const PrimaryLayout = (props: Props) => {
         backgroundColor={props.statusBarBackgroundColor || 'white'}
         barStyle={props.barStyle || 'dark-content'}
       />
-      <SafeAreaView style={{ flex: 1 }}>
-        <View style={[props.style, { flex: 1 }]}>
-          <HeaderBar title={props.title} style={props.headerBarStyle} />
+      <SafeAreaView className="flex-1">
+        <View className={`flex-1 ${props.className}`}>
+          <HeaderBar title={props.title} className={props.headerBarClass} />
           {props.children}
         </View>
       </SafeAreaView>

@@ -23,7 +23,8 @@ const sidebarMenus = [
 
 const subSidebarMenus = [
   {
-    label: 'Đánh giá ứng dụng',
+    label: 'Đánh giá',
+    onPress: () => navigate(PATH_SCREEN.FEEDBACK_SCREEN),
   },
   {
     label: 'Câu hỏi thường gặp',
@@ -44,47 +45,45 @@ const SideBar = () => {
 
   return (
     <SafeAreaView className="flex-1">
-      <ScrollView className="py-2 px-4">
-        {/* <TouchableOpacity className="flex-row items-center">
-          <Image source={Logo} className="w-10 h-10" resizeMode="contain" />
-          <Text className="font-nunito-700 text-base ml-2">Phạm Văn Tân</Text>
-        </TouchableOpacity> */}
-        <TouchableOpacity className="flex-row items-center mb-2" onPress={goToSignInScreen}>
-          <View
-            style={styles.shadowSecondary}
-            className="bg-secondary w-10 h-10 rounded-lg items-center justify-center m-2"
-          >
-            <Svg.UserPlus width={25} height={25} className="text-white" />
+      <ScrollView>
+        <View className="px-4 py-2">
+          <TouchableOpacity className="flex-row items-center mb-2" onPress={goToSignInScreen}>
+            <View
+              style={styles.shadowSecondary}
+              className="bg-secondary w-10 h-10 rounded-lg items-center justify-center m-2"
+            >
+              <Svg.UserPlus width={25} height={25} className="text-white" />
+            </View>
+            <View className="ml-1">
+              <Text className="text-[13px] font-nunito-500">Đăng nhập ngay để nhận</Text>
+              <Text className="text-[13px] font-nunito-500">Ưu đãi và mã giảm giá</Text>
+            </View>
+          </TouchableOpacity>
+          <View className="h-[1px] bg-zinc-200 w-full my-3" />
+          <View className="pl-3">
+            {sidebarMenus.map((sidebarMenu) => (
+              <TouchableOpacity className="flex-row items-center py-3">
+                <sidebarMenu.Icon width={30} height={30} className="text-zinc-600" />
+                <Text className="font-nunito-700 ml-4">{sidebarMenu.label}</Text>
+              </TouchableOpacity>
+            ))}
           </View>
-          <View className="ml-1">
-            <Text className="text-[13px] font-nunito-500">Đăng nhập ngay để nhận</Text>
-            <Text className="text-[13px] font-nunito-500">Ưu đãi và mã giảm giá</Text>
+          <View className="h-[1px] bg-zinc-200 w-full my-3" />
+          <View className="pl-3">
+            {subSidebarMenus.map((subSidebarMenu) => (
+              <TouchableOpacity className="py-3" onPress={subSidebarMenu?.onPress}>
+                <Text className="font-nunito-700">{subSidebarMenu.label}</Text>
+              </TouchableOpacity>
+            ))}
           </View>
-        </TouchableOpacity>
-        <View className="h-[1px] bg-zinc-200 w-full my-3" />
-        <View className="pl-3">
-          {sidebarMenus.map((sidebarMenu) => (
-            <TouchableOpacity className="flex-row items-center py-3">
-              <sidebarMenu.Icon width={30} height={30} className="text-zinc-600" />
-              <Text className="font-nunito-700 ml-4">{sidebarMenu.label}</Text>
-            </TouchableOpacity>
-          ))}
+          <View className="h-[1px] bg-zinc-200 w-full my-3" />
+          <TouchableOpacity className="flex-row items-center">
+            <View className="w-8 h-8 bg-secondary rounded-lg items-center justify-center">
+              <Svg.Call width={20} height={20} className="text-white" />
+            </View>
+            <Text className="font-nunito-700 uppercase ml-2 text-sm">Liên hệ hỗ trợ</Text>
+          </TouchableOpacity>
         </View>
-        <View className="h-[1px] bg-zinc-200 w-full my-3" />
-        <View className="pl-3">
-          {subSidebarMenus.map((subSidebarMenu) => (
-            <TouchableOpacity className="py-3">
-              <Text className="font-nunito-700">{subSidebarMenu.label}</Text>
-            </TouchableOpacity>
-          ))}
-        </View>
-        <View className="h-[1px] bg-zinc-200 w-full my-3" />
-        <TouchableOpacity className="flex-row items-center">
-          <View className="w-8 h-8 bg-secondary rounded-lg items-center justify-center">
-            <Svg.Call width={20} height={20} className="text-white" />
-          </View>
-          <Text className="font-nunito-700 uppercase ml-2 text-sm">Liên hệ hỗ trợ</Text>
-        </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>
   );
