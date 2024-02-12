@@ -21,7 +21,6 @@ const FeedbackScreen = () => {
   const [currentStar, setCurrentStar] = useState<number>(0);
 
   const handleSendFeedback = () => {
-    glo;
     showMessage({
       message: 'Cảm ơn bạn đã gửi những đánh giá quý báu của bạn cho chúng tôi',
       type: 'success',
