@@ -29,7 +29,7 @@ const RootStackNavigator = () => {
       <RootStack.Screen
         name={PathName.PATH_SCREEN.MAIN}
         component={HomeScreen}
-        // options={optionsRoot}
+        options={optionsMain}
       />
 
       {/* Authentication Screens */}

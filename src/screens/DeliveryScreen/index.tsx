@@ -1,21 +1,21 @@
 import { useEffect, useState } from 'react';
+import { Text } from 'react-native';
 import { useQuery } from 'react-query';
-import { Text, TextInput } from 'react-native';
 
 import { Svg } from '@/assets';
-import { MyStatusBar } from '@/components';
+import { globalLoading } from '@/components/GlobalLoading';
+import { QUERY_KEY } from '@/constants/queryKey';
+import { openStreetMapService } from '@/services/openStreetMapService';
 import styles from '@/styles';
-import { Button, TouchableOpacity, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import BuyActionItem from '../HomeScreen/components/BuyActionItem';
-import MapView, { MapPressEvent, Marker, PROVIDER_GOOGLE } from 'react-native-maps';
+import { goBack } from '@/utils/navigationUtil';
 import { heightScreen, widthScreen } from '@/utils/systemUtils';
 import * as Location from 'expo-location';
+import { TouchableOpacity, View } from 'react-native';
 import { showMessage } from 'react-native-flash-message';
-import { goBack } from '@/utils/navigationUtil';
-import { QUERY_KEY } from '@/constants/queryKey';
-import { globalLoading } from '@/components/GlobalLoading';
-import { openStreetMapService } from '@/services/openStreetMapService';
+import MapView, { MapPressEvent, Marker, PROVIDER_GOOGLE } from 'react-native-maps';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import BuyActionItem from '../HomeScreen/components/BuyActionItem';
+import { PrimaryLayout } from '@/components/Layout';
 
 const buyActions = [
   {
@@ -93,16 +93,11 @@ const DeliveryScreen = () => {
   };
 
   return (
-    <>
-      <SafeAreaView className="flex-1 bg-gray-5">
-        <View className="flex-row items-center mx-3">
-          <TouchableOpacity
-            onPress={goBackToPrevScreen}
-            style={styles.shadowX}
-            className="bg-gray-5 w-[45px] h-[45px] rounded-lg items-center justify-center mr-6"
-          >
-            <Svg.ArrowLeft width={22} height={22} />
-          </TouchableOpacity>
+    <PrimaryLayout
+      statusBarBackgroundColor="white"
+      containerClass="bg-gray-5"
+      renderTitle={() => (
+        <View className="w-full flex-row items-center mx-3">
           {buyActions.map((buyAction, index) => (
             <BuyActionItem
               wrapperClassName="mr-3"
@@ -113,52 +108,53 @@ const DeliveryScreen = () => {
             />
           ))}
         </View>
-        <View className="mx-4 mt-4 flex-row items-center">
-          {/* <Input placeholder="Nhập địa điểm của bạn" className="flex-1 bg-white" /> */}
-          <TouchableOpacity
-            className="w-10 h-10 items-center justify-center bg-gray-5 rounded-lg ml-1"
-            style={styles.shadowX}
+      )}
+    >
+      <View className="mx-4 mt-4 flex-row items-center">
+        {/* <Input placeholder="Nhập địa điểm của bạn" className="flex-1 bg-white" /> */}
+        <TouchableOpacity
+          className="w-10 h-10 items-center justify-center bg-gray-5 rounded-lg ml-1"
+          style={styles.shadowX}
+        >
+          <Svg.ArrowRight width={20} height={20} />
+        </TouchableOpacity>
+      </View>
+      <View className="mt-4 relative">
+        <MapView
+          onPress={handleMakerLocation}
+          style={{
+            width: widthScreen,
+            height: heightScreen - 185,
+          }}
+          showsUserLocation
+          showsMyLocationButton
+          provider={PROVIDER_GOOGLE}
+          region={{
+            latitude: coordinate?.latitude || 10.770744,
+            longitude: coordinate?.longitude || 106.706093,
+            latitudeDelta: 0.05,
+            longitudeDelta: 0.025,
+          }}
+        >
+          {coordinate?.latitude && coordinate?.longitude && (
+            <Marker draggable coordinate={coordinate} />
+          )}
+        </MapView>
+      </View>
+      <View className="absolute bottom-0 left-0 right-0 p-4 bg-white">
+        <Text numberOfLines={2} className="font-nunito-500">
+          {userLocationInfo?.display_name}
+        </Text>
+        <TouchableOpacity className="bg-primary py-2 px-4 rounded-lg mt-3">
+          <Text
+            className="text-center text-white font-nunito-500 text-sm"
+            onPress={goBackToPrevScreen}
           >
-            <Svg.ArrowRight width={20} height={20} />
-          </TouchableOpacity>
-        </View>
-        <View className="mt-4 relative">
-          <MapView
-            onPress={handleMakerLocation}
-            style={{
-              width: widthScreen,
-              height: heightScreen - 185,
-            }}
-            showsUserLocation
-            showsMyLocationButton
-            provider={PROVIDER_GOOGLE}
-            region={{
-              latitude: coordinate?.latitude || 10.770744,
-              longitude: coordinate?.longitude || 106.706093,
-              latitudeDelta: 0.05,
-              longitudeDelta: 0.025,
-            }}
-          >
-            {coordinate?.latitude && coordinate?.longitude && (
-              <Marker draggable coordinate={coordinate} />
-            )}
-          </MapView>
-        </View>
-        <View className="absolute bottom-0 left-0 right-0 p-4 bg-white">
-          <Text numberOfLines={2} className="font-nunito-500">
-            {userLocationInfo?.display_name}
+            Đồng ý
           </Text>
-          <TouchableOpacity className="bg-primary py-2 px-4 rounded-lg mt-3">
-            <Text
-              className="text-center text-white font-nunito-500 text-sm"
-              onPress={goBackToPrevScreen}
-            >
-              Đồng ý
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </SafeAreaView>
-    </>
+        </TouchableOpacity>
+      </View>
+    </PrimaryLayout>
   );
 };
 

@@ -16,6 +16,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Svg } from '@/assets';
 import { navigate } from '@/utils/navigationUtil';
 import { PATH_SCREEN } from '@/constants/pathName';
+import { PathName } from '@/constants';
 
 const SignInScreen = () => {
   const [isAgreeReceiveOffer, setIsAgreeReceiveOffer] = useState<boolean>(true);
@@ -61,7 +62,7 @@ const SignInScreen = () => {
   return (
     <KeyboardAvoidingView className="flex-1 bg-gray-6">
       <KeyboardAwareScrollView
-        extraScrollHeight={Platform.OS === 'ios' ? 0 : 50}
+        // extraScrollHeight={Platform.OS === 'ios' ? 0 : 20}
         className="flex-1 bg-gray-6"
       >
         <Box className="relative h-screen flex flex-col overflow-hidden bg-gray-6">
@@ -191,13 +192,8 @@ const SignInScreen = () => {
                   Terms & Conditions
                 </Text>
               </TouchableOpacity>
-              <TouchableOpacity>
-                <Text
-                  onPress={() => navigate(PATH_SCREEN.MAIN)}
-                  className="uppercase text-[10px] font-nunito-500"
-                >
-                  Skip Login
-                </Text>
+              <TouchableOpacity onPress={() => navigate(PathName.PATH_SCREEN.MAIN)}>
+                <Text className="uppercase text-[10px] font-nunito-500">Skip Login</Text>
               </TouchableOpacity>
             </Box>
           </Box>
