@@ -24,7 +24,7 @@ interface Props {
   goBack?(): void;
   title?: string;
   children?: ReactNode;
-  className?: string;
+  containerClass?: string;
 }
 
 interface HeaderBarProps {
@@ -49,11 +49,11 @@ const PrimaryLayout = (props: Props) => {
   return (
     <>
       <MyStatusBar
-        backgroundColor={props.statusBarBackgroundColor || 'white'}
+        backgroundColor={props.statusBarBackgroundColor || 'transparent'}
         barStyle={props.barStyle || 'dark-content'}
       />
       <SafeAreaView className="flex-1">
-        <View className={`flex-1 ${props.className}`}>
+        <View className={`flex-1 ${props.containerClass}`}>
           <HeaderBar title={props.title} className={props.headerBarClass} />
           {props.children}
         </View>
