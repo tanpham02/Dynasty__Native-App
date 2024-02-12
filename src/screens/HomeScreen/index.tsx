@@ -12,7 +12,7 @@ import {
 const HomeScreen = ({ navigation }) => {
   return (
     <>
-      <View className="flex-1 bg-gray-4">
+      <View className="flex-1 bg-third">
         <View className="flex-1 py-2">
           <SafeAreaView>
             <View className="pb-4">

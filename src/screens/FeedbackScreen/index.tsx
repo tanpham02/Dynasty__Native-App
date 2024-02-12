@@ -31,7 +31,7 @@ const FeedbackScreen = () => {
   };
 
   return (
-    <PrimaryLayout title="Đánh giá" containerClass="bg-gray-5">
+    <PrimaryLayout titleScreen="Đánh giá" containerClass="bg-gray-5">
       <ScrollView className="">
         <Box className="flex items-center justify-center mt-2">
           <Image source={emojis[currentStar]} className="w-36 h-36" />

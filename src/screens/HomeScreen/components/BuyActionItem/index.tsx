@@ -17,12 +17,12 @@ const BuyActionItem = ({
         style={styles.shadowX}
         className={`border ${isActive ? 'border-secondary' : 'border-gray-5'} w-[50px] h-[50px] rounded-full items-center justify-center bg-gray-5`}
       >
-        <Icon width={26} height={26} className="text-zinc-800" />
+        <Icon width={25} height={25} className="text-zinc-800" />
       </TouchableOpacity>
       <View className={`flex-row items-center ${isActive && 'border-b border-secondary'}`}>
-        {isActive && <Svg.Checked width={11} height={11} className="text-secondary mr-1" />}
+        {isActive && <Svg.Checked width={11} height={11} className="text-secondary mr-0.5 mb-1" />}
         <Text
-          className={`font-nunito-700 text-[13px] mt-1 pb-2 ${isActive ? 'text-zinc-700' : ' text-zinc-500'}`}
+          className={`font-nunito-700 text-xs mt-1 pb-2 ${isActive ? 'text-zinc-700' : ' text-zinc-500'}`}
         >
           {label}
         </Text>
