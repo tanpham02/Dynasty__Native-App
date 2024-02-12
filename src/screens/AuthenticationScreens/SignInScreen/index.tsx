@@ -119,7 +119,7 @@ const SignInScreen = () => {
           <Box className="bg-gray-6 h-[40%]"></Box>
 
           <Box
-            className="absolute top-[45%] bottom-10 left-4 right-4 bg-gray-7 rounded-2xl shadow-2xl p-6 z-999
+            className="absolute top-[47%] bottom-auto left-4 right-4 bg-gray-7 rounded-2xl shadow-2xl px-6 pt-6 pb-3.5 z-999
           "
             style={styles.shadowX}
           >
@@ -184,7 +184,8 @@ const SignInScreen = () => {
                 </Box>
               </TouchableOpacity>
             </Box>
-            <Box className="flex-row justify-between items-center">
+
+            <Box className="flex-row justify-between items-center ">
               <TouchableOpacity>
                 <Text className="uppercase text-[10px] font-nunito-500 text-[#1476e1]">
                   Terms & Conditions
