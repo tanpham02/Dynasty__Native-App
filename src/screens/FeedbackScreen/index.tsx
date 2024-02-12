@@ -14,6 +14,8 @@ import { TouchableOpacity } from 'react-native';
 import styles from '@/styles';
 import { feedbackTopics } from './data';
 import { showMessage } from 'react-native-flash-message';
+import { navigate } from '@/utils/navigationUtil';
+import { PATH_SCREEN } from '@/constants/pathName';
 
 const emojis = [HappyEmoji, AngryEmoji, NotGoodEmoji, HappyEmoji, HappyAndSmileEmoji, LoveEmoji];
 
@@ -25,6 +27,7 @@ const FeedbackScreen = () => {
       message: 'Cảm ơn bạn đã gửi những đánh giá quý báu của bạn cho chúng tôi',
       type: 'success',
     });
+    navigate(PATH_SCREEN.MAIN);
   };
 
   return (
@@ -82,6 +85,7 @@ const FeedbackScreen = () => {
             />
             <TouchableOpacity
               style={styles.shadowX}
+              onPress={handleSendFeedback}
               className="border border-zinc-200 bg-gray-5 items-center py-3 rounded-lg my-4"
             >
               <Text className="font-nunito-600 text-secondary">Gửi đánh giá</Text>
