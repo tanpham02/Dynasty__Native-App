@@ -17,9 +17,12 @@ import { Svg } from '@/assets';
 import { navigate } from '@/utils/navigationUtil';
 import { PATH_SCREEN } from '@/constants/pathName';
 import { PathName } from '@/constants';
+import useStatusBarForAndroid from '@/hooks/useStatusBarForAndroid';
 
 const SignInScreen = () => {
   const [isAgreeReceiveOffer, setIsAgreeReceiveOffer] = useState<boolean>(true);
+
+  useStatusBarForAndroid('#006a31');
 
   const {} = useForm();
 
