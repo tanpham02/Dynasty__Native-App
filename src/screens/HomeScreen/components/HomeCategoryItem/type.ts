@@ -1,3 +1,3 @@
 export interface HomeCategoryItemProps {
-    name: string
+  name: string;
 }

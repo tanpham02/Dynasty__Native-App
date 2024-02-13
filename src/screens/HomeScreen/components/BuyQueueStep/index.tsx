@@ -1,4 +1,5 @@
 import { Image, Text, View } from 'react-native';
+
 import { BuyQueueStepProps } from './type';
 
 const BuyQueueStep = ({ source, label, index }: BuyQueueStepProps) => {

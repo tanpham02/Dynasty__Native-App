@@ -1,12 +1,14 @@
-import { Svg } from '@/assets';
+import { Text, TouchableOpacity, View } from 'react-native';
+
 import styles from '@/styles';
-import { Text, TouchableOpacity } from 'react-native';
-import { View } from 'react-native';
-import { navigate } from '@/utils/navigationUtil';
-import { PATH_SCREEN } from '@/constants/pathName';
+import { Svg } from '@/assets';
+import { PathName } from '@/constants';
+import { NavigationUtils } from '@/utils';
 
 const Header = ({ navigation }) => {
-  const goToNotificationScreen = () => navigate(PATH_SCREEN.NOTIFICATION_SCREEN);
+  const goToNotificationScreen = () =>
+    NavigationUtils.navigate(PathName.PATH_SCREEN.NOTIFICATION_SCREEN);
+
   const openSidebar = () => navigation.openDrawer();
 
   return (
@@ -26,12 +28,6 @@ const Header = ({ navigation }) => {
           <Svg.ArrowDown width={14} height={14} className="text-white" />
         </View>
       </View>
-      {/* <TouchableOpacity
-        style={styles.shadowX}
-        className="w-12 h-12 bg-gray-5 rounded-full justify-center items-center m-1 border border-zinc-200"
-      >
-        <Svg.QrCode width={20} height={20} />
-      </TouchableOpacity> */}
       <TouchableOpacity
         onPress={goToNotificationScreen}
         style={styles.shadowX}

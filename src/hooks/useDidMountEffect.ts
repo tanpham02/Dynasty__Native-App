@@ -1,4 +1,4 @@
-import {useEffect, useRef} from 'react';
+import { useEffect, useRef } from 'react';
 
 const useDidMountEffect = (func: () => void, deps: any[]): void => {
   const didMount = useRef<boolean>(false);

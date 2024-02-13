@@ -1,7 +1,7 @@
-import { ImageSourcePropType } from "react-native";
+import { ImageSourcePropType } from 'react-native';
 
 export interface BuyQueueStepProps {
-    source: ImageSourcePropType
-    index?: number
-    label: string
+  source: ImageSourcePropType;
+  index?: number;
+  label: string;
 }

@@ -1,6 +1,6 @@
-import styles from '@/styles';
-import React from 'react';
 import { Image, ImageSourcePropType, TouchableOpacity } from 'react-native';
+
+import styles from '@/styles';
 
 const HomeSliderImage = ({ source }: { source: ImageSourcePropType }) => {
   return (

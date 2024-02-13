@@ -1,4 +1,4 @@
-import {createSlice} from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 type initialStateType = {
   user: {
@@ -20,7 +20,7 @@ const userSlice = createSlice({
   },
 });
 
-const {reducer, actions} = userSlice;
+const { reducer, actions } = userSlice;
 
-export const {setUser} = actions;
+export const { setUser } = actions;
 export default reducer;

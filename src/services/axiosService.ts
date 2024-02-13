@@ -1,8 +1,8 @@
-import axios, {AxiosInstance} from 'axios';
+import axios, { AxiosInstance } from 'axios';
 
-import {API_BASE_URL} from 'src/constants/apiURL';
-import {checkTokenExp} from 'src/utils/tokenUtils';
-import {tokenManager} from '../../App';
+import { API_BASE_URL } from 'src/constants/apiURL';
+import { checkTokenExp } from 'src/utils/tokenUtils';
+import { tokenManager } from '../../App';
 import authenticationService from './authenticationService';
 
 let refreshTokenRequest: any = null;
@@ -36,7 +36,7 @@ const axiosService = async (): Promise<AxiosInstance> => {
   });
 
   axiosOption.interceptors.request.use(
-    async config => {
+    async (config) => {
       if (accessToken && !checkTokenExp(accessToken)) {
         refreshTokenRequest = refreshTokenRequest
           ? refreshTokenRequest
@@ -61,16 +61,16 @@ const axiosService = async (): Promise<AxiosInstance> => {
       return config;
     },
 
-    error => {
+    (error) => {
       Promise.reject(error);
     },
   );
 
   axiosOption.interceptors.response.use(
-    response => {
+    (response) => {
       return response;
     },
-    errors => {
+    (errors) => {
       console.log(
         'Error:',
         JSON.stringify(

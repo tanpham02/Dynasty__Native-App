@@ -1,21 +1,9 @@
 /* eslint-disable react-native/no-inline-styles */
-import { ReactNode } from 'react';
 
 import { MyStatusBar } from '@/components';
 import HeaderBar from '@/components/HeaderBar';
-import { ColorValue, SafeAreaView, StatusBarStyle, StyleProp, View, ViewStyle } from 'react-native';
-
-interface PrimaryLayoutProps {
-  statusBarBackgroundColor?: ColorValue;
-  barStyle?: null | StatusBarStyle | undefined;
-  headerBarClass?: string;
-  style?: StyleProp<ViewStyle>;
-  goBack?(): void;
-  renderTitle?: () => ReactNode;
-  children?: ReactNode;
-  containerClass?: string;
-  titleScreen?: string;
-}
+import { SafeAreaView, View } from 'react-native';
+import { PrimaryLayoutProps } from './type';
 
 const PrimaryLayout = (props: PrimaryLayoutProps) => {
   return (

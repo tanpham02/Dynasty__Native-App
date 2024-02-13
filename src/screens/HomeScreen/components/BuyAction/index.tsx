@@ -1,5 +1,6 @@
 import { View } from 'react-native';
-import BuyActionItem from '../BuyActionItem';
+
+import { BuyActionItem } from '@/components';
 import { buyActions } from './data';
 
 const BuyAction = () => {

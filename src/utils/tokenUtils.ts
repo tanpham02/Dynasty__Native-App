@@ -1,4 +1,4 @@
-import {JwtPayload, jwtDecode} from 'jwt-decode';
+import { JwtPayload, jwtDecode } from 'jwt-decode';
 
 export const checkTokenExp = (token: string): boolean => {
   let date = new Date().getTime() / 1000;

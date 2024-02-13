@@ -12,14 +12,10 @@ interface MyStatusBarProps extends StatusBarProps {
   backgroundColor?: ColorValue;
 }
 
-const MyStatusBar: React.FC<MyStatusBarProps> = props => (
-  <View style={[styles.statusBar, {backgroundColor: props.backgroundColor}]}>
+const MyStatusBar: React.FC<MyStatusBarProps> = (props) => (
+  <View style={[styles.statusBar, { backgroundColor: props.backgroundColor }]}>
     <SafeAreaView>
-      <StatusBar
-        translucent
-        backgroundColor={props.backgroundColor || 'transparent'}
-        {...props}
-      />
+      <StatusBar translucent backgroundColor={props.backgroundColor || 'transparent'} {...props} />
     </SafeAreaView>
   </View>
 );

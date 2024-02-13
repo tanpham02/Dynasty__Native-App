@@ -1,9 +1,10 @@
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Image, Text, View } from 'react-native';
+
+import styles from '@/styles';
+import { NumberUtils } from '@/utils';
 
 import ProductTestImage from '@/assets/images/logo/pizza-5-loai-thit-va-rau-cu.png';
-import { Image, Text, View } from 'react-native';
-import styles from '@/styles';
-import { formatMoneyVND } from '@/utils/numberUtils';
 
 const ProductItem = () => {
   return (
@@ -27,7 +28,9 @@ const ProductItem = () => {
       </Text>
       <View className="my-3 w-1/3 h-0.5 bg-secondary" />
       <View className="flex-row">
-        <Text className="flex-1 font-nunito-600 text-zinc-700">{formatMoneyVND(199000)}đ</Text>
+        <Text className="flex-1 font-nunito-600 text-zinc-700">
+          {NumberUtils.formatMoneyVND(199000)}đ
+        </Text>
         <View className="border-2 border-secondary rounded p-0.5">
           <Text className="text-xs font-nunito-500 text-zinc-700">Mua ngay</Text>
         </View>

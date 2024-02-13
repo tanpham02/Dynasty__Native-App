@@ -1,15 +1,10 @@
+import { Flex, Text } from 'native-base';
+
 import { Svg } from '@/assets';
 import styles from '@/styles';
 import { goBack } from '@/utils/navigationUtil';
-import { Flex, Text } from 'native-base';
-import { ReactNode } from 'react';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-
-interface HeaderBarProps {
-  title?: string;
-  className?: string;
-  renderTitle?: () => ReactNode;
-}
+import { HeaderBarProps } from './type';
 
 const HeaderBar = (props: HeaderBarProps) => {
   const { title, className, renderTitle } = props;

@@ -13,10 +13,7 @@ export const getPathAndValueFromURL = (url: string): PathAndValue => {
   };
 };
 
-export const getSearchParamFromURL = (
-  url: string,
-  param: string,
-): string | null => {
+export const getSearchParamFromURL = (url: string, param: string): string | null => {
   const include = url.includes(param);
 
   if (!include) {

@@ -1,18 +1,18 @@
-import { StyleSheet } from "react-native";
-import theme from "src/themes";
-import { widthScreen } from "src/utils/systemUtils";
+import { StyleSheet } from 'react-native';
+import theme from 'src/themes';
+import { widthScreen } from 'src/utils/systemUtils';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
-    justifyContent: "center",
-    alignItems: "center",
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   headerContent: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
   },
   headerLogo: {
     width: 176,
@@ -22,13 +22,13 @@ const styles = StyleSheet.create({
     fontFamily: theme.fontFamily.bold,
     color: theme.colors.darkBlue100,
     fontSize: 16,
-    textAlign: "center",
+    textAlign: 'center',
     lineHeight: 24,
   },
   body: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
     width: widthScreen,
     paddingHorizontal: 34,
     marginTop: 26,
@@ -36,31 +36,31 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     height: 45,
-    width: "100%",
+    width: '100%',
     backgroundColor: theme.colors.background,
-    position: "relative",
+    position: 'relative',
     borderRadius: 22.5,
     marginVertical: 3.5,
   },
   inputPhoneNumber: {
-    height: "100%",
+    height: '100%',
     paddingLeft: 96,
     fontFamily: theme.fontFamily.regular,
   },
   inputPassword: {
-    height: "100%",
+    height: '100%',
     paddingHorizontal: 25,
     fontFamily: theme.fontFamily.regular,
   },
   flag: {
     width: 31,
     height: 31,
-    position: "absolute",
+    position: 'absolute',
     top: 7,
     left: 19,
   },
   inputPhoneNumberCode: {
-    position: "absolute",
+    position: 'absolute',
     left: 55,
     top: 12,
     lineHeight: 20,
@@ -69,18 +69,18 @@ const styles = StyleSheet.create({
   },
   textPlaceholder: {},
   loginButton: {
-    width: "100%",
+    width: '100%',
     height: 45,
     borderRadius: 22.5,
-    overflow: "hidden",
+    overflow: 'hidden',
     marginTop: 3.5,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   loginWithSocialContainerButton: {
-    display: "flex",
-    flexDirection: "row",
+    display: 'flex',
+    flexDirection: 'row',
     gap: 12,
   },
   socialLoginButton: {

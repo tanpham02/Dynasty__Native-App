@@ -1,7 +1,8 @@
-import styles from '@/styles';
 import { Text, TouchableOpacity, View } from 'react-native';
-import { BuyActionItemProps } from './type';
+
+import styles from '@/styles';
 import { Svg } from '@/assets';
+import { BuyActionItemProps } from './type';
 
 const BuyActionItem = ({
   label,

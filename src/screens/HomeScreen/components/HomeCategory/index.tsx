@@ -1,4 +1,5 @@
 import { Text, TouchableOpacity, View } from 'react-native';
+
 import { Svg } from '@/assets';
 import HomeCategoryItem from '../HomeCategoryItem';
 

@@ -1,7 +1,7 @@
+import { Text, View, TouchableOpacity } from 'react-native';
+
 import { Svg } from '@/assets';
 import styles from '@/styles';
-import { Text, View } from 'react-native';
-import { TouchableOpacity } from 'react-native';
 import { HomeCategoryItemProps } from './type';
 
 const HomeCategoryItem = ({ name }: HomeCategoryItemProps) => {

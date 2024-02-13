@@ -1,17 +1,20 @@
-import * as DateUtils from 'src/utils/dateUtils';
-import * as FileUtils from 'src/utils/fileUtils';
-import * as LocationUtils from 'src/utils/locationUtils';
-import * as NumberUtils from 'src/utils/numberUtils';
-import * as RegexUtils from 'src/utils/regexUtils';
-import * as TokenUtils from 'src/utils/tokenUtils';
-import * as URLUtils from 'src/utils/urlUtils';
+import * as DateUtils from '@/utils/dateUtils';
+import * as LocationUtils from '@/utils/locationUtils';
+import * as NumberUtils from '@/utils/numberUtils';
+import * as RegexUtils from '@/utils/regexUtils';
+import * as TokenUtils from '@/utils/tokenUtils';
+import * as URLUtils from '@/utils/urlUtils';
+import * as NavigationUtils from '@/utils/navigationUtil';
+import { widthScreen, heightScreen } from '@/utils/systemUtils';
 
 export {
   DateUtils,
-  FileUtils,
+  NavigationUtils,
   LocationUtils,
   NumberUtils,
   RegexUtils,
   TokenUtils,
   URLUtils,
+  widthScreen,
+  heightScreen,
 };

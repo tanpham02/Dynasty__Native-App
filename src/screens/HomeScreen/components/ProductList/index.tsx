@@ -1,7 +1,7 @@
+import { Text, TouchableOpacity, View, FlatList } from 'react-native';
+
 import { Svg } from '@/assets';
-import { Text, TouchableOpacity, View } from 'react-native';
 import ProductItem from '../ProductItem';
-import { FlatList } from 'react-native';
 
 const ProductList = () => {
   return (

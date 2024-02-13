@@ -12,7 +12,7 @@ const theme = {
   fontFamily,
   fontSize,
   spacing,
-  stylesPrimary
+  stylesPrimary,
 };
 
 export default theme;

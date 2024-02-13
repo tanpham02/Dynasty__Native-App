@@ -1,32 +1,18 @@
 import { useEffect, useState } from 'react';
-import { Text } from 'react-native';
 import { useQuery } from 'react-query';
-
-import { Svg } from '@/assets';
-import { globalLoading } from '@/components/GlobalLoading';
-import { QUERY_KEY } from '@/constants/queryKey';
-import { openStreetMapService } from '@/services/openStreetMapService';
-import styles from '@/styles';
-import { goBack } from '@/utils/navigationUtil';
-import { heightScreen, widthScreen } from '@/utils/systemUtils';
-import * as Location from 'expo-location';
-import { TouchableOpacity, View } from 'react-native';
-import { showMessage } from 'react-native-flash-message';
+import { Input, Text } from 'native-base';
 import MapView, { MapPressEvent, Marker, PROVIDER_GOOGLE } from 'react-native-maps';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import BuyActionItem from '../HomeScreen/components/BuyActionItem';
-import { PrimaryLayout } from '@/components/Layout';
+import { TouchableOpacity, View } from 'react-native';
+import { requestForegroundPermissionsAsync, getCurrentPositionAsync } from 'expo-location';
+import { showMessage } from 'react-native-flash-message';
 
-const buyActions = [
-  {
-    Icon: Svg.Delivery,
-    label: 'Giao hàng',
-  },
-  {
-    Icon: Svg.Store,
-    label: 'Nhận hàng',
-  },
-];
+import styles from '@/styles';
+import { Svg } from '@/assets';
+import { buyActions } from './data';
+import { QueryKey } from '@/constants';
+import { OpenStreetMapService } from '@/services';
+import { NavigationUtils, heightScreen, widthScreen } from '@/utils';
+import { GlobalLoading, PrimaryLayout, BuyActionItem } from '@/components';
 
 const DeliveryScreen = () => {
   const [tabActiveKey, setTabActiveKey] = useState<number>(0);
@@ -43,12 +29,12 @@ const DeliveryScreen = () => {
 
   // when select location (being limited)
   const { data: userLocationInfo } = useQuery({
-    queryKey: [QUERY_KEY.LOCATION, coordinate],
+    queryKey: [QueryKey.QUERY_KEY.LOCATION, coordinate],
     queryFn: async () => {
       try {
-        globalLoading.show();
+        GlobalLoading.show();
         if (coordinate?.latitude && coordinate?.longitude)
-          return await openStreetMapService.getLocationsByLonLat({
+          return await OpenStreetMapService.getLocationsByLonLat({
             lat: coordinate.latitude,
             lon: coordinate.longitude,
           });
@@ -60,16 +46,14 @@ const DeliveryScreen = () => {
         });
         console.log('🚀 ~ queryFn: ~ err:', err);
       } finally {
-        globalLoading.hide();
+        GlobalLoading.hide();
       }
     },
   });
 
-  const goBackToPrevScreen = () => goBack();
-
   // for first login
   const getCurrentLocation = async () => {
-    let { status } = await Location.requestForegroundPermissionsAsync();
+    let { status } = await requestForegroundPermissionsAsync();
     if (status !== 'granted') {
       showMessage({
         message: 'Permission to access location was denied',
@@ -78,7 +62,7 @@ const DeliveryScreen = () => {
       return;
     }
 
-    let location = await Location.getCurrentPositionAsync({});
+    let location = await getCurrentPositionAsync({});
 
     if (location?.coords?.latitude && location?.coords?.longitude) {
       setCoordinate({
@@ -111,7 +95,7 @@ const DeliveryScreen = () => {
       )}
     >
       <View className="mx-4 mt-4 flex-row items-center">
-        {/* <Input placeholder="Nhập địa điểm của bạn" className="flex-1 bg-white" /> */}
+        <Input placeholder="Nhập địa điểm của bạn" className="flex-1 bg-white" />
         <TouchableOpacity
           className="w-10 h-10 items-center justify-center bg-gray-5 rounded-lg ml-1"
           style={styles.shadowX}
@@ -148,7 +132,7 @@ const DeliveryScreen = () => {
         <TouchableOpacity className="bg-primary py-2 px-4 rounded-lg mt-3">
           <Text
             className="text-center text-white font-nunito-500 text-sm"
-            onPress={goBackToPrevScreen}
+            onPress={NavigationUtils.goBack}
           >
             Đồng ý
           </Text>

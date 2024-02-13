@@ -1,4 +1,3 @@
-
 import styles from '@/styles';
 import { Text, View } from 'react-native';
 import { buyQueueSteps } from './data';

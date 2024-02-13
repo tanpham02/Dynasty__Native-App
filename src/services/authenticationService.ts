@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {API_AUTHENTICATION_URL} from 'src/constants/apiURL';
+import { API_AUTHENTICATION_URL } from 'src/constants/apiURL';
 import axiosService from './axiosService';
 interface RefreshToken {
   refreshToken: string | null;
@@ -35,8 +35,8 @@ const authenticationService = {
       },
       data: params?.refreshToken,
     })
-      .then(res => res.data)
-      .catch(error => {
+      .then((res) => res.data)
+      .catch((error) => {
         throw error;
       });
   },
@@ -46,8 +46,8 @@ const authenticationService = {
       url: API_AUTHENTICATION_URL.SIGN_IN_URL,
       data: params,
     })
-      .then(res => res.data)
-      .catch(error => {
+      .then((res) => res.data)
+      .catch((error) => {
         throw error;
       });
   },
@@ -57,8 +57,8 @@ const authenticationService = {
       url: API_AUTHENTICATION_URL.SIGN_OUT_URL,
       params,
     })
-      .then(res => res.data)
-      .catch(error => {
+      .then((res) => res.data)
+      .catch((error) => {
         throw error;
       });
   },

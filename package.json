@@ -10,7 +10,8 @@
     "devtools": "react-devtools",
     "ts:check": "tsc",
     "lint": "eslint .",
-    "lint:fix": "eslint --fix --ext .js,.jsx,.ts,.tsx"
+    "lint:fix": "eslint --fix --ext .js,.jsx,.ts,.tsx",
+    "format": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json}\""
   },
   "dependencies": {
     "@devvie/bottom-sheet": "^0.2.0",

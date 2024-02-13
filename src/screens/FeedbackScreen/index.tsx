@@ -1,23 +1,14 @@
-import { Box, Button, Flex, Input, Select, Text } from 'native-base';
 import { useState } from 'react';
-
-import { ScrollView } from '@/components';
-import { PrimaryLayout } from '@/components/Layout';
-import AngryEmoji from '@/assets/images/emoji/angry.png';
-import NotGoodEmoji from '@/assets/images/emoji/not-good.png';
-import HappyEmoji from '@/assets/images/emoji/happy.png';
-import HappyAndSmileEmoji from '@/assets/images/emoji/happy-and-smile.png';
-import LoveEmoji from '@/assets/images/emoji/love.png';
-import { Image } from 'react-native';
-import { Svg } from '@/assets';
-import { TouchableOpacity } from 'react-native';
-import styles from '@/styles';
-import { feedbackTopics } from './data';
+import { Box, Flex, Input, Select, Text } from 'native-base';
 import { showMessage } from 'react-native-flash-message';
-import { navigate } from '@/utils/navigationUtil';
-import { PATH_SCREEN } from '@/constants/pathName';
+import { Image, TouchableOpacity } from 'react-native';
 
-const emojis = [HappyEmoji, AngryEmoji, NotGoodEmoji, HappyEmoji, HappyAndSmileEmoji, LoveEmoji];
+import { Svg } from '@/assets';
+import styles from '@/styles';
+import { PathName } from '@/constants';
+import { NavigationUtils } from '@/utils';
+import { ScrollView, PrimaryLayout } from '@/components';
+import { emojis, feedbackTopics } from './data';
 
 const FeedbackScreen = () => {
   const [currentStar, setCurrentStar] = useState<number>(0);
@@ -27,17 +18,15 @@ const FeedbackScreen = () => {
       message: 'Cảm ơn bạn đã gửi những đánh giá quý báu của bạn cho chúng tôi',
       type: 'success',
     });
-    navigate(PATH_SCREEN.MAIN);
+    NavigationUtils.navigate(PathName.PATH_SCREEN.MAIN);
   };
 
   return (
     <PrimaryLayout titleScreen="Đánh giá" containerClass="bg-gray-5">
       <ScrollView className="">
         <Box className="flex items-center justify-center mt-2">
-          <Image source={emojis[currentStar]} className="w-36 h-36" />
-          <Text className="font-nunito-700 text-base mt-3">
-            Đánh giá trải nghiệm của bạn về sản phẩm
-          </Text>
+          <Image source={emojis[currentStar].icon} className="w-36 h-36" />
+          <Text className="font-nunito-700 text-base mt-3">{emojis[currentStar].label}</Text>
           <Text className="font-nunito-400 text-sm mt-1 text-zinc-500">
             Mọi góp ý của bạn sẽ giúp chúng tôi tốt hơn
           </Text>
@@ -84,11 +73,14 @@ const FeedbackScreen = () => {
               className="bg-white font-nunito-400 text-sm"
             />
             <TouchableOpacity
+              disabled={!currentStar}
               style={styles.shadowX}
               onPress={handleSendFeedback}
-              className="border border-zinc-200 bg-gray-5 items-center py-3 rounded-lg my-4"
+              className={`border border-zinc-200 items-center py-3 rounded-lg my-4 ${currentStar ? 'bg-secondary' : 'bg-third'}`}
             >
-              <Text className="font-nunito-600 text-secondary">Gửi đánh giá</Text>
+              <Text className={`font-nunito-600 ${currentStar ? 'text-white' : 'text-secondary'}`}>
+                Gửi đánh giá
+              </Text>
             </TouchableOpacity>
           </Box>
         </Box>

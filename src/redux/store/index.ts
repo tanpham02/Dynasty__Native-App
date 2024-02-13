@@ -1,10 +1,5 @@
-import {
-  AnyAction,
-  Reducer,
-  combineReducers,
-  configureStore,
-} from '@reduxjs/toolkit';
-import {userReducer} from '../slices';
+import { AnyAction, Reducer, combineReducers, configureStore } from '@reduxjs/toolkit';
+import { userReducer } from '../slices';
 
 const appReducer = combineReducers({
   userStore: userReducer,
@@ -20,7 +15,7 @@ const rootReducer: Reducer = (state: RootState, action: AnyAction) => {
 
 const store = configureStore({
   reducer: rootReducer,
-  middleware: getDefaultMiddleware =>
+  middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
     }),
