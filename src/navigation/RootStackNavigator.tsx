@@ -1,9 +1,15 @@
 import { CardStyleInterpolators, createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+
 import { PathName } from '@/constants';
-import { FeedbackScreen, HomeScreen, SignInScreen } from '@/screens';
-import DeliveryScreen from '@/screens/DeliveryScreen';
-import SideBar from '@/components/SideBar';
+import { SideBar } from '@/components';
+import {
+  FeedbackScreen,
+  HomeScreen,
+  SignInScreen,
+  DeliveryScreen,
+  TermAndConditionsScreen,
+} from '@/screens';
 
 const RootStack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -48,6 +54,12 @@ const RootStackNavigator = () => {
       <RootStack.Screen
         name={PathName.PATH_SCREEN.FEEDBACK_SCREEN}
         component={FeedbackScreen}
+        options={optionsMain}
+      />
+
+      <RootStack.Screen
+        name={PathName.PATH_SCREEN.TERM_AND_CONDITIONS_SCREEN}
+        component={TermAndConditionsScreen}
         options={optionsMain}
       />
     </Drawer.Navigator>

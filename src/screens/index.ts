@@ -1,6 +1,5 @@
-import SignInScreen from '@/screens/AuthenticationScreens/SignInScreen';
-import HomeScreen from '@/screens/HomeScreen';
-import DeliveryScreen from '@/screens/DeliveryScreen';
-import FeedbackScreen from '@/screens/FeedbackScreen';
-
-export { HomeScreen, SignInScreen, DeliveryScreen, FeedbackScreen };
+export { default as SignInScreen } from "./AuthenticationScreens/SignInScreen"
+export { default as HomeScreen } from "./HomeScreen"
+export { default as DeliveryScreen } from "./DeliveryScreen"
+export { default as FeedbackScreen } from "./FeedbackScreen"
+export { default as TermAndConditionsScreen } from "./TermAndConditionsScreen"

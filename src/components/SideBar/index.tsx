@@ -1,47 +1,15 @@
-import { Svg } from '@/assets';
-import { PATH_SCREEN } from '@/constants/pathName';
-import styles from '@/styles';
-import { navigate } from '@/utils/navigationUtil';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import ScrollView from '../customs/ScrollView';
 
-const sidebarMenus = [
-  {
-    label: 'Khám phá menu',
-    Icon: Svg.Box,
-  },
-  {
-    label: 'Mã giảm giá',
-    Icon: Svg.Offer,
-  },
-  {
-    label: 'Lịch sử đơn hàng',
-    Icon: Svg.OrderHistory,
-  },
-];
-
-const subSidebarMenus = [
-  {
-    label: 'Đánh giá',
-    onPress: () => navigate(PATH_SCREEN.FEEDBACK_SCREEN),
-  },
-  {
-    label: 'Câu hỏi thường gặp',
-  },
-  {
-    label: 'Điều khoản & điều kiện',
-  },
-  {
-    label: 'Chính sách quyền riêng tư',
-  },
-  {
-    label: 'Thông tin dinh dưỡng',
-  },
-];
+import styles from '@/styles';
+import { Svg } from '@/assets';
+import { PathName } from '@/constants';
+import { NavigationUtils } from '@/utils';
+import { ScrollView } from '@/components';
+import { sidebarMenus, subSidebarMenus } from './data';
 
 const SideBar = () => {
-  const goToSignInScreen = () => navigate(PATH_SCREEN.SIGN_IN_SCREEN);
+  const goToSignInScreen = () => NavigationUtils.navigate(PathName.PATH_SCREEN.SIGN_IN_SCREEN);
 
   return (
     <SafeAreaView className="flex-1">

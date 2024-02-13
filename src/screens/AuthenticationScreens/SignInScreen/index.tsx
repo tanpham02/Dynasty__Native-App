@@ -18,6 +18,7 @@ import { navigate } from '@/utils/navigationUtil';
 import { PATH_SCREEN } from '@/constants/pathName';
 import { PathName } from '@/constants';
 import useStatusBarForAndroid from '@/hooks/useStatusBarForAndroid';
+import { NavigationUtils } from '@/utils';
 
 const SignInScreen = () => {
   const [isAgreeReceiveOffer, setIsAgreeReceiveOffer] = useState<boolean>(true);
@@ -61,6 +62,9 @@ const SignInScreen = () => {
   ];
 
   const handleChangeCheckedReceiveOffer = () => setIsAgreeReceiveOffer(!isAgreeReceiveOffer);
+
+  const gotoTermAndConditionsScreen = () =>
+    NavigationUtils.navigate(PathName.PATH_SCREEN.TERM_AND_CONDITIONS_SCREEN);
 
   return (
     <KeyboardAvoidingView className="flex-1 bg-gray-6">
@@ -190,7 +194,7 @@ const SignInScreen = () => {
             </Box>
 
             <Box className="flex-row justify-between items-center ">
-              <TouchableOpacity>
+              <TouchableOpacity onPress={gotoTermAndConditionsScreen}>
                 <Text className="uppercase text-[10px] font-nunito-500 text-[#1476e1]">
                   Terms & Conditions
                 </Text>
