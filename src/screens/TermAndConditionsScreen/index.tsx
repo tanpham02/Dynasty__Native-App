@@ -40,7 +40,7 @@ const TermAndConditionsScreen = () => {
 
   return (
     <PrimaryLayout containerClass="bg-third">
-      <Box className="pb-24">
+      <Box className="flex-1">
         <Text className="font-nunito-700 text-2xl px-3">Điều khoản & điều kiện</Text>
         <ScrollView>
           {datas.map((data, index) => (
