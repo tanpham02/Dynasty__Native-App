@@ -1,8 +1,7 @@
 import { Svg } from '@/assets';
+import { BuyActionItemProps } from '@/components/BuyActionItem/type';
 import { PathName } from '@/constants';
 import { NavigationUtils } from '@/utils';
-
-import { BuyActionItemProps } from '../../../../components/BuyActionItem/type';
 
 export const buyActions: BuyActionItemProps[] = [
   {

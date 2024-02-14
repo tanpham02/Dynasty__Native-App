@@ -2,14 +2,15 @@ import { CardStyleInterpolators, createStackNavigator } from '@react-navigation/
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import { PathName } from '@/constants';
-import { SideBar } from '@/components';
 import {
   FeedbackScreen,
   HomeScreen,
   SignInScreen,
-  DeliveryScreen,
   TermAndConditionsScreen,
+  CategoryScreen,
+  DeliveryScreen,
 } from '@/screens';
+import SideBar from '@/components/SideBar';
 
 const RootStack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -42,6 +43,13 @@ const RootStackNavigator = () => {
       <RootStack.Screen
         name={PathName.PATH_SCREEN.SIGN_IN_SCREEN}
         component={SignInScreen}
+        options={optionsRoot}
+      />
+
+      {/* Categories Screens */}
+      <RootStack.Screen
+        name={PathName.PATH_SCREEN.CATEGORIES}
+        component={CategoryScreen}
         options={optionsRoot}
       />
 
