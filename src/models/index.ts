@@ -1,3 +1,2 @@
-import * as AuthenticationModel from 'src/models/authenticationModel';
-
-export { AuthenticationModel };
+export { default as AuthenticationModel } from "./authenticationModel"
+export { default as LocationInfoModel } from "./locationInfoModel"
