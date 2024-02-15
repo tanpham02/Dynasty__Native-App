@@ -9,6 +9,7 @@ export const subSidebarMenus = [
     },
     {
         label: 'Câu hỏi thường gặp',
+        onPress: () => NavigationUtils.navigate(PathName.PATH_SCREEN.FAQS_SCREEN)
     },
     {
         label: 'Điều khoản & điều kiện',
@@ -16,6 +17,7 @@ export const subSidebarMenus = [
     },
     {
         label: 'Chính sách quyền riêng tư',
+        onPress: () => NavigationUtils.navigate(PathName.PATH_SCREEN.PRIVACY_POLICY_SCREEN),
     },
     {
         label: 'Thông tin dinh dưỡng',

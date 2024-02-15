@@ -1,7 +1,7 @@
 import { Box, Divider, FlatList, Text } from 'native-base';
 import { useEffect } from 'react';
 
-import { GlobalLoading, PrimaryLayout, ScrollView, ExpandItem } from '@/components';
+import { ExpandItem, GlobalLoading, PrimaryLayout } from '@/components';
 
 const datas = [
   {
@@ -26,7 +26,7 @@ const datas = [
   },
 ];
 
-const TermAndConditionsScreen = () => {
+const PrivacyPolicyScreen = () => {
   useEffect(() => {
     GlobalLoading.show();
 
@@ -38,7 +38,11 @@ const TermAndConditionsScreen = () => {
   }, []);
 
   return (
-    <PrimaryLayout containerClass="bg-third" titleScreen="Điều khoản & điều kiện">
+    <PrimaryLayout
+      containerClass="bg-third"
+      headerBarClass="flex-col item-start"
+      renderTitle={() => <Text className="font-nunito-700 text-2xl px-3">Chính sách bảo mật</Text>}
+    >
       <Box className="flex-1">
         <Divider className="mt-2 bg-zinc-300" />
         <Box className="flex-1 bg-white">
@@ -55,4 +59,4 @@ const TermAndConditionsScreen = () => {
   );
 };
 
-export default TermAndConditionsScreen;
+export default PrivacyPolicyScreen;

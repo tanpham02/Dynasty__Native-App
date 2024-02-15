@@ -19,3 +19,5 @@ export { default as Star } from './star.svg';
 export { default as StarSolid } from './star-solid.svg';
 export { default as GoogleSvg } from './google-icon.svg';
 export { default as FoodMenu } from './food-menu.svg';
+export { default as Plus } from './plus.svg';
+export { default as Subtract } from './subtract.svg';

@@ -7,10 +7,10 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { HeaderBarProps } from './type';
 
 const HeaderBar = (props: HeaderBarProps) => {
-  const { title, className, renderTitle } = props;
+  const { title, headerClass, renderTitle } = props;
 
   return (
-    <Flex className={`flex-row p-2 items-center gap-3 ${className}`}>
+    <Flex className={`flex-row p-2 items-center gap-3 ${headerClass}`}>
       <TouchableOpacity
         onPress={goBack}
         style={styles.shadowX}

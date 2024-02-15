@@ -9,6 +9,8 @@ import {
   TermAndConditionsScreen,
   CategoryScreen,
   DeliveryScreen,
+  FAQsScreen,
+  PrivacyPolicyScreen,
 } from '@/screens';
 import SideBar from '@/components/SideBar';
 
@@ -68,6 +70,18 @@ const RootStackNavigator = () => {
       <RootStack.Screen
         name={PathName.PATH_SCREEN.TERM_AND_CONDITIONS_SCREEN}
         component={TermAndConditionsScreen}
+        options={optionsMain}
+      />
+
+      <RootStack.Screen
+        name={PathName.PATH_SCREEN.FAQS_SCREEN}
+        component={FAQsScreen}
+        options={optionsMain}
+      />
+
+      <RootStack.Screen
+        name={PathName.PATH_SCREEN.PRIVACY_POLICY_SCREEN}
+        component={PrivacyPolicyScreen}
         options={optionsMain}
       />
     </Drawer.Navigator>

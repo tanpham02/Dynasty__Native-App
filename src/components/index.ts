@@ -5,4 +5,5 @@ export { default as ScrollView } from '@/components/customs/ScrollView';
 export { default as PrimaryLayout } from '@/components/Layout/PrimaryLayout';
 export { default as BuyActionItem } from '@/components/BuyActionItem';
 export { default as SideBar } from '@/components/SideBar';
+export { default as ExpandItem } from '@/components/ExpandItem';
 export { globalLoading as GlobalLoading } from '@/components/GlobalLoading';

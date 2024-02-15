@@ -1,4 +1,4 @@
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Text, TouchableOpacity, View, Linking } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import styles from '@/styles';
@@ -10,6 +10,8 @@ import { sidebarMenus, subSidebarMenus } from './data';
 
 const SideBar = () => {
   const goToSignInScreen = () => NavigationUtils.navigate(PathName.PATH_SCREEN.SIGN_IN_SCREEN);
+
+  const callSupport = () => Linking.openURL('tel:0984316437');
 
   return (
     <SafeAreaView className="flex-1">
@@ -29,8 +31,8 @@ const SideBar = () => {
           </TouchableOpacity>
           <View className="h-[1px] bg-zinc-200 w-full my-3" />
           <View className="pl-3">
-            {sidebarMenus.map((sidebarMenu) => (
-              <TouchableOpacity className="flex-row items-center py-3">
+            {sidebarMenus.map((sidebarMenu, index) => (
+              <TouchableOpacity key={index} className="flex-row items-center py-3">
                 <sidebarMenu.Icon width={30} height={30} className="text-zinc-600" />
                 <Text className="font-nunito-700 ml-4">{sidebarMenu.label}</Text>
               </TouchableOpacity>
@@ -38,14 +40,14 @@ const SideBar = () => {
           </View>
           <View className="h-[1px] bg-zinc-200 w-full my-3" />
           <View className="pl-3">
-            {subSidebarMenus.map((subSidebarMenu) => (
-              <TouchableOpacity className="py-3" onPress={subSidebarMenu?.onPress}>
+            {subSidebarMenus.map((subSidebarMenu, index) => (
+              <TouchableOpacity key={index} className="py-3" onPress={subSidebarMenu?.onPress}>
                 <Text className="font-nunito-700">{subSidebarMenu.label}</Text>
               </TouchableOpacity>
             ))}
           </View>
           <View className="h-[1px] bg-zinc-200 w-full my-3" />
-          <TouchableOpacity className="flex-row items-center">
+          <TouchableOpacity className="flex-row items-center" onPress={callSupport}>
             <View className="w-8 h-8 bg-secondary rounded-lg items-center justify-center">
               <Svg.Call width={20} height={20} className="text-white" />
             </View>

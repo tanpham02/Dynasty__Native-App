@@ -1,9 +1,9 @@
 /* eslint-disable react-native/no-inline-styles */
 
-import { MyStatusBar } from '@/components';
-import HeaderBar from '@/components/HeaderBar';
-import useStatusBarForAndroid from '@/hooks/useStatusBarForAndroid';
 import { SafeAreaView, View } from 'react-native';
+
+import { MyStatusBar, HeaderBar } from '@/components';
+import useStatusBarForAndroid from '@/hooks/useStatusBarForAndroid';
 import { PrimaryLayoutProps } from './type';
 
 const PrimaryLayout = (props: PrimaryLayoutProps) => {
@@ -19,7 +19,7 @@ const PrimaryLayout = (props: PrimaryLayoutProps) => {
           <HeaderBar
             title={props?.titleScreen}
             renderTitle={props.renderTitle}
-            className={props.headerBarClass}
+            headerClass={props.headerBarClass}
           />
           {props.children}
         </View>
