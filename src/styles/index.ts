@@ -32,6 +32,15 @@ const styles = StyleSheet.create({
   widthTwoPerFive: {
     width: widthScreen * 0.4,
   },
+  colorPrimary: {
+    color: '#006a31',
+  },
+  colorSecondary: {
+    color: '#d52415',
+  },
+  colorThird: {
+    color: '#f5faff',
+  },
 });
 
 export default styles;

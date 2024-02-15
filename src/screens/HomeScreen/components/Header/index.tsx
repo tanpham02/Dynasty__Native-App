@@ -24,7 +24,7 @@ const Header = ({ navigation }) => {
           <Text className="text-zinc-800 font-nunito-700 uppercase text-xs">Chọn vị trí</Text>
           <Text className="text-zinc-500 font-nunito-500 text-xs">Nhận chính xác giá...</Text>
         </View>
-        <View className="w-4 h-4 bg-secondary rounded item-center justify-center flex-row">
+        <View className="w-4 h-4 bg-secondary-1 rounded item-center justify-center flex-row">
           <Svg.ArrowDown width={14} height={14} className="text-white" />
         </View>
       </View>

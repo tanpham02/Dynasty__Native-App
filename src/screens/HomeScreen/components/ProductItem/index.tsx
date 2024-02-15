@@ -26,12 +26,12 @@ const ProductItem = () => {
       <Text className="font-nunito-700 text-sm text-zinc-700" numberOfLines={2}>
         Pizza hải sản pessto xanh
       </Text>
-      <View className="my-3 w-1/3 h-0.5 bg-secondary" />
+      <View className="my-3 w-1/3 h-0.5 bg-secondary-1" />
       <View className="flex-row">
         <Text className="flex-1 font-nunito-600 text-zinc-700">
           {NumberUtils.formatMoneyVND(199000)}đ
         </Text>
-        <View className="border-2 border-secondary rounded p-0.5">
+        <View className="border-2 border-secondary-1 rounded p-0.5">
           <Text className="text-xs font-nunito-500 text-zinc-700">Mua ngay</Text>
         </View>
       </View>

@@ -36,7 +36,7 @@ const FeedbackScreen = () => {
                 <Svg.StarSolid
                   width={30}
                   height={30}
-                  className={currentStar <= index ? 'fill-zinc-300' : 'fill-secondary'}
+                  className={currentStar <= index ? 'fill-zinc-300' : 'fill-secondary-1'}
                 />
               </TouchableOpacity>
             ))}
@@ -76,9 +76,11 @@ const FeedbackScreen = () => {
               disabled={!currentStar}
               style={styles.shadowX}
               onPress={handleSendFeedback}
-              className={`border border-zinc-200 items-center py-3 rounded-lg my-4 ${currentStar ? 'bg-secondary' : 'bg-third'}`}
+              className={`border border-zinc-200 items-center py-3 rounded-lg my-4 ${currentStar ? 'bg-secondary-1' : 'bg-third'}`}
             >
-              <Text className={`font-nunito-600 ${currentStar ? 'text-white' : 'text-secondary'}`}>
+              <Text
+                className={`font-nunito-600 ${currentStar ? 'text-white' : 'text-secondary-1'}`}
+              >
                 Gửi đánh giá
               </Text>
             </TouchableOpacity>

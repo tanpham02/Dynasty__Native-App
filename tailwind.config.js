@@ -20,7 +20,8 @@ module.exports = {
       },
       colors: {
         primary: '#006a31',
-        secondary: '#d52415',
+        'secondary-1': '#d52415',
+        'secondary-2': '#e8002a',
         third: '#f5faff',
         'gray-1': '#8c8c8c',
         'gray-2': '#eeeeee',
@@ -30,6 +31,7 @@ module.exports = {
         'gray-6': '#eef1f6',
         'gray-7': '#f7faff',
         'gray-8': '#f8fbff',
+        'gray-9': '#666666',
       },
       zIndex: {
         999999: '999999',
