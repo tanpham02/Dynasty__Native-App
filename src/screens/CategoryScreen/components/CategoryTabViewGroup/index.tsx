@@ -79,7 +79,7 @@ const CategoryTabViewGroup = () => {
                   style={styles.shadowX}
                 />
                 <Animated.Text
-                  className={`text-gray-9 text-xs font-nunito-400 border-b-[2px] mt-2 ${index === activeTabKey ? ' border-b-secondary-2 text-secondary-2 font-nunito-600' : 'border-transparent'}`}
+                  className={`text-gray-9 text-xs font-nunito-400 border-b-[2px] mt-2 ${index === activeTabKey ? ' border-b-secondary text-secondary font-nunito-600' : 'border-transparent'}`}
                 >
                   {item.name}
                 </Animated.Text>

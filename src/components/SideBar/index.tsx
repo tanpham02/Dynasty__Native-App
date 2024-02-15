@@ -20,7 +20,7 @@ const SideBar = () => {
           <TouchableOpacity className="flex-row items-center mb-2" onPress={goToSignInScreen}>
             <View
               style={styles.shadowSecondary}
-              className="bg-secondary-1 w-10 h-10 rounded-lg items-center justify-center m-2"
+              className="bg-secondary w-10 h-10 rounded-lg items-center justify-center m-2"
             >
               <Svg.UserPlus width={25} height={25} className="text-white" />
             </View>

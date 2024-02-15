@@ -45,7 +45,7 @@ const ExpandItem = ({ label, value }: ExpandItemProps) => {
         },
       ]}
     >
-      <TouchableOpacity className="flex-row p-3" onPress={() => setIsExpand(!isExpand)}>
+      <TouchableOpacity className="flex-row py-3 px-5" onPress={() => setIsExpand(!isExpand)}>
         <Text className="text-zinc-700 font-nunito-700 flex-1">{label}</Text>
         <Animated.View
           style={{

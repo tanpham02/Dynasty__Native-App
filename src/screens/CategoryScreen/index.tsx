@@ -25,10 +25,10 @@ const Categories = (props: CategoriesProps) => {
               },
             }}
           >
-            <Box className="bg-secondary-2 w-14 h-14 rounded-full flex justify-center items-center">
+            <Box className="bg-secondary w-14 h-14 rounded-full flex justify-center items-center">
               <Svg.FoodMenu width={36} height={36} className="text-white mt-1" />
             </Box>
-            <Text className="text-[13px] text-secondary-2 font-nunito-600 mt-2">Menu</Text>
+            <Text className="text-[13px] text-secondary font-nunito-600 mt-2">Menu</Text>
           </Box>
           <CategoryTabViewGroup />
         </Box>
