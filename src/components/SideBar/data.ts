@@ -21,6 +21,7 @@ export const subSidebarMenus = [
     },
     {
         label: 'Thông tin dinh dưỡng',
+        onPress: () => NavigationUtils.navigate(PathName.PATH_SCREEN.NUTRITION_INFORMATION_SCREEN)
     },
 ];
 

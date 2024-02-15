@@ -3,11 +3,12 @@
 import { SafeAreaView, View } from 'react-native';
 
 import { MyStatusBar, HeaderBar } from '@/components';
-import useStatusBarForAndroid from '@/hooks/useStatusBarForAndroid';
+import { useStatusBarForAndroid } from '@/hooks';
 import { PrimaryLayoutProps } from './type';
 
 const PrimaryLayout = (props: PrimaryLayoutProps) => {
   useStatusBarForAndroid(props.statusBarBackgroundColor);
+
   return (
     <>
       <MyStatusBar
