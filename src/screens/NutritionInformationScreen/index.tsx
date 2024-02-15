@@ -11,7 +11,7 @@ const NutritionInformationScreen = () => {
     <PrimaryLayout
       headerBarClass="flex-col items-start"
       renderTitle={() => (
-        <Text className="font-nunito-700 text-2xl mt-3">Thông tin dinh dưỡng</Text>
+        <Text className="font-nunito-700 text-2xl pt-3">Thông tin dinh dưỡng</Text>
       )}
       containerClass="bg-third"
     >
