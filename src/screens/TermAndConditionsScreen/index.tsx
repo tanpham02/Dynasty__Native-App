@@ -38,7 +38,11 @@ const TermAndConditionsScreen = () => {
   }, []);
 
   return (
-    <PrimaryLayout containerClass="bg-third" titleScreen="Điều khoản & điều kiện">
+    <PrimaryLayout
+      containerClass="bg-third"
+      headerBarClass="flex-col items-start"
+      renderTitle={() => <Text className="font-nunito-700 text-2xl">Điều khoản & điều kiện</Text>}
+    >
       <Box className="flex-1">
         <Divider className="mt-2 bg-zinc-300" />
         <Box className="flex-1 bg-white">
