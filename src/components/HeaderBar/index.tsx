@@ -10,7 +10,7 @@ const HeaderBar = (props: HeaderBarProps) => {
   const { title, className, renderTitle } = props;
 
   return (
-    <Flex className={`flex-row p-2 items-center gap-3 ${className}`}>
+    <Flex className={`flex-row p-2 items-center gap-2 ${className} ml-2 my-1`}>
       <TouchableOpacity
         onPress={goBack}
         style={styles.shadowX}

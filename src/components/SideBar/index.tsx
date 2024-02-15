@@ -18,7 +18,7 @@ const SideBar = () => {
           <TouchableOpacity className="flex-row items-center mb-2" onPress={goToSignInScreen}>
             <View
               style={styles.shadowSecondary}
-              className="bg-secondary w-10 h-10 rounded-lg items-center justify-center m-2"
+              className="bg-secondary-1 w-10 h-10 rounded-lg items-center justify-center m-2"
             >
               <Svg.UserPlus width={25} height={25} className="text-white" />
             </View>
@@ -46,7 +46,7 @@ const SideBar = () => {
           </View>
           <View className="h-[1px] bg-zinc-200 w-full my-3" />
           <TouchableOpacity className="flex-row items-center">
-            <View className="w-8 h-8 bg-secondary rounded-lg items-center justify-center">
+            <View className="w-8 h-8 bg-secondary-1 rounded-lg items-center justify-center">
               <Svg.Call width={20} height={20} className="text-white" />
             </View>
             <Text className="font-nunito-700 uppercase ml-2 text-sm">Liên hệ hỗ trợ</Text>

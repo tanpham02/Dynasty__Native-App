@@ -147,7 +147,7 @@ const SignInScreen = () => {
                 <Text className="font-nunito-700 !text-[13px]">+84</Text>
               </View>
 
-              <Divider orientation="vertical" thickness="1" className="bg-secondary ml-2 mr-1" />
+              <Divider orientation="vertical" thickness="1" className="bg-secondary-1 ml-2 mr-1" />
               <Input
                 className="text-black bg-white placeholder:!font-nunito-700 placeholder:!text-[15px]"
                 placeholder="Mobile number*"
@@ -161,7 +161,7 @@ const SignInScreen = () => {
               style={styles.shadowX}
               className="bg-gray-7 rounded-lg py-3 mt-8 border border-[#faf1f3]"
             >
-              <Text className="text-secondary font-nunito-600 text-[15px] text-center">
+              <Text className="text-secondary-1 font-nunito-600 text-[15px] text-center">
                 SEND OTP
               </Text>
             </TouchableOpacity>
