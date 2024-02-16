@@ -57,7 +57,7 @@ const CategoryTabViewGroup = () => {
           <Text className="text-[13px] text-secondary font-nunito-700 mt-2">Menu</Text>
         </Box>
         <TabView
-          className="ml-20"
+          className="ml-24"
           navigationState={{
             index: activeTabKey,
             routes: tabBarRoutes,
@@ -79,7 +79,7 @@ const CategoryTabViewGroup = () => {
         />
       </Box>
 
-      <Box className="absolute left-3 top-[90px] bottom-0">
+      <Box className="absolute left-0 top-[90px] bottom-0 border-t border-zinc-200">
         <CategoryTypeList />
       </Box>
     </Box>

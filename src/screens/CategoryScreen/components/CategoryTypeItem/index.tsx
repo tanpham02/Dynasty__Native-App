@@ -1,22 +1,28 @@
-import { Box, FlatList, Image, Text } from 'native-base';
-import React from 'react';
-import { categoryTypes } from '../CategoryTypeList/data';
-import { CategoryTypeItemProps } from './type';
-import { Svg } from 'react-native-svg';
+import { Box, Flex, Image, Text } from 'native-base';
 
-const CategoryTypeItem = (props: CategoryTypeItemProps) => {
+import { CategoryTypeItemProps } from './type';
+
+const CategoryTypeItem = ({ icon, name, isActive }: CategoryTypeItemProps) => {
   return (
-    <Box className="flex-1 flex-col items-center justify-start border border-gray-1 rounded-lg bg-white p-3 w-[70px] h-auto mb-4 overflow-hidden">
-      <Image
-        source={{
-          uri: props.icon,
-        }}
-        width={4}
-        height={4}
-        className="object-contain mr-2 "
-      />
-      <Text className="text-black font-nunito-500 text-xs text-center">{props.name}</Text>
-    </Box>
+    <Flex
+      className={`px-1 py-2 w-[102px] min-h-[50px] ${isActive ? 'bg-white border-b-2 border-secondary' : 'border-b border-zinc-200'}`}
+    >
+      <Box className="flex-row items-center h-full flex-1">
+        <Image
+          source={{
+            uri: icon,
+          }}
+          width={3.5}
+          height={3.5}
+          resizeMode="contain"
+          className="object-contain mr-1.5"
+          alt={name}
+        />
+        <Text className="text-black font-nunito-500 text-xs flex-1" numberOfLines={2}>
+          {name}
+        </Text>
+      </Box>
+    </Flex>
   );
 };
 

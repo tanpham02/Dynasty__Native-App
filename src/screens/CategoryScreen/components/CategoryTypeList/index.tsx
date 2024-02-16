@@ -10,7 +10,7 @@ const CategoryTypeList = () => {
       scrollEventThrottle={16}
       pagingEnabled
       keyExtractor={(_, index) => `${index}`}
-      data={categoryTypes.map((item) => ({ ...item, title: item.name }))}
+      data={categoryTypes}
       horizontal={false}
       showsVerticalScrollIndicator={false}
       style={{
