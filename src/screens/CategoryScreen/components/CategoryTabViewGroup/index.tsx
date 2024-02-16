@@ -11,13 +11,31 @@ import CategoryTabViewList from '../CategoryTabViewList';
 import CategoryTypeList from '../CategoryTypeList';
 
 const FirstRoute = () => (
-  <Box className="flex-1 bg-white">
-    <Image
-      src="https://thepizzacompany.vn/images/thumbs/000/0002258_spaghetti-bolognese_300.png"
-      width="full"
-      height={200}
-    />
-  </Box>
+  <FlatList
+    scrollEventThrottle={16}
+    pagingEnabled
+    keyExtractor={(_, index) => `${index}`}
+    horizontal={false}
+    showsVerticalScrollIndicator={false}
+    snapToAlignment="center"
+    style={{
+      height: heightScreen,
+      flexGrow: 0,
+      backgroundColor: 'white',
+      width: widthScreen,
+    }}
+    className="absolute top-[55px] left-0 right-0 bottom-0"
+    data={[
+      ...new Array(10).fill({
+        url: 'https://thepizzacompany.vn/images/thumbs/000/0002258_spaghetti-bolognese_300.png',
+      }),
+    ]}
+    renderItem={({ index, item }) => (
+      <Box key={index} className="flex-1 p-4">
+        <Image src={item?.url} width="full" height={200} />
+      </Box>
+    )}
+  />
 );
 
 const renderScene = SceneMap({
@@ -57,7 +75,6 @@ const CategoryTabViewGroup = () => {
           <Text className="text-[13px] text-secondary font-nunito-700 mt-2">Menu</Text>
         </Box>
         <TabView
-          className="ml-24"
           navigationState={{
             index: activeTabKey,
             routes: tabBarRoutes,
@@ -79,7 +96,7 @@ const CategoryTabViewGroup = () => {
         />
       </Box>
 
-      <Box className="absolute left-0 top-[90px] bottom-0 border-t border-zinc-200">
+      <Box className="absolute left-0 top-[90px] shadow-2xl">
         <CategoryTypeList />
       </Box>
     </Box>

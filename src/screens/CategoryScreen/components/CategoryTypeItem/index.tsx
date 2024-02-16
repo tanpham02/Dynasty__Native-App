@@ -1,27 +1,33 @@
-import { Box, Flex, Image, Text } from 'native-base';
+import { Box, Flex, Image, Pressable, Text } from 'native-base';
 
 import { CategoryTypeItemProps } from './type';
+import { useState } from 'react';
 
-const CategoryTypeItem = ({ icon, name, isActive }: CategoryTypeItemProps) => {
+const CategoryTypeItem = ({ icon, name, isActive, onPress }: CategoryTypeItemProps) => {
   return (
     <Flex
-      className={`px-1 py-2 w-[102px] min-h-[50px] ${isActive ? 'bg-white border-b-2 border-secondary' : 'border-b border-zinc-200'}`}
+      className={`px-2 border  ${isActive ? 'border-secondary bg-secondary ' : 'border-zinc-300 bg-zinc-50 '} rounded-2xl ml-3`}
     >
-      <Box className="flex-row items-center h-full flex-1">
-        <Image
-          source={{
-            uri: icon,
-          }}
-          width={3.5}
-          height={3.5}
-          resizeMode="contain"
-          className="object-contain mr-1.5"
-          alt={name}
-        />
-        <Text className="text-black font-nunito-500 text-xs flex-1" numberOfLines={2}>
-          {name}
-        </Text>
-      </Box>
+      <Pressable className="flex-1" onPress={onPress}>
+        <Box className="flex-row items-center h-full flex-1">
+          <Image
+            source={{
+              uri: icon,
+            }}
+            width={3.5}
+            height={3.5}
+            resizeMode="contain"
+            className="object-contain mr-1.5"
+            alt={name}
+          />
+          <Text
+            className={`text-black font-nunito-500 text-xs flex-1 ${isActive ? 'text-white' : 'text-black'}`}
+            numberOfLines={2}
+          >
+            {name}
+          </Text>
+        </Box>
+      </Pressable>
     </Flex>
   );
 };

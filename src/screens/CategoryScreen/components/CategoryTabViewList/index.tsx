@@ -22,6 +22,7 @@ const CategoryTabViewList = (
         flexGrow: 0,
       }}
       snapToAlignment="center"
+      className="ml-20"
       ref={categoryTabViewGroupRef}
       renderItem={({ index, item }) => (
         <CategoryTabViewItem
