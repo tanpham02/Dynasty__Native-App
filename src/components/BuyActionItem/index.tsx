@@ -16,7 +16,7 @@ const BuyActionItem = ({
       <TouchableOpacity
         onPress={onPress}
         style={styles.shadowX}
-        className={`border ${isActive ? 'border-secondary' : 'border-gray-5'} w-[50px] h-[50px] rounded-full items-center justify-center bg-gray-5`}
+        className={`border ${isActive ? 'border-secondary' : 'border-zinc-200'} w-[50px] h-[50px] rounded-full items-center justify-center bg-gray-5`}
       >
         <Icon width={25} height={25} className="text-zinc-800" />
       </TouchableOpacity>

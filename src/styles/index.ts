@@ -1,17 +1,24 @@
 import { heightScreen, widthScreen } from '@/utils/systemUtils';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 
 const styles = StyleSheet.create({
-    shadowX: {
-        shadowColor: '#777777',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.35,
-        shadowRadius: 5.0,
-        elevation: 4,
-    },
+    ...Platform.select({
+        ios: {
+            shadowX: {
+
+            }
+        }, android: {
+            shadowX: {
+                shadowColor: '#777777',
+                shadowOffset: { width: 0, height: 2 },
+                shadowOpacity: 0.5,
+                shadowRadius: 5.0,
+            },
+        }
+    }),
     shadowSecondary: {
         shadowColor: '#e8002a',
-        shadowOffset: { width: 0, height: 5 },
+        shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.5,
         shadowRadius: 10.0,
         elevation: 20,
