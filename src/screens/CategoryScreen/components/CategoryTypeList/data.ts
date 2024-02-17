@@ -3,7 +3,7 @@ import { CategoryTypeDataTest } from './type';
 export const categoryTypes: CategoryTypeDataTest[] = [
   {
     key: 'bestseller',
-    name: 'Bán chạy Bán chạy Bán chạy',
+    name: 'Bán chạy',
     icon: 'https://thepizzacompany.vn/Plugins/SevenSpikes.Nop.Plugins.ProductRibbons/Themes/Emporium/Content/icon/1.png',
   },
   {
