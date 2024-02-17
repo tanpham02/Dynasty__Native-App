@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.5,
         shadowRadius: 5.0,
-        elevation: 20,
+        elevation: 10,
     },
     shadowSecondary: {
         shadowColor: '#e8002a',
@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
     colorThird: {
         color: '#f5faff',
     },
+
 });
 
 export default styles;

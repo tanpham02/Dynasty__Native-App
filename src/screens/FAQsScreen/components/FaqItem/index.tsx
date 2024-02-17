@@ -9,7 +9,7 @@ const FaqItem = ({ question, answer }: FaqItemProps) => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
   return (
-    <Box className="mx-3 my-2 bg-third rounded-lg" style={styles.shadowX}>
+    <Box className="mx-3 mb-4 bg-third rounded-lg" style={styles.shadowX}>
       <TouchableOpacity className="flex-row p-3" onPress={() => setIsVisible(!isVisible)}>
         <Text className="flex-1 font-nunito-700 text-zinc-500">{question}</Text>
         {isVisible ? (

@@ -27,8 +27,9 @@ const FAQsScreen = () => {
   return (
     <PrimaryLayout containerClass="bg-third">
       <Box className="flex-1">
-        <Text className="font-nunito-700 text-2xl px-3">Câu hỏi thường gặp</Text>
+        <Text className="font-nunito-700 text-2xl pt-1 px-4">Câu hỏi thường gặp</Text>
         <FlatList
+          className="mt-2"
           data={faqs}
           scrollEventThrottle={16}
           showsVerticalScrollIndicator={false}

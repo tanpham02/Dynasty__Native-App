@@ -41,7 +41,9 @@ const PrivacyPolicyScreen = () => {
     <PrimaryLayout
       containerClass="bg-third"
       headerBarClass="flex-col items-start"
-      renderTitle={() => <Text className="font-nunito-700 text-2xl pt-3">Chính sách bảo mật</Text>}
+      renderTitle={() => (
+        <Text className="font-nunito-700 text-2xl pt-1 px-4">Chính sách bảo mật</Text>
+      )}
     >
       <Box className="flex-1 ">
         <Divider className="mt-2 bg-zinc-300" />

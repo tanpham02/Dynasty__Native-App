@@ -94,7 +94,7 @@ const DeliveryScreen = () => {
         </View>
       )}
     >
-      <View className="mx-4 mt-4 flex-row items-center">
+      <View className="px-4 mt-6 flex-row items-center">
         <Input placeholder="Nhập địa điểm của bạn" className="flex-1 bg-white" />
         <TouchableOpacity
           className="w-10 h-10 items-center justify-center bg-gray-5 rounded-lg ml-1"

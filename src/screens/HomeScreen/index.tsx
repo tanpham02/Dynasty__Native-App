@@ -1,5 +1,4 @@
 import { Animated, View } from 'react-native';
-import { Shadow } from 'react-native-shadow-2';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import {
@@ -10,9 +9,11 @@ import {
   HomeSlider,
   ProductList,
 } from './components';
-import { Text } from 'native-base';
+import { useStatusBarForAndroid } from '@/hooks';
 
 const HomeScreen = ({ navigation }) => {
+  useStatusBarForAndroid('#f5faff');
+
   return (
     <View className="flex-1 bg-third">
       <View className="flex-1">
@@ -25,7 +26,7 @@ const HomeScreen = ({ navigation }) => {
               showsHorizontalScrollIndicator={false}
               keyboardShouldPersistTaps="always"
             >
-              <View className="flex-1 mt-2">
+              <View className="flex-1">
                 <BuyAction />
                 <HomeSlider />
                 <HomeCategory />

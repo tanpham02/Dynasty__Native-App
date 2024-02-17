@@ -42,7 +42,7 @@ const TermAndConditionsScreen = () => {
       containerClass="bg-third"
       headerBarClass="flex-col items-start"
       renderTitle={() => (
-        <Text className="font-nunito-700 text-2xl pt-3">Điều khoản & điều kiện</Text>
+        <Text className="font-nunito-700 text-2xl pt-1 px-4">Điều khoản & điều kiện</Text>
       )}
     >
       <Box className="flex-1">
