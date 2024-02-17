@@ -1,7 +1,10 @@
+import React from 'react';
+import { SvgProps } from 'react-native-svg';
+
 export interface CategoryTypeListProps {}
 
 export interface CategoryTypeDataTest {
-  key: string;
+  typeKey: string;
   name: string;
-  icon: any;
+  icon: React.FC<SvgProps>;
 }

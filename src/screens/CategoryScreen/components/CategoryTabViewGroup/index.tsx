@@ -32,7 +32,7 @@ const FirstRoute = () => (
     ]}
     renderItem={({ index, item }) => (
       <Box key={index} className="flex-1 p-4">
-        <Image src={item?.url} width="full" height={200} />
+        <Image src={item?.url} width="full" height={200} alt="" />
       </Box>
     )}
   />

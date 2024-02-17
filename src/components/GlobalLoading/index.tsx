@@ -38,7 +38,7 @@ const GlobalLoading = (__, ref) => {
             backgroundColor: `${Platform.OS === 'ios' ? 'rgba(0,0,0,0.8)' : 'rgba(0,0,0,0.7)'}`,
           }}
         >
-          <Image source={LoaderBikeGif} className="w-24 h-24" />
+          <Image source={LoaderBikeGif} className="w-24 h-24" alt="" />
         </View>
       )}
     </>

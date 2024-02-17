@@ -21,3 +21,8 @@ export { default as GoogleSvg } from './google-icon.svg';
 export { default as FoodMenu } from './food-menu.svg';
 export { default as Plus } from './plus.svg';
 export { default as Subtract } from './subtract.svg';
+export { default as Delicious } from './delicious.svg';
+export { default as New } from './new.svg';
+export { default as Spicy } from './spicy.svg';
+export { default as Unique } from './unique.svg';
+export { default as Vegetarian } from './vegetarian.svg';

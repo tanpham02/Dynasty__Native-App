@@ -1,8 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
+import { Text } from 'native-base';
 import React from 'react';
 import { Platform, StyleSheet, TouchableOpacity, View } from 'react-native';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
-import { Text } from 'src/components';
 import theme from 'src/themes';
 
 interface HeaderBarProps {

@@ -1,3 +1,1 @@
-export interface ProductListDataType {
-    
-}
+export interface ProductListProps {}
