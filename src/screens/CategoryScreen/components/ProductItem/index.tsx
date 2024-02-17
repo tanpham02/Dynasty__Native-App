@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { ProductItemProps } from './type';
 import { ProductType } from '@/models/productModel';
 import styles from '@/styles';
-import { Animated, Text, TouchableOpacity } from 'react-native';
+import { Animated, Easing, Text, TouchableOpacity } from 'react-native';
 import { Svg } from '@/assets';
 import { formatCurrencyByLocale } from '@/utils/numberUtils';
 import { ProductTypeIconList } from '../ProductList/data';
@@ -28,16 +28,18 @@ const ProductItem = (props: ProductItemProps) => {
 
   const onPressIn = () => {
     Animated.spring(animation, {
-      toValue: 1,
+      toValue: 2,
+      bounciness: 0,
+      speed: 14,
       useNativeDriver: true,
-      speed: 0.5,
     }).start();
   };
   const onPressOut = () => {
     Animated.spring(animation, {
-      toValue: 1,
+      toValue: 2,
+      bounciness: 0,
+      speed: 14,
       useNativeDriver: true,
-      speed: 0.5,
     }).start();
   };
 
@@ -55,7 +57,9 @@ const ProductItem = (props: ProductItemProps) => {
           </Text>
         )}
       </Box>
-      <Flex className="flex-row justify-between px-3 pb-4">
+      <Flex
+        className={`flex-row px-3 pb-4 ${props.types.length > 0 && !props.types.includes(ProductType.NORMAL) ? 'justify-between' : 'justify-end'}`}
+      >
         {props.types.length > 0 && !props.types.includes(ProductType.NORMAL) && (
           <Flex className="flex-row gap-2 ">
             {props.types.map((type, index) => {
