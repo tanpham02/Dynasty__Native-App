@@ -9,42 +9,15 @@ import { heightScreen, widthScreen } from '@/utils';
 import { tabBarRoutes } from './data';
 import CategoryTabViewList from '../CategoryTabViewList';
 import CategoryTypeList from '../CategoryTypeList';
-
-const FirstRoute = () => (
-  <FlatList
-    scrollEventThrottle={16}
-    pagingEnabled
-    keyExtractor={(_, index) => `${index}`}
-    horizontal={false}
-    showsVerticalScrollIndicator={false}
-    snapToAlignment="center"
-    style={{
-      height: heightScreen,
-      flexGrow: 0,
-      backgroundColor: 'white',
-      width: widthScreen,
-    }}
-    className="absolute top-[55px] left-0 right-0 bottom-0"
-    data={[
-      ...new Array(10).fill({
-        url: 'https://thepizzacompany.vn/images/thumbs/000/0002258_spaghetti-bolognese_300.png',
-      }),
-    ]}
-    renderItem={({ index, item }) => (
-      <Box key={index} className="flex-1 p-4">
-        <Image src={item?.url} width="full" height={200} alt="" />
-      </Box>
-    )}
-  />
-);
+import ProductList from '../ProductList';
 
 const renderScene = SceneMap({
-  deals: FirstRoute,
-  'for-me': FirstRoute,
-  pizza: FirstRoute,
-  starters: FirstRoute,
-  'salads-and-pasta': FirstRoute,
-  drinks: FirstRoute,
+  deals: ProductList,
+  'for-me': ProductList,
+  pizza: ProductList,
+  starters: ProductList,
+  'salads-and-pasta': ProductList,
+  drinks: ProductList,
 });
 
 const CategoryTabViewGroup = () => {
@@ -96,7 +69,7 @@ const CategoryTabViewGroup = () => {
         />
       </Box>
 
-      <Box className="absolute left-0 top-[90px] shadow-2xl">
+      <Box className="absolute left-0 top-[90px] shadow-2xl flex-1">
         <CategoryTypeList />
       </Box>
     </Box>

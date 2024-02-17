@@ -32,9 +32,9 @@ const CategoryTypeList = () => {
           flexGrow: 0,
           marginTop: 12,
           marginLeft: 4,
-          marginRight: 16,
         },
       ]}
+      className="flex-1"
       snapToAlignment="center"
       renderItem={({ index, item }) => (
         <CategoryTypeItem
@@ -44,6 +44,7 @@ const CategoryTypeList = () => {
             setActiveTabKey(index);
             handleScrollToIndex(index);
           }}
+          index={index}
           {...item}
         />
       )}
