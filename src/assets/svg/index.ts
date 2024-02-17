@@ -26,3 +26,5 @@ export { default as New } from './new.svg';
 export { default as Spicy } from './spicy.svg';
 export { default as Unique } from './unique.svg';
 export { default as Vegetarian } from './vegetarian.svg';
+export { default as HeartOutline } from './heart-outline.svg';
+export { default as HeartSolid } from './heart-solid.svg';
