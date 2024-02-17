@@ -5,8 +5,8 @@ import styles from '@/styles';
 import { Svg } from '@/assets';
 import { PathName } from '@/constants';
 import { NavigationUtils } from '@/utils';
-import { ScrollView } from '@/components';
 import { sidebarMenus, subSidebarMenus } from './data';
+import { ScrollView } from 'native-base';
 
 const SideBar = () => {
   const goToSignInScreen = () => NavigationUtils.navigate(PathName.PATH_SCREEN.SIGN_IN_SCREEN);

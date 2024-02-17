@@ -1,8 +1,7 @@
+import { Canvas, RoundedRect, Shadow } from '@shopify/react-native-skia';
 import { Flex, Text, View } from 'native-base';
 import { TouchableOpacity } from 'react-native';
-import { Canvas, Circle, RoundedRect, Shadow } from '@shopify/react-native-skia';
 
-import styles from '@/styles';
 import { Svg } from '@/assets';
 import { NavigationUtils } from '@/utils';
 import { HeaderBarProps } from './type';
