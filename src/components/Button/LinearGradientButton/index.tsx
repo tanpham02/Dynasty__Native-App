@@ -1,9 +1,9 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react';
 import { Image, TouchableOpacity } from 'react-native';
-import Text from 'src/components/customs/Text';
 import styles from './styles';
 import { LinearGradientButtonProps } from './types';
+import { Text } from 'native-base';
 
 const LinearGradientButton = ({
   onPress,
@@ -16,9 +16,9 @@ const LinearGradientButton = ({
     if (React.isValidElement(icon)) {
       return icon;
     } else if (typeof icon === 'string') {
-      return <Image source={{ uri: icon }} style={iconStyle} />;
+      return <Image source={{ uri: icon }} style={iconStyle} alt="" />;
     } else {
-      return <Image source={icon} style={iconStyle} />;
+      return <Image source={icon} style={iconStyle} alt="" />;
     }
   };
 

@@ -22,6 +22,7 @@ const ProductItem = () => {
         source={ProductTestImage}
         className="object-contain w-full max-h-32"
         resizeMode="contain"
+        alt=""
       />
       <Text className="font-nunito-700 text-sm text-zinc-700" numberOfLines={2}>
         Pizza hải sản pessto xanh

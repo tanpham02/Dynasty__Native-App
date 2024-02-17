@@ -6,7 +6,7 @@ import { heightScreen } from '@/utils';
 import { FlatList } from 'react-native';
 
 const CategoryTypeList = () => {
-  const [activeTabKey, setActiveTabKey] = useState<number>(0);
+  const [activeTabKey, setActiveTabKey] = useState<number>(-1);
 
   const categoryTypeRef = useRef<FlatList>();
 
@@ -32,6 +32,7 @@ const CategoryTypeList = () => {
           flexGrow: 0,
           marginTop: 12,
           marginLeft: 4,
+          marginRight: 16,
         },
       ]}
       snapToAlignment="center"

@@ -81,6 +81,7 @@ const SignInScreen = () => {
                 height: 180,
               }}
               className="absolute top-1/4 -left-[20%]"
+              alt=""
             />
 
             <Box className="flex items-center justify-center">
@@ -91,6 +92,7 @@ const SignInScreen = () => {
                   objectFit: 'contain',
                 }}
                 className="mb-36"
+                alt=""
               />
               <View className="absolute top-1/2 flex justify-center items-center">
                 <Text className="font-nunito-300 text-white text-xl">Login to Unlock</Text>
@@ -122,6 +124,7 @@ const SignInScreen = () => {
                 height: 200,
               }}
               className="absolute top-[10.5%] -right-[22%]"
+              alt=""
             />
           </Box>
           <Box className="bg-gray-6 h-[40%]"></Box>

@@ -1,49 +1,36 @@
+import { ProductType } from '@/models/productModel';
 import { CategoryTypeDataTest } from './type';
+import { Svg } from '@/assets';
 
 export const categoryTypes: CategoryTypeDataTest[] = [
   {
-    key: 'bestseller',
+    typeKey: ProductType.BEST_SELLER,
     name: 'Bán chạy',
-    icon: 'https://thepizzacompany.vn/Plugins/SevenSpikes.Nop.Plugins.ProductRibbons/Themes/Emporium/Content/icon/1.png',
+    icon: Svg.StarSolid,
   },
   {
-    key: 'spicy',
+    typeKey: ProductType.SPICY,
     name: 'Cay',
-    icon: 'https://thepizzacompany.vn/Plugins/SevenSpikes.Nop.Plugins.ProductRibbons/Themes/Emporium/Content/icon/7.png',
+    icon: Svg.Spicy,
   },
   {
-    key: 'unique',
+    typeKey: ProductType.UNIQUE,
     name: 'Độc đáo',
-    icon: 'https://thepizzacompany.vn/Plugins/SevenSpikes.Nop.Plugins.ProductRibbons/Themes/Emporium/Content/icon/2.png',
+    icon: Svg.Unique,
   },
   {
-    key: 'new',
+    typeKey: ProductType.NEW,
     name: 'Mới',
-    icon: 'https://thepizzacompany.vn/Plugins/SevenSpikes.Nop.Plugins.ProductRibbons/Themes/Emporium/Content/icon/4.png',
+    icon: Svg.New,
   },
   {
-    key: 'delicious',
+    typeKey: ProductType.DELICIOUS_MUST_TRY,
     name: 'Ngon phải thử',
-    icon: 'https://thepizzacompany.vn/Plugins/SevenSpikes.Nop.Plugins.ProductRibbons/Themes/Emporium/Content/icon/5.png',
+    icon: Svg.Delicious,
   },
   {
-    key: 'vegetarian',
+    typeKey: ProductType.VEGETARIAN,
     name: 'Chay',
-    icon: 'https://thepizzacompany.vn/Plugins/SevenSpikes.Nop.Plugins.ProductRibbons/Themes/Emporium/Content/icon/6.png',
-  },
-  {
-    key: 'bestseller',
-    name: 'Bán chạy',
-    icon: 'https://thepizzacompany.vn/Plugins/SevenSpikes.Nop.Plugins.ProductRibbons/Themes/Emporium/Content/icon/1.png',
-  },
-  {
-    key: 'spicy',
-    name: 'Cay',
-    icon: 'https://thepizzacompany.vn/Plugins/SevenSpikes.Nop.Plugins.ProductRibbons/Themes/Emporium/Content/icon/7.png',
-  },
-  {
-    key: 'unique',
-    name: 'Độc đáo',
-    icon: 'https://thepizzacompany.vn/Plugins/SevenSpikes.Nop.Plugins.ProductRibbons/Themes/Emporium/Content/icon/2.png',
+    icon: Svg.Vegetarian,
   },
 ];

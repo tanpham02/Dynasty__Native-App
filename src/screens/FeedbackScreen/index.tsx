@@ -25,7 +25,7 @@ const FeedbackScreen = () => {
     <PrimaryLayout titleScreen="Đánh giá" containerClass="bg-gray-5">
       <ScrollView className="">
         <Box className="flex items-center justify-center mt-2">
-          <Image source={emojis[currentStar].icon} className="w-36 h-36" />
+          <Image source={emojis[currentStar].icon} className="w-36 h-36" alt="" />
           <Text className="font-nunito-700 text-base mt-3">{emojis[currentStar].label}</Text>
           <Text className="font-nunito-400 text-sm mt-1 text-zinc-500">
             Mọi góp ý của bạn sẽ giúp chúng tôi tốt hơn
@@ -36,7 +36,7 @@ const FeedbackScreen = () => {
                 <Svg.StarSolid
                   width={30}
                   height={30}
-                  className={currentStar <= index ? 'fill-zinc-300' : 'fill-secondary'}
+                  className={currentStar <= index ? 'text-zinc-300' : 'text-secondary'}
                 />
               </TouchableOpacity>
             ))}
