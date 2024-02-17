@@ -63,9 +63,9 @@ const CategoryTabViewGroup = () => {
   };
 
   return (
-    <Box className="flex-1 px-1.5 flex items-center relative" style={styles.shadowX}>
+    <Box className="flex-1 flex items-center relative" style={styles.shadowX}>
       <Box className="flex-1 min-h-[200px]">
-        <Box className="absolute left-2 flex justify-center items-center flex-col pr-4">
+        <Box className="absolute left-2 px-2 flex justify-center items-center flex-col pr-4">
           <Box
             className="bg-secondary w-14 h-14 rounded-full flex justify-center items-center"
             style={styles.shadowSecondary}
