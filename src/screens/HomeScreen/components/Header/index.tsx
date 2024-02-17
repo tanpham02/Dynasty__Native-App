@@ -36,21 +36,20 @@ const Header = ({ navigation }) => {
           </View>
         </View>
       </Canvas> */}
-      <View className="flex-1 h-[100px] relative">
+      <View className="flex-1 h-20 relative">
         <Canvas
           style={{
             flex: 1,
-            height: 100,
             backgroundColor: '#f5faff',
           }}
         >
-          <RoundedRect x={12} y={16} width={100} height={40} r={8} color="#f0f6fc">
+          <RoundedRect x={12} y={16} width={widthScreen - 90} height={40} r={8} color="#f0f6fc">
             <Shadow dx={10} dy={10} blur={10} color="#dfe6ee" />
             <Shadow dx={-10} dy={-10} blur={10} color="#ffffff" />
           </RoundedRect>
           <RoundedRect x={widthScreen - 60} y={16} width={48} height={40} r={8} color="#f5faff">
-            <Shadow dx={10} dy={10} blur={10} color="#dde3ef" />
-            <Shadow dx={-10} dy={-10} blur={10} color="#fcffff" />
+            <Shadow dx={10} dy={10} blur={10} color="#dfe6ee" />
+            <Shadow dx={-10} dy={-10} blur={10} color="#ffffff" />
           </RoundedRect>
         </Canvas>
         <TouchableOpacity
