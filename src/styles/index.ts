@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         width: widthScreen * 0.8,
     },
     widthTwoPerFive: {
-        width: widthScreen * 0.4,
+        width: widthScreen * 0.44,
     },
     colorPrimary: {
         color: '#006a31',

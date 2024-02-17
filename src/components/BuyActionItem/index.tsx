@@ -1,5 +1,5 @@
 import { Text, TouchableOpacity, View } from 'react-native';
-import { Canvas, Circle, RoundedRect, Shadow } from '@shopify/react-native-skia';
+import { Canvas, Circle, Shadow } from '@shopify/react-native-skia';
 
 import { Svg } from '@/assets';
 import { BuyActionItemProps } from './type';
@@ -25,7 +25,7 @@ const BuyActionItem = ({
           <Shadow dx={-10} dy={-10} blur={10} color="#ffffff" />
         </Circle>
       </Canvas>
-      <View className="absolute top-[10px] left-[10px]">
+      <View className="absolute top-[10px] left-3">
         <TouchableOpacity
           onPress={onPress}
           className={`border ${isActive ? 'border-secondary' : 'border-transparent'} w-[50px] h-[50px] rounded-full items-center justify-center bg-gray-5`}
@@ -33,7 +33,7 @@ const BuyActionItem = ({
           <Icon width={25} height={25} className="text-zinc-800" />
         </TouchableOpacity>
         <View
-          className={`flex-row mt-2 items-center ${isActive ? 'border-b border-secondary -ml-3' : '-ml-1.5'}`}
+          className={`flex-row mt-2 items-center justify-center ${isActive ? 'border-b border-secondary -ml-2.5' : '-ml-1'}`}
         >
           {isActive && (
             <Svg.Checked width={11} height={11} className="text-secondary mr-0.5 mb-1" />

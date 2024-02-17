@@ -24,7 +24,7 @@ const Header = ({ navigation }) => {
             <Shadow dx={10} dy={10} blur={10} color="#dfe6ee" />
             <Shadow dx={-10} dy={-10} blur={10} color="#ffffff" />
           </RoundedRect>
-          <RoundedRect x={widthScreen - 60} y={16} width={48} height={48} r={8} color="#f5faff">
+          <RoundedRect x={widthScreen - 60} y={16} width={48} height={48} r={8} color="#f0f6fc">
             <Shadow dx={10} dy={10} blur={10} color="#dfe6ee" />
             <Shadow dx={-10} dy={-10} blur={10} color="#ffffff" />
           </RoundedRect>

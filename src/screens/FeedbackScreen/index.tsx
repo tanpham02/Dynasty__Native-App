@@ -7,8 +7,9 @@ import { Svg } from '@/assets';
 import styles from '@/styles';
 import { PathName } from '@/constants';
 import { NavigationUtils } from '@/utils';
-import { ScrollView, PrimaryLayout } from '@/components';
+import { PrimaryLayout } from '@/components';
 import { emojis, feedbackTopics } from './data';
+import { ScrollView } from 'react-native';
 
 const FeedbackScreen = () => {
   const [currentStar, setCurrentStar] = useState<number>(0);
@@ -23,7 +24,7 @@ const FeedbackScreen = () => {
 
   return (
     <PrimaryLayout titleScreen="Đánh giá" containerClass="bg-gray-5">
-      <ScrollView className="">
+      <ScrollView>
         <Box className="flex items-center justify-center mt-2">
           <Image source={emojis[currentStar].icon} className="w-36 h-36" alt="" />
           <Text className="font-nunito-700 text-base mt-3">{emojis[currentStar].label}</Text>
