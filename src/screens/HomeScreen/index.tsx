@@ -1,4 +1,5 @@
 import { Animated, View } from 'react-native';
+import { Shadow } from 'react-native-shadow-2';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import {
@@ -9,6 +10,7 @@ import {
   HomeSlider,
   ProductList,
 } from './components';
+import { Text } from 'native-base';
 
 const HomeScreen = ({ navigation }) => {
   return (
