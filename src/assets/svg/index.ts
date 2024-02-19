@@ -28,3 +28,8 @@ export { default as Unique } from './unique.svg';
 export { default as Vegetarian } from './vegetarian.svg';
 export { default as HeartOutline } from './heart-outline.svg';
 export { default as HeartSolid } from './heart-solid.svg';
+export { default as Location } from './location.svg';
+export { default as Logout } from './logout.svg';
+export { default as Package } from './package.svg';
+export { default as Support } from './support.svg';
+export { default as CheckCircle } from './check-circle.svg';

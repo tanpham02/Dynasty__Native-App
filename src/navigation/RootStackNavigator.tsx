@@ -12,6 +12,8 @@ import {
   FAQsScreen,
   PrivacyPolicyScreen,
   NutritionInformationScreen,
+  MyProfileScreen,
+  UpdateProfileScreen,
 } from '@/screens';
 import SideBar from '@/components/SideBar';
 
@@ -89,6 +91,18 @@ const RootStackNavigator = () => {
       <RootStack.Screen
         name={PathName.PATH_SCREEN.NUTRITION_INFORMATION_SCREEN}
         component={NutritionInformationScreen}
+        options={optionsMain}
+      />
+
+      <RootStack.Screen
+        name={PathName.PATH_SCREEN.MY_PROFILE}
+        component={MyProfileScreen}
+        options={optionsMain}
+      />
+
+      <RootStack.Screen
+        name={PathName.PATH_SCREEN.UPDATE_PROFILE}
+        component={UpdateProfileScreen}
         options={optionsMain}
       />
     </Drawer.Navigator>

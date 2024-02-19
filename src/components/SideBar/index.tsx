@@ -11,13 +11,15 @@ import { ScrollView } from 'native-base';
 const SideBar = () => {
   const goToSignInScreen = () => NavigationUtils.navigate(PathName.PATH_SCREEN.SIGN_IN_SCREEN);
 
+  const goToMyProfileScreen = () => NavigationUtils.navigate(PathName.PATH_SCREEN.MY_PROFILE);
+
   const callSupport = () => Linking.openURL('tel:0984316437');
 
   return (
     <SafeAreaView className="flex-1">
       <ScrollView>
         <View className="px-4 py-2">
-          <TouchableOpacity className="flex-row items-center mb-2" onPress={goToSignInScreen}>
+          <TouchableOpacity className="flex-row items-center mb-2" onPress={goToMyProfileScreen}>
             <View
               style={styles.shadowSecondary}
               className="bg-secondary w-10 h-10 rounded-lg items-center justify-center m-2"

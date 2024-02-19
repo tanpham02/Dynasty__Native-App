@@ -7,3 +7,5 @@ export { default as CategoryScreen } from './CategoryScreen';
 export { default as FAQsScreen } from './FAQsScreen';
 export { default as PrivacyPolicyScreen } from './PrivacyPolicyScreen';
 export { default as NutritionInformationScreen } from './NutritionInformationScreen';
+export { default as MyProfileScreen } from './MyProfileScreen';
+export { default as UpdateProfileScreen } from './UpdateProfileScreen';
