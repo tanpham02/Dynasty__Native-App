@@ -1,6 +1,7 @@
+import { Box, Input, ScrollView } from 'native-base';
+
 import { PrimaryLayout } from '@/components';
 import styles from '@/styles';
-import { Box, Input, ScrollView } from 'native-base';
 
 const AddressUpdateScreen = () => {
   return (
