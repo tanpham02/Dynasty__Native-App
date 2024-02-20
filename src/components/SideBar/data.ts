@@ -37,5 +37,6 @@ export const sidebarMenus = [
     {
         label: 'Lịch sử đơn hàng',
         Icon: Svg.OrderHistory,
+        onPress: () => NavigationUtils.navigate(PathName.PATH_SCREEN.ORDER_HISTORY_SCREEN)
     },
 ];

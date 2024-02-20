@@ -16,6 +16,7 @@ import {
   UpdateProfileScreen,
   AddressSavedScreen,
   AddressUpdateScreen,
+  OrderHistoryScreen,
 } from '@/screens';
 import SideBar from '@/components/SideBar';
 import ProductDetail from '@/screens/CategoryScreen/components/ProductDetail';
@@ -125,6 +126,12 @@ const RootStackNavigator = () => {
       <RootStack.Screen
         name={PathName.PATH_SCREEN.ADDRESS_UPDATE_SCREEN}
         component={AddressUpdateScreen}
+        options={optionsMain}
+      />
+
+      <RootStack.Screen
+        name={PathName.PATH_SCREEN.ORDER_HISTORY_SCREEN}
+        component={OrderHistoryScreen}
         options={optionsMain}
       />
     </Drawer.Navigator>
