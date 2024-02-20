@@ -14,6 +14,7 @@ import {
   NutritionInformationScreen,
 } from '@/screens';
 import SideBar from '@/components/SideBar';
+import ProductDetail from '@/screens/CategoryScreen/components/ProductDetail';
 
 const RootStack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -53,6 +54,13 @@ const RootStackNavigator = () => {
       <RootStack.Screen
         name={PathName.PATH_SCREEN.CATEGORIES}
         component={CategoryScreen}
+        options={optionsRoot}
+      />
+
+      {/* Product Detail Screens */}
+      <RootStack.Screen
+        name={PathName.PATH_SCREEN.PRODUCT_DETAIL}
+        component={ProductDetail}
         options={optionsRoot}
       />
 

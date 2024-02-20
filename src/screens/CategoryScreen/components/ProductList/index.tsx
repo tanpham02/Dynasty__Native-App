@@ -18,7 +18,7 @@ const ProductList = () => {
       }}
       className="absolute top-[55px] left-0 right-0 bottom-0 flex flex-1"
       data={productData}
-      renderItem={({ index, item }) => <ProductItem key={index} {...item} index={index}/>}
+      renderItem={({ index, item }) => <ProductItem key={index} {...item} index={index} />}
     />
   );
 };
