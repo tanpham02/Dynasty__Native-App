@@ -15,7 +15,7 @@ export const menus: ProfileMenuItemProps[] = [
     {
         Icon: Svg.Location,
         label: 'Địa chỉ đã lưu',
-        onPress: () => { },
+        onPress: () => NavigationUtils.navigate(PathName.PATH_SCREEN.ADDRESS_SAVED),
     },
     {
         Icon: Svg.Package,
