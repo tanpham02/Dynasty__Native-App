@@ -6,6 +6,7 @@ import { PathName } from '@/constants';
 import { NavigationUtils } from '@/utils';
 import { PrimaryLayout } from '@/components';
 import NoSavedAddressImage from '@/assets/images/address-saved.png';
+import { AddressItem } from './components';
 
 const AddressSavedScreen = () => {
   const gotoUpdateAddressScreen = () =>
@@ -27,19 +28,6 @@ const AddressSavedScreen = () => {
           style={styles.shadowSecondary}
         >
           <Text className="font-nunito-700 text-white text-base">Thêm địa chỉ</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={gotoUpdateAddressScreen}
-          className="border border-zinc-100 w-full mt-4 rounded-lg bg-white p-4"
-          style={styles.shadowX}
-        >
-          <Box className="border border-primary items-center absolute top-2 right-2 px-1.5 rounded">
-            <Text className="font-nunito-400 text-primary text-[10px]">Mặc định</Text>
-          </Box>
-          <Text className="font-nunito-700 mt-2">Võ Quan Hạ | 0984316437</Text>
-          <Text className="font-nunito-400 text-[13px] mt-1">
-            ấp Vĩnh Thạnh, xã Phước Vĩnh Đông, huyện Cần Giuộc, tỉnh Long An
-          </Text>
         </TouchableOpacity>
       </Box>
     </PrimaryLayout>
