@@ -4,13 +4,16 @@ import { TouchableOpacity } from 'react-native';
 import { OrderStatusTagProps } from './type';
 import styles from '@/styles';
 
-const OrderStatusTag = ({ label }: OrderStatusTagProps) => {
+const OrderStatusTag = ({ label, onPress, isActive }: OrderStatusTagProps) => {
   return (
     <TouchableOpacity
-      className="bg-white mx-1 py-1.5 px-2 rounded-2xl my-2 min-w-[60px] items-center"
-      style={styles.shadowX}
+      onPress={onPress}
+      className={`mx-1 my-2 py-1.5 px-4 rounded-2xl min-w-[70px] items-center ${isActive ? 'bg-primary' : 'bg-white'}`}
+      style={isActive ? styles.shadowPrimary : styles.shadowX}
     >
-      <Text>{label}</Text>
+      <Text className={`font-nunito-600 ${isActive ? 'text-white' : 'text-zinc-700'}`}>
+        {label}
+      </Text>
     </TouchableOpacity>
   );
 };

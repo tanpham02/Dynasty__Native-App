@@ -33,3 +33,7 @@ export { default as Logout } from './logout.svg';
 export { default as Package } from './package.svg';
 export { default as Support } from './support.svg';
 export { default as CheckCircle } from './check-circle.svg';
+export { default as Clock } from './clock.svg';
+export { default as Coin } from './coin.svg';
+export { default as Note } from './note.svg';
+export { default as Product } from './product.svg';
