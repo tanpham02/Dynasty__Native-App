@@ -5,6 +5,7 @@ import { Canvas, RoundedRect, Shadow } from '@shopify/react-native-skia';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { NavigationUtils } from '@/utils';
 import { Svg } from '@/assets';
+import { useNavigation } from '@react-navigation/native';
 
 interface HeaderBarProps {
   headerBarClass?: string;
@@ -14,9 +15,10 @@ interface HeaderBarProps {
 
 const HeaderBar = (props: HeaderBarProps) => {
   const { headerBarClass, renderTitle, title } = props;
+  const navigation = useNavigation();
   return (
-    <Flex className={`flex-row items-center gap-1 my-1 ${headerBarClass}`}>
-      <View className="relative">
+    <Flex className={`relative flex-row items-start ${headerBarClass}`}>
+      <View className="absolute top-0 left-0 z-999999">
         <Canvas
           style={{
             height: 75,
@@ -30,7 +32,7 @@ const HeaderBar = (props: HeaderBarProps) => {
         </Canvas>
         <View className="absolute top-2.5 left-3.5">
           <TouchableOpacity
-            onPress={NavigationUtils.goBack}
+            onPress={() => navigation.goBack()}
             className="w-[43px] h-[43px] rounded-lg items-center justify-center"
           >
             <Svg.ArrowLeft width={24} height={24} />
