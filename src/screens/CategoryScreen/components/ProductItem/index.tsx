@@ -20,6 +20,7 @@ const ProductItem = (props: ProductItemProps) => {
 
   const handleToggleProductFavorite = (index: number) => {
     const existed = haveProductFavored.includes(index);
+
     setHaveProductFavorite((prev) => {
       if (existed) {
         return haveProductFavored.filter((item) => item !== index);
@@ -39,7 +40,7 @@ const ProductItem = (props: ProductItemProps) => {
 
   return (
     <Pressable
-      className="flex-1 bg-third rounded-lg"
+      className="bg-third rounded-lg m-4"
       style={styles.shadowX}
       //   onPress={() => NavigationUtils.navigate(PathName.PATH_SCREEN.PRODUCT_DETAIL)}
     >
@@ -55,16 +56,16 @@ const ProductItem = (props: ProductItemProps) => {
           </Text>
         )}
       </Box>
-      <Flex
-        className={`flex-row flex-1 px-3 pb-4 ${props.types.length > 0 && !props.types.includes(ProductType.NORMAL) ? 'justify-between' : 'justify-end'}`}
+      <Box
+        className={`flex-row mx-3 mb-4 ${props.types.length > 0 && !props.types.includes(ProductType.NORMAL) ? 'justify-between' : 'justify-end'}`}
       >
         {props.types.length > 0 && !props.types.includes(ProductType.NORMAL) && (
-          <Flex className="flex-row gap-2 ">
+          <Box className="flex-row gap-2">
             {props.types.map((type, index) => {
               const { Icon, color } = ProductTypeIconList[type];
               return <Icon key={index} width={21} height={21} color={color} />;
             })}
-          </Flex>
+          </Box>
         )}
         <Animated.View style={[{ transform: [{ scale }] }]}>
           <Pressable
@@ -74,7 +75,7 @@ const ProductItem = (props: ProductItemProps) => {
             }}
             onPressIn={onPressIn}
             opacity={1}
-            className="flex-1 items-center"
+            className="items-center"
           >
             {haveProductFavored.includes(props.index) ? (
               <Svg.HeartSolid width={21} height={21} color="#e8002a" />
@@ -83,7 +84,7 @@ const ProductItem = (props: ProductItemProps) => {
             )}
           </Pressable>
         </Animated.View>
-      </Flex>
+      </Box>
       <Box className="relative pt-[40%]">
         <Image
           source={{
@@ -103,7 +104,7 @@ const ProductItem = (props: ProductItemProps) => {
           className="bg-secondary rounded-lg p-2 flex-row items-center"
           onPress={() => NavigationUtils.navigate(PathName.PATH_SCREEN.PRODUCT_DETAIL)}
         >
-          <Svg.Plus width={16} height={16} color="white" className="mr-.5" />
+          <Svg.Plus width={16} height={16} color="white" className="mr-2" />
           <Text className="font-nunito-700 text-sm text-white">Thêm giỏ hàng</Text>
         </TouchableOpacity>
       </Box>
