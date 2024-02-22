@@ -1,5 +1,5 @@
 import { Canvas, RoundedRect, Shadow } from '@shopify/react-native-skia';
-import { Flex, Text, View } from 'native-base';
+import { Box, Flex, Text, View } from 'native-base';
 import { TouchableOpacity } from 'react-native';
 
 import { Svg } from '@/assets';
@@ -14,13 +14,13 @@ const HeaderBar = (props: HeaderBarProps) => {
       <View className="relative">
         <Canvas
           style={{
-            height: 75,
+            height: 70,
             width: 75,
           }}
         >
           <RoundedRect x={15} y={10} width={43} height={43} r={8} color="#f5faff">
-            <Shadow dx={10} dy={10} blur={10} color="#dfe6ee" />
-            <Shadow dx={-10} dy={-10} blur={10} color="#ffffff" />
+            <Shadow dx={6} dy={6} blur={10} color="#dfe6ee" />
+            <Shadow dx={-6} dy={-6} blur={10} color="#ffffff" />
           </RoundedRect>
         </Canvas>
         <TouchableOpacity

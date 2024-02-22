@@ -5,6 +5,7 @@ export { default as FeedbackScreen } from './FeedbackScreen';
 export { default as CategoryScreen } from './CategoryScreen';
 export { default as MyProfileScreen } from './MyProfileScreen';
 export { default as AddressSavedScreen } from './AddressSavedScreen';
+export { default as NotificationScreen } from './NotificationScreen';
 export { default as OrderHistoryScreen } from './OrderHistoryScreen';
 export { default as UpdateProfileScreen } from './UpdateProfileScreen';
 export { default as AddressUpdateScreen } from './AddressUpdateScreen';

@@ -17,6 +17,7 @@ import {
   AddressSavedScreen,
   AddressUpdateScreen,
   OrderHistoryScreen,
+  NotificationScreen,
 } from '@/screens';
 import SideBar from '@/components/SideBar';
 import ProductDetail from '@/screens/CategoryScreen/components/ProductDetail';
@@ -132,6 +133,12 @@ const RootStackNavigator = () => {
       <RootStack.Screen
         name={PathName.PATH_SCREEN.ORDER_HISTORY_SCREEN}
         component={OrderHistoryScreen}
+        options={optionsMain}
+      />
+
+      <RootStack.Screen
+        name={PathName.PATH_SCREEN.NOTIFICATION_SCREEN}
+        component={NotificationScreen}
         options={optionsMain}
       />
     </Drawer.Navigator>
