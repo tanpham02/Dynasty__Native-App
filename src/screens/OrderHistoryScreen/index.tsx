@@ -39,10 +39,13 @@ const OrderHistoryScreen = () => {
           />
         </Box>
         <Box className="flex-1">
-          <OrderHistoryItem />
-          <OrderHistoryItem />
-          <OrderHistoryItem />
-          <OrderHistoryItem />
+          <FlatList
+            showsVerticalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false}
+            data={Array.from({ length: 10 }).fill({})}
+            keyExtractor={(_, index) => index.toString()}
+            renderItem={({}) => <OrderHistoryItem />}
+          />
         </Box>
       </Box>
     </PrimaryLayout>
