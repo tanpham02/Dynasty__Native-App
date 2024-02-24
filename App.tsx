@@ -1,18 +1,18 @@
+import { NavigationContainer } from '@react-navigation/native';
+import * as Font from 'expo-font';
+import { NativeBaseProvider } from 'native-base';
 import { useEffect, useState } from 'react';
+import { LogBox } from 'react-native';
+import FlashMessage from 'react-native-flash-message';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Provider } from 'react-redux';
-import { NavigationContainer, createNavigationContainerRef } from '@react-navigation/native';
-import { NativeBaseProvider } from 'native-base';
-import { LogBox, useColorScheme } from 'react-native';
-import FlashMessage from 'react-native-flash-message';
-import * as Font from 'expo-font';
 
-import store from '@/redux/store';
 import { Font as MyFont } from '@/assets';
-import { TokenManager } from '@/helpers';
-import { NavigationUtils } from '@/utils';
-import RootStackNavigator from '@/navigation/RootStackNavigator';
 import GlobalLoading, { globalLoadingRef } from '@/components/GlobalLoading';
+import { TokenManager } from '@/helpers';
+import RootStackNavigator from '@/navigation/RootStackNavigator';
+import store from '@/redux/store';
+import { NavigationUtils } from '@/utils';
 
 LogBox.ignoreAllLogs();
 export const tokenManager = TokenManager.getInstance();

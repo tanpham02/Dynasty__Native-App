@@ -36,11 +36,11 @@ const optionsRoot = {
 
 const RootStackNavigator = () => {
   return (
-    <Drawer.Navigator
+    <RootStack.Navigator
       screenOptions={{
         headerShown: false,
       }}
-      drawerContent={() => <SideBar />}
+      //   drawerContent={() => <SideBar />}
       initialRouteName={PathName.PATH_SCREEN.MAIN}
     >
       {/* Main Screen */}
@@ -148,7 +148,7 @@ const RootStackNavigator = () => {
         component={OrderDetailScreen}
         options={optionsMain}
       />
-    </Drawer.Navigator>
+    </RootStack.Navigator>
   );
 };
 
