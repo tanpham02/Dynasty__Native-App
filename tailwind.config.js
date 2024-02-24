@@ -32,10 +32,10 @@ module.exports = {
         'gray-8': '#f8fbff',
         'gray-9': '#666666',
       },
-      textColor: {
-        primary: '#111111',
-        secondary: '#444444',
-      },
+      //   textColor: {
+      //     primary: '#111111',
+      //     secondary: '#444444',
+      //   },
       zIndex: {
         999999: '999999',
         99999: '99999',

@@ -73,7 +73,9 @@ const AddressUpdateScreen = () => {
               selectedValue={location?.cityId}
               onValueChange={(cityId) => setLocation({ ...location, cityId })}
             >
-              {cities?.map((city) => <Select.Item label={city?.name} value={city?.code} />)}
+              {cities?.map((city) => (
+                <Select.Item key={city.code} label={city?.name} value={city?.code} />
+              ))}
             </Select>
           </TouchableOpacity>
           <TouchableOpacity
@@ -90,7 +92,7 @@ const AddressUpdateScreen = () => {
               onValueChange={(districtId) => setLocation({ ...location, districtId })}
             >
               {districts?.map((district) => (
-                <Select.Item label={district?.name} value={district?.code} />
+                <Select.Item key={district.code} label={district?.name} value={district?.code} />
               ))}
             </Select>
           </TouchableOpacity>
@@ -107,7 +109,9 @@ const AddressUpdateScreen = () => {
               selectedValue={location?.wardId}
               onValueChange={(wardId) => setLocation({ ...location, wardId })}
             >
-              {wards?.map((ward) => <Select.Item label={ward?.name} value={ward?.code} />)}
+              {wards?.map((ward) => (
+                <Select.Item key={ward.code} label={ward?.name} value={ward?.code} />
+              ))}
             </Select>
           </TouchableOpacity>
           <Box style={styles.shadowX} className="bg-white rounded-lg mb-3">

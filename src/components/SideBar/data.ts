@@ -29,6 +29,7 @@ export const sidebarMenus = [
     {
         label: 'Khám phá menu',
         Icon: Svg.Box,
+        onPress: () => NavigationUtils.navigate(PathName.PATH_SCREEN.CATEGORIES)
     },
     {
         label: 'Mã giảm giá',

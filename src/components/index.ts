@@ -5,4 +5,5 @@ export { default as PrimaryLayout } from '@/components/Layout/PrimaryLayout';
 export { default as BuyActionItem } from '@/components/BuyActionItem';
 export { default as SideBar } from '@/components/SideBar';
 export { default as ExpandItem } from '@/components/ExpandItem';
+export { default as OrderStatusTag } from '@/components/OrderStatusTag';
 export { globalLoading as GlobalLoading } from '@/components/GlobalLoading';

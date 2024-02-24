@@ -14,7 +14,7 @@ const HeaderBar = (props: HeaderBarProps) => {
       <View className="relative">
         <Canvas
           style={{
-            height: 70,
+            height: 68,
             width: 75,
           }}
         >
