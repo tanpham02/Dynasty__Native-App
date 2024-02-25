@@ -9,7 +9,7 @@ import ProductVariantTabList from './components/ProductVariantTabList';
 import { SceneMap } from 'react-native-tab-view';
 import ProductVariantTabItem from './components/ProductVariantTabItem';
 
-const HEADER_MAX_HEIGHT = heightScreen * 0.5; // 40%
+const HEADER_MAX_HEIGHT = heightScreen * 0.4; // 40%
 const HEADER_MIN_HEIGHT = heightScreen * 0.2; // 20%
 const SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
 
@@ -64,10 +64,9 @@ const ProductDetail = () => {
           >
             <Animated.View
               style={{
-                minHeight:
-                  typeof animatedHeightHeader === 'number' && Number(animatedHeightHeader) / 2,
-                opacity: animatedOpacity,
+                minHeight: typeof animatedHeightHeader === 'number' && Number(animatedHeightHeader),
                 height: !showHeaderMain ? 'auto' : 0,
+                opacity: animatedOpacity,
               }}
               className="bg-third pb-4 flex flex-col px-4 relative"
             >
@@ -87,7 +86,10 @@ const ProductDetail = () => {
               <Box className="w-full">
                 <Text className="text-gray-10 font-nunito-700 text-lg mb-1">Mỳ Ý Cay Hải Sản</Text>
                 <Text className="text-gray-11 font-nunito-500 text-[13px]">
-                  Mỳ Ý rán với các loại hải sản tươi ngon cùng ớt và tỏi
+                  Mỳ Ý rán với các loại hải sản tươi ngon cùng ớt và tỏi | Mỳ Ý rán với các loại hải
+                  sản tươi ngon cùng ớt và tỏi | Mỳ Ý rán với các loại hải sản tươi ngon cùng ớt và
+                  tỏi | Mỳ Ý rán với các loại hải sản tươi ngon cùng ớt và tỏi | Mỳ Ý rán với các
+                  loại hải sản tươi ngon cùng ớt và tỏi |
                 </Text>
               </Box>
             </Animated.View>
