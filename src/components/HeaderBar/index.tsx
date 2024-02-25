@@ -30,9 +30,8 @@ const HeaderBar = (props: HeaderBarProps) => {
           <Svg.ArrowLeft width={24} height={24} />
         </TouchableOpacity>
       </View>
-      {(title && <Text className="font-nunito-700 text-lg">{title}</Text>) || renderTitle?.() || (
-        <></>
-      )}
+      {(title && <Text className="font-nunito-700 text-lg mb-1.5">{title}</Text>) ||
+        renderTitle?.() || <></>}
     </Flex>
   );
 };

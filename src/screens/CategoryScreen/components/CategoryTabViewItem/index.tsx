@@ -30,7 +30,7 @@ const CategoryTabViewItem = (props: CategoryTabViewItemProps) => {
           />
         </Box>
         <Animated.Text
-          className={`text-[11px] font-nunito-500 mt-2 ${props.index === props.activeTabKey ? ' text-secondary font-nunito-700' : 'text-gray-9'}`}
+          className={`text-xs font-nunito-500 mt-2 ${props.index === props.activeTabKey ? ' text-secondary font-nunito-700' : 'text-gray-9'}`}
         >
           {props.categoryItem.name}
         </Animated.Text>

@@ -1,10 +1,10 @@
 import { NavigationState } from '@react-navigation/native';
 
 export const tabBarRoutes: NavigationState['routes'] = [
-  { key: 'deals', name: 'Deals' },
-  { key: 'for-me', name: 'For Me' },
-  { key: 'pizza', name: 'Pizza' },
-  { key: 'starters', name: 'Starters' },
-  { key: 'salads-and-pasta', name: 'Salads & Pasta' },
-  { key: 'drinks', name: 'Drinks' },
+  { key: 'deals', name: 'Pizza' },
+  { key: 'for-me', name: 'Khai vị' },
+  { key: 'pizza', name: 'Mỳ Ý' },
+  { key: 'starters', name: 'Salad' },
+  { key: 'salads-and-pasta', name: 'Thức uống' },
+  { key: 'drinks', name: 'Favorite' },
 ];
