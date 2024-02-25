@@ -5,11 +5,11 @@ import { Svg } from '@/assets';
 import { PathName } from '@/constants';
 import { NavigationUtils, widthScreen } from '@/utils';
 
-const Header = ({ navigation }) => {
+const Header = ({ onPress }) => {
   const goToNotificationScreen = () =>
     NavigationUtils.navigate(PathName.PATH_SCREEN.NOTIFICATION_SCREEN);
 
-  const openSidebar = () => navigation.openDrawer();
+  //   const openSidebar = () => navigation.openDrawer();
 
   return (
     <View className="flex-row justify-between items-center gap-3">
@@ -33,7 +33,7 @@ const Header = ({ navigation }) => {
           <Svg.Notification width={24} height={24} />
         </TouchableOpacity>
         <View className="flex-row items-center rounded-lg my-2 py-1 px-4 absolute top-2 left-4 w-[77%]">
-          <TouchableOpacity onPress={openSidebar}>
+          <TouchableOpacity onPress={onPress}>
             <Svg.Menu width={30} height={30} className="text-zinc-500 py-2 px-4" />
           </TouchableOpacity>
           <View className="mr-2 ml-4 flex-1 py-1">

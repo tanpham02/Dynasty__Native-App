@@ -37,7 +37,7 @@ const FeedbackScreen = () => {
                 <Svg.StarSolid
                   width={30}
                   height={30}
-                  className={currentStar <= index ? 'text-zinc-300' : 'text-secondary'}
+                  className={currentStar <= index ? 'text-zinc-300' : 'text-red-600'}
                 />
               </TouchableOpacity>
             ))}

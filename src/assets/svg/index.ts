@@ -37,3 +37,5 @@ export { default as Clock } from './clock.svg';
 export { default as Coin } from './coin.svg';
 export { default as Note } from './note.svg';
 export { default as Product } from './product.svg';
+export { default as TrashBin } from './trash-bin.svg';
+export { default as Eye } from './eye.svg';

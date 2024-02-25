@@ -17,6 +17,8 @@ import {
   AddressSavedScreen,
   AddressUpdateScreen,
   OrderHistoryScreen,
+  NotificationScreen,
+  OrderDetailScreen,
 } from '@/screens';
 import SideBar from '@/components/SideBar';
 import ProductDetail from '@/screens/CategoryScreen/components/ProductDetail';
@@ -34,11 +36,11 @@ const optionsRoot = {
 
 const RootStackNavigator = () => {
   return (
-    <Drawer.Navigator
+    <RootStack.Navigator
       screenOptions={{
         headerShown: false,
       }}
-      drawerContent={() => <SideBar />}
+      //   drawerContent={() => <SideBar />}
       initialRouteName={PathName.PATH_SCREEN.MAIN}
     >
       {/* Main Screen */}
@@ -134,7 +136,19 @@ const RootStackNavigator = () => {
         component={OrderHistoryScreen}
         options={optionsMain}
       />
-    </Drawer.Navigator>
+
+      <RootStack.Screen
+        name={PathName.PATH_SCREEN.NOTIFICATION_SCREEN}
+        component={NotificationScreen}
+        options={optionsMain}
+      />
+
+      <RootStack.Screen
+        name={PathName.PATH_SCREEN.ORDER_DETAIL_SCREEN}
+        component={OrderDetailScreen}
+        options={optionsMain}
+      />
+    </RootStack.Navigator>
   );
 };
 

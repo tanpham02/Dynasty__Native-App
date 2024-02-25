@@ -4,7 +4,7 @@ import { FlatList } from 'react-native';
 
 import { orderStatus } from './data';
 import { PrimaryLayout } from '@/components';
-import { OrderHistoryItem, OrderStatusTag } from './components';
+import { OrderHistoryItem, OrderStatusItemList } from './components';
 
 const OrderHistoryScreen = () => {
   const [activeKey, setActiveKey] = useState<number>(0);
@@ -30,7 +30,7 @@ const OrderHistoryScreen = () => {
             showsHorizontalScrollIndicator={false}
             keyExtractor={(_, index) => index.toString()}
             renderItem={({ item, index }) => (
-              <OrderStatusTag
+              <OrderStatusItemList
                 {...item}
                 onPress={() => handleScrollToIndex(index)}
                 isActive={activeKey === index}
@@ -39,10 +39,13 @@ const OrderHistoryScreen = () => {
           />
         </Box>
         <Box className="flex-1">
-          <OrderHistoryItem />
-          <OrderHistoryItem />
-          <OrderHistoryItem />
-          <OrderHistoryItem />
+          <FlatList
+            showsVerticalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false}
+            data={Array.from({ length: 10 }).fill({})}
+            keyExtractor={(_, index) => index.toString()}
+            renderItem={({}) => <OrderHistoryItem />}
+          />
         </Box>
       </Box>
     </PrimaryLayout>
