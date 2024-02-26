@@ -19,9 +19,9 @@ const OrderHistoryScreen = () => {
   };
 
   return (
-    <PrimaryLayout titleScreen="Lịch sử đơn hàng" containerClass="bg-white">
-      <Box className="flex-1">
-        <Box className="-mt-4">
+    <PrimaryLayout titleScreen='Lịch sử đơn hàng' containerClass='bg-white'>
+      <Box className='flex-1'>
+        <Box className='-mt-4'>
           <FlatList
             horizontal
             data={orderStatus}
@@ -38,7 +38,7 @@ const OrderHistoryScreen = () => {
             )}
           />
         </Box>
-        <Box className="flex-1">
+        <Box className='flex-1'>
           <FlatList
             showsVerticalScrollIndicator={false}
             showsHorizontalScrollIndicator={false}

@@ -1,45 +1,30 @@
 import { useEffect, useRef } from 'react';
 import { Animated, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useIsFocused } from '@react-navigation/native';
 
 import { SideBar } from '@/components';
 import styles from '@/styles';
-import {
-  BuyAction,
-  BuyQueueTutorial,
-  Header,
-  HomeCategory,
-  HomeSlider,
-  ProductList,
-} from './components';
+import { BuyAction, BuyQueueTutorial, Header, HomeCategory, HomeSlider, ProductList } from './components';
 
 const HomeScreen = ({ navigation }) => {
+  const isOpenSideBar = useRef<boolean>(false);
   const scrollY = useRef(new Animated.Value(0)).current;
   const openSideBar = useRef(new Animated.Value(0)).current;
-  const isOpenSideBar = useRef<boolean>(false);
 
-  //   useEffect(() => {
-  //     return () => {
-  //       if (isOpenSideBar.current) toggleOpenSideBar();
-  //     };
-  //   }, []);
+  const isFocus = useIsFocused();
 
-  //   useFocusEffect(
-  //     React.useCallback(() => {
-  //       isOpenSideBar.current = false; // Reset isOpenSideBar to false when the screen is focused
-  //       return () => {
-  //         // Cleanup function if needed
-  //       };
-  //     }, [])
-  //   );
+  useEffect(() => {
+    if (!isFocus && isOpenSideBar.current) toggleOpenSideBar();
+  }, [isFocus]);
 
   const toggleOpenSideBar = () => {
+    isOpenSideBar.current = !isOpenSideBar.current;
     Animated.timing(openSideBar, {
       toValue: isOpenSideBar.current ? 1 : 0,
       duration: 250,
       useNativeDriver: false,
     }).start();
-    isOpenSideBar.current = !isOpenSideBar.current;
   };
 
   const interpolatedTop = openSideBar.interpolate({
@@ -57,10 +42,15 @@ const HomeScreen = ({ navigation }) => {
     outputRange: [1.2, 1],
   });
 
+  const handleClickOnContainer = () => {
+    if (isOpenSideBar.current) {
+      toggleOpenSideBar();
+    }
+  };
   return (
-    <View className="flex-1 bg-white">
+    <View className='flex-1 bg-white'>
       <Animated.View
-        className="flex-1"
+        className='flex-1'
         style={{
           transform: [
             {
@@ -73,7 +63,7 @@ const HomeScreen = ({ navigation }) => {
         <SideBar />
       </Animated.View>
       <Animated.View
-        className="flex-1 bg-third absolute"
+        className='flex-1 bg-third absolute'
         style={[
           {
             top: interpolatedTop,
@@ -82,21 +72,22 @@ const HomeScreen = ({ navigation }) => {
           },
           styles.shadowX,
         ]}
+        onTouchStart={handleClickOnContainer}
       >
-        <View className="flex-1">
-          <SafeAreaView className="flex-1">
-            <View className="flex-1">
+        <View className='flex-1'>
+          <SafeAreaView className='flex-1'>
+            <View className='flex-1'>
               <Header onPress={toggleOpenSideBar} />
               <Animated.ScrollView
                 scrollEventThrottle={16}
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
-                keyboardShouldPersistTaps="always"
+                keyboardShouldPersistTaps='always'
                 onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: scrollY } } }], {
                   useNativeDriver: true,
                 })}
               >
-                <View className="flex-1">
+                <View className='flex-1'>
                   <BuyAction />
                   <HomeSlider />
                   <HomeCategory />

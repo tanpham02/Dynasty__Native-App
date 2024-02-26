@@ -11,27 +11,26 @@ const HeaderBar = (props: HeaderBarProps) => {
 
   return (
     <Flex className={`flex-row items-center gap-1 my-1 ${headerClass}`}>
-      <View className="relative">
+      <View className='relative'>
         <Canvas
           style={{
             height: 68,
             width: 75,
           }}
         >
-          <RoundedRect x={15} y={10} width={43} height={43} r={8} color="#f5faff">
-            <Shadow dx={6} dy={6} blur={10} color="#dfe6ee" />
-            <Shadow dx={-6} dy={-6} blur={10} color="#ffffff" />
+          <RoundedRect x={15} y={10} width={43} height={43} r={8} color='#f5faff'>
+            <Shadow dx={6} dy={6} blur={10} color='#dfe6ee' />
+            <Shadow dx={-6} dy={-6} blur={10} color='#ffffff' />
           </RoundedRect>
         </Canvas>
         <TouchableOpacity
           onPress={NavigationUtils.goBack}
-          className="w-[43px] h-[43px] rounded-lg items-center justify-center absolute top-2.5 left-3.5"
+          className='w-[43px] h-[43px] rounded-lg items-center justify-center absolute top-2.5 left-3.5'
         >
           <Svg.ArrowLeft width={24} height={24} />
         </TouchableOpacity>
       </View>
-      {(title && <Text className="font-nunito-700 text-lg mb-1.5">{title}</Text>) ||
-        renderTitle?.() || <></>}
+      {(title && <Text className='font-nunito-700 text-lg'>{title}</Text>) || renderTitle?.() || <></>}
     </Flex>
   );
 };

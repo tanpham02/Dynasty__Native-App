@@ -34,8 +34,8 @@ const CategoryTypeList = () => {
           marginLeft: 4,
         },
       ]}
-      className="flex-1"
-      snapToAlignment="center"
+      className='flex-1'
+      snapToAlignment='center'
       renderItem={({ index, item }) => (
         <CategoryTypeItem
           key={`${index}`}

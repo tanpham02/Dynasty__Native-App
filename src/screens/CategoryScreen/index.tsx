@@ -9,12 +9,8 @@ import styles from '@/styles';
 
 const Categories = (props: CategoriesProps) => {
   return (
-    <PrimaryLayout
-      titleScreen="Khám phá Menu"
-      statusBarBackgroundColor="white"
-      containerClass="bg-third"
-    >
-      <Box className="flex-1 mt-3">
+    <PrimaryLayout titleScreen='Khám phá Menu' statusBarBackgroundColor='white' containerClass='bg-third'>
+      <Box className='flex-1 mt-3'>
         <CategoryTabViewGroup />
       </Box>
     </PrimaryLayout>

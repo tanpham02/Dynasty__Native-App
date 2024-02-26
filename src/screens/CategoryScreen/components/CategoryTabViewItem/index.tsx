@@ -15,7 +15,7 @@ const CategoryTabViewItem = (props: CategoryTabViewItemProps) => {
           props.setActiveTabKey(props.index);
           props.onScrollToIndex(props.index);
         }}
-        className="flex justify-center items-center"
+        className='flex justify-center items-center'
         style={styles.shadowX}
       >
         <Box

@@ -44,44 +44,20 @@ const RootStackNavigator = () => {
       initialRouteName={PathName.PATH_SCREEN.MAIN}
     >
       {/* Main Screen */}
-      <RootStack.Screen
-        name={PathName.PATH_SCREEN.MAIN}
-        component={HomeScreen}
-        options={optionsMain}
-      />
+      <RootStack.Screen name={PathName.PATH_SCREEN.MAIN} component={HomeScreen} options={optionsMain} />
 
       {/* Authentication Screens */}
-      <RootStack.Screen
-        name={PathName.PATH_SCREEN.SIGN_IN_SCREEN}
-        component={SignInScreen}
-        options={optionsRoot}
-      />
+      <RootStack.Screen name={PathName.PATH_SCREEN.SIGN_IN_SCREEN} component={SignInScreen} options={optionsRoot} />
 
       {/* Categories Screens */}
-      <RootStack.Screen
-        name={PathName.PATH_SCREEN.CATEGORIES}
-        component={CategoryScreen}
-        options={optionsRoot}
-      />
+      <RootStack.Screen name={PathName.PATH_SCREEN.CATEGORIES} component={CategoryScreen} options={optionsRoot} />
 
       {/* Product Detail Screens */}
-      <RootStack.Screen
-        name={PathName.PATH_SCREEN.PRODUCT_DETAIL}
-        component={ProductDetail}
-        options={optionsRoot}
-      />
+      <RootStack.Screen name={PathName.PATH_SCREEN.PRODUCT_DETAIL} component={ProductDetail} options={optionsRoot} />
 
-      <RootStack.Screen
-        name={PathName.PATH_SCREEN.DELIVERY_SCREEN}
-        component={DeliveryScreen}
-        options={optionsMain}
-      />
+      <RootStack.Screen name={PathName.PATH_SCREEN.DELIVERY_SCREEN} component={DeliveryScreen} options={optionsMain} />
 
-      <RootStack.Screen
-        name={PathName.PATH_SCREEN.FEEDBACK_SCREEN}
-        component={FeedbackScreen}
-        options={optionsMain}
-      />
+      <RootStack.Screen name={PathName.PATH_SCREEN.FEEDBACK_SCREEN} component={FeedbackScreen} options={optionsMain} />
 
       <RootStack.Screen
         name={PathName.PATH_SCREEN.TERM_AND_CONDITIONS_SCREEN}
@@ -89,11 +65,7 @@ const RootStackNavigator = () => {
         options={optionsMain}
       />
 
-      <RootStack.Screen
-        name={PathName.PATH_SCREEN.FAQS_SCREEN}
-        component={FAQsScreen}
-        options={optionsMain}
-      />
+      <RootStack.Screen name={PathName.PATH_SCREEN.FAQS_SCREEN} component={FAQsScreen} options={optionsMain} />
 
       <RootStack.Screen
         name={PathName.PATH_SCREEN.PRIVACY_POLICY_SCREEN}
@@ -107,11 +79,7 @@ const RootStackNavigator = () => {
         options={optionsMain}
       />
 
-      <RootStack.Screen
-        name={PathName.PATH_SCREEN.MY_PROFILE}
-        component={MyProfileScreen}
-        options={optionsMain}
-      />
+      <RootStack.Screen name={PathName.PATH_SCREEN.MY_PROFILE} component={MyProfileScreen} options={optionsMain} />
 
       <RootStack.Screen
         name={PathName.PATH_SCREEN.UPDATE_PROFILE}

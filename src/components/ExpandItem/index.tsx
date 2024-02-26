@@ -37,7 +37,7 @@ const ExpandItem = ({ label, value }: ExpandItemProps) => {
 
   return (
     <Animated.View
-      className="border-b border-zinc-300"
+      className='border-b border-zinc-300'
       style={[
         {
           maxHeight: expandAnimation,
@@ -45,8 +45,8 @@ const ExpandItem = ({ label, value }: ExpandItemProps) => {
         },
       ]}
     >
-      <TouchableOpacity className="flex-row py-3 px-5" onPress={() => setIsExpand(!isExpand)}>
-        <Text className="text-zinc-700 font-nunito-700 flex-1">{label}</Text>
+      <TouchableOpacity className='flex-row py-3 px-5' onPress={() => setIsExpand(!isExpand)}>
+        <Text className='text-zinc-700 font-nunito-700 flex-1'>{label}</Text>
         <Animated.View
           style={{
             transform: [
@@ -56,10 +56,10 @@ const ExpandItem = ({ label, value }: ExpandItemProps) => {
             ],
           }}
         >
-          <Svg.ArrowDown width={23} height={23} className="text-zinc-700" />
+          <Svg.ArrowDown width={23} height={23} className='text-zinc-700' />
         </Animated.View>
       </TouchableOpacity>
-      <Text className="font-nunito-500 pt-1 pb-2 px-6 text-zinc-500">{value}</Text>
+      <Text className='font-nunito-500 pt-1 pb-2 px-6 text-zinc-500'>{value}</Text>
     </Animated.View>
   );
 };

@@ -9,15 +9,13 @@ const NutritionInformationScreen = () => {
 
   return (
     <PrimaryLayout
-      headerBarClass="flex-col items-start"
-      renderTitle={() => (
-        <Text className="font-nunito-700 text-2xl px-4">Thông tin dinh dưỡng</Text>
-      )}
-      containerClass="bg-third"
+      headerBarClass='flex-col items-start'
+      renderTitle={() => <Text className='font-nunito-700 text-2xl px-4'>Thông tin dinh dưỡng</Text>}
+      containerClass='bg-third'
     >
-      <Box className="flex-1 bg-white">
-        <Divider className="bg-zinc-200" />
-        <Box className="px-5 py-3">
+      <Box className='flex-1 bg-white'>
+        <Divider className='bg-zinc-200' />
+        <Box className='px-5 py-3'>
           <RenderHtml
             contentWidth={widthScreen}
             source={{ html }}

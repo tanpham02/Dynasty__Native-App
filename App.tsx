@@ -51,7 +51,7 @@ export default function App() {
         <Provider store={store}>
           <NavigationContainer ref={NavigationUtils.navigationRef}>
             <RootStackNavigator />
-            <FlashMessage position="bottom" floating />
+            <FlashMessage position='bottom' floating />
           </NavigationContainer>
           <GlobalLoading ref={globalLoadingRef} />
         </Provider>

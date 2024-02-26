@@ -11,13 +11,13 @@ const sliders = [Slider1, Slider2, Slider3, Slider4, Slider5];
 
 const HomeSlider = () => {
   return (
-    <View className="mt-4 ml-2">
+    <View className='mt-4 ml-2'>
       <FlatList
         horizontal
         pagingEnabled
         data={sliders}
         // ref={flatListRef}
-        snapToAlignment="center"
+        snapToAlignment='center'
         scrollEventThrottle={16}
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
