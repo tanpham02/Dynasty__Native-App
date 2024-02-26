@@ -4,7 +4,7 @@ import { productData } from './data';
 
 const ProductList = () => {
   return (
-    <Box className="absolute top-[55px] left-0 right-0 bottom-0">
+    <Box className='absolute top-[55px] left-0 right-0 bottom-0'>
       <FlatList
         scrollEventThrottle={16}
         //   pagingEnabled
@@ -12,9 +12,7 @@ const ProductList = () => {
         horizontal={false}
         showsVerticalScrollIndicator={false}
         data={productData}
-        renderItem={({ index, item }) => (
-            <ProductItem {...item} index={index} />
-        )}
+        renderItem={({ index, item }) => <ProductItem {...item} index={index} />}
       />
     </Box>
   );

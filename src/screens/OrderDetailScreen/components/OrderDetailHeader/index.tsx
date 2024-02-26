@@ -8,12 +8,12 @@ const OrderDetailHeader = () => {
     <>
       <OrderStatusTag />
       <Box>
-        <Text className="text-xs font-nunito-400 text-zinc-600">
-          Mã đơn hàng: <Text className="font-nunito-700 text-zinc-800">#24335</Text>
+        <Text className='text-xs font-nunito-400 text-zinc-600'>
+          Mã đơn hàng: <Text className='font-nunito-700 text-zinc-800'>#24335</Text>
         </Text>
-        <Text className="text-xs font-nunito-400 text-zinc-600">
+        <Text className='text-xs font-nunito-400 text-zinc-600'>
           Thời gian đặt:{' '}
-          <Text className="font-nunito-700 text-zinc-800">
+          <Text className='font-nunito-700 text-zinc-800'>
             {DateUtils.formatDate(new Date(), DateUtils.DATE_FORMAT_HHMMDDMMYYYY)}
           </Text>
         </Text>

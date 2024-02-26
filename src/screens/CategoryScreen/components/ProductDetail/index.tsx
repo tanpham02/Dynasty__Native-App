@@ -10,11 +10,11 @@ const ProductDetail = () => {
 
   return (
     <>
-      <MyStatusBar backgroundColor="white" barStyle="dark-content" />
-      <SafeAreaView className="flex-1">
-        <Box className="flex-1">
+      <MyStatusBar backgroundColor='white' barStyle='dark-content' />
+      <SafeAreaView className='flex-1'>
+        <Box className='flex-1'>
           <HeaderBar
-            headerBarClass="h-[30%] bg-third relative flex flex-col"
+            headerBarClass='h-[30%] bg-third relative flex flex-col'
             renderTitle={() => (
               <>
                 <Image
@@ -26,10 +26,10 @@ const ProductDetail = () => {
                     height: 160,
                     objectFit: 'contain',
                   }}
-                  className="mx-auto"
+                  className='mx-auto'
                 />
-                <Box className="flex-1 bg-yellow-400">
-                  <Box className="bg-secondary">
+                <Box className='flex-1 bg-yellow-400'>
+                  <Box className='bg-secondary'>
                     <Text>Pizza Hải Sản Đào</Text>
                     <Text>Tôm, Đào hoà quyện bùng nổ cùng sốt Thousand Island</Text>
                   </Box>
@@ -37,9 +37,9 @@ const ProductDetail = () => {
               </>
             )}
           />
-          <Divider color="blue.200" />
+          <Divider color='blue.200' />
 
-          <Box className="bg-secondary flex-1"></Box>
+          <Box className='bg-secondary flex-1'></Box>
         </Box>
       </SafeAreaView>
     </>

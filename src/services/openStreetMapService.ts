@@ -3,13 +3,7 @@ import { OPEN_STREET_MAP_URL } from '@/constants/apiURL';
 import { LocationInfoModel } from '@/models/locationInfoModel';
 
 const openStreetMapService = {
-  getLocationsByLonLat: async ({
-    lat,
-    lon,
-  }: {
-    lat: number;
-    lon: number;
-  }): Promise<LocationInfoModel> => {
+  getLocationsByLonLat: async ({ lat, lon }: { lat: number; lon: number }): Promise<LocationInfoModel> => {
     return axios({
       baseURL: `${OPEN_STREET_MAP_URL}/reverse`,
       method: 'GET',

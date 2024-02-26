@@ -5,10 +5,7 @@ import { tabBarRoutes } from '../CategoryTabViewGroup/data';
 import CategoryTabViewItem from '../CategoryTabViewItem';
 import { CategoryTabViewListProps } from './type';
 
-const CategoryTabViewList = (
-  props: CategoryTabViewListProps,
-  categoryTabViewGroupRef: React.Ref<any>,
-) => {
+const CategoryTabViewList = (props: CategoryTabViewListProps, categoryTabViewGroupRef: React.Ref<any>) => {
   return (
     <FlatList
       scrollEventThrottle={16}
@@ -21,8 +18,8 @@ const CategoryTabViewList = (
         height: 90,
         flexGrow: 0,
       }}
-      snapToAlignment="center"
-      className="ml-20"
+      snapToAlignment='center'
+      className='ml-20'
       ref={categoryTabViewGroupRef}
       renderItem={({ index, item }) => (
         <CategoryTabViewItem

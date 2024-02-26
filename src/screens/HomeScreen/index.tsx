@@ -4,14 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { SideBar } from '@/components';
 import styles from '@/styles';
-import {
-  BuyAction,
-  BuyQueueTutorial,
-  Header,
-  HomeCategory,
-  HomeSlider,
-  ProductList,
-} from './components';
+import { BuyAction, BuyQueueTutorial, Header, HomeCategory, HomeSlider, ProductList } from './components';
 
 const HomeScreen = ({ navigation }) => {
   const scrollY = useRef(new Animated.Value(0)).current;
@@ -58,9 +51,9 @@ const HomeScreen = ({ navigation }) => {
   });
 
   return (
-    <View className="flex-1 bg-white">
+    <View className='flex-1 bg-white'>
       <Animated.View
-        className="flex-1"
+        className='flex-1'
         style={{
           transform: [
             {
@@ -73,7 +66,7 @@ const HomeScreen = ({ navigation }) => {
         <SideBar />
       </Animated.View>
       <Animated.View
-        className="flex-1 bg-third absolute"
+        className='flex-1 bg-third absolute'
         style={[
           {
             top: interpolatedTop,
@@ -83,20 +76,20 @@ const HomeScreen = ({ navigation }) => {
           styles.shadowX,
         ]}
       >
-        <View className="flex-1">
-          <SafeAreaView className="flex-1">
-            <View className="flex-1">
+        <View className='flex-1'>
+          <SafeAreaView className='flex-1'>
+            <View className='flex-1'>
               <Header onPress={toggleOpenSideBar} />
               <Animated.ScrollView
                 scrollEventThrottle={16}
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
-                keyboardShouldPersistTaps="always"
+                keyboardShouldPersistTaps='always'
                 onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: scrollY } } }], {
                   useNativeDriver: true,
                 })}
               >
-                <View className="flex-1">
+                <View className='flex-1'>
                   <BuyAction />
                   <HomeSlider />
                   <HomeCategory />

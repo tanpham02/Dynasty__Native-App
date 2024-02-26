@@ -40,18 +40,14 @@ const ProductItem = (props: ProductItemProps) => {
 
   return (
     <Pressable
-      className="bg-third rounded-lg m-4"
+      className='bg-third rounded-lg m-4'
       style={styles.shadowX}
       //   onPress={() => NavigationUtils.navigate(PathName.PATH_SCREEN.PRODUCT_DETAIL)}
     >
-      <Box className="p-3 gap-1">
-        <Text className="text-base text-black font-nunito-700">{props.name}</Text>
+      <Box className='p-3 gap-1'>
+        <Text className='text-base text-black font-nunito-700'>{props.name}</Text>
         {props?.description && (
-          <Text
-            className="text-xs text-gray-9 font-nunito-500"
-            style={{ lineHeight: 17 }}
-            numberOfLines={2}
-          >
+          <Text className='text-xs text-gray-9 font-nunito-500' style={{ lineHeight: 17 }} numberOfLines={2}>
             {props.description}
           </Text>
         )}
@@ -60,7 +56,7 @@ const ProductItem = (props: ProductItemProps) => {
         className={`flex-row mx-3 mb-4 ${props.types.length > 0 && !props.types.includes(ProductType.NORMAL) ? 'justify-between' : 'justify-end'}`}
       >
         {props.types.length > 0 && !props.types.includes(ProductType.NORMAL) && (
-          <Box className="flex-row gap-2">
+          <Box className='flex-row gap-2'>
             {props.types.map((type, index) => {
               const { Icon, color } = ProductTypeIconList[type];
               return <Icon key={index} width={21} height={21} color={color} />;
@@ -75,37 +71,35 @@ const ProductItem = (props: ProductItemProps) => {
             }}
             onPressIn={onPressIn}
             opacity={1}
-            className="items-center"
+            className='items-center'
           >
             {haveProductFavored.includes(props.index) ? (
-              <Svg.HeartSolid width={21} height={21} color="#e8002a" />
+              <Svg.HeartSolid width={21} height={21} color='#e8002a' />
             ) : (
-              <Svg.HeartOutline width={21} height={21} color="#000000" />
+              <Svg.HeartOutline width={21} height={21} color='#000000' />
             )}
           </Pressable>
         </Animated.View>
       </Box>
-      <Box className="relative pt-[40%]">
+      <Box className='relative pt-[40%]'>
         <Image
           source={{
             uri: props.image,
           }}
           alt={props.name}
-          width="full"
-          resizeMode="contain"
-          className="absolute top-0 left-0 bottom-0 right-0 bg-zinc-100"
+          width='full'
+          resizeMode='contain'
+          className='absolute top-0 left-0 bottom-0 right-0 bg-zinc-100'
         />
       </Box>
-      <Box className="mt-3 p-3 flex-row items-center justify-between">
-        <Text className="font-nunito-800 text-lg text-secondary">
-          {formatCurrencyByLocale(props.price)}
-        </Text>
+      <Box className='mt-3 p-3 flex-row items-center justify-between'>
+        <Text className='font-nunito-800 text-lg text-secondary'>{formatCurrencyByLocale(props.price)}</Text>
         <TouchableOpacity
-          className="bg-secondary rounded-lg p-2 flex-row items-center"
+          className='bg-secondary rounded-lg p-2 flex-row items-center'
           onPress={() => NavigationUtils.navigate(PathName.PATH_SCREEN.PRODUCT_DETAIL)}
         >
-          <Svg.Plus width={16} height={16} color="white" className="mr-2" />
-          <Text className="font-nunito-700 text-sm text-white">Thêm giỏ hàng</Text>
+          <Svg.Plus width={16} height={16} color='white' className='mr-2' />
+          <Text className='font-nunito-700 text-sm text-white'>Thêm giỏ hàng</Text>
         </TouchableOpacity>
       </Box>
     </Pressable>

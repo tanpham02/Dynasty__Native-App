@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  ColorValue,
-  SafeAreaView,
-  StatusBar,
-  StatusBarProps,
-  StyleSheet,
-  View,
-} from 'react-native';
+import { ColorValue, SafeAreaView, StatusBar, StatusBarProps, StyleSheet, View } from 'react-native';
 
 interface MyStatusBarProps extends StatusBarProps {
   backgroundColor?: ColorValue;

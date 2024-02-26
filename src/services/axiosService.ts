@@ -38,9 +38,7 @@ const axiosService = async (): Promise<AxiosInstance> => {
   axiosOption.interceptors.request.use(
     async (config) => {
       if (accessToken && !checkTokenExp(accessToken)) {
-        refreshTokenRequest = refreshTokenRequest
-          ? refreshTokenRequest
-          : loadRefreshToken(refreshToken);
+        refreshTokenRequest = refreshTokenRequest ? refreshTokenRequest : loadRefreshToken(refreshToken);
         try {
           const response = await refreshTokenRequest;
           if (response) {

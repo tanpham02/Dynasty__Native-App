@@ -8,7 +8,7 @@ import { NotificationHiddenItem, NotificationItem } from './components';
 
 const NotificationScreen = () => {
   return (
-    <PrimaryLayout titleScreen="Thông báo của bạn" containerClass="bg-white">
+    <PrimaryLayout titleScreen='Thông báo của bạn' containerClass='bg-white'>
       <SwipeListView
         disableRightSwipe
         rightOpenValue={-96}
@@ -20,7 +20,7 @@ const NotificationScreen = () => {
         data={Array.from({ length: 100 }).fill({})}
         keyExtractor={(_, index) => index.toString()}
         renderHiddenItem={() => <NotificationHiddenItem />}
-        ItemSeparatorComponent={() => <Box className="h-[1px] bg-zinc-200" />}
+        ItemSeparatorComponent={() => <Box className='h-[1px] bg-zinc-200' />}
       />
     </PrimaryLayout>
   );

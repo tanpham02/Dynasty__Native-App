@@ -36,16 +36,16 @@ const CategoryTabViewGroup = () => {
   };
 
   return (
-    <Box className="flex-1 flex items-center relative" style={styles.shadowX}>
-      <Box className="flex-1 min-h-[200px]">
-        <Box className="absolute left-2 px-2 flex justify-center items-center flex-col pr-4">
+    <Box className='flex-1 flex items-center relative' style={styles.shadowX}>
+      <Box className='flex-1 min-h-[200px]'>
+        <Box className='absolute left-2 px-2 flex justify-center items-center flex-col pr-4'>
           <Box
-            className="bg-secondary w-14 h-14 rounded-full flex justify-center items-center"
+            className='bg-secondary w-14 h-14 rounded-full flex justify-center items-center'
             style={styles.shadowSecondary}
           >
-            <Svg.FoodMenu width={36} height={36} className="text-white mt-1" />
+            <Svg.FoodMenu width={36} height={36} className='text-white mt-1' />
           </Box>
-          <Text className="text-[13px] text-secondary font-nunito-700 mt-2">Menu</Text>
+          <Text className='text-[13px] text-secondary font-nunito-700 mt-2'>Menu</Text>
         </Box>
         <TabView
           navigationState={{
@@ -69,7 +69,7 @@ const CategoryTabViewGroup = () => {
         />
       </Box>
 
-      <Box className="absolute left-0 top-[90px] shadow-2xl flex-1">
+      <Box className='absolute left-0 top-[90px] shadow-2xl flex-1'>
         <CategoryTypeList />
       </Box>
     </Box>

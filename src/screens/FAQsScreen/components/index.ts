@@ -1,1 +1,1 @@
-export { default as FaqItem } from "./FaqItem"
+export { default as FaqItem } from './FaqItem';

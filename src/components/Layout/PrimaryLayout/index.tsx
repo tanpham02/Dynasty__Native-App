@@ -15,13 +15,9 @@ const PrimaryLayout = (props: PrimaryLayoutProps) => {
         backgroundColor={props.statusBarBackgroundColor || 'transparent'}
         barStyle={props.barStyle || 'dark-content'}
       />
-      <SafeAreaView className="flex-1">
+      <SafeAreaView className='flex-1'>
         <View className={`flex-1 ${props.containerClass}`}>
-          <HeaderBar
-            title={props?.titleScreen}
-            renderTitle={props.renderTitle}
-            headerClass={props.headerBarClass}
-          />
+          <HeaderBar title={props?.titleScreen} renderTitle={props.renderTitle} headerClass={props.headerBarClass} />
           {props.children}
         </View>
       </SafeAreaView>

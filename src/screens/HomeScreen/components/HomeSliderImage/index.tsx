@@ -7,9 +7,9 @@ const HomeSliderImage = ({ source }: { source: ImageSourcePropType }) => {
     <TouchableOpacity>
       <Image
         source={source}
-        className="rounded-lg m-1 mr-2"
+        className='rounded-lg m-1 mr-2'
         style={[styles.heightOnePerFive, styles.widthFourPerFiveScreen]}
-        alt=""
+        alt=''
       />
     </TouchableOpacity>
   );

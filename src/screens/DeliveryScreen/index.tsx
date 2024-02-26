@@ -78,13 +78,13 @@ const DeliveryScreen = () => {
 
   return (
     <PrimaryLayout
-      statusBarBackgroundColor="white"
-      containerClass="bg-gray-5"
+      statusBarBackgroundColor='white'
+      containerClass='bg-gray-5'
       renderTitle={() => (
-        <View className="w-full flex-row items-center mx-3">
+        <View className='w-full flex-row items-center mx-3'>
           {buyActions.map((buyAction, index) => (
             <BuyActionItem
-              wrapperClassName="mr-3"
+              wrapperClassName='mr-3'
               key={index}
               {...buyAction}
               onPress={() => setTabActiveKey(index)}
@@ -94,16 +94,16 @@ const DeliveryScreen = () => {
         </View>
       )}
     >
-      <View className="px-4 mt-6 flex-row items-center">
-        <Input placeholder="Nhập địa điểm của bạn" className="flex-1 bg-white" />
+      <View className='px-4 mt-6 flex-row items-center'>
+        <Input placeholder='Nhập địa điểm của bạn' className='flex-1 bg-white' />
         <TouchableOpacity
-          className="w-10 h-10 items-center justify-center bg-gray-5 rounded-lg ml-1"
+          className='w-10 h-10 items-center justify-center bg-gray-5 rounded-lg ml-1'
           style={styles.shadowX}
         >
           <Svg.ArrowRight width={20} height={20} />
         </TouchableOpacity>
       </View>
-      <View className="mt-4 relative">
+      <View className='mt-4 relative'>
         <MapView
           onPress={handleMakerLocation}
           style={{
@@ -120,20 +120,15 @@ const DeliveryScreen = () => {
             longitudeDelta: 0.025,
           }}
         >
-          {coordinate?.latitude && coordinate?.longitude && (
-            <Marker draggable coordinate={coordinate} />
-          )}
+          {coordinate?.latitude && coordinate?.longitude && <Marker draggable coordinate={coordinate} />}
         </MapView>
       </View>
-      <View className="absolute bottom-0 left-0 right-0 p-4 bg-white">
-        <Text numberOfLines={2} className="font-nunito-500">
+      <View className='absolute bottom-0 left-0 right-0 p-4 bg-white'>
+        <Text numberOfLines={2} className='font-nunito-500'>
           {userLocationInfo?.display_name}
         </Text>
-        <TouchableOpacity className="bg-primary py-2 px-4 rounded-lg mt-3">
-          <Text
-            className="text-center text-white font-nunito-500 text-sm"
-            onPress={NavigationUtils.goBack}
-          >
+        <TouchableOpacity className='bg-primary py-2 px-4 rounded-lg mt-3'>
+          <Text className='text-center text-white font-nunito-500 text-sm' onPress={NavigationUtils.goBack}>
             Đồng ý
           </Text>
         </TouchableOpacity>
