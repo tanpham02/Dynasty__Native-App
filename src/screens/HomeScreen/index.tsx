@@ -1,38 +1,30 @@
 import { useEffect, useRef } from 'react';
 import { Animated, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useIsFocused } from '@react-navigation/native';
 
 import { SideBar } from '@/components';
 import styles from '@/styles';
 import { BuyAction, BuyQueueTutorial, Header, HomeCategory, HomeSlider, ProductList } from './components';
 
 const HomeScreen = ({ navigation }) => {
+  const isOpenSideBar = useRef<boolean>(false);
   const scrollY = useRef(new Animated.Value(0)).current;
   const openSideBar = useRef(new Animated.Value(0)).current;
-  const isOpenSideBar = useRef<boolean>(false);
 
-  //   useEffect(() => {
-  //     return () => {
-  //       if (isOpenSideBar.current) toggleOpenSideBar();
-  //     };
-  //   }, []);
+  const isFocus = useIsFocused();
 
-  //   useFocusEffect(
-  //     React.useCallback(() => {
-  //       isOpenSideBar.current = false; // Reset isOpenSideBar to false when the screen is focused
-  //       return () => {
-  //         // Cleanup function if needed
-  //       };
-  //     }, [])
-  //   );
+  useEffect(() => {
+    if (!isFocus && isOpenSideBar.current) toggleOpenSideBar();
+  }, [isFocus]);
 
   const toggleOpenSideBar = () => {
+    isOpenSideBar.current = !isOpenSideBar.current;
     Animated.timing(openSideBar, {
       toValue: isOpenSideBar.current ? 1 : 0,
       duration: 250,
       useNativeDriver: false,
     }).start();
-    isOpenSideBar.current = !isOpenSideBar.current;
   };
 
   const interpolatedTop = openSideBar.interpolate({
@@ -50,6 +42,11 @@ const HomeScreen = ({ navigation }) => {
     outputRange: [1.2, 1],
   });
 
+  const handleClickOnContainer = () => {
+    if (isOpenSideBar.current) {
+      toggleOpenSideBar();
+    }
+  };
   return (
     <View className='flex-1 bg-white'>
       <Animated.View
@@ -75,6 +72,7 @@ const HomeScreen = ({ navigation }) => {
           },
           styles.shadowX,
         ]}
+        onTouchStart={handleClickOnContainer}
       >
         <View className='flex-1'>
           <SafeAreaView className='flex-1'>
