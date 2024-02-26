@@ -6,8 +6,8 @@ import { tabBarRoutes } from '../../data';
 import ProductVariantTabItem from '../ProductVariantTabItem';
 
 const renderScene = SceneMap({
-  deals: ProductVariantTabItem,
-  'for-me': ProductVariantTabItem,
+  size: ProductVariantTabItem,
+  crust: ProductVariantTabItem,
 });
 
 const ProductVariantTabList = (props: ProductVariantTabListProps) => {

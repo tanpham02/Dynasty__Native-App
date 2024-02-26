@@ -4,7 +4,7 @@ import { ProductType } from '@/models/productModel';
 import styles from '@/styles';
 import { NavigationUtils } from '@/utils';
 import { formatCurrencyByLocale } from '@/utils/numberUtils';
-import { Box, Flex, Image, Pressable } from 'native-base';
+import { Box, Image, Pressable } from 'native-base';
 import React, { useState } from 'react';
 import { Animated, GestureResponderEvent, Text, TouchableOpacity } from 'react-native';
 import { ProductTypeIconList } from '../ProductList/data';
@@ -56,6 +56,7 @@ const ProductItem = (props: ProductItemProps) => {
           </Text>
         )}
       </Box>
+
       <Box
         className={`flex-row mx-3 mb-4 ${props.types.length > 0 && !props.types.includes(ProductType.NORMAL) ? 'justify-between' : 'justify-end'}`}
       >
@@ -85,6 +86,7 @@ const ProductItem = (props: ProductItemProps) => {
           </Pressable>
         </Animated.View>
       </Box>
+
       <Box className="relative pt-[40%]">
         <Image
           source={{
@@ -96,6 +98,7 @@ const ProductItem = (props: ProductItemProps) => {
           className="absolute top-0 left-0 bottom-0 right-0 bg-zinc-200"
         />
       </Box>
+
       <Box className="mt-3 p-3 flex-row items-center justify-between">
         <Text className="font-nunito-800 text-lg text-secondary">
           {formatCurrencyByLocale(props.price)}
