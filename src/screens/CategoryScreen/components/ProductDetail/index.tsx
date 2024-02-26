@@ -6,10 +6,8 @@ import { Box, Divider, Image, ScrollView, Text } from 'native-base';
 import React, { useRef, useState } from 'react';
 import { Animated, SafeAreaView, TouchableOpacity } from 'react-native';
 import ProductVariantTabList from './components/ProductVariantTabList';
-import { SceneMap } from 'react-native-tab-view';
-import ProductVariantTabItem from './components/ProductVariantTabItem';
 
-const HEADER_MAX_HEIGHT = heightScreen * 0.4; // 40%
+const HEADER_MAX_HEIGHT = heightScreen * 0.36; // 36%
 const HEADER_MIN_HEIGHT = heightScreen * 0.2; // 20%
 const SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
 
@@ -18,6 +16,7 @@ const ProductDetail = () => {
   const scrollOffsetY = useRef(new Animated.Value(0)).current;
 
   const [showHeaderMain, setShowHeaderMain] = useState<boolean>(false);
+  const [activeTabKey, setActiveTabKey] = useState<number>(0);
 
   const animatedHeightHeader = scrollOffsetY.interpolate({
     inputRange: [0, SCROLL_DISTANCE],
@@ -128,7 +127,11 @@ const ProductDetail = () => {
                 },
               ]}
             >
-              <HeaderBar title='Mỳ Ý Cay Hải Sản' />
+              <HeaderBar title="Mỳ Ý Cay Hải Sản" />
+              <ProductVariantTabList
+                activeTabKey={activeTabKey}
+                setActiveTabKey={setActiveTabKey}
+              />
             </Animated.View>
           )}
 
