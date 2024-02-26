@@ -31,11 +31,9 @@ module.exports = {
         'gray-7': '#f7faff',
         'gray-8': '#f8fbff',
         'gray-9': '#666666',
+        'gray-10': '#111111',
+        'gray-11': '#444444',
       },
-      //   textColor: {
-      //     primary: '#111111',
-      //     secondary: '#444444',
-      //   },
       zIndex: {
         999999: '999999',
         99999: '99999',

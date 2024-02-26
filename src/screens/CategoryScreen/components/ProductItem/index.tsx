@@ -89,7 +89,7 @@ const ProductItem = (props: ProductItemProps) => {
           alt={props.name}
           width='full'
           resizeMode='contain'
-          className='absolute top-0 left-0 bottom-0 right-0 bg-zinc-100'
+          className='absolute top-0 left-0 bottom-0 right-0 bg-zinc-200'
         />
       </Box>
       <Box className='mt-3 p-3 flex-row items-center justify-between'>
@@ -98,7 +98,7 @@ const ProductItem = (props: ProductItemProps) => {
           className='bg-secondary rounded-lg p-2 flex-row items-center'
           onPress={() => NavigationUtils.navigate(PathName.PATH_SCREEN.PRODUCT_DETAIL)}
         >
-          <Svg.Plus width={16} height={16} color='white' className='mr-2' />
+          <Svg.Plus width={16} height={16} color='white' className='mr-1' />
           <Text className='font-nunito-700 text-sm text-white'>Thêm giỏ hàng</Text>
         </TouchableOpacity>
       </Box>
