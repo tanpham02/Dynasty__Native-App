@@ -1,26 +1,25 @@
-import { CardStyleInterpolators, createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import { CardStyleInterpolators, createStackNavigator } from '@react-navigation/stack';
 
 import { PathName } from '@/constants';
 import {
-  FeedbackScreen,
-  HomeScreen,
-  SignInScreen,
-  TermAndConditionsScreen,
-  CategoryScreen,
-  DeliveryScreen,
-  FAQsScreen,
-  PrivacyPolicyScreen,
-  NutritionInformationScreen,
-  MyProfileScreen,
-  UpdateProfileScreen,
   AddressSavedScreen,
   AddressUpdateScreen,
-  OrderHistoryScreen,
+  CategoryScreen,
+  DeliveryAndPickupScreenScreen,
+  FAQsScreen,
+  FeedbackScreen,
+  HomeScreen,
+  MyProfileScreen,
   NotificationScreen,
+  NutritionInformationScreen,
   OrderDetailScreen,
+  OrderHistoryScreen,
+  PrivacyPolicyScreen,
+  SignInScreen,
+  TermAndConditionsScreen,
+  UpdateProfileScreen,
 } from '@/screens';
-import SideBar from '@/components/SideBar';
 import ProductDetail from '@/screens/CategoryScreen/components/ProductDetail';
 
 const RootStack = createStackNavigator();
@@ -41,21 +40,33 @@ const RootStackNavigator = () => {
         headerShown: false,
       }}
       //   drawerContent={() => <SideBar />}
-      initialRouteName={PathName.PATH_SCREEN.MAIN}
+      initialRouteName={PathName.PATH_SCREEN.HOME_SCREEN}
     >
       {/* Main Screen */}
-      <RootStack.Screen name={PathName.PATH_SCREEN.MAIN} component={HomeScreen} options={optionsMain} />
+      <RootStack.Screen name={PathName.PATH_SCREEN.HOME_SCREEN} component={HomeScreen} options={optionsMain} />
 
       {/* Authentication Screens */}
       <RootStack.Screen name={PathName.PATH_SCREEN.SIGN_IN_SCREEN} component={SignInScreen} options={optionsRoot} />
 
       {/* Categories Screens */}
-      <RootStack.Screen name={PathName.PATH_SCREEN.CATEGORIES} component={CategoryScreen} options={optionsRoot} />
+      <RootStack.Screen
+        name={PathName.PATH_SCREEN.CATEGORIES_SCREEN}
+        component={CategoryScreen}
+        options={optionsRoot}
+      />
 
       {/* Product Detail Screens */}
-      <RootStack.Screen name={PathName.PATH_SCREEN.PRODUCT_DETAIL} component={ProductDetail} options={optionsRoot} />
+      <RootStack.Screen
+        name={PathName.PATH_SCREEN.PRODUCT_DETAIL_SCREEN}
+        component={ProductDetail}
+        options={optionsRoot}
+      />
 
-      <RootStack.Screen name={PathName.PATH_SCREEN.DELIVERY_SCREEN} component={DeliveryScreen} options={optionsMain} />
+      <RootStack.Screen
+        name={PathName.PATH_SCREEN.DELIVERY_AND_PICKUP_SCREEN}
+        component={DeliveryAndPickupScreenScreen}
+        options={optionsMain}
+      />
 
       <RootStack.Screen name={PathName.PATH_SCREEN.FEEDBACK_SCREEN} component={FeedbackScreen} options={optionsMain} />
 
@@ -79,16 +90,20 @@ const RootStackNavigator = () => {
         options={optionsMain}
       />
 
-      <RootStack.Screen name={PathName.PATH_SCREEN.MY_PROFILE} component={MyProfileScreen} options={optionsMain} />
+      <RootStack.Screen
+        name={PathName.PATH_SCREEN.MY_PROFILE_SCREEN}
+        component={MyProfileScreen}
+        options={optionsMain}
+      />
 
       <RootStack.Screen
-        name={PathName.PATH_SCREEN.UPDATE_PROFILE}
+        name={PathName.PATH_SCREEN.UPDATE_PROFILE_SCREEN}
         component={UpdateProfileScreen}
         options={optionsMain}
       />
 
       <RootStack.Screen
-        name={PathName.PATH_SCREEN.ADDRESS_SAVED}
+        name={PathName.PATH_SCREEN.ADDRESS_SAVED_SCREEN}
         component={AddressSavedScreen}
         options={optionsMain}
       />

@@ -99,7 +99,7 @@ const ProductItem = (props: ProductItemProps) => {
         <Text className='font-nunito-800 text-lg text-secondary'>{formatCurrencyByLocale(props.price)}</Text>
         <TouchableOpacity
           className='bg-secondary rounded-lg p-2 flex-row items-center'
-          onPress={() => NavigationUtils.navigate(PathName.PATH_SCREEN.PRODUCT_DETAIL)}
+          onPress={() => NavigationUtils.navigate(PathName.PATH_SCREEN.PRODUCT_DETAIL_SCREEN)}
         >
           <Svg.Plus width={16} height={16} color='white' className='mr-1' />
           <Text className='font-nunito-700 text-sm text-white'>Thêm giỏ hàng</Text>

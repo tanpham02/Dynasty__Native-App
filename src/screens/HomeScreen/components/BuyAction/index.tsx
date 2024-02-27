@@ -2,6 +2,7 @@ import { View } from 'react-native';
 
 import { BuyActionItem } from '@/components';
 import { buyActions } from './data';
+import { memo } from 'react';
 
 const BuyAction = () => {
   return (
@@ -13,4 +14,4 @@ const BuyAction = () => {
   );
 };
 
-export default BuyAction;
+export default memo(BuyAction);

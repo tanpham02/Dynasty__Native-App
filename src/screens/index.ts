@@ -1,6 +1,6 @@
 export { default as FAQsScreen } from './FAQsScreen';
 export { default as HomeScreen } from './HomeScreen';
-export { default as DeliveryScreen } from './DeliveryScreen';
+export { default as DeliveryAndPickupScreenScreen } from './DeliveryAndPickupScreenScreen';
 export { default as FeedbackScreen } from './FeedbackScreen';
 export { default as CategoryScreen } from './CategoryScreen';
 export { default as MyProfileScreen } from './MyProfileScreen';

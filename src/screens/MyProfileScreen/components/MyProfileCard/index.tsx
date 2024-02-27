@@ -6,7 +6,7 @@ import { NavigationUtils } from '@/utils';
 import { PathName } from '@/constants';
 
 const MyProfileCard = () => {
-  const gotoUpdateProfileScreen = () => NavigationUtils.navigate(PathName.PATH_SCREEN.UPDATE_PROFILE);
+  const gotoUpdateProfileScreen = () => NavigationUtils.navigate(PathName.PATH_SCREEN.UPDATE_PROFILE_SCREEN);
 
   return (
     <Box className='rounded-lg p-4 bg-white my-4' style={styles.shadowX}>

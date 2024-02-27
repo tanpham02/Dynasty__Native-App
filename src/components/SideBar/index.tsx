@@ -1,17 +1,18 @@
 import { Text, TouchableOpacity, View, Linking } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { ScrollView } from 'native-base';
+import { memo } from 'react';
 
 import styles from '@/styles';
 import { Svg } from '@/assets';
 import { PathName } from '@/constants';
 import { NavigationUtils } from '@/utils';
 import { sidebarMenus, subSidebarMenus } from './data';
-import { ScrollView } from 'native-base';
 
 const SideBar = () => {
   const goToSignInScreen = () => NavigationUtils.navigate(PathName.PATH_SCREEN.SIGN_IN_SCREEN);
 
-  const goToMyProfileScreen = () => NavigationUtils.navigate(PathName.PATH_SCREEN.MY_PROFILE);
+  const goToMyProfileScreen = () => NavigationUtils.navigate(PathName.PATH_SCREEN.MY_PROFILE_SCREEN);
 
   const callSupport = () => Linking.openURL('tel:0984316437');
 
@@ -61,4 +62,4 @@ const SideBar = () => {
   );
 };
 
-export default SideBar;
+export default memo(SideBar);

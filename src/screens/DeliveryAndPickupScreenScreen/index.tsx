@@ -14,7 +14,7 @@ import { OpenStreetMapService } from '@/services';
 import { NavigationUtils, heightScreen, widthScreen } from '@/utils';
 import { GlobalLoading, PrimaryLayout, BuyActionItem } from '@/components';
 
-const DeliveryScreen = () => {
+const DeliveryAndPickupScreenScreen = () => {
   const [tabActiveKey, setTabActiveKey] = useState<number>(0);
 
   const [coordinate, setCoordinate] = useState({
@@ -137,4 +137,4 @@ const DeliveryScreen = () => {
   );
 };
 
-export default DeliveryScreen;
+export default DeliveryAndPickupScreenScreen;

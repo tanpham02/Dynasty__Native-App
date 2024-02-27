@@ -1,9 +1,11 @@
 import { Text, TouchableOpacity, View, FlatList } from 'react-native';
+import { memo } from 'react';
 
 import { Svg } from '@/assets';
 import ProductItem from '../ProductItem';
 
 const ProductList = () => {
+  console.log('🚀 ~ ProductList ~ ProductList:', 'ProductList');
   return (
     <View className='mt-4'>
       <View className='flex-row items-center justify-between mx-3'>
@@ -27,4 +29,4 @@ const ProductList = () => {
   );
 };
 
-export default ProductList;
+export default memo(ProductList);

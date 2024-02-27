@@ -1,4 +1,5 @@
 import { FlatList, View } from 'react-native';
+import { memo } from 'react';
 
 import HomeSliderImage from '../HomeSliderImage';
 import Slider1 from '@/assets/images/slider-1.jpeg';
@@ -28,4 +29,4 @@ const HomeSlider = () => {
   );
 };
 
-export default HomeSlider;
+export default memo(HomeSlider);

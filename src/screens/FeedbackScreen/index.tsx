@@ -19,7 +19,7 @@ const FeedbackScreen = () => {
       message: 'Cảm ơn bạn đã gửi những đánh giá quý báu của bạn cho chúng tôi',
       type: 'success',
     });
-    NavigationUtils.navigate(PathName.PATH_SCREEN.MAIN);
+    NavigationUtils.navigate(PathName.PATH_SCREEN.HOME_SCREEN);
   };
 
   return (
