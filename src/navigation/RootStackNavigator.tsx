@@ -1,4 +1,3 @@
-import { createDrawerNavigator } from '@react-navigation/drawer';
 import { CardStyleInterpolators, createStackNavigator } from '@react-navigation/stack';
 
 import { PathName } from '@/constants';
@@ -23,7 +22,6 @@ import {
 import ProductDetail from '@/screens/CategoryScreen/components/ProductDetail';
 
 const RootStack = createStackNavigator();
-const Drawer = createDrawerNavigator();
 
 const optionsMain = {
   cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
