@@ -1,5 +1,5 @@
 import { useIsFocused } from '@react-navigation/native';
-import { MutableRefObject, createRef, useImperativeHandle, useRef } from 'react';
+import { MutableRefObject, createRef, useEffect, useImperativeHandle, useRef } from 'react';
 import { Animated, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -19,21 +19,20 @@ const HomeScreen = () => {
   const openSideBar = useRef(new Animated.Value(0)).current;
 
   const isFocus = useIsFocused();
-  console.log('🚀 ~ HomeScreen ~ isFocus:', isFocus);
 
-  //   useEffect(() => {
-  //     let timer = null;
+  useEffect(() => {
+    let timer = null;
 
-  //     if (!isFocus && isOpenSideBar.current) {
-  //       timer = setTimeout(() => {
-  //         toggleOpenSideBar();
-  //       }, 200);
-  //     }
+    if (!isFocus && isOpenSideBar.current) {
+      timer = setTimeout(() => {
+        toggleOpenSideBar();
+      }, 200);
+    }
 
-  //     return () => {
-  //       clearTimeout(timer);
-  //     };
-  //   }, [isFocus]);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [isFocus]);
 
   const toggleOpenSideBar = () => {
     isOpenSideBar.current = !isOpenSideBar.current;

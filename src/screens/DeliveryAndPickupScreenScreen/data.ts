@@ -10,3 +10,9 @@ export const buyActions = [
         label: 'Nhận hàng',
     },
 ];
+
+
+export enum BuyActionType {
+    DELIVERY,
+    PICKUP
+}

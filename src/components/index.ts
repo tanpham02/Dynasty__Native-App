@@ -7,3 +7,4 @@ export { default as SideBar } from '@/components/SideBar';
 export { default as ExpandItem } from '@/components/ExpandItem';
 export { default as OrderStatusTag } from '@/components/OrderStatusTag';
 export { globalLoading as GlobalLoading } from '@/components/GlobalLoading';
+export { default as ButtonPrimary } from '@/components/ButtonPrimary';
