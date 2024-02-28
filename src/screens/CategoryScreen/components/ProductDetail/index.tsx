@@ -12,6 +12,7 @@ import {
   TouchableOpacity,
   View,
   SectionList,
+  Pressable,
 } from 'react-native';
 import ProductVariantTabList from './components/ProductVariantTabList';
 
@@ -58,9 +59,9 @@ const ProductDetail = () => {
     extrapolate: 'clamp',
   });
 
-  useEffect(() => {
-    handleScrollToCurrentSectionList(activeTabKey);
-  }, [activeTabKey]);
+  //   useEffect(() => {
+  //     handleScrollToCurrentSectionList(activeTabKey);
+  //   }, [activeTabKey]);
 
   const onScrollHeader = (scrollYValue: number) => {
     if (scrollYValue >= SCROLL_DISTANCE) {
@@ -71,21 +72,22 @@ const ProductDetail = () => {
   };
 
   const handleScrollToCurrentSectionList = (index: number) => {
+    console.log('🚀 ~ handleScrollToCurrentSectionList ~ index:', index);
+    setActiveTabKey(index);
     sectionListRef.current?.scrollToLocation({
-      sectionIndex: activeTabKey,
-      itemIndex: activeTabKey,
-      viewPosition: 0,
+      sectionIndex: index,
+      itemIndex: 1,
     });
   };
 
   return (
     <>
-      <MyStatusBar backgroundColor="white" barStyle="dark-content" />
-      <SafeAreaView className="flex-1 bg-white">
-        <Box className="flex-1 relative">
+      <MyStatusBar backgroundColor='white' barStyle='dark-content' />
+      <SafeAreaView className='flex-1 bg-white'>
+        <Box className='flex-1 relative'>
           {showHeaderMain && (
             <Animated.View
-              className="bg-white absolute top-0 left-0 right-0 z-99999"
+              className='bg-white absolute top-0 left-0 right-0 z-99999'
               style={[
                 styleCustom.shadowX,
                 {
@@ -93,18 +95,14 @@ const ProductDetail = () => {
                 },
               ]}
             >
-              <HeaderBar title="Mỳ Ý Cay Hải Sản" headerClass="-mb-4" />
-              <ProductVariantTabList
-                activeTabKey={activeTabKey}
-                setActiveTabKey={setActiveTabKey}
-              />
+              <HeaderBar title='Mỳ Ý Cay Hải Sản' headerClass='-mb-4' />
+              <ProductVariantTabList activeTabKey={activeTabKey} setActiveTabKey={handleScrollToCurrentSectionList} />
             </Animated.View>
           )}
-
           <Animated.ScrollView
             scrollEventThrottle={5}
             showsVerticalScrollIndicator={false}
-            snapToAlignment="start"
+            snapToAlignment='start'
             onScroll={Animated.event(
               [
                 {
@@ -125,15 +123,15 @@ const ProductDetail = () => {
                 height: !showHeaderMain ? 'auto' : 0,
                 opacity: animatedOpacity,
               }}
-              className="bg-third pb-4 flex flex-col px-4 relative"
+              className='bg-third pb-4 flex flex-col px-4 relative'
             >
-              <HeaderBar headerClass="absolute" />
-              <Box style={{ width: 180, height: 180 }} className="mx-auto -my-[5%]">
+              <HeaderBar headerClass='absolute' />
+              <Box style={{ width: 180, height: 180 }} className='mx-auto -my-[5%]'>
                 <Image
                   source={{
                     uri: 'https://thepizzacompany.vn/images/thumbs/000/0002252_garden-salad_300.png',
                   }}
-                  alt=""
+                  alt=''
                   style={{
                     width: '100%',
                     height: '100%',
@@ -141,58 +139,52 @@ const ProductDetail = () => {
                   }}
                 />
               </Box>
-              <Box className="w-full">
-                <Text className="text-gray-10 font-nunito-700 text-lg mb-1">Mỳ Ý Cay Hải Sản</Text>
-                <Text className="text-gray-11 font-nunito-500 text-[13px]">
-                  Mỳ Ý rán với các loại hải sản tươi ngon cùng ớt và tỏi | Mỳ Ý rán với các loại hải
-                  sản tươi ngon cùng ớt và tỏi | Mỳ Ý rán với các loại hải sản tươi ngon cùng ớt và
-                  tỏi | Mỳ Ý rán với các loại hải sản tươi ngon cùng ớt và tỏi | Mỳ Ý rán với các
-                  loại hải sản tươi ngon cùng ớt và tỏi |
+              <Box className='w-full'>
+                <Text className='text-gray-10 font-nunito-700 text-lg mb-1'>Mỳ Ý Cay Hải Sản</Text>
+                <Pressable className='bg-primary' onPress={() => handleScrollToCurrentSectionList(3)}>
+                  <Text>SCroll</Text>
+                </Pressable>
+                <Text className='text-gray-11 font-nunito-500 text-[13px]'>
+                  Mỳ Ý rán với các loại hải sản tươi ngon cùng ớt và tỏi | Mỳ Ý rán với các loại hải sản tươi ngon cùng
+                  ớt và tỏi | Mỳ Ý rán với các loại hải sản tươi ngon cùng ớt và tỏi | Mỳ Ý rán với các loại hải sản
+                  tươi ngon cùng ớt và tỏi | Mỳ Ý rán với các loại hải sản tươi ngon cùng ớt và tỏi |
                 </Text>
               </Box>
             </Animated.View>
 
-            <Divider color="blue.200" />
-
-            <SectionList
-              style={{
-                marginBottom: HEADER_MIN_HEIGHT / 2,
-              }}
-              ref={sectionListRef}
-              scrollEventThrottle={16}
-              className={`px-4 bg-white py-2 `}
-              sections={DATA}
-              keyExtractor={(_, index) => `${index}`}
-              renderItem={({ item }) => (
-                <View>
-                  <Text>{item}</Text>
-                </View>
-              )}
-              onScrollToIndexFailed={({ index }) => {
-                const wait = new Promise((resolve) => setTimeout(resolve, 500));
-                wait.then(() => {
-                  sectionListRef.current.scrollToLocation({
-                    sectionIndex: index,
-                    itemIndex: activeTabKey,
-                    viewPosition: 0,
-                  });
-                });
-              }}
-              renderSectionHeader={({ section: { title } }) => (
-                <Text className="pt-4">{title}</Text>
-              )}
-              stickySectionHeadersEnabled
-            />
+            <Divider color='blue.200' />
           </Animated.ScrollView>
+          <SectionList
+            style={{
+              marginBottom: HEADER_MIN_HEIGHT / 2,
+            }}
+            ref={sectionListRef}
+            scrollEventThrottle={16}
+            initialNumToRender={10}
+            className={`px-4 bg-white py-2 `}
+            sections={DATA}
+            keyExtractor={(_, index) => index.toString()}
+            renderItem={({ item }) => (
+              <View className='h-36 bg-primary'>
+                <Text>{item}</Text>
+              </View>
+            )}
+            onScrollToIndexFailed={() => {
+              const wait = new Promise((resolve) => setTimeout(resolve, 500));
+              wait.then(() => {
+                sectionListRef.current.scrollToLocation({
+                  sectionIndex: activeTabKey,
+                  itemIndex: 1,
+                });
+              });
+            }}
+            renderSectionHeader={({ section: { title } }) => <Text className='pt-4 text-xl'>{title}</Text>}
+            //   stickySectionHeadersEnabled
+          />
 
-          <Box
-            className="bg-white p-3 absolute left-0 right-0 bottom-0"
-            style={styleCustom.shadowX}
-          >
-            <TouchableOpacity className="w-full h-14 bg-secondary rounded-lg flex items-center justify-center">
-              <Text className="text-white font-nunito-700 text-base text-center">
-                Thêm giỏ hàng
-              </Text>
+          <Box className='bg-white p-3 absolute left-0 right-0 bottom-0' style={styleCustom.shadowX}>
+            <TouchableOpacity className='w-full h-14 bg-secondary rounded-lg flex items-center justify-center'>
+              <Text className='text-white font-nunito-700 text-base text-center'>Thêm giỏ hàng</Text>
             </TouchableOpacity>
           </Box>
         </Box>
