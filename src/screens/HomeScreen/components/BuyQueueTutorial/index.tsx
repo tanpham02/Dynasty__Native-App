@@ -5,6 +5,7 @@ import styles from '@/styles';
 import { buyQueueSteps } from './data';
 import BuyQueueStep from '../BuyQueueStep';
 import { widthScreen } from '@/utils';
+import { memo } from 'react';
 
 const BuyQueueTutorial = () => {
   return (
@@ -35,4 +36,4 @@ const BuyQueueTutorial = () => {
   );
 };
 
-export default BuyQueueTutorial;
+export default memo(BuyQueueTutorial);

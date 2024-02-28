@@ -1,21 +1,37 @@
-import { useEffect, useRef } from 'react';
+import { useIsFocused } from '@react-navigation/native';
+import { MutableRefObject, createRef, useEffect, useImperativeHandle, useRef } from 'react';
 import { Animated, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useIsFocused } from '@react-navigation/native';
 
 import { SideBar } from '@/components';
 import styles from '@/styles';
 import { BuyAction, BuyQueueTutorial, Header, HomeCategory, HomeSlider, ProductList } from './components';
 
-const HomeScreen = ({ navigation }) => {
+type HomeScreenRefType = {
+  toggleOpenSideBar(): void;
+  isOpenSideBar: MutableRefObject<boolean>;
+};
+
+export const homeScreenRef = createRef<HomeScreenRefType>();
+
+const HomeScreen = () => {
   const isOpenSideBar = useRef<boolean>(false);
-  const scrollY = useRef(new Animated.Value(0)).current;
   const openSideBar = useRef(new Animated.Value(0)).current;
 
   const isFocus = useIsFocused();
 
   useEffect(() => {
-    if (!isFocus && isOpenSideBar.current) toggleOpenSideBar();
+    let timer = null;
+
+    if (!isFocus && isOpenSideBar.current) {
+      timer = setTimeout(() => {
+        toggleOpenSideBar();
+      }, 200);
+    }
+
+    return () => {
+      clearTimeout(timer);
+    };
   }, [isFocus]);
 
   const toggleOpenSideBar = () => {
@@ -26,6 +42,11 @@ const HomeScreen = ({ navigation }) => {
       useNativeDriver: false,
     }).start();
   };
+
+  useImperativeHandle(homeScreenRef, () => ({
+    toggleOpenSideBar,
+    isOpenSideBar: isOpenSideBar,
+  }));
 
   const interpolatedTop = openSideBar.interpolate({
     inputRange: [0, 1],
@@ -42,11 +63,6 @@ const HomeScreen = ({ navigation }) => {
     outputRange: [1.2, 1],
   });
 
-  const handleClickOnContainer = () => {
-    if (isOpenSideBar.current) {
-      toggleOpenSideBar();
-    }
-  };
   return (
     <View className='flex-1 bg-white'>
       <Animated.View
@@ -72,7 +88,6 @@ const HomeScreen = ({ navigation }) => {
           },
           styles.shadowX,
         ]}
-        onTouchStart={handleClickOnContainer}
       >
         <View className='flex-1'>
           <SafeAreaView className='flex-1'>
@@ -83,9 +98,6 @@ const HomeScreen = ({ navigation }) => {
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
                 keyboardShouldPersistTaps='always'
-                onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: scrollY } } }], {
-                  useNativeDriver: true,
-                })}
               >
                 <View className='flex-1'>
                   <BuyAction />

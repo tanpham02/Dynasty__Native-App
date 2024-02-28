@@ -182,7 +182,7 @@ const SignInScreen = () => {
               <TouchableOpacity onPress={gotoTermAndConditionsScreen}>
                 <Text className='uppercase text-[10px] font-nunito-500 text-[#1476e1]'>Terms & Conditions</Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => navigate(PathName.PATH_SCREEN.MAIN)}>
+              <TouchableOpacity onPress={() => navigate(PathName.PATH_SCREEN.HOME_SCREEN)}>
                 <Text className='uppercase text-[10px] font-nunito-500'>Skip Login</Text>
               </TouchableOpacity>
             </Box>

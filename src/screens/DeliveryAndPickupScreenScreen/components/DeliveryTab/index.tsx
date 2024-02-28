@@ -1,38 +1,39 @@
-import { useEffect, useState } from 'react';
-import { useQuery } from 'react-query';
-import { Input, Text } from 'native-base';
-import MapView, { MapPressEvent, Marker, PROVIDER_GOOGLE } from 'react-native-maps';
-import { TouchableOpacity, View } from 'react-native';
-import { requestForegroundPermissionsAsync, getCurrentPositionAsync } from 'expo-location';
+import { getCurrentPositionAsync, requestForegroundPermissionsAsync } from 'expo-location';
+import { Box, Input, Text, Skeleton } from 'native-base';
+import { useEffect, useRef, useState } from 'react';
+import { TouchableOpacity } from 'react-native';
 import { showMessage } from 'react-native-flash-message';
+import MapView, { MapPressEvent, Marker, PROVIDER_GOOGLE } from 'react-native-maps';
+import { useQuery } from 'react-query';
 
-import styles from '@/styles';
 import { Svg } from '@/assets';
-import { buyActions } from './data';
 import { QueryKey } from '@/constants';
 import { OpenStreetMapService } from '@/services';
-import { NavigationUtils, heightScreen, widthScreen } from '@/utils';
-import { GlobalLoading, PrimaryLayout, BuyActionItem } from '@/components';
+import styles from '@/styles';
+import { NavigationUtils, widthScreen } from '@/utils';
 
-const DeliveryScreen = () => {
-  const [tabActiveKey, setTabActiveKey] = useState<number>(0);
+const MarkerKey = 'CURRENT_LOCATION';
+
+const DeliveryTab = () => {
+  const mapRef = useRef<MapView>();
 
   const [coordinate, setCoordinate] = useState({
     latitude: null,
     longitude: null,
   });
 
-  // for first login
   useEffect(() => {
     getCurrentLocation();
   }, []);
 
-  // when select location (being limited)
-  const { data: userLocationInfo } = useQuery({
+  useEffect(() => {
+    if (coordinate?.latitude && coordinate?.longitude) handleFocusIntoMarker();
+  }, [coordinate]);
+
+  const { data: userLocationInfo, isFetching: isFetchingUserLocationInfo } = useQuery({
     queryKey: [QueryKey.QUERY_KEY.LOCATION, coordinate],
     queryFn: async () => {
       try {
-        GlobalLoading.show();
         if (coordinate?.latitude && coordinate?.longitude)
           return await OpenStreetMapService.getLocationsByLonLat({
             lat: coordinate.latitude,
@@ -45,13 +46,10 @@ const DeliveryScreen = () => {
           message: 'Có lỗi xảy ra vui lòng thử lại sau!',
         });
         console.log('🚀 ~ queryFn: ~ err:', err);
-      } finally {
-        GlobalLoading.hide();
       }
     },
   });
 
-  // for first login
   const getCurrentLocation = async () => {
     let { status } = await requestForegroundPermissionsAsync();
     if (status !== 'granted') {
@@ -72,69 +70,81 @@ const DeliveryScreen = () => {
     }
   };
 
+  const handleFocusIntoMarker = () => {
+    mapRef.current.fitToSuppliedMarkers([MarkerKey], {
+      edgePadding: {
+        top: 100,
+        right: 100,
+        left: 100,
+        bottom: 100,
+      },
+      animated: true,
+    });
+  };
+
   const handleMakerLocation = (e: MapPressEvent) => {
     setCoordinate(e.nativeEvent.coordinate);
   };
 
   return (
-    <PrimaryLayout
-      statusBarBackgroundColor='white'
-      containerClass='bg-gray-5'
-      renderTitle={() => (
-        <View className='w-full flex-row items-center mx-3'>
-          {buyActions.map((buyAction, index) => (
-            <BuyActionItem
-              wrapperClassName='mr-3'
-              key={index}
-              {...buyAction}
-              onPress={() => setTabActiveKey(index)}
-              isActive={tabActiveKey === index}
-            />
-          ))}
-        </View>
-      )}
-    >
-      <View className='px-4 mt-6 flex-row items-center'>
-        <Input placeholder='Nhập địa điểm của bạn' className='flex-1 bg-white' />
+    <Box className='flex-1'>
+      <Box className='mx-4 mt-7 flex-row items-center'>
+        <Box className='flex-1'>
+          <Input
+            placeholder='Nhập địa điểm của bạn'
+            className='flex-1 bg-white font-nunito-700'
+            _focus={{
+              borderColor: 'gray.200',
+            }}
+            borderRadius={8}
+          />
+        </Box>
         <TouchableOpacity
           className='w-10 h-10 items-center justify-center bg-gray-5 rounded-lg ml-1'
           style={styles.shadowX}
         >
           <Svg.ArrowRight width={20} height={20} />
         </TouchableOpacity>
-      </View>
-      <View className='mt-4 relative'>
+      </Box>
+      <Box className='mt-4 relative flex-1'>
         <MapView
+          ref={mapRef}
           onPress={handleMakerLocation}
           style={{
             width: widthScreen,
-            height: heightScreen - 185,
+            height: '100%',
           }}
           showsUserLocation
           showsMyLocationButton
           provider={PROVIDER_GOOGLE}
-          region={{
-            latitude: coordinate?.latitude || 10.770744,
-            longitude: coordinate?.longitude || 106.706093,
+          initialRegion={{
+            latitude: 10.770744,
+            longitude: 106.706093,
             latitudeDelta: 0.05,
             longitudeDelta: 0.025,
           }}
         >
-          {coordinate?.latitude && coordinate?.longitude && <Marker draggable coordinate={coordinate} />}
+          {coordinate?.latitude && coordinate?.longitude && (
+            <Marker identifier={MarkerKey} draggable coordinate={coordinate} />
+          )}
         </MapView>
-      </View>
-      <View className='absolute bottom-0 left-0 right-0 p-4 bg-white'>
-        <Text numberOfLines={2} className='font-nunito-500'>
-          {userLocationInfo?.display_name}
-        </Text>
-        <TouchableOpacity className='bg-primary py-2 px-4 rounded-lg mt-3'>
+      </Box>
+      <Box className='p-4 bg-white'>
+        {isFetchingUserLocationInfo ? (
+          <Skeleton.Text />
+        ) : (
+          <Text numberOfLines={2} className='font-nunito-500'>
+            {userLocationInfo?.display_name || 'Vui lòng chọn địa chỉ giao hàng của bạn'}
+          </Text>
+        )}
+        <TouchableOpacity className='bg-primary py-2 px-4 rounded-lg mt-3' style={styles.shadowPrimary}>
           <Text className='text-center text-white font-nunito-500 text-sm' onPress={NavigationUtils.goBack}>
             Đồng ý
           </Text>
         </TouchableOpacity>
-      </View>
-    </PrimaryLayout>
+      </Box>
+    </Box>
   );
 };
 
-export default DeliveryScreen;
+export default DeliveryTab;

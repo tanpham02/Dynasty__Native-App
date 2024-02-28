@@ -1,4 +1,5 @@
 import { Text, TouchableOpacity, View } from 'react-native';
+import { memo } from 'react';
 
 import { Svg } from '@/assets';
 import HomeCategoryItem from '../HomeCategoryItem';
@@ -31,7 +32,10 @@ const HomeCategory = () => {
     <View className='mt-4 mx-3'>
       <View className='flex-row justify-between items-center'>
         <Text className='font-nunito-700 text-sm'>Khám phá Menu</Text>
-        <TouchableOpacity className='flex-row items-center gap-1' onPress={() => navigate(PATH_SCREEN.CATEGORIES)}>
+        <TouchableOpacity
+          className='flex-row items-center gap-1'
+          onPress={() => navigate(PATH_SCREEN.CATEGORIES_SCREEN)}
+        >
           <Text className='font-nunito-600 text-[13px]'>Xem thêm</Text>
           <Svg.ArrowRight width={16} height={16} />
         </TouchableOpacity>
@@ -45,4 +49,4 @@ const HomeCategory = () => {
   );
 };
 
-export default HomeCategory;
+export default memo(HomeCategory);

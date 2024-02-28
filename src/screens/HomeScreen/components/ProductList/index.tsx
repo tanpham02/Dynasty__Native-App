@@ -1,4 +1,5 @@
 import { Text, TouchableOpacity, View, FlatList } from 'react-native';
+import { memo } from 'react';
 
 import { Svg } from '@/assets';
 import ProductItem from '../ProductItem';
@@ -27,4 +28,4 @@ const ProductList = () => {
   );
 };
 
-export default ProductList;
+export default memo(ProductList);

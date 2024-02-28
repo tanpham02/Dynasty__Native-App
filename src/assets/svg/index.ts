@@ -40,3 +40,4 @@ export { default as Product } from './product.svg';
 export { default as TrashBin } from './trash-bin.svg';
 export { default as Eye } from './eye.svg';
 export { default as PizzaCircle } from './pizza-circle.svg';
+export { default as Direction } from './direction.svg';
