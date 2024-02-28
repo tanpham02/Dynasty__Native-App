@@ -1,36 +1,44 @@
-import React from 'react';
-import { SceneMap, TabView } from 'react-native-tab-view';
-import { ProductVariantTabListProps } from './type';
-import { widthScreen } from '@/utils';
-import { tabBarRoutes } from '../../data';
+import React, { useRef, useState } from 'react';
+import { FlatList } from 'react-native';
+import { Route } from 'react-native-tab-view';
 import ProductVariantTabItem from '../ProductVariantTabItem';
+import { ProductVariantTabListProps } from './type';
 
-const renderScene = SceneMap({
-  size: ProductVariantTabItem,
-  crust: ProductVariantTabItem,
-});
+const routes: Route[] = [
+  { key: 'size', title: 'Kích thước' },
+  { key: 'crust', title: 'Đế' },
+  { key: 'sauce', title: 'Nước sốt' },
+  { key: 'topping', title: 'Topping' },
+];
 
 const ProductVariantTabList = (props: ProductVariantTabListProps) => {
-  const { activeTabKey, setActiveTabKey } = props;
+  const flatListRef = useRef<FlatList>();
+
+  const handleChangeTabIndex = (index: number) => {
+    flatListRef.current?.scrollToIndex({
+      index,
+      viewPosition: 0.5,
+    });
+    props.setActiveTabKey(index);
+  };
+
   return (
-    <TabView
-      navigationState={{
-        index: activeTabKey,
-        routes: tabBarRoutes,
-      }}
-      renderScene={renderScene}
-      renderTabBar={() => (
+    <FlatList
+      horizontal
+      snapToAlignment="start"
+      scrollEventThrottle={16}
+      showsHorizontalScrollIndicator={false}
+      ref={flatListRef}
+      keyExtractor={(_, index: number) => `${index}`}
+      data={routes}
+      renderItem={({ index, item }) => (
         <ProductVariantTabItem
-          //   ref={topCategoriesRef}
-          activeTabKey={activeTabKey}
-          //   onScrollToIndex={handleScrollToIndex}
-          setActiveTabKey={setActiveTabKey}
+          key={index}
+          isActiveKey={index === props.activeTabKey}
+          route={item}
+          onChange={() => handleChangeTabIndex(index)}
         />
       )}
-      onIndexChange={setActiveTabKey}
-      initialLayout={{
-        width: widthScreen,
-      }}
     />
   );
 };

@@ -1,7 +1,7 @@
 export { default as Menu } from './menu.svg';
 export { default as Mobile } from './mobile.svg';
 export { default as Offer } from './offer.svg';
-export { default as Pizza } from './pizza.svg';
+export { default as PizzaSlice } from './pizza-slice.svg';
 export { default as FlagVi } from './flag_vi.svg';
 export { default as QrCode } from './qr-code.svg';
 export { default as Notification } from './notification.svg';
@@ -39,3 +39,4 @@ export { default as Note } from './note.svg';
 export { default as Product } from './product.svg';
 export { default as TrashBin } from './trash-bin.svg';
 export { default as Eye } from './eye.svg';
+export { default as PizzaCircle } from './pizza-circle.svg';

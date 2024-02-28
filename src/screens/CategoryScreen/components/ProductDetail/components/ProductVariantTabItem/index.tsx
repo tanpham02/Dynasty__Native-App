@@ -1,21 +1,20 @@
-import { Text } from 'native-base';
+import { Pressable } from 'native-base';
 import React from 'react';
+import { Animated } from 'react-native';
+
 import { ProductVariantTabItemProps } from './type';
 
 const ProductVariantTabItem = (props: ProductVariantTabItemProps) => {
+  const { route, isActiveKey, onChange } = props;
+
   return (
-    <>
-      {[...new Array(10)].map((_, index) => (
-        <Text key={index}>
-          {index + 1}. What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-          galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but
-          also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s
-          with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
-          software like Aldus PageMaker including versions of Lorem Ipsum.
-        </Text>
-      ))}
-    </>
+    <Pressable onPress={onChange}>
+      <Animated.Text
+        className={`text-sm font-nunito-600 mt-2 border-b-2 px-4 py-4 ${isActiveKey ? 'text-secondary font-nunito-700 border-b-secondary' : 'text-gray-9 border-b-transparent'}`}
+      >
+        {route?.title}
+      </Animated.Text>
+    </Pressable>
   );
 };
 
