@@ -5,7 +5,6 @@ import { Svg } from '@/assets';
 import ProductItem from '../ProductItem';
 
 const ProductList = () => {
-  console.log('🚀 ~ ProductList ~ ProductList:', 'ProductList');
   return (
     <View className='mt-4'>
       <View className='flex-row items-center justify-between mx-3'>
