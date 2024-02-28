@@ -1,4 +1,4 @@
 export interface ProductVariantTabListProps {
+  setActiveTabKey?: (activeKey: number) => void;
   activeTabKey?: number;
-  setActiveTabKey?: (value: number) => void;
 }

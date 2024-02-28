@@ -6,9 +6,7 @@ import { Image, Keyboard, Platform, View } from 'react-native';
 import DynastyLogoBgWhite from '@/assets/images/logo/logo-bg-white.png';
 import PizzaBgRight from '@/assets/images/logo/pizza-5-loai-thit-va-rau-cu.png';
 import PizzaBgLeft from '@/assets/images/logo/pizza-hai-san-cao-cap.png';
-import MobileSvg from '@/assets/svg/mobile.svg';
-import OfferSvg from '@/assets/svg/offer.svg';
-import PizzaSvg from '@/assets/svg/pizza.svg';
+import { PizzaSlice, Offer as OfferSvg, Mobile as MobileSvg } from '@/assets/svg';
 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import styles from '@/styles';
@@ -47,7 +45,7 @@ const SignInScreen = () => {
     {
       title: 'Great',
       description: 'Food & Taste',
-      icon: PizzaSvg,
+      icon: PizzaSlice,
     },
     {
       title: 'Great',

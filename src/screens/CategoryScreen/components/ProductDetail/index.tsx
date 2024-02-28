@@ -1,15 +1,42 @@
 import { HeaderBar, MyStatusBar } from '@/components';
 import { useStatusBarForAndroid } from '@/hooks';
-import styles from '@/styles';
+import { default as styleCustom } from '@/styles';
 import { heightScreen } from '@/utils';
 import { Box, Divider, Image, ScrollView, Text } from 'native-base';
-import React, { useRef, useState } from 'react';
-import { Animated, SafeAreaView, TouchableOpacity } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import {
+  Animated,
+  SafeAreaView,
+  StatusBar,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  SectionList,
+} from 'react-native';
 import ProductVariantTabList from './components/ProductVariantTabList';
 
 const HEADER_MAX_HEIGHT = heightScreen * 0.36; // 36%
 const HEADER_MIN_HEIGHT = heightScreen * 0.2; // 20%
 const SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
+
+const DATA = [
+  {
+    title: 'Main dishes',
+    data: ['Pizza', 'Burger', 'Risotto'],
+  },
+  {
+    title: 'Sides',
+    data: ['French Fries', 'Onion Rings', 'Fried Shrimps'],
+  },
+  {
+    title: 'Drinks',
+    data: ['Water', 'Coke', 'Beer'],
+  },
+  {
+    title: 'Desserts',
+    data: ['Cheese Cake', 'Ice Cream'],
+  },
+];
 
 const ProductDetail = () => {
   useStatusBarForAndroid('white');
@@ -17,6 +44,7 @@ const ProductDetail = () => {
 
   const [showHeaderMain, setShowHeaderMain] = useState<boolean>(false);
   const [activeTabKey, setActiveTabKey] = useState<number>(0);
+  const sectionListRef = useRef<SectionList>();
 
   const animatedHeightHeader = scrollOffsetY.interpolate({
     inputRange: [0, SCROLL_DISTANCE],
@@ -30,6 +58,10 @@ const ProductDetail = () => {
     extrapolate: 'clamp',
   });
 
+  useEffect(() => {
+    handleScrollToCurrentSectionList(activeTabKey);
+  }, [activeTabKey]);
+
   const onScrollHeader = (scrollYValue: number) => {
     if (scrollYValue >= SCROLL_DISTANCE) {
       setShowHeaderMain(true);
@@ -38,15 +70,41 @@ const ProductDetail = () => {
     }
   };
 
+  const handleScrollToCurrentSectionList = (index: number) => {
+    sectionListRef.current?.scrollToLocation({
+      sectionIndex: activeTabKey,
+      itemIndex: activeTabKey,
+      viewPosition: 0,
+    });
+  };
+
   return (
     <>
-      <MyStatusBar backgroundColor='white' barStyle='dark-content' />
-      <SafeAreaView className='flex-1 bg-white'>
-        <Box className='flex-1 relative'>
+      <MyStatusBar backgroundColor="white" barStyle="dark-content" />
+      <SafeAreaView className="flex-1 bg-white">
+        <Box className="flex-1 relative">
+          {showHeaderMain && (
+            <Animated.View
+              className="bg-white absolute top-0 left-0 right-0 z-99999"
+              style={[
+                styleCustom.shadowX,
+                {
+                  maxHeight: 130,
+                },
+              ]}
+            >
+              <HeaderBar title="Mỳ Ý Cay Hải Sản" headerClass="-mb-4" />
+              <ProductVariantTabList
+                activeTabKey={activeTabKey}
+                setActiveTabKey={setActiveTabKey}
+              />
+            </Animated.View>
+          )}
+
           <Animated.ScrollView
             scrollEventThrottle={5}
             showsVerticalScrollIndicator={false}
-            snapToAlignment='start'
+            snapToAlignment="start"
             onScroll={Animated.event(
               [
                 {
@@ -67,14 +125,15 @@ const ProductDetail = () => {
                 height: !showHeaderMain ? 'auto' : 0,
                 opacity: animatedOpacity,
               }}
-              className='bg-third pb-4 flex flex-col px-4 relative'
+              className="bg-third pb-4 flex flex-col px-4 relative"
             >
-              <HeaderBar headerClass='absolute' />
-              <Box style={{ width: 180, height: 180 }} className='mx-auto -my-[5%]'>
+              <HeaderBar headerClass="absolute" />
+              <Box style={{ width: 180, height: 180 }} className="mx-auto -my-[5%]">
                 <Image
                   source={{
                     uri: 'https://thepizzacompany.vn/images/thumbs/000/0002252_garden-salad_300.png',
                   }}
+                  alt=""
                   style={{
                     width: '100%',
                     height: '100%',
@@ -82,62 +141,58 @@ const ProductDetail = () => {
                   }}
                 />
               </Box>
-              <Box className='w-full'>
-                <Text className='text-gray-10 font-nunito-700 text-lg mb-1'>Mỳ Ý Cay Hải Sản</Text>
-                <Text className='text-gray-11 font-nunito-500 text-[13px]'>
-                  Mỳ Ý rán với các loại hải sản tươi ngon cùng ớt và tỏi | Mỳ Ý rán với các loại hải sản tươi ngon cùng
-                  ớt và tỏi | Mỳ Ý rán với các loại hải sản tươi ngon cùng ớt và tỏi | Mỳ Ý rán với các loại hải sản
-                  tươi ngon cùng ớt và tỏi | Mỳ Ý rán với các loại hải sản tươi ngon cùng ớt và tỏi |
+              <Box className="w-full">
+                <Text className="text-gray-10 font-nunito-700 text-lg mb-1">Mỳ Ý Cay Hải Sản</Text>
+                <Text className="text-gray-11 font-nunito-500 text-[13px]">
+                  Mỳ Ý rán với các loại hải sản tươi ngon cùng ớt và tỏi | Mỳ Ý rán với các loại hải
+                  sản tươi ngon cùng ớt và tỏi | Mỳ Ý rán với các loại hải sản tươi ngon cùng ớt và
+                  tỏi | Mỳ Ý rán với các loại hải sản tươi ngon cùng ớt và tỏi | Mỳ Ý rán với các
+                  loại hải sản tươi ngon cùng ớt và tỏi |
                 </Text>
               </Box>
             </Animated.View>
 
-            <Divider color='blue.200' />
+            <Divider color="blue.200" />
 
-            <ScrollView
-              showsVerticalScrollIndicator={false}
-              scrollEventThrottle={16}
-              scrollEnabled={!showHeaderMain ? false : true}
-              className='px-4 bg-white py-2'
+            <SectionList
               style={{
                 marginBottom: HEADER_MIN_HEIGHT / 2,
               }}
-            >
-              {[...new Array(10)].map((_, index) => (
-                <Text key={index}>
-                  {index + 1}. What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing and typesetting
-                  industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                  unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived
-                  not only five centuries, but also the leap into electronic typesetting, remaining essentially
-                  unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-                  passages, and more recently with desktop publishing software like Aldus PageMaker including versions
-                  of Lorem Ipsum.
-                </Text>
-              ))}
-            </ScrollView>
+              ref={sectionListRef}
+              scrollEventThrottle={16}
+              className={`px-4 bg-white py-2 `}
+              sections={DATA}
+              keyExtractor={(_, index) => `${index}`}
+              renderItem={({ item }) => (
+                <View>
+                  <Text>{item}</Text>
+                </View>
+              )}
+              onScrollToIndexFailed={({ index }) => {
+                const wait = new Promise((resolve) => setTimeout(resolve, 500));
+                wait.then(() => {
+                  sectionListRef.current.scrollToLocation({
+                    sectionIndex: index,
+                    itemIndex: activeTabKey,
+                    viewPosition: 0,
+                  });
+                });
+              }}
+              renderSectionHeader={({ section: { title } }) => (
+                <Text className="pt-4">{title}</Text>
+              )}
+              stickySectionHeadersEnabled
+            />
           </Animated.ScrollView>
 
-          {showHeaderMain && (
-            <Animated.View
-              className='bg-white absolute top-0 left-0 right-0 z-99999'
-              style={[
-                styles.shadowX,
-                {
-                  height: 'auto',
-                },
-              ]}
-            >
-              <HeaderBar title="Mỳ Ý Cay Hải Sản" />
-              <ProductVariantTabList
-                activeTabKey={activeTabKey}
-                setActiveTabKey={setActiveTabKey}
-              />
-            </Animated.View>
-          )}
-
-          <Box className='bg-white p-3 absolute left-0 right-0 bottom-0' style={styles.shadowX}>
-            <TouchableOpacity className='w-full h-14 bg-secondary rounded-lg flex items-center justify-center'>
-              <Text className='text-white font-nunito-700 text-base text-center'>Thêm giỏ hàng</Text>
+          <Box
+            className="bg-white p-3 absolute left-0 right-0 bottom-0"
+            style={styleCustom.shadowX}
+          >
+            <TouchableOpacity className="w-full h-14 bg-secondary rounded-lg flex items-center justify-center">
+              <Text className="text-white font-nunito-700 text-base text-center">
+                Thêm giỏ hàng
+              </Text>
             </TouchableOpacity>
           </Box>
         </Box>
