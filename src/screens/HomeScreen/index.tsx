@@ -1,6 +1,6 @@
 import { useIsFocused } from '@react-navigation/native';
 import { MutableRefObject, createRef, useEffect, useImperativeHandle, useRef } from 'react';
-import { Animated, View } from 'react-native';
+import { Animated, ScrollView, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { SideBar } from '@/components';
@@ -78,6 +78,7 @@ const HomeScreen = () => {
       >
         <SideBar />
       </Animated.View>
+
       <Animated.View
         className='flex-1 bg-third absolute'
         style={[
@@ -89,29 +90,27 @@ const HomeScreen = () => {
           styles.shadowX,
         ]}
       >
-        <View className='flex-1'>
-          <SafeAreaView className='flex-1'>
-            <View className='flex-1'>
-              <Header onPress={toggleOpenSideBar} />
-              <Animated.ScrollView
-                scrollEventThrottle={16}
-                showsVerticalScrollIndicator={false}
-                showsHorizontalScrollIndicator={false}
-                keyboardShouldPersistTaps='always'
-              >
-                <View className='flex-1'>
-                  <BuyAction />
-                  <HomeSlider />
-                  <HomeCategory />
-                  <BuyQueueTutorial />
-                  {Array.from({ length: 10 }).map((_, key) => (
-                    <ProductList key={key} />
-                  ))}
-                </View>
-              </Animated.ScrollView>
-            </View>
-          </SafeAreaView>
-        </View>
+        <SafeAreaView className='flex-1'>
+          <View className='flex-1'>
+            <Header />
+            <ScrollView
+              scrollEventThrottle={16}
+              showsVerticalScrollIndicator={false}
+              showsHorizontalScrollIndicator={false}
+              keyboardShouldPersistTaps='always'
+            >
+              <View className='flex-1'>
+                <BuyAction />
+                <HomeSlider />
+                <HomeCategory />
+                <BuyQueueTutorial />
+                {Array.from({ length: 10 }).map((_, key) => (
+                  <ProductList key={key} />
+                ))}
+              </View>
+            </ScrollView>
+          </View>
+        </SafeAreaView>
       </Animated.View>
     </View>
   );
