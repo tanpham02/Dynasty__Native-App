@@ -14,7 +14,7 @@ const PickupTab = () => {
 
   const storeFlatListRef = useRef<FlatList>(null);
 
-  const [storeSelectedId, setStoreSelectedId] = useState<string>('');
+  const [storeSelectedId, setStoreSelectedId] = useState<string>();
 
   const handleFocusIntoMarker = (key: string, index?: number) => {
     mapRef.current?.fitToSuppliedMarkers([key], {
@@ -33,7 +33,6 @@ const PickupTab = () => {
         animated: true,
         viewPosition: 0.5,
       });
-    } else {
       setStoreSelectedId(key);
     }
   };
@@ -135,7 +134,7 @@ const PickupTab = () => {
             keyExtractor={(_, index) => index.toString()}
           />
         </Box>
-        <ButtonPrimary title='Đồng ý' containerClass='mx-2 mb-4' />
+        <ButtonPrimary isDisable={!storeSelectedId} title='Đồng ý' containerClass='mx-2 mb-4' />
       </Box>
     </Box>
   );

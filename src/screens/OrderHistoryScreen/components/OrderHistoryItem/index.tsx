@@ -7,6 +7,7 @@ import DataRow from '../DataRow';
 import { PathName } from '@/constants';
 import { OrderStatusTag } from '@/components';
 import { DateUtils, NavigationUtils, NumberUtils } from '@/utils';
+import { memo } from 'react';
 
 const OrderHistoryItem = () => {
   const viewOrderDetail = () => NavigationUtils.navigate(PathName.PATH_SCREEN.ORDER_DETAIL_SCREEN);
@@ -37,4 +38,4 @@ const OrderHistoryItem = () => {
   );
 };
 
-export default OrderHistoryItem;
+export default memo(OrderHistoryItem);

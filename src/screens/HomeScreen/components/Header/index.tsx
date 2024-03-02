@@ -12,21 +12,12 @@ const Header = () => {
   const goToNotificationScreen = () => NavigationUtils.navigate(PathName.PATH_SCREEN.NOTIFICATION_SCREEN);
 
   const openSidebar = () => {
-    // if (homeScreenRef.current.isOpenSideBar.current) {
     homeScreenRef.current.toggleOpenSideBar();
-    // }
-  };
-
-  const handleClickOnContainer = (e: GestureResponderEvent) => {
-    if (homeScreenRef.current.isOpenSideBar.current) {
-      e.stopPropagation();
-      homeScreenRef.current.toggleOpenSideBar();
-    }
   };
 
   return (
-    <View onTouchStart={handleClickOnContainer} className='flex-row justify-between items-center gap-3'>
-      <View className='flex-1 h-[85px] relative' onTouchStart={handleClickOnContainer}>
+    <View className='flex-row justify-between items-center gap-3'>
+      <View className='flex-1 h-[85px] relative'>
         <Canvas
           style={{
             flex: 1,

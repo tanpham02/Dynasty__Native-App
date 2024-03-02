@@ -4,4 +4,5 @@ export interface ButtonPrimaryProps {
     onPress?(): void
     title: ReactNode
     containerClass?: string
+    isDisable?: boolean
 }

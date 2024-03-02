@@ -3,10 +3,11 @@ import { Text } from 'native-base';
 import { TouchableOpacity } from 'react-native';
 import { ButtonPrimaryProps } from './type';
 
-const ButtonPrimary = ({ title, onPress, containerClass }: ButtonPrimaryProps) => {
+const ButtonPrimary = ({ title, onPress, containerClass, isDisable }: ButtonPrimaryProps) => {
   return (
     <TouchableOpacity
-      className={`bg-primary rounded-lg py-2.5 items-center ${containerClass}`}
+      disabled={isDisable}
+      className={`bg-primary rounded-lg py-2.5 items-center ${isDisable && 'opacity-50'} ${containerClass}`}
       style={styles.shadowPrimary}
       onPress={onPress}
     >

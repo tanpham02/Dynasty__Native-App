@@ -1,17 +1,15 @@
 import { getCurrentPositionAsync, requestForegroundPermissionsAsync } from 'expo-location';
-import { Box, Input, Text, Skeleton } from 'native-base';
+import { Box } from 'native-base';
 import { useEffect, useRef, useState } from 'react';
-import { Animated, TouchableOpacity } from 'react-native';
 import { showMessage } from 'react-native-flash-message';
 import MapView, { MapPressEvent, Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import { useQuery } from 'react-query';
 
-import { Svg } from '@/assets';
 import { QueryKey } from '@/constants';
 import { OpenStreetMapService } from '@/services';
-import styles from '@/styles';
 import { NavigationUtils, widthScreen } from '@/utils';
 import BottomSubmitLocationDelivery from '../BottomSubmitLocationDelivery';
+import { useIsFocused } from '@react-navigation/native';
 
 const MarkerKey = 'CURRENT_LOCATION';
 
@@ -23,13 +21,16 @@ const DeliveryTab = () => {
     longitude: null,
   });
 
+  console.log('🚀 ~ DeliveryTab ~ coordinate:', coordinate);
   useEffect(() => {
     getCurrentLocation();
   }, []);
 
   useEffect(() => {
-    if (coordinate?.latitude && coordinate?.longitude) handleFocusIntoMarker();
-  }, [coordinate]);
+    if (coordinate?.latitude && coordinate?.longitude) {
+      handleFocusIntoMarker();
+    }
+  }, [coordinate?.latitude, coordinate?.longitude]);
 
   const { data: userLocationInfo, isFetching: isFetchingUserLocationInfo } = useQuery({
     queryKey: [QueryKey.QUERY_KEY.LOCATION, coordinate],
