@@ -4,20 +4,7 @@ import { default as styleCustom } from '@/styles';
 import { heightScreen } from '@/utils';
 import { Box, Divider, Image, ScrollView, Text } from 'native-base';
 import React, { useEffect, useRef, useState } from 'react';
-<<<<<<< HEAD
-import {
-  Animated,
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-  SectionList,
-  Pressable,
-} from 'react-native';
-=======
 import { Animated, SafeAreaView, StatusBar, StyleSheet, TouchableOpacity, View, SectionList } from 'react-native';
->>>>>>> e6c2258902c95bcdc624e298402fcbe5fce1896a
 import ProductVariantTabList from './components/ProductVariantTabList';
 
 const HEADER_MAX_HEIGHT = heightScreen * 0.36; // 36%

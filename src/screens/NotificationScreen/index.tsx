@@ -1,14 +1,20 @@
-import { Box, Image, Text } from 'native-base';
+import { Box, Text } from 'native-base';
 import { SwipeListView } from 'react-native-swipe-list-view';
-import { TouchableOpacity } from 'react-native';
 
-import { Svg } from '@/assets';
 import { PrimaryLayout } from '@/components';
 import { NotificationHiddenItem, NotificationItem } from './components';
+import { TouchableOpacity } from 'react-native';
 
 const NotificationScreen = () => {
   return (
-    <PrimaryLayout titleScreen='Thông báo của bạn' containerClass='bg-white'>
+    <PrimaryLayout
+      renderTitle={() => (
+        <Box className='justify-center'>
+          <Text className='font-nunito-700 text-lg text-center'>Dynasty Pizza</Text>
+        </Box>
+      )}
+      containerClass='bg-white'
+    >
       <SwipeListView
         disableRightSwipe
         rightOpenValue={-160}
