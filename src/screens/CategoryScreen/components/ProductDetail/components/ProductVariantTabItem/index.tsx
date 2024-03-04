@@ -10,7 +10,12 @@ const ProductVariantTabItem = (props: ProductVariantTabItemProps) => {
   return (
     <Pressable onPress={onChange}>
       <Animated.Text
-        className={`text-sm font-nunito-600 mt-2 border-b-2 px-4 py-4 ${isActiveKey ? 'text-secondary font-nunito-700 border-b-secondary' : 'text-gray-9 border-b-transparent'}`}
+        style={{
+          borderBottomColor: isActiveKey ? '#e8002a' : 'transparent',
+          borderBottomWidth: 2,
+          borderStyle: 'solid',
+        }}
+        className={`text-sm font-nunito-600 mt-2 px-4 py-4 ${isActiveKey ? 'text-secondary font-nunito-700' : 'text-gray-9'}`}
       >
         {route?.title}
       </Animated.Text>
