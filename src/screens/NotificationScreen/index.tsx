@@ -1,6 +1,6 @@
 import { Box, Text } from 'native-base';
 import { SwipeListView } from 'react-native-swipe-list-view';
-import { useState } from 'react';
+import { useState } from 'react';-
 
 import { Svg } from '@/assets';
 import { NotificationType } from './type';

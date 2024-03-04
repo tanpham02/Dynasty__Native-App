@@ -19,14 +19,11 @@ const ProductDetail = () => {
 
   const scrollOffsetY = useRef(new Animated.Value(0)).current;
   const scrollRef = useRef<ScrollView>();
+  const isScrolling = useRef<boolean>(false);
 
   const [showHeaderMain, setShowHeaderMain] = useState<boolean>(false);
   const [activeTabKey, setActiveTabKey] = useState<number>(0);
   const flatListItemLayout = useRef<{ current: { [key: string]: Object } }>();
-
-  const isScrolling = useRef<boolean>(false);
-
-  const prevScrollOffsetY = useRef<number>(0);
 
   const animatedHeightHeader = scrollOffsetY.interpolate({
     inputRange: [0, SCROLL_DISTANCE],
@@ -51,7 +48,7 @@ const ProductDetail = () => {
   scrollOffsetY.addListener(({ value }) => {
     const scrollOffsetY = value + 130;
     const itemFrom = flatListItemLayout.current[activeTabKey]?.y;
-    const itemTo = flatListItemLayout.current[activeTabKey]?.height + flatListItemLayout.current[activeTabKey]?.y;
+    const itemTo = itemFrom + flatListItemLayout.current[activeTabKey]?.height;
 
     if (!isScrolling.current) {
       if (scrollOffsetY >= itemTo && activeTabKey < data.length - 1) {
@@ -60,8 +57,6 @@ const ProductDetail = () => {
         setActiveTabKey(activeTabKey - 1);
       }
     }
-
-    prevScrollOffsetY.current = scrollOffsetY;
   });
 
   const handleScrollToCurrentSectionList = (index: number) => {
@@ -106,7 +101,6 @@ const ProductDetail = () => {
             snapToAlignment='start'
             onScrollEndDrag={() => {
               isScrolling.current = false;
-              console.log('end scroll');
             }}
             onScroll={Animated.event(
               [
