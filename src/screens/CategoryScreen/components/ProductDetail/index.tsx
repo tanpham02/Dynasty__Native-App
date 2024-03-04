@@ -22,8 +22,9 @@ const ProductDetail = () => {
 
   const [showHeaderMain, setShowHeaderMain] = useState<boolean>(false);
   const [activeTabKey, setActiveTabKey] = useState<number>(0);
-  const [isCheckedTab, setIsCheckedTab] = useState<boolean>(false);
   const flatListItemLayout = useRef<{ current: { [key: string]: Object } }>();
+
+  const isScrolling = useRef<boolean>(false);
 
   const prevScrollOffsetY = useRef<number>(0);
 
@@ -52,21 +53,20 @@ const ProductDetail = () => {
     const itemFrom = flatListItemLayout.current[activeTabKey]?.y;
     const itemTo = flatListItemLayout.current[activeTabKey]?.height + flatListItemLayout.current[activeTabKey]?.y;
 
-    if (scrollOffsetY > itemTo && activeTabKey < data.length - 1 && !isCheckedTab) {
-      setActiveTabKey(activeTabKey + 1);
-      prevScrollOffsetY.current = scrollOffsetY;
-      return;
+    if (!isScrolling.current) {
+      if (scrollOffsetY >= itemTo && activeTabKey < data.length - 1) {
+        setActiveTabKey(activeTabKey + 1);
+      } else if (scrollOffsetY < itemFrom && activeTabKey !== 0) {
+        setActiveTabKey(activeTabKey - 1);
+      }
     }
 
-    if (scrollOffsetY < itemFrom && activeTabKey !== 0 && !isCheckedTab) {
-      setActiveTabKey(activeTabKey - 1);
-      prevScrollOffsetY.current = scrollOffsetY;
-      return;
-    }
+    prevScrollOffsetY.current = scrollOffsetY;
   });
 
   const handleScrollToCurrentSectionList = (index: number) => {
     const offsetY = flatListItemLayout.current[index]?.y;
+    isScrolling.current = true;
     scrollRef.current?.scrollTo({
       x: 0,
       y: offsetY - 130,
@@ -93,7 +93,6 @@ const ProductDetail = () => {
               <ProductVariantTabList
                 activeTabKey={activeTabKey}
                 setActiveTabKey={setActiveTabKey}
-                setIsCheckedTab={setIsCheckedTab}
                 handleScrollToCurrentSectionList={handleScrollToCurrentSectionList}
               />
             </Animated.View>
@@ -105,8 +104,9 @@ const ProductDetail = () => {
             ref={scrollRef}
             showsVerticalScrollIndicator={false}
             snapToAlignment='start'
-            onScrollAnimationEnd={() => {
-              if (isCheckedTab) setIsCheckedTab(false);
+            onScrollEndDrag={() => {
+              isScrolling.current = false;
+              console.log('end scroll');
             }}
             onScroll={Animated.event(
               [
@@ -154,7 +154,12 @@ const ProductDetail = () => {
             </Animated.View>
 
             {data.map((item, index) => (
-              <ProductVariantContentItem title={item} itemIdex={index} flatListItemLayout={flatListItemLayout} />
+              <ProductVariantContentItem
+                key={index}
+                title={item}
+                itemIdex={index}
+                flatListItemLayout={flatListItemLayout}
+              />
             ))}
           </Animated.ScrollView>
 

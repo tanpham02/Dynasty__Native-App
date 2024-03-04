@@ -1,23 +1,32 @@
 import { Box, Text } from 'native-base';
 import { SwipeListView } from 'react-native-swipe-list-view';
+import { useState } from 'react';
 
+import { Svg } from '@/assets';
+import { NotificationType } from './type';
 import { PrimaryLayout } from '@/components';
-import { NotificationHiddenItem, NotificationItem } from './components';
 import { TouchableOpacity } from 'react-native';
+import { NotificationHiddenItem, NotificationItem, NotificationTab } from './components';
 
 const NotificationScreen = () => {
+  const [tabKey, setTabKey] = useState<NotificationType>(NotificationType.DISCOUNT_NEWS);
+
   return (
     <PrimaryLayout
+      containerClass='bg-white'
       renderTitle={() => (
-        <Box className='justify-center'>
-          <Text className='font-nunito-700 text-lg text-center'>Dynasty Pizza</Text>
+        <Box className='justify-center flex-row flex-1'>
+          <Text className='font-nunito-700 text-lg text-center -ml-16'>Dynasty Pizza</Text>
+          <TouchableOpacity className='p-1 absolute top-0 right-4'>
+            <Svg.MarkAllAsRead width={20} height={20} className='text-zinc-400' />
+          </TouchableOpacity>
         </Box>
       )}
-      containerClass='bg-white'
     >
+      <NotificationTab activeTab={tabKey} onChangeTab={setTabKey} />
       <SwipeListView
         disableRightSwipe
-        rightOpenValue={-160}
+        rightOpenValue={-155}
         previewOpenValue={-40}
         previewOpenDelay={3000}
         showsVerticalScrollIndicator={false}

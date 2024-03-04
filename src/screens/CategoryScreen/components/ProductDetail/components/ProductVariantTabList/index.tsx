@@ -24,7 +24,6 @@ const ProductVariantTabList = (props: ProductVariantTabListProps) => {
 
     setActiveTabKey(index);
     handleScrollToCurrentSectionList(index);
-    setIsCheckedTab(true);
   };
 
   return (
