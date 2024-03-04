@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { FlatList } from 'react-native';
 import { Route } from 'react-native-tab-view';
 import ProductVariantTabItem from '../ProductVariantTabItem';
@@ -12,6 +12,8 @@ const routes: Route[] = [
 ];
 
 const ProductVariantTabList = (props: ProductVariantTabListProps) => {
+  const { activeTabKey, setActiveTabKey, setIsCheckedTab, handleScrollToCurrentSectionList } = props;
+
   const flatListRef = useRef<FlatList>();
 
   const handleChangeTabIndex = (index: number) => {
@@ -19,13 +21,16 @@ const ProductVariantTabList = (props: ProductVariantTabListProps) => {
       index,
       viewPosition: 0.5,
     });
-    props.setActiveTabKey(index);
+
+    setActiveTabKey(index);
+    handleScrollToCurrentSectionList(index);
+    setIsCheckedTab(true);
   };
 
   return (
     <FlatList
       horizontal
-      snapToAlignment="start"
+      snapToAlignment='start'
       scrollEventThrottle={16}
       showsHorizontalScrollIndicator={false}
       ref={flatListRef}
@@ -34,9 +39,11 @@ const ProductVariantTabList = (props: ProductVariantTabListProps) => {
       renderItem={({ index, item }) => (
         <ProductVariantTabItem
           key={index}
-          isActiveKey={index === props.activeTabKey}
+          isActiveKey={index === activeTabKey}
           route={item}
-          onChange={() => handleChangeTabIndex(index)}
+          onChange={() => {
+            handleChangeTabIndex(index);
+          }}
         />
       )}
     />
