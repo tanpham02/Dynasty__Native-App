@@ -19,7 +19,7 @@ export const menus: ProfileMenuItemProps[] = [
     {
         Icon: Svg.Package,
         label: 'Đơn hàng của tôi',
-        onPress: () => { },
+        onPress: () => NavigationUtils.navigate(PathName.PATH_SCREEN.ORDER_HISTORY_SCREEN),
     },
     {
         Icon: Svg.Support,

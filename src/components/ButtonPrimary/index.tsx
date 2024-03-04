@@ -1,13 +1,15 @@
-import styles from '@/styles';
 import { Text } from 'native-base';
 import { TouchableOpacity } from 'react-native';
+
+import { buttonColors, buttonShadows } from './data';
 import { ButtonPrimaryProps } from './type';
 
-const ButtonPrimary = ({ title, onPress, containerClass }: ButtonPrimaryProps) => {
+const ButtonPrimary = ({ title, onPress, containerClass, isDisable, color = 'primary' }: ButtonPrimaryProps) => {
   return (
     <TouchableOpacity
-      className={`bg-primary rounded-lg py-2.5 items-center ${containerClass}`}
-      style={styles.shadowPrimary}
+      disabled={isDisable}
+      className={`rounded-lg py-2.5 items-center ${buttonColors?.[color]} ${isDisable && 'opacity-50'} ${containerClass}`}
+      style={buttonShadows?.[color]}
       onPress={onPress}
     >
       <Text className='font-nunito-700 text-white'>{title}</Text>

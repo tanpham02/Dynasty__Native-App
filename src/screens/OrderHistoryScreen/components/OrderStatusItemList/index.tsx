@@ -3,6 +3,7 @@ import { TouchableOpacity } from 'react-native';
 
 import { OrderStatusTagProps } from './type';
 import styles from '@/styles';
+import { memo } from 'react';
 
 const OrderStatusTag = ({ label, onPress, isActive }: OrderStatusTagProps) => {
   return (
@@ -16,4 +17,4 @@ const OrderStatusTag = ({ label, onPress, isActive }: OrderStatusTagProps) => {
   );
 };
 
-export default OrderStatusTag;
+export default memo(OrderStatusTag);

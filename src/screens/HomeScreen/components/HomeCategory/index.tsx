@@ -36,8 +36,8 @@ const HomeCategory = () => {
           className='flex-row items-center gap-1'
           onPress={() => navigate(PATH_SCREEN.CATEGORIES_SCREEN)}
         >
-          <Text className='font-nunito-600 text-[13px]'>Xem thêm</Text>
-          <Svg.ArrowRight width={16} height={16} />
+          <Text className='font-nunito-600 text-[13px] text-zinc-600'>Xem thêm</Text>
+          <Svg.ArrowRight width={16} height={16} className='text-zinc-600' />
         </TouchableOpacity>
       </View>
       <View className='flex-row flex-wrap gap-x-4'>

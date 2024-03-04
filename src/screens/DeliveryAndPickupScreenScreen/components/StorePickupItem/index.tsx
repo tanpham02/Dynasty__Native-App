@@ -1,19 +1,15 @@
 import { Box, Text } from 'native-base';
 import { Linking, Platform, TouchableOpacity } from 'react-native';
+import { useCallback, useState } from 'react';
 
 import { Svg } from '@/assets';
 import styles from '@/styles';
-import { useCallback, useState } from 'react';
 
-const StorePickupItem = () => {
-  const [isActive, setIsActive] = useState<boolean>(false);
-
-  const toggleActive = () => setIsActive(!isActive);
-
+const StorePickupItem = ({ name, address, longitude, latitude, onPress, isActive, id, index }) => {
   const handleDirectOnMap = useCallback(() => {
     const label = 'Dynasty Pizza';
-    const lat = 10.792195;
-    const lng = 106.64426;
+    const lat = longitude;
+    const lng = latitude;
 
     const scheme = Platform.select({
       ios: 'http://maps.apple.com/?ll=',
@@ -30,7 +26,7 @@ const StorePickupItem = () => {
 
   return (
     <TouchableOpacity
-      onPress={toggleActive}
+      onPress={() => onPress?.(id, index)}
       className={`border rounded-lg p-3 bg-white mt-2 mb-4 mx-1.5 ${isActive ? 'border-secondary' : 'border-zinc-200'}`}
       style={[styles.shadowX, styles.widthFourPerFiveScreen]}
     >
@@ -38,10 +34,10 @@ const StorePickupItem = () => {
         <Svg.Location width={20} height={20} className='text-zinc-700' />
         <Box className='flex-1 mx-2'>
           <Text className='font-nunito-700 text-zinc-700 text-sm' numberOfLines={1}>
-            Dynasty Pizza Tân Bình
+            {name}
           </Text>
           <Text className='font-nunito-500 text-zinc-500 text-[13px]' numberOfLines={2}>
-            121 Hòa Bình, Phường 12, Quận Tân Bình, Tp.Hồ Chí Minh
+            {address}
           </Text>
         </Box>
         <TouchableOpacity className='items-center' onPress={handleDirectOnMap}>

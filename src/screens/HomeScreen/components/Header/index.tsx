@@ -1,28 +1,23 @@
 import { Canvas, RoundedRect, Shadow } from '@shopify/react-native-skia';
 import { GestureResponderEvent, Text, TouchableOpacity, View } from 'react-native';
 import { memo } from 'react';
+import { Box } from 'native-base';
 
 import { Svg } from '@/assets';
 import { PathName } from '@/constants';
 import { NavigationUtils, widthScreen } from '@/utils';
 import { homeScreenRef } from '../..';
 
-const Header = ({ onPress }) => {
+const Header = () => {
   const goToNotificationScreen = () => NavigationUtils.navigate(PathName.PATH_SCREEN.NOTIFICATION_SCREEN);
 
-  const openSidebar = () => homeScreenRef.current.toggleOpenSideBar();
-
-  const handleClickOnContainer = (e: GestureResponderEvent) => {
-    console.log(homeScreenRef.current.isOpenSideBar);
-    if (homeScreenRef.current.isOpenSideBar.current) {
-      e.stopPropagation();
-      openSidebar();
-    }
+  const openSidebar = () => {
+    homeScreenRef.current.toggleOpenSideBar();
   };
 
   return (
-    <View onTouchStart={handleClickOnContainer} className='flex-row justify-between items-center gap-3'>
-      <View className='flex-1 h-[85px] relative' onTouchStart={handleClickOnContainer}>
+    <View className='flex-row justify-between items-center gap-3'>
+      <View className='flex-1 h-[85px] relative'>
         <Canvas
           style={{
             flex: 1,
@@ -40,6 +35,9 @@ const Header = ({ onPress }) => {
         </Canvas>
         <TouchableOpacity onPress={goToNotificationScreen} className='absolute top-7 right-6'>
           <Svg.Notification width={24} height={24} />
+          <Box className='bg-secondary w-[18px] h-[18px] rounded-full items-center justify-center absolute -top-2 -right-2'>
+            <Text className='text-white font-nunito-700 text-[9px]'>9</Text>
+          </Box>
         </TouchableOpacity>
         <View className='flex-row items-center rounded-lg my-2 py-1 px-4 absolute top-2 left-4 w-[77%]'>
           <TouchableOpacity onPress={openSidebar}>

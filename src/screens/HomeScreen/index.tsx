@@ -1,6 +1,6 @@
 import { useIsFocused } from '@react-navigation/native';
-import { MutableRefObject, createRef, useEffect, useImperativeHandle, useRef } from 'react';
-import { Animated, View } from 'react-native';
+import { createRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
+import { Animated, ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { SideBar } from '@/components';
@@ -9,56 +9,53 @@ import { BuyAction, BuyQueueTutorial, Header, HomeCategory, HomeSlider, ProductL
 
 type HomeScreenRefType = {
   toggleOpenSideBar(): void;
-  isOpenSideBar: MutableRefObject<boolean>;
 };
 
 export const homeScreenRef = createRef<HomeScreenRefType>();
 
 const HomeScreen = () => {
-  const isOpenSideBar = useRef<boolean>(false);
-  const openSideBar = useRef(new Animated.Value(0)).current;
-
   const isFocus = useIsFocused();
+
+  const [isOpenSideBar, setIsOpenSidebar] = useState<boolean>(true);
+
+  const sidebarAniValue = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
     let timer = null;
-
-    if (!isFocus && isOpenSideBar.current) {
+    if (!isFocus && !isOpenSideBar) {
       timer = setTimeout(() => {
         toggleOpenSideBar();
       }, 200);
     }
-
     return () => {
       clearTimeout(timer);
     };
-  }, [isFocus]);
+  }, [isFocus, isOpenSideBar]);
 
   const toggleOpenSideBar = () => {
-    isOpenSideBar.current = !isOpenSideBar.current;
-    Animated.timing(openSideBar, {
-      toValue: isOpenSideBar.current ? 1 : 0,
+    Animated.timing(sidebarAniValue, {
+      toValue: isOpenSideBar ? 1 : 0,
       duration: 250,
       useNativeDriver: false,
     }).start();
+    setIsOpenSidebar(!isOpenSideBar);
   };
 
   useImperativeHandle(homeScreenRef, () => ({
     toggleOpenSideBar,
-    isOpenSideBar: isOpenSideBar,
   }));
 
-  const interpolatedTop = openSideBar.interpolate({
+  const interpolatedTop = sidebarAniValue.interpolate({
     inputRange: [0, 1],
     outputRange: ['0%', '15%'],
   });
 
-  const interpolatedLeft = openSideBar.interpolate({
+  const interpolatedLeft = sidebarAniValue.interpolate({
     inputRange: [0, 1],
     outputRange: ['0%', '60%'],
   });
 
-  const interpolatedScale = openSideBar.interpolate({
+  const interpolatedScale = sidebarAniValue.interpolate({
     inputRange: [0, 1],
     outputRange: [1.2, 1],
   });
@@ -73,7 +70,7 @@ const HomeScreen = () => {
               scale: interpolatedScale,
             },
           ],
-          opacity: openSideBar,
+          opacity: sidebarAniValue,
         }}
       >
         <SideBar />
@@ -89,29 +86,28 @@ const HomeScreen = () => {
           styles.shadowX,
         ]}
       >
-        <View className='flex-1'>
-          <SafeAreaView className='flex-1'>
-            <View className='flex-1'>
-              <Header onPress={toggleOpenSideBar} />
-              <Animated.ScrollView
-                scrollEventThrottle={16}
-                showsVerticalScrollIndicator={false}
-                showsHorizontalScrollIndicator={false}
-                keyboardShouldPersistTaps='always'
-              >
-                <View className='flex-1'>
-                  <BuyAction />
-                  <HomeSlider />
-                  <HomeCategory />
-                  <BuyQueueTutorial />
-                  {Array.from({ length: 10 }).map((_, key) => (
-                    <ProductList key={key} />
-                  ))}
-                </View>
-              </Animated.ScrollView>
-            </View>
-          </SafeAreaView>
-        </View>
+        <SafeAreaView className='flex-1'>
+          <View className='flex-1'>
+            <Header />
+            <ScrollView
+              scrollEventThrottle={16}
+              showsVerticalScrollIndicator={false}
+              showsHorizontalScrollIndicator={false}
+              keyboardShouldPersistTaps='always'
+            >
+              <View className='flex-1'>
+                <BuyAction />
+                <HomeSlider />
+                <HomeCategory />
+                <BuyQueueTutorial />
+                {Array.from({ length: 10 }).map((_, key) => (
+                  <ProductList key={key} />
+                ))}
+              </View>
+            </ScrollView>
+          </View>
+        </SafeAreaView>
+        {!isOpenSideBar && <View onTouchStart={toggleOpenSideBar} className='absolute top-0 left-0 right-0 bottom-0' />}
       </Animated.View>
     </View>
   );

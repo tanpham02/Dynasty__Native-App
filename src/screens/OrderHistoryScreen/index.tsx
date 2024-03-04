@@ -8,6 +8,7 @@ import { OrderHistoryItem, OrderStatusItemList } from './components';
 
 const OrderHistoryScreen = () => {
   const [activeKey, setActiveKey] = useState<number>(0);
+
   const orderStatusFlatListRef = useRef<FlatList>(null);
 
   const handleScrollToIndex = (index: number) => {
