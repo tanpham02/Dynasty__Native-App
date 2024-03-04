@@ -4,6 +4,7 @@ import { default as styleCustom } from '@/styles';
 import { heightScreen } from '@/utils';
 import { Box, Divider, Image, ScrollView, Text } from 'native-base';
 import React, { useEffect, useRef, useState } from 'react';
+<<<<<<< HEAD
 import {
   Animated,
   SafeAreaView,
@@ -14,6 +15,9 @@ import {
   SectionList,
   Pressable,
 } from 'react-native';
+=======
+import { Animated, SafeAreaView, StatusBar, StyleSheet, TouchableOpacity, View, SectionList } from 'react-native';
+>>>>>>> e6c2258902c95bcdc624e298402fcbe5fce1896a
 import ProductVariantTabList from './components/ProductVariantTabList';
 
 const HEADER_MAX_HEIGHT = heightScreen * 0.36; // 36%
@@ -123,7 +127,7 @@ const ProductDetail = () => {
                 height: !showHeaderMain ? 'auto' : 0,
                 opacity: animatedOpacity,
               }}
-              className='bg-third pb-4 flex flex-col px-4 relative'
+              className='bg-third pb-4 flex flex-col px-4 relative border-b border-dashed border-zinc-300'
             >
               <HeaderBar headerClass='absolute' />
               <Box style={{ width: 180, height: 180 }} className='mx-auto -my-[5%]'>
@@ -152,7 +156,35 @@ const ProductDetail = () => {
               </Box>
             </Animated.View>
 
-            <Divider color='blue.200' />
+            {/* <Divider color="blue.200" /> */}
+
+            {/* <SectionList
+              style={{
+                marginBottom: HEADER_MIN_HEIGHT / 2,
+              }}
+              ref={sectionListRef}
+              scrollEventThrottle={16}
+              className={`px-4 bg-white py-2 `}
+              sections={DATA}
+              keyExtractor={(_, index) => `${index}`}
+              renderItem={({ item }) => (
+                <View>
+                  <Text>{item}</Text>
+                </View>
+              )}
+              onScrollToIndexFailed={({ index }) => {
+                const wait = new Promise((resolve) => setTimeout(resolve, 500));
+                wait.then(() => {
+                  sectionListRef.current.scrollToLocation({
+                    sectionIndex: index,
+                    itemIndex: activeTabKey,
+                    viewPosition: 0,
+                  });
+                });
+              }}
+              renderSectionHeader={({ section: { title } }) => <Text className='pt-4'>{title}</Text>}
+              stickySectionHeadersEnabled
+            /> */}
           </Animated.ScrollView>
           <SectionList
             style={{
