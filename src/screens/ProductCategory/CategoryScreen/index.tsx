@@ -1,11 +1,8 @@
-import { useState } from 'react';
-import { Animated, StatusBar, Text, View } from 'react-native';
-import { CategoriesProps } from './type';
-import { Box, Pressable, useColorModeValue } from 'native-base';
+import { Box } from 'native-base';
+
 import { PrimaryLayout } from '@/components/Layout';
-import { Svg } from '@/assets';
 import CategoryTabViewGroup from './components/CategoryTabViewGroup';
-import styles from '@/styles';
+import { CategoriesProps } from './type';
 
 const Categories = (props: CategoriesProps) => {
   return (

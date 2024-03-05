@@ -3,8 +3,9 @@ import { useStatusBarForAndroid } from '@/hooks';
 import { default as styleCustom } from '@/styles';
 import { heightScreen } from '@/utils';
 import { Box, Image, Text } from 'native-base';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Animated, SafeAreaView, ScrollView, TouchableOpacity } from 'react-native';
+
 import ProductVariantContentItem from './components/ProductVariantContentItem';
 import ProductVariantTabList from './components/ProductVariantTabList';
 
@@ -121,8 +122,12 @@ const ProductDetail = () => {
                 minHeight: typeof animatedHeightHeader === 'number' && Number(animatedHeightHeader),
                 height: !showHeaderMain ? 'auto' : 0,
                 opacity: animatedOpacity,
+                borderStyle: 'dashed',
+                borderWidth: 1,
+                borderColor: '#c6c6c6',
+                margin: -1,
               }}
-              className='bg-third pb-4 flex flex-col px-4 relative border-b border-dashed border-zinc-300 z-999999'
+              className='bg-third pb-4 flex flex-col px-4 relative z-999999'
             >
               <HeaderBar headerClass='absolute' />
               <Box style={{ width: 180, height: 180 }} className='mx-auto -my-[5%]'>

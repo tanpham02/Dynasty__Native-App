@@ -1,6 +1,6 @@
 import { Pressable } from 'native-base';
 import React from 'react';
-import { Animated } from 'react-native';
+import { Animated, Text } from 'react-native';
 
 import { ProductVariantTabItemProps } from './type';
 
@@ -9,7 +9,7 @@ const ProductVariantTabItem = (props: ProductVariantTabItemProps) => {
 
   return (
     <Pressable onPress={onChange}>
-      <Animated.Text
+      <Animated.View
         style={{
           borderBottomColor: isActiveKey ? '#e8002a' : 'transparent',
           borderBottomWidth: 2,
@@ -17,8 +17,8 @@ const ProductVariantTabItem = (props: ProductVariantTabItemProps) => {
         }}
         className={`text-sm font-nunito-600 mt-2 px-4 py-4 ${isActiveKey ? 'text-secondary font-nunito-700' : 'text-gray-9'}`}
       >
-        {route?.title}
-      </Animated.Text>
+        <Text>{route?.title}</Text>
+      </Animated.View>
     </Pressable>
   );
 };
