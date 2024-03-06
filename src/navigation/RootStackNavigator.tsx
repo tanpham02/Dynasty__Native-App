@@ -18,6 +18,7 @@ import {
   SignInScreen,
   TermAndConditionsScreen,
   UpdateProfileScreen,
+  VoucherScreen,
 } from '@/screens';
 import ProductDetail from '@/screens/CategoryScreen/components/ProductDetail';
 
@@ -129,6 +130,8 @@ const RootStackNavigator = () => {
         component={OrderDetailScreen}
         options={optionsMain}
       />
+
+      <RootStack.Screen name={PathName.PATH_SCREEN.VOUCHER_SCREEN} component={VoucherScreen} options={optionsMain} />
     </RootStack.Navigator>
   );
 };

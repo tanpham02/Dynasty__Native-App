@@ -66,6 +66,7 @@ const ProductDetail = () => {
 
   const handleScrollToCurrentSectionList = (index: number) => {
     const offsetY = flatListItemLayout.current[index]?.y;
+
     isScrolling.current = true;
     scrollRef.current?.scrollTo({
       x: 0,
@@ -106,7 +107,6 @@ const ProductDetail = () => {
             snapToAlignment='start'
             onScrollEndDrag={() => {
               isScrolling.current = false;
-              console.log('end scroll');
             }}
             onScroll={Animated.event(
               [

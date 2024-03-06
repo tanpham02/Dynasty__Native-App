@@ -42,3 +42,4 @@ export { default as Eye } from './eye.svg';
 export { default as PizzaCircle } from './pizza-circle.svg';
 export { default as Direction } from './direction.svg';
 export { default as MarkAllAsRead } from './mark-as-read.svg';
+export { default as Scissors } from './scissors.svg';

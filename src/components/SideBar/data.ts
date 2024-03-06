@@ -32,8 +32,9 @@ export const sidebarMenus = [
         onPress: () => NavigationUtils.navigate(PathName.PATH_SCREEN.CATEGORIES_SCREEN),
     },
     {
-        label: 'Mã giảm giá',
+        label: 'Voucher của bạn',
         Icon: Svg.Offer,
+        onPress: () => NavigationUtils.navigate(PathName.PATH_SCREEN.VOUCHER_SCREEN),
     },
     {
         label: 'Lịch sử đơn hàng',

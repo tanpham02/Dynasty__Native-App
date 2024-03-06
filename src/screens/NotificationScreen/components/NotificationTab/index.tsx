@@ -1,16 +1,25 @@
-import { Box, Text } from 'native-base';
-import { TouchableOpacity } from 'react-native';
+import { Box } from 'native-base';
+
+import NotificationTabItem from '../NotificationTabItem';
 import { NotificationTabProps } from './type';
+import { NotificationType } from '../../type';
 
 const NotificationTab = ({ activeTab, onChangeTab }: NotificationTabProps) => {
+  const handlePressDiscountNotification = () => onChangeTab(NotificationType.DISCOUNT_NEWS);
+  const handlePressMyNewsNotification = () => onChangeTab(NotificationType.MY_NEWS);
+
   return (
     <Box className='flex-row mx-4 mb-2'>
-      <TouchableOpacity className='bg-secondary py-2 px-4 flex-1 rounded-2xl mr-2'>
-        <Text className='text-white font-nunito-700 text-sm text-center'>Tin khuyến mãi</Text>
-      </TouchableOpacity>
-      <TouchableOpacity className='bg-secondary/10 py-2 px-4 flex-1 rounded-2xl ml-2'>
-        <Text className='text-black font-nunito-700 text-sm text-center'>Tin của bạn</Text>
-      </TouchableOpacity>
+      <NotificationTabItem
+        title='Tin khuyến mãi'
+        onPress={handlePressDiscountNotification}
+        isActive={activeTab === NotificationType.DISCOUNT_NEWS}
+      />
+      <NotificationTabItem
+        title='Tin của bạn'
+        onPress={handlePressMyNewsNotification}
+        isActive={activeTab === NotificationType.MY_NEWS}
+      />
     </Box>
   );
 };

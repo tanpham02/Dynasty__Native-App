@@ -1,11 +1,11 @@
 import { Box, Text } from 'native-base';
 import { SwipeListView } from 'react-native-swipe-list-view';
 import { useState } from 'react';
+import { TouchableOpacity } from 'react-native';
 
 import { Svg } from '@/assets';
 import { NotificationType } from './type';
 import { PrimaryLayout } from '@/components';
-import { TouchableOpacity } from 'react-native';
 import { NotificationHiddenItem, NotificationItem, NotificationTab } from './components';
 
 const NotificationScreen = () => {
