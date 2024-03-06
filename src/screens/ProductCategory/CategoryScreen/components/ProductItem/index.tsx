@@ -1,3 +1,4 @@
+// FIXME: sorting import below
 import { Svg } from '@/assets';
 import { PathName } from '@/constants';
 import { ProductType } from '@/models/productModel';
@@ -10,12 +11,14 @@ import { Animated, GestureResponderEvent, Text, TouchableOpacity } from 'react-n
 import { ProductTypeIconList } from '../ProductList/data';
 import { ProductItemProps } from './type';
 
+// FIXME: using destructuring instead of access to property
 const ProductItem = (props: ProductItemProps) => {
   const [haveProductFavored, setHaveProductFavorite] = useState<number[]>([]);
 
   const animation = new Animated.Value(0, { useNativeDriver: true });
   const inputRange = [0, 1];
   const outputRange = [1, 2];
+
   const scale = animation.interpolate({ inputRange, outputRange });
 
   const handleToggleProductFavorite = (index: number) => {
@@ -65,6 +68,7 @@ const ProductItem = (props: ProductItemProps) => {
           </Box>
         )}
         <Animated.View style={[{ transform: [{ scale }] }]}>
+          {/* FIXME: merge this function into one */}
           <Pressable
             onPress={(ev: GestureResponderEvent) => {
               ev.stopPropagation();
@@ -97,6 +101,7 @@ const ProductItem = (props: ProductItemProps) => {
 
       <Box className='mt-3 p-3 flex-row items-center justify-between'>
         <Text className='font-nunito-800 text-lg text-secondary'>{formatCurrencyByLocale(props.price)}</Text>
+        {/* FIXME: split this function */}
         <TouchableOpacity
           className='bg-secondary rounded-lg p-2 flex-row items-center'
           onPress={() => NavigationUtils.navigate(PathName.PATH_SCREEN.PRODUCT_DETAIL_SCREEN)}

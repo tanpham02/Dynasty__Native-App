@@ -17,7 +17,7 @@ import { PATH_SCREEN } from '@/constants/pathName';
 import { PathName } from '@/constants';
 import useStatusBarForAndroid from '@/hooks/useStatusBarForAndroid';
 import { NavigationUtils } from '@/utils';
-
+// TODO: Are you forgetting to refactor this code?
 const SignInScreen = () => {
   const [isAgreeReceiveOffer, setIsAgreeReceiveOffer] = useState<boolean>(true);
 

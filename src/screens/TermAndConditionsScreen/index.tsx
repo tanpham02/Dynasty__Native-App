@@ -1,7 +1,7 @@
 import { Box, Divider, FlatList, Text } from 'native-base';
 import { useEffect } from 'react';
 
-import { GlobalLoading, PrimaryLayout, ScrollView, ExpandItem } from '@/components';
+import { ExpandItem, GlobalLoading, PrimaryLayout } from '@/components';
 
 const datas = [
   {

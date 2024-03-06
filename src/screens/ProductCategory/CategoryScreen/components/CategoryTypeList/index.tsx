@@ -1,3 +1,5 @@
+//FIXME: sorting import below
+
 import { Box } from 'native-base';
 import React, { useRef, useState } from 'react';
 import { categoryTypes } from './data';
@@ -40,6 +42,7 @@ const CategoryTypeList = () => {
         <CategoryTypeItem
           key={`${index}`}
           isActive={index === activeTabKey}
+          //FIXME: merge this into one function
           onPress={() => {
             setActiveTabKey(index);
             handleScrollToIndex(index);

@@ -1,3 +1,4 @@
+// FIXME: sorting import below
 import { Avatar, Box, Pressable } from 'native-base';
 import React from 'react';
 
@@ -5,11 +6,13 @@ import styles from '@/styles';
 import Animated from 'react-native-reanimated';
 import { CategoryTabViewItemProps } from './type';
 
+// FIXME: using destructuring instead of access to property
 const CategoryTabViewItem = (props: CategoryTabViewItemProps) => {
   return (
     <Box
       className={`relative border-b-2 px-3 mb-0.5 mt-[3px] ${props.index === props.activeTabKey ? ' border-b-secondary text-secondary font-nunito-600' : 'border-b-transparent'} `}
     >
+      {/* FIXME: pass in a function that executes both functions instead of 2 functions */}
       <Pressable
         onPress={() => {
           props.setActiveTabKey(props.index);

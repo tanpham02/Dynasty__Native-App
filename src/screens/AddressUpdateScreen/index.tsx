@@ -1,10 +1,10 @@
 import { Box, Input, ScrollView, Select, Text } from 'native-base';
 import { getProvinces, getDistricts, getWards } from 'vietnam-provinces';
 import { useEffect, useMemo, useState } from 'react';
+import { TouchableOpacity } from 'react-native';
 
 import { PrimaryLayout } from '@/components';
 import styles from '@/styles';
-import { TouchableOpacity } from 'react-native';
 
 const AddressUpdateScreen = () => {
   const [location, setLocation] = useState({
@@ -26,8 +26,9 @@ const AddressUpdateScreen = () => {
   }, [location?.cityId]);
 
   const wards = useMemo(() => {
-    if (location?.districtId) return getWards(location.districtId);
-
+    if (location?.districtId) {
+      return getWards(location.districtId);
+    }
     return [];
   }, [location?.districtId]);
 

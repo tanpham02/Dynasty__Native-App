@@ -1,4 +1,5 @@
 import { Box, Flex, Image, Pressable, Text } from 'native-base';
+// FIXME: remember to using shortcut Ctrl + Alt + O
 
 import { CategoryTypeItemProps } from './type';
 import { useState } from 'react';

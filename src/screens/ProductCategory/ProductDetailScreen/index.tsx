@@ -1,3 +1,4 @@
+//FIXME: sorting import below
 import { HeaderBar, MyStatusBar } from '@/components';
 import { useStatusBarForAndroid } from '@/hooks';
 import { default as styleCustom } from '@/styles';
