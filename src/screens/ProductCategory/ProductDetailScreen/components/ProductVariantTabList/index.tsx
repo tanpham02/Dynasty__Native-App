@@ -12,7 +12,7 @@ const routes: Route[] = [
 ];
 
 const ProductVariantTabList = (props: ProductVariantTabListProps) => {
-  const { activeTabKey, setActiveTabKey, setIsCheckedTab, handleScrollToCurrentSectionList } = props;
+  const { activeTabKey, setActiveTabKey, handleScrollToCurrentSectionList } = props;
 
   const flatListRef = useRef<FlatList>();
 

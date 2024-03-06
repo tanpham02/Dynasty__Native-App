@@ -19,8 +19,8 @@ import {
   TermAndConditionsScreen,
   UpdateProfileScreen,
   VoucherScreen,
+  ProductDetailScreen,
 } from '@/screens';
-import ProductDetail from '@/screens/CategoryScreen/components/ProductDetail';
 
 const RootStack = createStackNavigator();
 
@@ -57,7 +57,7 @@ const RootStackNavigator = () => {
       {/* Product Detail Screens */}
       <RootStack.Screen
         name={PathName.PATH_SCREEN.PRODUCT_DETAIL_SCREEN}
-        component={ProductDetail}
+        component={ProductDetailScreen}
         options={optionsRoot}
       />
 

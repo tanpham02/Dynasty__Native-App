@@ -3,8 +3,9 @@ import { useStatusBarForAndroid } from '@/hooks';
 import { default as styleCustom } from '@/styles';
 import { heightScreen } from '@/utils';
 import { Box, Image, Text } from 'native-base';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Animated, SafeAreaView, ScrollView, TouchableOpacity } from 'react-native';
+
 import ProductVariantContentItem from './components/ProductVariantContentItem';
 import ProductVariantTabList from './components/ProductVariantTabList';
 
@@ -19,14 +20,11 @@ const ProductDetail = () => {
 
   const scrollOffsetY = useRef(new Animated.Value(0)).current;
   const scrollRef = useRef<ScrollView>();
+  const isScrolling = useRef<boolean>(false);
 
   const [showHeaderMain, setShowHeaderMain] = useState<boolean>(false);
   const [activeTabKey, setActiveTabKey] = useState<number>(0);
   const flatListItemLayout = useRef<{ current: { [key: string]: Object } }>();
-
-  const isScrolling = useRef<boolean>(false);
-
-  const prevScrollOffsetY = useRef<number>(0);
 
   const animatedHeightHeader = scrollOffsetY.interpolate({
     inputRange: [0, SCROLL_DISTANCE],
@@ -51,7 +49,7 @@ const ProductDetail = () => {
   scrollOffsetY.addListener(({ value }) => {
     const scrollOffsetY = value + 130;
     const itemFrom = flatListItemLayout.current[activeTabKey]?.y;
-    const itemTo = flatListItemLayout.current[activeTabKey]?.height + flatListItemLayout.current[activeTabKey]?.y;
+    const itemTo = itemFrom + flatListItemLayout.current[activeTabKey]?.height;
 
     if (!isScrolling.current) {
       if (scrollOffsetY >= itemTo && activeTabKey < data.length - 1) {
@@ -60,8 +58,6 @@ const ProductDetail = () => {
         setActiveTabKey(activeTabKey - 1);
       }
     }
-
-    prevScrollOffsetY.current = scrollOffsetY;
   });
 
   const handleScrollToCurrentSectionList = (index: number) => {
@@ -127,8 +123,12 @@ const ProductDetail = () => {
                 minHeight: typeof animatedHeightHeader === 'number' && Number(animatedHeightHeader),
                 height: !showHeaderMain ? 'auto' : 0,
                 opacity: animatedOpacity,
+                borderStyle: 'dashed',
+                borderWidth: 1,
+                borderColor: '#c6c6c6',
+                margin: -1,
               }}
-              className='bg-third pb-4 flex flex-col px-4 relative border-b border-dashed border-zinc-300 z-999999'
+              className='bg-third pb-4 flex flex-col px-4 relative z-999999'
             >
               <HeaderBar headerClass='absolute' />
               <Box style={{ width: 180, height: 180 }} className='mx-auto -my-[5%]'>
