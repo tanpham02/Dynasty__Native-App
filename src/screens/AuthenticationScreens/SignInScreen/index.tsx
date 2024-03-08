@@ -1,23 +1,22 @@
 import { Box, Checkbox, Divider, Flex, Input, KeyboardAvoidingView, Text } from 'native-base';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Image, Keyboard, Platform, View } from 'react-native';
+import { Image, Keyboard, View } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import DynastyLogoBgWhite from '@/assets/images/logo/logo-bg-white.png';
 import PizzaBgRight from '@/assets/images/logo/pizza-5-loai-thit-va-rau-cu.png';
 import PizzaBgLeft from '@/assets/images/logo/pizza-hai-san-cao-cap.png';
-import { PizzaSlice, Offer as OfferSvg, Mobile as MobileSvg } from '@/assets/svg';
+import { Mobile as MobileSvg, Offer as OfferSvg, PizzaSlice } from '@/assets/svg';
 
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import styles from '@/styles';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Svg } from '@/assets';
-import { navigate } from '@/utils/navigationUtil';
-import { PATH_SCREEN } from '@/constants/pathName';
 import { PathName } from '@/constants';
 import useStatusBarForAndroid from '@/hooks/useStatusBarForAndroid';
+import styles from '@/styles';
 import { NavigationUtils } from '@/utils';
-// TODO: Are you forgetting to refactor this code?
+import { navigate } from '@/utils/navigationUtil';
+
 const SignInScreen = () => {
   const [isAgreeReceiveOffer, setIsAgreeReceiveOffer] = useState<boolean>(true);
 

@@ -57,7 +57,7 @@ const HomeScreen = () => {
 
   const interpolatedScale = sidebarAniValue.interpolate({
     inputRange: [0, 1],
-    outputRange: [1.2, 1],
+    outputRange: [1.2, 1.2],
   });
 
   return (

@@ -1,11 +1,11 @@
-//FIXME: sorting import below
+import { Box, Image, Text } from 'native-base';
+import React, { useRef, useState } from 'react';
+import { Animated, SafeAreaView, ScrollView, TouchableOpacity } from 'react-native';
+
 import { HeaderBar, MyStatusBar } from '@/components';
 import { useStatusBarForAndroid } from '@/hooks';
 import { default as styleCustom } from '@/styles';
 import { heightScreen } from '@/utils';
-import { Box, Image, Text } from 'native-base';
-import React, { useRef, useState } from 'react';
-import { Animated, SafeAreaView, ScrollView, TouchableOpacity } from 'react-native';
 
 import ProductVariantContentItem from './components/ProductVariantContentItem';
 import ProductVariantTabList from './components/ProductVariantTabList';

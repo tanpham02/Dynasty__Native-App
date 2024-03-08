@@ -1,7 +1,7 @@
-// FIXME: sorting import below
 import React, { useRef } from 'react';
 import { FlatList } from 'react-native';
 import { Route } from 'react-native-tab-view';
+
 import ProductVariantTabItem from '../ProductVariantTabItem';
 import { ProductVariantTabListProps } from './type';
 
