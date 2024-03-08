@@ -46,16 +46,16 @@ export default function App() {
   }
 
   return (
-    <NativeBaseProvider>
-      <QueryClientProvider client={queryClient}>
-        <Provider store={store}>
+    <QueryClientProvider client={queryClient}>
+      <Provider store={store}>
+        <NativeBaseProvider>
           <NavigationContainer ref={NavigationUtils.navigationRef}>
             <RootStackNavigator />
-            <FlashMessage position='bottom' floating />
           </NavigationContainer>
-          <GlobalLoading ref={globalLoadingRef} />
-        </Provider>
-      </QueryClientProvider>
-    </NativeBaseProvider>
+        </NativeBaseProvider>
+        <FlashMessage position='bottom' floating />
+        <GlobalLoading ref={globalLoadingRef} />
+      </Provider>
+    </QueryClientProvider>
   );
 }
