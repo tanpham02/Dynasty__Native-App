@@ -3,9 +3,10 @@ import { createRef, useEffect, useImperativeHandle, useRef, useState } from 'rea
 import { Animated, ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { SideBar } from '@/components';
+import { RefreshControl, SideBar } from '@/components';
 import styles from '@/styles';
 import { BuyAction, BuyQueueTutorial, Header, HomeCategory, HomeSlider, ProductList } from './components';
+import { useFetchAllCategories } from '@/hooks';
 
 type HomeScreenRefType = {
   toggleOpenSideBar(): void;
@@ -17,6 +18,8 @@ const HomeScreen = () => {
   const isFocus = useIsFocused();
 
   const [isOpenSideBar, setIsOpenSidebar] = useState<boolean>(true);
+
+  const [isLoadingData, setIsLoadingData] = useState<boolean>();
 
   const sidebarAniValue = useRef(new Animated.Value(0)).current;
 
@@ -45,6 +48,13 @@ const HomeScreen = () => {
     toggleOpenSideBar,
   }));
 
+  const {
+    data: categoriesData,
+    isFetching: isFetchingCategories,
+    isRefetching: isRefetchingCategories,
+    refetch: refetchCategories,
+  } = useFetchAllCategories();
+
   const interpolatedTop = sidebarAniValue.interpolate({
     inputRange: [0, 1],
     outputRange: ['0%', '15%'],
@@ -59,6 +69,12 @@ const HomeScreen = () => {
     inputRange: [0, 1],
     outputRange: [1.2, 1],
   });
+
+  const refetchHomeData = async () => {
+    setIsLoadingData(true);
+    await Promise.all([refetchCategories()]);
+    setIsLoadingData(false);
+  };
 
   return (
     <View className='flex-1 bg-white'>
@@ -94,14 +110,15 @@ const HomeScreen = () => {
               showsVerticalScrollIndicator={false}
               showsHorizontalScrollIndicator={false}
               keyboardShouldPersistTaps='always'
+              refreshControl={<RefreshControl refreshing={isLoadingData} onRefresh={refetchHomeData} />}
             >
               <View className='flex-1'>
                 <BuyAction />
                 <HomeSlider />
-                <HomeCategory />
+                <HomeCategory data={categoriesData} isLoading={isFetchingCategories || isRefetchingCategories} />
                 <BuyQueueTutorial />
-                {Array.from({ length: 10 }).map((_, key) => (
-                  <ProductList key={key} />
+                {categoriesData?.map((category, key) => (
+                  <ProductList key={key} {...category} isLoading={isFetchingCategories || isRefetchingCategories} />
                 ))}
               </View>
             </ScrollView>

@@ -1,39 +1,29 @@
 export interface SearchParams {
-  searchText?: string;
-  pageIndex?: number;
-  pageSize?: number;
-  status?: string;
-  sortBy?: string;
-  ascending?: boolean;
-
-  [key: string]: any;
+    searchText?: string;
+    pageIndex?: number;
+    pageSize?: number;
+    status?: string;
+    sort?: string;
+    ascending?: boolean;
+    [key: string]: any;
 }
 
-export interface ListResponse<T> {
-  content: T[];
-  pageable: {
-    sort: {
-      unsorted: boolean;
-      sorted: boolean;
-      empty: boolean;
-    };
-    offset: number;
-    pageNumber: number;
-    pageSize: number;
-    paged: boolean;
-    unpaged: boolean;
-  };
-  last: boolean;
-  totalPages: number;
-  totalElements: number;
-  size: number;
-  number: number;
-  sort: {
-    unsorted: boolean;
-    sorted: boolean;
-    empty: boolean;
-  };
-  first: boolean;
-  numberOfElements?: number;
-  empty: boolean;
+
+export enum ModelStatus {
+    ACTIVE = "ACTIVE",
+    INACTIVE = "INACTIVE"
+}
+
+export interface BaseModel {
+    _id: string
+    status: ModelStatus
+}
+
+export interface ListDataResponse<T> {
+    data: T[]
+    totalElement: number,
+    pageIndex: number,
+    pageSize: number,
+    totalPage: number,
+    isLastPage: boolean
 }
