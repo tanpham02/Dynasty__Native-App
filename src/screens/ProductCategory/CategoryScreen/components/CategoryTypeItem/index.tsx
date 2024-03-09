@@ -1,11 +1,9 @@
-import { Box, Flex, Image, Pressable, Text } from 'native-base';
-// FIXME: remember to using shortcut Ctrl + Alt + O
+import { Box, Pressable, Text } from 'native-base';
 
-import { CategoryTypeItemProps } from './type';
-import { useState } from 'react';
-import { ProductTypeIconList } from '../ProductList/data';
 import { ProductType } from '@/models/productModel';
 import { categoryTypes } from '../CategoryTypeList/data';
+import { ProductTypeIconList } from '../ProductList/data';
+import { CategoryTypeItemProps } from './type';
 
 const CategoryTypeItem = ({ icon: Icon, name, isActive, onPress, typeKey, index }: CategoryTypeItemProps) => {
   return (

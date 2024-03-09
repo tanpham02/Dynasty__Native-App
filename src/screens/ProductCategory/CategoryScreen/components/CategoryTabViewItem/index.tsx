@@ -1,4 +1,3 @@
-// FIXME: sorting import below
 import { Avatar, Box, Pressable } from 'native-base';
 import React from 'react';
 
@@ -6,23 +5,25 @@ import styles from '@/styles';
 import Animated from 'react-native-reanimated';
 import { CategoryTabViewItemProps } from './type';
 
-// FIXME: using destructuring instead of access to property
-const CategoryTabViewItem = (props: CategoryTabViewItemProps) => {
+const CategoryTabViewItem = ({
+  activeTabKey,
+  categoryItem,
+  index,
+  onScrollToIndex,
+  setActiveTabKey,
+}: CategoryTabViewItemProps) => {
+  const handlePressTabItem = () => {
+    setActiveTabKey(index);
+    onScrollToIndex(index);
+  };
+
   return (
     <Box
-      className={`relative border-b-2 px-3 mb-0.5 mt-[3px] ${props.index === props.activeTabKey ? ' border-b-secondary text-secondary font-nunito-600' : 'border-b-transparent'} `}
+      className={`relative border-b-2 px-3 mb-0.5 mt-[3px] ${index === activeTabKey ? ' border-b-secondary text-secondary font-nunito-600' : 'border-b-transparent'} `}
     >
-      {/* FIXME: pass in a function that executes both functions instead of 2 functions */}
-      <Pressable
-        onPress={() => {
-          props.setActiveTabKey(props.index);
-          props.onScrollToIndex(props.index);
-        }}
-        className='flex justify-center items-center'
-        style={styles.shadowX}
-      >
+      <Pressable onPress={handlePressTabItem} className='flex justify-center items-center' style={styles.shadowX}>
         <Box
-          className={`flex justify-center items-center rounded-full w-[56px] h-[56px] border-[1.2px] ${props.index === props.activeTabKey ? 'border-secondary' : 'border-white'}`}
+          className={`flex justify-center items-center rounded-full w-[56px] h-[56px] border-[1.2px] ${index === activeTabKey ? 'border-secondary' : 'border-white'}`}
         >
           <Avatar
             source={{
@@ -33,9 +34,9 @@ const CategoryTabViewItem = (props: CategoryTabViewItemProps) => {
           />
         </Box>
         <Animated.Text
-          className={`text-xs font-nunito-500 mt-2 ${props.index === props.activeTabKey ? ' text-secondary font-nunito-700' : 'text-gray-9'}`}
+          className={`text-xs font-nunito-500 mt-2 ${index === activeTabKey ? ' text-secondary font-nunito-700' : 'text-gray-9'}`}
         >
-          {props.categoryItem.name}
+          {categoryItem.name}
         </Animated.Text>
       </Pressable>
     </Box>

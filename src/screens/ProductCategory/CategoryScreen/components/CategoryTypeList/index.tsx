@@ -1,11 +1,8 @@
-//FIXME: sorting import below
-
-import { Box } from 'native-base';
 import React, { useRef, useState } from 'react';
-import { categoryTypes } from './data';
-import CategoryTypeItem from '../CategoryTypeItem';
-import { heightScreen } from '@/utils';
 import { FlatList } from 'react-native';
+
+import CategoryTypeItem from '../CategoryTypeItem';
+import { categoryTypes } from './data';
 
 const CategoryTypeList = () => {
   const [activeTabKey, setActiveTabKey] = useState<number>(-1);
@@ -17,6 +14,11 @@ const CategoryTypeList = () => {
       index: activeTab,
       viewPosition: 0.5,
     });
+  };
+
+  const handlePressCategoryItem = (index: number) => {
+    setActiveTabKey(index);
+    handleScrollToIndex(index);
   };
 
   return (
@@ -42,11 +44,7 @@ const CategoryTypeList = () => {
         <CategoryTypeItem
           key={`${index}`}
           isActive={index === activeTabKey}
-          //FIXME: merge this into one function
-          onPress={() => {
-            setActiveTabKey(index);
-            handleScrollToIndex(index);
-          }}
+          onPress={() => handlePressCategoryItem(index)}
           index={index}
           {...item}
         />

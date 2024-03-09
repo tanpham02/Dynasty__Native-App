@@ -9,7 +9,6 @@ import { QueryKey } from '@/constants';
 import { OpenStreetMapService } from '@/services';
 import { NavigationUtils, widthScreen } from '@/utils';
 import BottomSubmitLocationDelivery from '../BottomSubmitLocationDelivery';
-import { useIsFocused } from '@react-navigation/native';
 
 const MarkerKey = 'CURRENT_LOCATION';
 
@@ -21,7 +20,6 @@ const DeliveryTab = () => {
     longitude: null,
   });
 
-  console.log('🚀 ~ DeliveryTab ~ coordinate:', coordinate);
   useEffect(() => {
     getCurrentLocation();
   }, []);
