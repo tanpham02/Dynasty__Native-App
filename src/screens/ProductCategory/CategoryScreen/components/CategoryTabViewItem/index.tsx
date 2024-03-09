@@ -1,5 +1,5 @@
 import { Avatar, Box, Pressable } from 'native-base';
-import React from 'react';
+import React, { memo } from 'react';
 
 import styles from '@/styles';
 import Animated from 'react-native-reanimated';
@@ -43,4 +43,4 @@ const CategoryTabViewItem = ({
   );
 };
 
-export default CategoryTabViewItem;
+export default memo(CategoryTabViewItem);

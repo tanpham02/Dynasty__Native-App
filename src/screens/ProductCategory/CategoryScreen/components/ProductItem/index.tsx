@@ -1,6 +1,6 @@
-import { Box, Image, Pressable } from 'native-base';
+import { Box, Image } from 'native-base';
 import React, { useState } from 'react';
-import { Animated, Easing, GestureResponderEvent, Text, TouchableOpacity } from 'react-native';
+import { Animated, Easing, GestureResponderEvent, Pressable, Text, TouchableOpacity } from 'react-native';
 
 import { Svg } from '@/assets';
 import { PathName } from '@/constants';
@@ -17,12 +17,11 @@ const ProductItem = (props: ProductItemProps) => {
   const [haveProductFavored, setHaveProductFavorite] = useState<number[]>([]);
 
   const animation = new Animated.Value(0);
-  const inputRange = [0, 1];
-  const outputRange = [1, 1.2];
 
-  const scale = animation.interpolate({ inputRange, outputRange });
+  const scale = animation.interpolate({ inputRange: [0, 1], outputRange: [1, 1.5] });
 
-  const handleToggleProductFavorite = (index: number) => {
+  const handlePressProductFavorite = (evt: GestureResponderEvent) => {
+    evt.stopPropagation();
     const existed = haveProductFavored.includes(index);
 
     setHaveProductFavorite((prev) => {
@@ -33,28 +32,24 @@ const ProductItem = (props: ProductItemProps) => {
     });
   };
 
-  const onPressIn = () => {
-    Animated.timing(animation, {
-      toValue: 3,
-      duration: 2500,
+  const pressInHandler = () => {
+    Animated.spring(animation, {
+      toValue: 1,
       useNativeDriver: true,
-      easing: Easing.linear,
     }).start();
   };
 
-  const handlePressProductFavorite = (evt: GestureResponderEvent) => {
-    evt.stopPropagation();
-    handleToggleProductFavorite(index);
+  const pressOutHandler = () => {
+    Animated.spring(animation, {
+      toValue: 0,
+      useNativeDriver: true,
+    }).start();
   };
 
   const handleNavigateProductDetail = () => NavigationUtils.navigate(PathName.PATH_SCREEN.PRODUCT_DETAIL_SCREEN);
 
   return (
-    <Pressable
-      className='bg-third rounded-lg m-4'
-      style={styles.shadowX}
-      //   onPress={() => NavigationUtils.navigate(PathName.PATH_SCREEN.PRODUCT_DETAIL)}
-    >
+    <Box className='bg-third rounded-lg m-4' style={styles.shadowX}>
       <Box className='p-3 gap-1'>
         <Text className='text-base text-black font-nunito-700'>{name || ''}</Text>
         {description && (
@@ -73,8 +68,13 @@ const ProductItem = (props: ProductItemProps) => {
             })}
           </Box>
         )}
-        <Animated.View style={[{ transform: [{ scale }] }]} className='w-fit ml-auto'>
-          <Pressable onPress={handlePressProductFavorite} onPressIn={onPressIn} opacity={1} className='items-center'>
+        <Animated.View style={[{ transform: [{ scale: scale }] }]} className='w-fit ml-auto'>
+          <Pressable
+            onPress={handlePressProductFavorite}
+            onTouchStart={pressInHandler}
+            onPressOut={pressOutHandler}
+            className='item-center'
+          >
             {haveProductFavored.includes(index) ? (
               <Svg.HeartSolid width={21} height={21} color='#e8002a' />
             ) : (
@@ -106,7 +106,7 @@ const ProductItem = (props: ProductItemProps) => {
           <Text className='font-nunito-700 text-sm text-white'>Thêm giỏ hàng</Text>
         </TouchableOpacity>
       </Box>
-    </Pressable>
+    </Box>
   );
 };
 

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { memo, useRef } from 'react';
 import { FlatList } from 'react-native';
 import { Route } from 'react-native-tab-view';
 
@@ -50,4 +50,4 @@ const ProductVariantTabList = (props: ProductVariantTabListProps) => {
   );
 };
 
-export default ProductVariantTabList;
+export default memo(ProductVariantTabList);
