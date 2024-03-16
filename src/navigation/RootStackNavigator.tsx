@@ -21,6 +21,7 @@ import {
   VoucherScreen,
   ProductDetailScreen,
 } from '@/screens';
+import CartScreen from '@/screens/Carts/CartScreen';
 
 const RootStack = createStackNavigator();
 
@@ -60,6 +61,9 @@ const RootStackNavigator = () => {
         component={ProductDetailScreen}
         options={optionsRoot}
       />
+
+      {/* Cart Screens */}
+      <RootStack.Screen name={PathName.PATH_SCREEN.CART_SCREEN} component={CartScreen} options={optionsRoot} />
 
       <RootStack.Screen
         name={PathName.PATH_SCREEN.DELIVERY_AND_PICKUP_SCREEN}

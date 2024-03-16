@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { memo, useRef, useState } from 'react';
 import { FlatList } from 'react-native';
 
 import CategoryTypeItem from '../CategoryTypeItem';
@@ -53,4 +53,4 @@ const CategoryTypeList = () => {
   );
 };
 
-export default CategoryTypeList;
+export default memo(CategoryTypeList);

@@ -4,6 +4,7 @@ import { ProductType } from '@/models/productModel';
 import { categoryTypes } from '../CategoryTypeList/data';
 import { ProductTypeIconList } from '../ProductList/data';
 import { CategoryTypeItemProps } from './type';
+import { memo } from 'react';
 
 const CategoryTypeItem = ({ icon: Icon, name, isActive, onPress, typeKey, index }: CategoryTypeItemProps) => {
   return (
@@ -29,4 +30,4 @@ const CategoryTypeItem = ({ icon: Icon, name, isActive, onPress, typeKey, index 
   );
 };
 
-export default CategoryTypeItem;
+export default memo(CategoryTypeItem);

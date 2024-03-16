@@ -5,7 +5,10 @@ import { tabBarRoutes } from '../CategoryTabViewGroup/data';
 import CategoryTabViewItem from '../CategoryTabViewItem';
 import { CategoryTabViewListProps } from './type';
 
-const CategoryTabViewList = (props: CategoryTabViewListProps, categoryTabViewGroupRef: React.Ref<any>) => {
+const CategoryTabViewList = (
+  { activeTabKey, onScrollToIndex, setActiveTabKey }: CategoryTabViewListProps,
+  categoryTabViewGroupRef: React.Ref<any>,
+) => {
   return (
     <FlatList
       scrollEventThrottle={16}
@@ -25,9 +28,9 @@ const CategoryTabViewList = (props: CategoryTabViewListProps, categoryTabViewGro
         <CategoryTabViewItem
           categoryItem={item}
           index={index}
-          activeTabKey={props.activeTabKey}
-          onScrollToIndex={props.onScrollToIndex}
-          setActiveTabKey={props.setActiveTabKey}
+          activeTabKey={activeTabKey}
+          onScrollToIndex={onScrollToIndex}
+          setActiveTabKey={setActiveTabKey}
         />
       )}
     />

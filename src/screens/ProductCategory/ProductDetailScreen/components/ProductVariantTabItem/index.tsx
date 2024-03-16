@@ -1,5 +1,5 @@
 import { Pressable } from 'native-base';
-import React from 'react';
+import React, { memo } from 'react';
 import { Animated, Text } from 'react-native';
 
 import { ProductVariantTabItemProps } from './type';
@@ -23,4 +23,4 @@ const ProductVariantTabItem = (props: ProductVariantTabItemProps) => {
   );
 };
 
-export default ProductVariantTabItem;
+export default memo(ProductVariantTabItem);

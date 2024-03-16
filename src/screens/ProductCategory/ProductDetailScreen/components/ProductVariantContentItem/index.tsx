@@ -1,15 +1,11 @@
 import { Box, Text } from 'native-base';
-import React, { useRef } from 'react';
+import React, { memo, useRef } from 'react';
 import { NativeSyntheticEvent, TextLayoutEventData, View } from 'react-native';
 
 import { ProductVariantContentItemProps } from './type';
 
 const ProductVariantContentItem = (props: ProductVariantContentItemProps) => {
   const { title, itemIdex, className, flatListItemLayout } = props;
-
-  const DEFAULT_NUMBER_OF_LINE = 2;
-
-  const cancelRef = useRef<any>();
 
   const defaultNumberOfLinesForEachItem = useRef<number>();
 
@@ -43,25 +39,6 @@ const ProductVariantContentItem = (props: ProductVariantContentItemProps) => {
               dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
               deserunt mollit anim id est laborum.
             </Text>
-            {/* {defaultNumberOfLinesForEachItem.current >= 2 && (
-              <Pressable
-                className='bg-black flex flex-row items-center rounded-lg p-1 h-fit w-fit'
-                onPress={() =>
-                  setNumberOfLine(
-                    numberOfLine === defaultNumberOfLinesForEachItem.current
-                      ? DEFAULT_NUMBER_OF_LINE
-                      : defaultNumberOfLinesForEachItem.current,
-                  )
-                }
-              >
-                <Text className='text-white text-xs w-fit'>{`${numberOfLine === defaultNumberOfLinesForEachItem.current ? 'Ẩn bớt' : 'Xem thêm'}`}</Text>
-                <Svg.ArrowDown
-                  width={18}
-                  height={18}
-                  className={`text-white ${numberOfLine === defaultNumberOfLinesForEachItem.current ? 'rotate-180' : ''}`}
-                />
-              </Pressable>
-            )} */}
           </Box>
         ))}
       </View>
@@ -69,4 +46,4 @@ const ProductVariantContentItem = (props: ProductVariantContentItemProps) => {
   );
 };
 
-export default ProductVariantContentItem;
+export default memo(ProductVariantContentItem);
