@@ -48,3 +48,7 @@ export { default as ShoppingBag } from './shopping-bag.svg';
 export { default as Coupon } from './coupon.svg';
 export { default as Close } from './close.svg';
 export { default as Copy } from './copy.svg';
+export { default as AnglesDown } from './angles-down.svg';
+export { default as AnglesRight } from './angles-right.svg';
+export { default as TrashBinLight } from './trash-bin-light.svg';
+export { default as Notepad } from './notes-notepad.svg';
