@@ -16,7 +16,9 @@ export enum ModelStatus {
 
 export interface BaseModel {
     _id: string
-    status: ModelStatus
+    status: ModelStatus,
+    createdAt: string
+    updatedAt: string
 }
 
 export interface ListDataResponse<T> {

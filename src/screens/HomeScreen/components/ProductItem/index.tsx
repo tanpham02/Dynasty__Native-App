@@ -28,14 +28,14 @@ const ProductItem = ({ name, price, image }: ProductItemProps) => {
                 ? `https://dynasty-ws.vtaan.id.vn${image}`
                 : 'https://dynasty-ws.vtaan.id.vn/public/uploads/image/products/pizza-hai-san-dao.png',
             }}
-            className='object-contain w-full h-full max-h-32'
+            className='object-contain w-full h-full max-h-32 rounded-lg'
             resizeMode='contain'
             alt='Pizza hải sản pessto xanh'
           />
           <Text className='font-nunito-700 text-sm text-zinc-700' numberOfLines={2}>
             {name}
           </Text>
-          <View className='my-3 w-1/3 h-0.5 bg-secondary' />
+          <View className='my-3 w-2/5 h-0.5 bg-secondary' />
           <View className='flex-row'>
             <Text className='flex-1 font-nunito-600 text-zinc-700'>{NumberUtils.formatMoneyVND(price)}đ</Text>
             <View className='border-2 border-secondary rounded p-0.5'>

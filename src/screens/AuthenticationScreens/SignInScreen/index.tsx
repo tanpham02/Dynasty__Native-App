@@ -12,7 +12,7 @@ import { Mobile as MobileSvg, Offer as OfferSvg, PizzaSlice } from '@/assets/svg
 
 import { Svg } from '@/assets';
 import { PathName } from '@/constants';
-import useStatusBarForAndroid from '@/hooks/useStatusBarForAndroid';
+import { useStatusBarForAndroid } from '@/hooks';
 import styles from '@/styles';
 import { NavigationUtils } from '@/utils';
 import { navigate } from '@/utils/navigationUtil';

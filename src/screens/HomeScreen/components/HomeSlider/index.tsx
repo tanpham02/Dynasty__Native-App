@@ -1,30 +1,42 @@
-import { FlatList, View } from 'react-native';
 import { memo } from 'react';
+import { FlatList, View } from 'react-native';
 
 import HomeSliderImage from '../HomeSliderImage';
-import Slider1 from '@/assets/images/slider-1.jpeg';
-import Slider2 from '@/assets/images/slider-2.jpeg';
-import Slider3 from '@/assets/images/slider-3.jpeg';
-import Slider4 from '@/assets/images/slider-4.jpeg';
-import Slider5 from '@/assets/images/slider-5.jpeg';
+import { HomeSliderProps } from './type';
+import { Skeleton } from 'native-base';
+import styles from '@/styles';
 
-const sliders = [Slider1, Slider2, Slider3, Slider4, Slider5];
-
-const HomeSlider = () => {
+const HomeSlider = ({ data, isLoading }: HomeSliderProps) => {
   return (
-    <View className='mt-4 ml-2'>
-      <FlatList
-        horizontal
-        pagingEnabled
-        data={sliders}
-        // ref={flatListRef}
-        snapToAlignment='center'
-        scrollEventThrottle={16}
-        showsHorizontalScrollIndicator={false}
-        showsVerticalScrollIndicator={false}
-        renderItem={({ item }) => <HomeSliderImage source={item} />}
-        keyExtractor={(_, index) => index.toString()}
-      />
+    <View className='mt-6 ml-2'>
+      {isLoading ? (
+        <FlatList
+          horizontal
+          pagingEnabled
+          data={Array.from({ length: 3 }).fill({})}
+          snapToAlignment='center'
+          scrollEventThrottle={16}
+          showsHorizontalScrollIndicator={false}
+          renderItem={() => (
+            <Skeleton
+              style={[styles.heightOnePerFive, styles.widthFourPerFiveScreen]}
+              className='rounded-lg m-1 mr-2'
+            />
+          )}
+          keyExtractor={(_, index) => index.toString()}
+        />
+      ) : (
+        <FlatList
+          horizontal
+          pagingEnabled
+          data={data}
+          snapToAlignment='center'
+          scrollEventThrottle={16}
+          showsHorizontalScrollIndicator={false}
+          renderItem={({ item }) => <HomeSliderImage uri={`https://dynasty-ws.vtaan.id.vn${item?.url}`} />}
+          keyExtractor={(_, index) => index.toString()}
+        />
+      )}
     </View>
   );
 };
