@@ -15,6 +15,5 @@ export { default as ProductDetailScreen } from './ProductCategoryScreens/Product
 export { default as SignInScreen } from './AuthenticationScreens/SignInScreen';
 export { default as TermAndConditionsScreen } from './TermAndConditionsScreen';
 export { default as NutritionInformationScreen } from './NutritionInformationScreen';
-
 export { default as DeliveryAndPickupScreenScreen } from './DeliveryAndPickupScreenScreen';
 export { default as CartScreen } from './CartScreens/CartScreen';

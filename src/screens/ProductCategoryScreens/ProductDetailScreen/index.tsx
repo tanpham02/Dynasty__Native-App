@@ -170,7 +170,7 @@ const ProductDetail = () => {
               />
             ))}
           </Animated.ScrollView>
-
+          {/* NOTE: FROM */}
           <FooterBar
             wrapperClassName='h-[90px] flex justify-center'
             bodyClassName='flex items-center'
@@ -199,6 +199,8 @@ const ProductDetail = () => {
               </Box>
             </Box>
           </FooterBar>
+          {/* NOTE: FROM */}
+          {/* FIXME: SPLIT THIS COMPONENT */}
         </Box>
       </SafeAreaView>
     </>
