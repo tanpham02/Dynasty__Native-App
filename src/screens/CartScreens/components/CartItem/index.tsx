@@ -35,11 +35,11 @@ const CartItem = ({ extendName, image, name, price, quantity, onOpenCartItemDeta
         <Text className='text-gray-10 font-nunito-700 text-[12.5px]'>{formatCurrencyByLocale(price)}</Text>
         <Box className='flex flex-row items-center gap-3'>
           <Box className='bg-[#424957] w-7 h-7 rounded-lg flex justify-center items-center'>
-            <Svg.TrashBinLight width={22} height={22} className='text-white' />
+            <Svg.Minus width={16.5} height={16.5} className='text-white' />
           </Box>
           <Text className='text-gray-10 text-[14.5px] font-nunito-700'>{quantity}</Text>
           <Box className='bg-secondary w-7 h-7 rounded-lg flex justify-center items-center'>
-            <Svg.Plus width={26} height={26} className='text-white' />
+            <Svg.Plus width={25} height={25} className='text-white' />
           </Box>
         </Box>
       </Box>
