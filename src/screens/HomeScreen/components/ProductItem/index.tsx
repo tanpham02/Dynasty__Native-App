@@ -7,7 +7,6 @@ import { NumberUtils, widthScreen } from '@/utils';
 import { ProductItemProps } from './type';
 
 const ProductItem = ({ name, price, image }: ProductItemProps) => {
-  console.log('url: ', `https://dynasty-ws.vtaan.id.vn${image}`);
   return (
     <View style={styles.widthTwoPerFive} className='relative h-[260px]'>
       <Canvas

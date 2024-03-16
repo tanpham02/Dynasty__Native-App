@@ -48,6 +48,9 @@ const styles = StyleSheet.create({
   colorThird: {
     color: '#f5faff',
   },
+  colorFourth: {
+    color: '#1077e6',
+  },
 });
 
 export default styles;

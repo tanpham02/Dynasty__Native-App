@@ -61,10 +61,14 @@ const ProductItem = (props: ProductItemProps) => {
 
       <Box className={`flex-row mx-3 mb-4 flex justify-between items-center`}>
         {types.length > 0 && !types.includes(ProductType.NORMAL) && (
-          <Box className='flex-row gap-2'>
+          <Box className='flex-row gap-1'>
             {types.map((type, index) => {
               const { Icon, color } = ProductTypeIconList[type];
-              return <Icon key={index} width={21} height={21} color={color} />;
+              return (
+                <Box className='rounded-full p-.5 border-2 border-white'>
+                  <Icon key={index} width={21} height={21} color={color} />
+                </Box>
+              );
             })}
           </Box>
         )}
@@ -97,13 +101,15 @@ const ProductItem = (props: ProductItemProps) => {
       </Box>
 
       <Box className='mt-3 p-3 flex-row items-center justify-between'>
-        <Text className='font-nunito-800 text-lg text-secondary'>{formatCurrencyByLocale(price)}</Text>
+        <Box>
+          <Text className='font-nunito-700 text-sm text-gray-10'>Giá chỉ từ</Text>
+          <Text className='font-nunito-800 text-lg text-secondary'>{formatCurrencyByLocale(price)}</Text>
+        </Box>
         <TouchableOpacity
           className='bg-secondary rounded-lg p-2 flex-row items-center'
           onPress={handleNavigateProductDetail}
         >
-          <Svg.Plus width={16} height={16} color='white' className='mr-1' />
-          <Text className='font-nunito-700 text-sm text-white'>Thêm giỏ hàng</Text>
+          <Text className='font-nunito-700 text-sm text-white'>Mua ngay</Text>
         </TouchableOpacity>
       </Box>
     </Box>

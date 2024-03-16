@@ -1,12 +1,12 @@
 import { useIsFocused } from '@react-navigation/native';
 import { createRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
-import { Animated, ScrollView, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { RefreshControl, SideBar } from '@/components';
-import styles from '@/styles';
-import { BuyAction, BuyQueueTutorial, Header, HomeCategory, HomeSlider, ProductList } from './components';
 import { useFetchAllCategories } from '@/hooks';
+import styles from '@/styles';
+import { Animated, ScrollView, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { BuyAction, BuyQueueTutorial, Header, HomeCategory, HomeSlider, ProductList } from './components';
 
 type HomeScreenRefType = {
   toggleOpenSideBar(): void;

@@ -182,7 +182,7 @@ const ProductDetail = () => {
             )}
           >
             <Box className='flex flex-row items-center justify-center gap-3'>
-              <Box className='w-12 h-12 bg-white rounded-lg'>
+              <Box className='w-12 h-12 bg-white rounded-lg border-2 border-white'>
                 <Image
                   source={{
                     uri: 'https://thepizzacompany.vn/images/thumbs/000/0002223_ck-trio_300.png',
