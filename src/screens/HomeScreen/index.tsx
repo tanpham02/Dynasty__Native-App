@@ -6,7 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { RefreshControl, SideBar } from '@/components';
 import styles from '@/styles';
 import { BuyAction, BuyQueueTutorial, Header, HomeCategory, HomeSlider, ProductList } from './components';
-import { useFetchAllCategories } from '@/hooks';
+import { useFetchAllBanner, useFetchAllCategories } from '@/hooks';
 
 type HomeScreenRefType = {
   toggleOpenSideBar(): void;
@@ -51,9 +51,10 @@ const HomeScreen = () => {
   const {
     data: categoriesData,
     isFetching: isFetchingCategories,
-    isRefetching: isRefetchingCategories,
     refetch: refetchCategories,
   } = useFetchAllCategories();
+
+  const { data: bannersData, isFetching: isFetchingBanners, refetch: refetchBanners } = useFetchAllBanner();
 
   const interpolatedTop = sidebarAniValue.interpolate({
     inputRange: [0, 1],
@@ -72,7 +73,7 @@ const HomeScreen = () => {
 
   const refetchHomeData = async () => {
     setIsLoadingData(true);
-    await Promise.all([refetchCategories()]);
+    await Promise.all([refetchCategories(), refetchBanners()]);
     setIsLoadingData(false);
   };
 
@@ -114,11 +115,11 @@ const HomeScreen = () => {
             >
               <View className='flex-1'>
                 <BuyAction />
-                <HomeSlider />
-                <HomeCategory data={categoriesData} isLoading={isFetchingCategories || isRefetchingCategories} />
+                <HomeSlider data={bannersData} isLoading={isFetchingBanners} />
+                <HomeCategory data={categoriesData} isLoading={isFetchingCategories} />
                 <BuyQueueTutorial />
                 {categoriesData?.map((category, key) => (
-                  <ProductList key={key} {...category} isLoading={isFetchingCategories || isRefetchingCategories} />
+                  <ProductList key={key} {...category} isLoading={isFetchingCategories} isRefetching={isLoadingData} />
                 ))}
               </View>
             </ScrollView>

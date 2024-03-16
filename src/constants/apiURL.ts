@@ -16,5 +16,9 @@ export const API_TERM_AND_POLICY_SEARCH_URL = combineUrl("term-and-policy", "sea
 export const API_PRODUCT_URL = combineUrl("products")
 export const API_PRODUCT_SEARCH_URL = combineUrl("products", "search")
 
+// BANNER URL
+export const API_BANNER_URL = combineUrl("banners")
+export const API_BANNER_SEARCH_URL = combineUrl("banners", "search")
+
 
 export const OPEN_STREET_MAP_URL = 'https://nominatim.openstreetmap.org';

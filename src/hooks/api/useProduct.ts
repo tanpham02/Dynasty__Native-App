@@ -1,4 +1,4 @@
-import { useInfiniteQuery } from "react-query"
+import { UseInfiniteQueryOptions, useInfiniteQuery } from "react-query"
 
 import { QueryKey } from "@/constants"
 import { ProductService } from "@/services"
@@ -6,9 +6,10 @@ import { ProductService } from "@/services"
 interface FetchProductParams {
     pageSize: number
     categoryId: string
+    options?: UseInfiniteQueryOptions<any>
 }
 
-export const useFetchProducts = ({ pageSize = 10, categoryId }: FetchProductParams) => {
+export const useFetchProducts = ({ pageSize = 10, categoryId, options }: FetchProductParams) => {
     return useInfiniteQuery({
         queryKey: [QueryKey.QUERY_KEY.PRODUCT, categoryId],
         queryFn: ({ pageParam = 0 }) =>
@@ -18,6 +19,7 @@ export const useFetchProducts = ({ pageSize = 10, categoryId }: FetchProductPara
                 return paging.pageSize + 1
             }
             return null
-        }
+        },
+        ...options
     })
 }
