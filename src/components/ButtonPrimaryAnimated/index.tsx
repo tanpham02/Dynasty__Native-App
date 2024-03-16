@@ -12,12 +12,12 @@ const ButtonPrimaryAnimated = ({ children, className, onPress }: ButtonPrimaryAn
     Animated.sequence([
       Animated.timing(translateX, {
         toValue: 0,
-        duration: 1200,
+        duration: 1000,
         useNativeDriver: true,
       }),
       Animated.timing(translateX, {
         toValue: 1,
-        duration: 1200,
+        duration: 1000,
         useNativeDriver: true,
       }),
     ]),
@@ -38,7 +38,7 @@ const ButtonPrimaryAnimated = ({ children, className, onPress }: ButtonPrimaryAn
             bottom: 0,
             width: 200,
             height: 35,
-            opacity: 0.25,
+            opacity: 0.15,
           },
           {
             transform: [{ translateX: interpolateLeft }, { rotateZ: '-45deg' }],

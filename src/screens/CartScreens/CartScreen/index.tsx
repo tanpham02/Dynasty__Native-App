@@ -13,6 +13,7 @@ import styles from '@/styles';
 import { Svg } from '@/assets';
 import RelatedProductsFlatList from '../components/RelatedProductsFlatList';
 import CartLists from '../components/CartLists';
+import TotalPayment from '../components/TotalPayment';
 
 const CartScreen = () => {
   const {
@@ -22,23 +23,7 @@ const CartScreen = () => {
   } = useDisclose();
 
   return (
-    <PrimaryLayout
-      containerClass='bg-third'
-      statusBarBackgroundColor='white'
-      renderTitle={() => (
-        <Box className='flex flex-row flex-1 items-center'>
-          <Text className='font-nunito-700 text-lg'>Giỏ hàng</Text>
-          <Pressable
-            className='w-fit ml-auto mr-4'
-            style={{
-              marginTop: Platform.OS === 'android' ? 4 : 0,
-            }}
-          >
-            <Text className='text-fourth text-xs font-nunito-700 uppercase '>Chỉnh sửa</Text>
-          </Pressable>
-        </Box>
-      )}
-    >
+    <PrimaryLayout containerClass='bg-third' statusBarBackgroundColor='white' titleScreen='Giỏ hàng'>
       <KeyboardAvoidingView className='flex-1'>
         <KeyboardAwareScrollView className='flex-1'>
           <ScrollView className='bg-third pt-3 flex-1 mb-[100px] pb-3' style={styles.shadowX}>
@@ -71,20 +56,7 @@ const CartScreen = () => {
                 <Svg.AnglesRight width={18} height={18} className='text-black' />
               </Pressable>
 
-              <Box style={styles.shadowX} className='bg-third p-3 rounded-lg'>
-                <Box className='flex flex-row justify-between items-center'>
-                  <Text className='text-gray-11 font-nunito-600'>Tạm tính</Text>
-                  <Text className='text-gray-10 text-sm font-nunito-600'>{formatCurrencyByLocale(50000000)}</Text>
-                </Box>
-                <Box className='flex flex-row justify-between items-center my-3'>
-                  <Text className='text-gray-11 font-nunito-600'>Phí giao hàng</Text>
-                  <Text className='text-gray-10 text-sm font-nunito-600'>{formatCurrencyByLocale(25000)}</Text>
-                </Box>
-                <Box className='flex flex-row justify-between items-center'>
-                  <Text className='text-gray-11 font-nunito-600'>Tổng cộng</Text>
-                  <Text className='text-secondary text-base font-nunito-700'>{formatCurrencyByLocale(7905000)}</Text>
-                </Box>
-              </Box>
+              <TotalPayment />
             </Box>
           </ScrollView>
 

@@ -15,10 +15,12 @@ const CartLists = ({ onOpenCartItemDetailBottomSheet }: CartItemProps) => {
       renderItem={({ index, item }) => (
         <CartItem key={index} {...item} onOpenCartItemDetailBottomSheet={onOpenCartItemDetailBottomSheet} />
       )}
+      keyExtractor={(_, index: number) => index.toString()}
       rightOpenValue={-75}
       disableRightSwipe
+      closeOnRowOpen
       renderHiddenItem={() => (
-        <Box>
+        <Box className='w-fit ml-auto'>
           <Text>Hello</Text>
         </Box>
       )}

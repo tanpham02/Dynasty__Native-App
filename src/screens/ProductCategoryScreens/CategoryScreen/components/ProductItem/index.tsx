@@ -109,7 +109,7 @@ const ProductItem = (props: ProductItemProps) => {
           className='bg-secondary rounded-lg p-2 flex-row items-center'
           onPress={handleNavigateProductDetail}
         >
-          <Text className='font-nunito-700 text-sm text-white'>Mua ngay</Text>
+          <Text className='font-nunito-700 text-sm text-white px-2'>Mua ngay</Text>
         </TouchableOpacity>
       </Box>
     </Box>

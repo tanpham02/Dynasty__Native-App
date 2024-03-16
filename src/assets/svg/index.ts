@@ -52,3 +52,4 @@ export { default as AnglesDown } from './angles-down.svg';
 export { default as AnglesRight } from './angles-right.svg';
 export { default as TrashBinLight } from './trash-bin-light.svg';
 export { default as Notepad } from './notes-notepad.svg';
+export { default as Minus } from './minus.svg';

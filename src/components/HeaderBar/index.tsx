@@ -5,6 +5,7 @@ import { TouchableOpacity } from 'react-native';
 import { Svg } from '@/assets';
 import { NavigationUtils } from '@/utils';
 import { HeaderBarProps } from './type';
+import styles from '@/styles';
 
 const HeaderBar = (props: HeaderBarProps) => {
   const { title, headerClass, renderTitle } = props;

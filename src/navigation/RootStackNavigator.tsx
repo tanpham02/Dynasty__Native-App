@@ -4,7 +4,6 @@ import { PathName } from '@/constants';
 import {
   AddressSavedScreen,
   AddressUpdateScreen,
-  CategoryScreen,
   DeliveryAndPickupScreenScreen,
   FAQsScreen,
   FeedbackScreen,
@@ -19,9 +18,10 @@ import {
   TermAndConditionsScreen,
   UpdateProfileScreen,
   VoucherScreen,
+  CartScreen,
+  CategoryScreen,
   ProductDetailScreen,
 } from '@/screens';
-import CartScreen from '@/screens/Carts/CartScreen';
 
 const RootStack = createStackNavigator();
 
