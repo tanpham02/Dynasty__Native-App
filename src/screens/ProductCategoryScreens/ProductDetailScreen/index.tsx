@@ -1,19 +1,14 @@
 import { Box, Image, Text } from 'native-base';
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Animated, SafeAreaView, ScrollView } from 'react-native';
 
-import { Svg } from '@/assets';
 import { HeaderBar, MyStatusBar } from '@/components';
-import ButtonPrimaryAnimated from '@/components/ButtonPrimaryAnimated';
-import FooterBar from '@/components/FooterBar';
 import { useStatusBarForAndroid } from '@/hooks';
 import { default as styleCustom } from '@/styles';
 import { heightScreen } from '@/utils';
-import { formatCurrencyByLocale } from '@/utils/numberUtils';
+import FooterBarContent from './components/FooterBarContent';
 import ProductVariantContentItem from './components/ProductVariantContentItem';
 import ProductVariantTabList from './components/ProductVariantTabList';
-import { NavigationUtils } from '@/utils';
-import { PathName } from '@/constants';
 
 const HEADER_MAX_HEIGHT = heightScreen * 0.36; // 36%
 const HEADER_MIN_HEIGHT = heightScreen * 0.2; // 20%
@@ -76,8 +71,6 @@ const ProductDetail = () => {
       animated: true,
     });
   };
-
-  const handleNavigateCartScreen = () => NavigationUtils.navigate(PathName.PATH_SCREEN.CART_SCREEN);
 
   return (
     <>
@@ -170,37 +163,8 @@ const ProductDetail = () => {
               />
             ))}
           </Animated.ScrollView>
-          {/* NOTE: FROM */}
-          <FooterBar
-            wrapperClassName='h-[90px] flex justify-center'
-            bodyClassName='flex items-center'
-            renderRight={() => (
-              <ButtonPrimaryAnimated onPress={handleNavigateCartScreen}>
-                <Svg.ShoppingBag width={16} height={16} className='text-secondary mr-1' />
-                <Text className='text-secondary text-[11px] uppercase font-nunito-800'>Thêm giỏ hàng</Text>
-              </ButtonPrimaryAnimated>
-            )}
-          >
-            <Box className='flex flex-row items-center justify-center gap-3'>
-              <Box className='w-12 h-12 bg-white rounded-lg border-2 border-white'>
-                <Image
-                  source={{
-                    uri: 'https://thepizzacompany.vn/images/thumbs/000/0002223_ck-trio_300.png',
-                  }}
-                  width='100%'
-                  height='100%'
-                  resizeMode='cover'
-                  className='rounded-lg'
-                />
-              </Box>
-              <Box className='flex items-start justify-center'>
-                <Text className='text-white text-[17px] font-nunito-800 mt-1.5'>{formatCurrencyByLocale(89000)}</Text>
-                <Text className='text-[10px] font-medium text-gray-3 opacity-80 -mt-1.5'>Giá đã bao gồm thuế</Text>
-              </Box>
-            </Box>
-          </FooterBar>
-          {/* NOTE: FROM */}
-          {/* FIXME: SPLIT THIS COMPONENT */}
+
+          <FooterBarContent />
         </Box>
       </SafeAreaView>
     </>

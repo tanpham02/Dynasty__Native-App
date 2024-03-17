@@ -1,27 +1,20 @@
 import { Avatar, Box, Pressable } from 'native-base';
-import React, { memo } from 'react';
+import { memo } from 'react';
+import Animated from 'react-native-reanimated';
 
 import styles from '@/styles';
-import Animated from 'react-native-reanimated';
 import { CategoryTabViewItemProps } from './type';
 
-const CategoryTabViewItem = ({
-  activeTabKey,
-  categoryItem,
-  index,
-  onScrollToIndex,
-  setActiveTabKey,
-}: CategoryTabViewItemProps) => {
-  const handlePressTabItem = () => {
-    setActiveTabKey(index);
-    onScrollToIndex(index);
-  };
-
+const CategoryTabViewItem = ({ activeTabKey, categoryItem, index, onScrollToIndex }: CategoryTabViewItemProps) => {
   return (
     <Box
       className={`relative border-b-2 px-3 mb-0.5 mt-[3px] ${index === activeTabKey ? ' border-b-secondary text-secondary font-nunito-600' : 'border-b-transparent'} `}
     >
-      <Pressable onPress={handlePressTabItem} className='flex justify-center items-center' style={styles.shadowX}>
+      <Pressable
+        onPress={() => onScrollToIndex(index)}
+        className='flex justify-center items-center'
+        style={styles.shadowX}
+      >
         <Box
           className={`flex justify-center items-center rounded-full w-[56px] h-[56px] border-[1.2px] ${index === activeTabKey ? 'border-secondary' : 'border-white'}`}
         >

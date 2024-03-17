@@ -2,9 +2,9 @@ import { Actionsheet, Box, Image, Text } from 'native-base';
 import React from 'react';
 
 import { formatCurrencyByLocale } from '@/utils/numberUtils';
-import { CartItemDetailBottomSheet } from './type';
+import { CartItemDetailBottomSheetProps } from './type';
 
-const CartItemBottomSheet = ({ visible, onClose, productId }: CartItemDetailBottomSheet) => {
+const CartItemDetailBottomSheet = ({ visible, onClose, productId }: CartItemDetailBottomSheetProps) => {
   return (
     <Actionsheet isOpen={visible} onClose={onClose}>
       <Actionsheet.Content>
@@ -43,4 +43,4 @@ const CartItemBottomSheet = ({ visible, onClose, productId }: CartItemDetailBott
   );
 };
 
-export default CartItemBottomSheet;
+export default CartItemDetailBottomSheet;

@@ -1,11 +1,9 @@
-import React from 'react';
-
+import { Box, Text } from 'native-base';
 import { SwipeListView } from 'react-native-swipe-list-view';
+
 import CartItem from '../CartItem';
 import { carts } from './data';
 import { CartItemProps } from './type';
-import { View } from 'react-native';
-import { Box, Text } from 'native-base';
 
 const CartLists = ({ onOpenCartItemDetailBottomSheet }: CartItemProps) => {
   return (
