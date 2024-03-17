@@ -1,11 +1,13 @@
 import { useIsFocused } from '@react-navigation/native';
 import { createRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Animated, ScrollView, View } from 'react-native';
 
 import { RefreshControl, SideBar } from '@/components';
 import styles from '@/styles';
 import { BuyAction, BuyQueueTutorial, Header, HomeCategory, HomeSlider, ProductList } from './components';
 import { useFetchAllBanner, useFetchAllCategories } from '@/hooks';
-import { Animated, SafeAreaView, ScrollView, View } from 'react-native';
+import { Box } from 'native-base';
 
 type HomeScreenRefType = {
   toggleOpenSideBar(): void;
@@ -117,9 +119,16 @@ const HomeScreen = () => {
                 <HomeSlider data={bannersData} isLoading={isFetchingBanners} />
                 <HomeCategory data={categoriesData} isLoading={isFetchingCategories} />
                 <BuyQueueTutorial />
-                {categoriesData?.map((category, key) => (
-                  <ProductList key={key} {...category} isLoading={isFetchingCategories} isRefetching={isLoadingData} />
-                ))}
+                <Box className='mt-4'>
+                  {categoriesData?.map((category, key) => (
+                    <ProductList
+                      key={key}
+                      {...category}
+                      isLoading={isFetchingCategories}
+                      isRefetching={isLoadingData}
+                    />
+                  ))}
+                </Box>
               </View>
             </ScrollView>
           </View>

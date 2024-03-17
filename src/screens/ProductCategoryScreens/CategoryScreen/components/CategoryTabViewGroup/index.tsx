@@ -25,6 +25,7 @@ const CategoryTabViewGroup = () => {
 
   const [activeTabKey, setActiveTabKey] = useState<number>(0);
 
+  // NOTE: LOOK AT YOUR CODE IN THIS COMPONENT. You have a function to handleScrollToIndex why you when call it you not setActiveTabKey by param of this function instead of pass two props for two component children and only call as a function
   const handleScrollToIndex = (index: number) => {
     if (index === tabBarRoutes.length - 1) {
       return;

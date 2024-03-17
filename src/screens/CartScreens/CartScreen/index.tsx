@@ -14,6 +14,7 @@ import { Svg } from '@/assets';
 import RelatedProductsFlatList from '../components/RelatedProductsFlatList';
 import CartLists from '../components/CartLists';
 import TotalPayment from '../components/TotalPayment';
+// NOTE: REMEMBER TO EXPORT ALL COMPONENT IN EACH PARENT FOLDER IN index.ts file, then import them as one line.
 
 const CartScreen = () => {
   const {
@@ -36,6 +37,7 @@ const CartScreen = () => {
             <RelatedProductsFlatList />
 
             <Box className='px-3'>
+              {/* NOTE: FROM */}
               <Pressable className='bg-third rounded-lg p-3 mb-3 flex flex-row' style={styles.shadowX}>
                 <Svg.FoodMenu width={28} height={28} className='text-black mr-2' />
                 <Box className='flex flex-1'>
@@ -55,7 +57,9 @@ const CartScreen = () => {
                 </Box>
                 <Svg.AnglesRight width={18} height={18} className='text-black' />
               </Pressable>
+              {/* NOTE: TO */}
 
+              {/* FIXME: SPLIT THIS LARGE CODE INTO A COMPONENT FOR READABLE */}
               <TotalPayment />
             </Box>
           </ScrollView>
@@ -64,6 +68,7 @@ const CartScreen = () => {
         </KeyboardAwareScrollView>
       </KeyboardAvoidingView>
 
+      {/* NOTE: FROM */}
       <FooterBar
         wrapperClassName='h-[90px] flex justify-center'
         bodyClassName='flex items-center'
@@ -91,6 +96,8 @@ const CartScreen = () => {
           </Box>
         </Box>
       </FooterBar>
+      {/* NOTE: TO */}
+      {/* FIXME: SPLIT THIS LARGE CODE INTO A COMPONENT FOR READABLE */}
     </PrimaryLayout>
   );
 };
