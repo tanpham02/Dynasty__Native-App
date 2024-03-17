@@ -8,5 +8,5 @@ export { default as ExpandItem } from './ExpandItem';
 export { default as OrderStatusTag } from './OrderStatusTag';
 export { globalLoading as GlobalLoading } from './GlobalLoading';
 export { default as ButtonPrimary } from './ButtonPrimary';
-
-// NOTE: REMEMBER TO EXPORT ALL COMPONENT IN EACH PARENT FOLDER IN index.ts file
+export { default as ButtonPrimaryAnimated } from './ButtonPrimaryAnimated';
+export { default as FooterBar } from './FooterBar';

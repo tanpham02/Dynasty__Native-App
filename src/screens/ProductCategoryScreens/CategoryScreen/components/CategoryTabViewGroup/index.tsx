@@ -1,15 +1,13 @@
-import { Box, Image, Text } from 'native-base';
+import { Box, Text } from 'native-base';
 import { useRef, useState } from 'react';
 import { FlatList } from 'react-native';
 import { SceneMap, TabView } from 'react-native-tab-view';
 
 import { Svg } from '@/assets';
 import styles from '@/styles';
-import { heightScreen, widthScreen } from '@/utils';
+import { widthScreen } from '@/utils';
+import { CategoryTabViewList, CategoryTypeList, ProductList } from '..';
 import { tabBarRoutes } from './data';
-import CategoryTabViewList from '../CategoryTabViewList';
-import CategoryTypeList from '../CategoryTypeList';
-import ProductList from '../ProductList';
 
 const renderScene = SceneMap({
   deals: ProductList,
@@ -25,15 +23,13 @@ const CategoryTabViewGroup = () => {
 
   const [activeTabKey, setActiveTabKey] = useState<number>(0);
 
-  // NOTE: LOOK AT YOUR CODE IN THIS COMPONENT. You have a function to handleScrollToIndex why you when call it you not setActiveTabKey by param of this function instead of pass two props for two component children and only call as a function
   const handleScrollToIndex = (index: number) => {
-    if (index === tabBarRoutes.length - 1) {
-      return;
-    }
     topCategoriesRef.current?.scrollToIndex({
       index: index,
       viewPosition: 0.5,
     });
+
+    setActiveTabKey(index);
   };
 
   return (
@@ -59,7 +55,6 @@ const CategoryTabViewGroup = () => {
               ref={topCategoriesRef}
               activeTabKey={activeTabKey}
               onScrollToIndex={handleScrollToIndex}
-              setActiveTabKey={setActiveTabKey}
             />
           )}
           onIndexChange={setActiveTabKey}

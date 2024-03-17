@@ -1,1 +1,1 @@
-export interface CategoriesProps {}
+export interface CategoryScreenProps {}

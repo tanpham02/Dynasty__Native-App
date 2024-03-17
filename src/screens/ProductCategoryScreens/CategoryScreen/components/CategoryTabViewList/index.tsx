@@ -6,7 +6,7 @@ import CategoryTabViewItem from '../CategoryTabViewItem';
 import { CategoryTabViewListProps } from './type';
 
 const CategoryTabViewList = (
-  { activeTabKey, onScrollToIndex, setActiveTabKey }: CategoryTabViewListProps,
+  { activeTabKey, onScrollToIndex }: CategoryTabViewListProps,
   categoryTabViewGroupRef: React.Ref<any>,
 ) => {
   return (
@@ -30,7 +30,6 @@ const CategoryTabViewList = (
           index={index}
           activeTabKey={activeTabKey}
           onScrollToIndex={onScrollToIndex}
-          setActiveTabKey={setActiveTabKey}
         />
       )}
     />
