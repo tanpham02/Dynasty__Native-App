@@ -1,4 +1,5 @@
 import { Box, FlatList } from 'native-base';
+
 import ProductItem from '../ProductItem';
 import { productData } from './data';
 

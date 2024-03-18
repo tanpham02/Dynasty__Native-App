@@ -6,8 +6,9 @@ import { SceneMap, TabView } from 'react-native-tab-view';
 import { Svg } from '@/assets';
 import styles from '@/styles';
 import { widthScreen } from '@/utils';
-import { CategoryTabViewList, CategoryTypeList, ProductList } from '..';
+import { CategoryTabViewList, CategoryTypeList } from '..';
 import { tabBarRoutes } from './data';
+import ProductList from '../ProductList';
 
 const renderScene = SceneMap({
   deals: ProductList,
