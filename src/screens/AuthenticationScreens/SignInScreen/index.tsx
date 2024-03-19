@@ -18,6 +18,7 @@ import { useStatusBarForAndroid } from '@/hooks';
 import styles from '@/styles';
 import { NavigationUtils } from '@/utils';
 import { navigate } from '@/utils/navigationUtil';
+import configEnv from '@/configs';
 
 const topIntroduce = [
   {
@@ -42,9 +43,9 @@ const SignInScreen = () => {
   const [isAgreeReceiveOffer, setIsAgreeReceiveOffer] = useState<boolean>(true);
 
   const [request, response, promptAsync] = Google.useAuthRequest({
-    iosClientId: '942242771045-7vr3gda6e30l5dh5g0bt992f5b0j6mrb.apps.googleusercontent.com',
-    androidClientId: '942242771045-p1qlsnkl26v1v5kj28ap36rmqfhqpvrt.apps.googleusercontent.com',
-    webClientId: '942242771045-0l4a8j4ksagppcdqu23am1gp0vq1t3b9.apps.googleusercontent.com',
+    iosClientId: configEnv.OAUTH_CLIENT_ID_IOS,
+    androidClientId: configEnv.OAUTH_CLIENT_ID_ANDROID,
+    webClientId: configEnv.OAUTH_CLIENT_ID_WEB,
     scopes: ['profile', 'email'],
   });
 
