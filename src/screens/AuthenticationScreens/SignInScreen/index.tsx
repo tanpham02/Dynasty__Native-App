@@ -4,6 +4,8 @@ import { useForm } from 'react-hook-form';
 import { Image, Keyboard, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+// import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin';
+import * as Google from 'expo-auth-session/providers/google';
 
 import DynastyLogoBgWhite from '@/assets/images/logo/logo-bg-white.png';
 import PizzaBgRight from '@/assets/images/logo/pizza-5-loai-thit-va-rau-cu.png';
@@ -17,50 +19,49 @@ import styles from '@/styles';
 import { NavigationUtils } from '@/utils';
 import { navigate } from '@/utils/navigationUtil';
 
+const topIntroduce = [
+  {
+    title: 'Great',
+    description: 'Food & Taste',
+    icon: PizzaSlice,
+  },
+  {
+    title: 'Great',
+    description: 'Offers & Deals',
+    icon: OfferSvg,
+  },
+  {
+    title: 'Easy',
+    description: 'Ordering',
+    icon: MobileSvg,
+  },
+];
+
 const SignInScreen = () => {
+  useStatusBarForAndroid('#006a31');
   const [isAgreeReceiveOffer, setIsAgreeReceiveOffer] = useState<boolean>(true);
 
-  useStatusBarForAndroid('#006a31');
+  const [request, response, promptAsync] = Google.useAuthRequest({
+    iosClientId: '942242771045-7vr3gda6e30l5dh5g0bt992f5b0j6mrb.apps.googleusercontent.com',
+    androidClientId: '942242771045-p1qlsnkl26v1v5kj28ap36rmqfhqpvrt.apps.googleusercontent.com',
+    webClientId: '942242771045-p1qlsnkl26v1v5kj28ap36rmqfhqpvrt.apps.googleusercontent.com',
+    // responseType: ResponseType.Token,
+    // scopes: ['profile', 'email'],
+  });
 
   const {} = useForm();
-
-  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
-
-  useEffect(() => {
-    const keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', () => {
-      setKeyboardVisible(true); // or some other action
-    });
-    const keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', () => {
-      setKeyboardVisible(false); // or some other action
-    });
-
-    return () => {
-      keyboardDidHideListener.remove();
-      keyboardDidShowListener.remove();
-    };
-  }, []);
-
-  const topIntroduce = [
-    {
-      title: 'Great',
-      description: 'Food & Taste',
-      icon: PizzaSlice,
-    },
-    {
-      title: 'Great',
-      description: 'Offers & Deals',
-      icon: OfferSvg,
-    },
-    {
-      title: 'Easy',
-      description: 'Ordering',
-      icon: MobileSvg,
-    },
-  ];
 
   const handleChangeCheckedReceiveOffer = () => setIsAgreeReceiveOffer(!isAgreeReceiveOffer);
 
   const gotoTermAndConditionsScreen = () => NavigationUtils.navigate(PathName.PATH_SCREEN.TERM_AND_CONDITIONS_SCREEN);
+
+  const handleLoginWithSocialGoogleAccount = () => {
+    // GoogleSignin.configure({
+    //   iosClientId: '942242771045-7vr3gda6e30l5dh5g0bt992f5b0j6mrb.apps.googleusercontent.com',
+    //   offlineAccess: true,
+    //   scopes: ['https://www.googleapis.com/auth/gmail.readonly'],
+    // });
+  };
 
   return (
     <KeyboardAvoidingView className='flex-1 bg-gray-6'>
