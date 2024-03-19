@@ -15,14 +15,7 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.vtaan.dynasty-pizza-app",
-      "infoPlist": {
-        "CFBundleURLTypes": [
-          {
-            "CFBundleURLSchemes": ["942242771045-7vr3gda6e30l5dh5g0bt992f5b0j6mrb.apps.googleusercontent.com"]
-          }
-        ]
-      }
+      "bundleIdentifier": "com.vtaan.dynasty-pizza-app"
     },
     "android": {
       "adaptiveIcon": {
@@ -52,6 +45,7 @@
           "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
         }
       ]
-    ]
+    ],
+    "scheme": "mycoolredirect"
   }
 }

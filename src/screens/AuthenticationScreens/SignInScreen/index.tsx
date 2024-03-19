@@ -44,9 +44,8 @@ const SignInScreen = () => {
   const [request, response, promptAsync] = Google.useAuthRequest({
     iosClientId: '942242771045-7vr3gda6e30l5dh5g0bt992f5b0j6mrb.apps.googleusercontent.com',
     androidClientId: '942242771045-p1qlsnkl26v1v5kj28ap36rmqfhqpvrt.apps.googleusercontent.com',
-    webClientId: '942242771045-p1qlsnkl26v1v5kj28ap36rmqfhqpvrt.apps.googleusercontent.com',
-    // responseType: ResponseType.Token,
-    // scopes: ['profile', 'email'],
+    webClientId: '942242771045-0l4a8j4ksagppcdqu23am1gp0vq1t3b9.apps.googleusercontent.com',
+    scopes: ['profile', 'email'],
   });
 
   const {} = useForm();
@@ -54,14 +53,6 @@ const SignInScreen = () => {
   const handleChangeCheckedReceiveOffer = () => setIsAgreeReceiveOffer(!isAgreeReceiveOffer);
 
   const gotoTermAndConditionsScreen = () => NavigationUtils.navigate(PathName.PATH_SCREEN.TERM_AND_CONDITIONS_SCREEN);
-
-  const handleLoginWithSocialGoogleAccount = () => {
-    // GoogleSignin.configure({
-    //   iosClientId: '942242771045-7vr3gda6e30l5dh5g0bt992f5b0j6mrb.apps.googleusercontent.com',
-    //   offlineAccess: true,
-    //   scopes: ['https://www.googleapis.com/auth/gmail.readonly'],
-    // });
-  };
 
   return (
     <KeyboardAvoidingView className='flex-1 bg-gray-6'>
@@ -170,7 +161,11 @@ const SignInScreen = () => {
             </Flex>
             <Box className='my-6'>
               <Text className='mb-3 font-nunito-600'>Login with Social Media Accounts</Text>
-              <TouchableOpacity style={styles.shadowX} className='bg-white flex flex-row rounded-lg'>
+              <TouchableOpacity
+                style={styles.shadowX}
+                className='bg-white flex flex-row rounded-lg'
+                onPress={promptAsync}
+              >
                 <Box className='flex-row items-center justify-center w-fit mx-auto py-2 '>
                   <Svg.GoogleSvg width={30} height={30} className='mr-2' />
                   <Text className='text-[15px] font-nunito-500'>Google</Text>
