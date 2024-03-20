@@ -4,6 +4,9 @@ export const API_BASE_URL: string = configEnv.API_BASE_URL;
 
 const combineUrl = (...routes: string[]) => `${API_BASE_URL}/${routes.join("/")}`
 
+// AUTHENTICATION
+export const API_SIGN_IN_URL = combineUrl("auth", "customer", "login", "social-account", "google")
+
 //CATEGORY URL
 export const API_CATEGORY_URL = combineUrl("category")
 export const API_CATEGORY_SEARCH_URL = combineUrl("category", "search")

@@ -1,5 +1,13 @@
-interface AuthenticationModel {
-  isAuthentication: boolean;
+import UserModel from "./userModel"
+
+interface SignInWithGoogleRequest {
+    accessToken: string
 }
 
-export default AuthenticationModel;
+interface SignInResponse {
+    userInfo: UserModel
+    accessToken: string
+    refreshToken: string
+}
+
+export { SignInWithGoogleRequest, SignInResponse }

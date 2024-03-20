@@ -12,7 +12,7 @@ export { default as AddressUpdateScreen } from './AddressUpdateScreen';
 export { default as PrivacyPolicyScreen } from './PrivacyPolicyScreen';
 export { default as CategoryScreen } from './ProductCategoryScreens/CategoryScreen';
 export { default as ProductDetailScreen } from './ProductCategoryScreens/ProductDetailScreen';
-export { default as SignInScreen } from './AuthenticationScreens/SignInScreen';
+export { default as SignInScreen } from './SignInScreen';
 export { default as TermAndConditionsScreen } from './TermAndConditionsScreen';
 export { default as NutritionInformationScreen } from './NutritionInformationScreen';
 export { default as DeliveryAndPickupScreenScreen } from './DeliveryAndPickupScreenScreen';

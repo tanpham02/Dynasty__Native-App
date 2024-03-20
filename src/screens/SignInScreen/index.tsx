@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form';
 import { Image, Keyboard, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-// import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin';
 import * as Google from 'expo-auth-session/providers/google';
 
 import DynastyLogoBgWhite from '@/assets/images/logo/logo-bg-white.png';
@@ -17,8 +16,12 @@ import { PathName } from '@/constants';
 import { useStatusBarForAndroid } from '@/hooks';
 import styles from '@/styles';
 import { NavigationUtils } from '@/utils';
-import { navigate } from '@/utils/navigationUtil';
 import configEnv from '@/configs';
+import authenticationService from '@/services/authenticationService';
+import { tokenManager } from 'App';
+
+const { navigate } = NavigationUtils;
+const { TERM_AND_CONDITIONS_SCREEN, HOME_SCREEN } = PathName.PATH_SCREEN;
 
 const topIntroduce = [
   {
@@ -42,7 +45,7 @@ const SignInScreen = () => {
   useStatusBarForAndroid('#006a31');
   const [isAgreeReceiveOffer, setIsAgreeReceiveOffer] = useState<boolean>(true);
 
-  const [request, response, promptAsync] = Google.useAuthRequest({
+  const [request, googleAuthenticationResponse, promptAsync] = Google.useAuthRequest({
     iosClientId: configEnv.OAUTH_CLIENT_ID_IOS,
     androidClientId: configEnv.OAUTH_CLIENT_ID_ANDROID,
     webClientId: configEnv.OAUTH_CLIENT_ID_WEB,
@@ -51,9 +54,23 @@ const SignInScreen = () => {
 
   const {} = useForm();
 
+  const handleLoginWithGoogle = async () => {
+    await promptAsync();
+
+    if (googleAuthenticationResponse.type === 'success') {
+      const { accessToken, refreshToken, userInfo } = await authenticationService.signInWithGoogle({
+        accessToken: googleAuthenticationResponse.authentication.accessToken,
+      });
+      console.log('🚀 ~ handleLoginWithGoogle ~ accessToken:', accessToken);
+
+      tokenManager.setAccessToken(accessToken);
+      tokenManager.setRefreshToken(refreshToken);
+    }
+  };
+
   const handleChangeCheckedReceiveOffer = () => setIsAgreeReceiveOffer(!isAgreeReceiveOffer);
 
-  const gotoTermAndConditionsScreen = () => NavigationUtils.navigate(PathName.PATH_SCREEN.TERM_AND_CONDITIONS_SCREEN);
+  const gotoTermAndConditionsScreen = () => navigate(TERM_AND_CONDITIONS_SCREEN);
 
   return (
     <KeyboardAvoidingView className='flex-1 bg-gray-6'>
@@ -165,7 +182,7 @@ const SignInScreen = () => {
               <TouchableOpacity
                 style={styles.shadowX}
                 className='bg-white flex flex-row rounded-lg'
-                onPress={promptAsync}
+                onPress={handleLoginWithGoogle}
               >
                 <Box className='flex-row items-center justify-center w-fit mx-auto py-2 '>
                   <Svg.GoogleSvg width={30} height={30} className='mr-2' />
@@ -178,7 +195,7 @@ const SignInScreen = () => {
               <TouchableOpacity onPress={gotoTermAndConditionsScreen}>
                 <Text className='uppercase text-[10px] font-nunito-500 text-[#1476e1]'>Terms & Conditions</Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => navigate(PathName.PATH_SCREEN.HOME_SCREEN)}>
+              <TouchableOpacity onPress={() => navigate(HOME_SCREEN)}>
                 <Text className='uppercase text-[10px] font-nunito-500'>Skip Login</Text>
               </TouchableOpacity>
             </Box>
