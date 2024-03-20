@@ -8,5 +8,5 @@ export const buttonColors: ButtonColors = {
 
 export const buttonShadows: { [key: string]: Object } = {
     primary: styles.shadowPrimary,
-    danger: styles.colorSecondary
+    danger: styles.shadowSecondary
 }

@@ -6,7 +6,7 @@ import { SceneMap, TabView } from 'react-native-tab-view';
 import { Svg } from '@/assets';
 import styles from '@/styles';
 import { widthScreen } from '@/utils';
-import { CategoryTabViewList, CategoryTypeList } from '..';
+import { CategoryTabViewList, CategoryTypeList, ProductFavoriteList } from '..';
 import { tabBarRoutes } from './data';
 import ProductList from '../ProductList';
 
@@ -16,7 +16,7 @@ const renderScene = SceneMap({
   pizza: ProductList,
   starters: ProductList,
   'salads-and-pasta': ProductList,
-  drinks: ProductList,
+  drinks: ProductFavoriteList,
 });
 
 const CategoryTabViewGroup = () => {

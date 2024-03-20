@@ -19,10 +19,12 @@ const CategoryTabViewItem = ({ activeTabKey, categoryItem, index, onScrollToInde
           className={`flex justify-center items-center rounded-full w-[56px] h-[56px] border-[1.2px] ${index === activeTabKey ? 'border-secondary' : 'border-white'}`}
         >
           <Avatar
-            source={{
-              uri: 'https://thepizzacompany.vn/images/thumbs/000/0002218_sup-deluxe_300.png',
-            }}
-            className={`w-full h-full bg-white rounded-full object-cover flex justify-center items-center`}
+            source={
+              categoryItem?.icon
+                ? categoryItem.icon
+                : { uri: 'https://thepizzacompany.vn/images/thumbs/000/0002218_sup-deluxe_300.png' }
+            }
+            className={`w-full h-full bg-white rounded-full object-contain`}
             style={styles.shadowSecondary}
           />
         </Box>
