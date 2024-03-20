@@ -15,14 +15,14 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.vtaan.dynasty-pizza-app"
+      "bundleIdentifier": "com.vtaan.dynastypizzaapp"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/images/logo/dynasty-logo.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.vtaan.dynasty-pizza-app"
+      "package": "com.vtaan.dynastypizzaapp"
     },
     "web": {
       "favicon": "./src/assets/images/logo/dynasty-logo.png"
