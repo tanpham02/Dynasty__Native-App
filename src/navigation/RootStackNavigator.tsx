@@ -21,6 +21,7 @@ import {
   CartScreen,
   CategoryScreen,
   ProductDetailScreen,
+  VerifyOTPScreen,
 } from '@/screens';
 
 const RootStack = createStackNavigator();
@@ -136,6 +137,12 @@ const RootStackNavigator = () => {
       />
 
       <RootStack.Screen name={PathName.PATH_SCREEN.VOUCHER_SCREEN} component={VoucherScreen} options={optionsMain} />
+
+      <RootStack.Screen
+        name={PathName.PATH_SCREEN.VERIFY_OTP_SCREEN}
+        component={VerifyOTPScreen}
+        options={optionsMain}
+      />
     </RootStack.Navigator>
   );
 };
