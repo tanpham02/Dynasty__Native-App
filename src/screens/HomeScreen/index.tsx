@@ -119,7 +119,7 @@ const HomeScreen = () => {
                 <HomeSlider data={bannersData} isLoading={isFetchingBanners} />
                 <HomeCategory data={categoriesData} isLoading={isFetchingCategories} />
                 <BuyQueueTutorial />
-                <Box className='mt-4'>
+                <Box className='mt-4 w-screen'>
                   {categoriesData?.map((category, key) => (
                     <ProductList
                       key={key}
