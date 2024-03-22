@@ -1,13 +1,11 @@
-import UserModel from "./userModel"
+import { UserModel } from "./userModel"
 
-interface SignInWithGoogleRequest {
+export interface SignInWithGoogleRequest {
     accessToken: string
 }
 
-interface SignInResponse {
+export interface SignInResponse {
     userInfo: UserModel
     accessToken: string
     refreshToken: string
 }
-
-export { SignInWithGoogleRequest, SignInResponse }

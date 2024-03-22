@@ -6,6 +6,7 @@ import { LogBox } from 'react-native';
 import FlashMessage from 'react-native-flash-message';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Provider } from 'react-redux';
+import { decode } from 'base-64';
 
 import { Font as MyFont } from '@/assets';
 import GlobalLoading, { globalLoadingRef } from '@/components/GlobalLoading';
@@ -15,6 +16,7 @@ import store from '@/redux/store';
 import { NavigationUtils } from '@/utils';
 
 LogBox.ignoreAllLogs();
+global.atob = decode;
 export const tokenManager = TokenManager.getInstance();
 
 export const queryClient = new QueryClient();

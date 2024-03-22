@@ -23,5 +23,11 @@ export const API_PRODUCT_SEARCH_URL = combineUrl("products", "search")
 export const API_BANNER_URL = combineUrl("banners")
 export const API_BANNER_SEARCH_URL = combineUrl("banners", "search")
 
+// CUSTOMER URL
+export const API_CUSTOMER_URL = combineUrl("customers")
+
+//CUSTOMER ADDRESS URL
+export const API_CUSTOMER_ADDRESS_URL = combineUrl("customers", "customer-address")
+
 
 export const OPEN_STREET_MAP_URL = 'https://nominatim.openstreetmap.org';
