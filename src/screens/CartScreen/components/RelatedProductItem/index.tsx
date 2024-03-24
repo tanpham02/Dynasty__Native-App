@@ -18,6 +18,7 @@ const RelatedProductItem = ({ name, image, price }: RelatedProductItemProps) => 
           className='rounded-lg'
           height={60}
           resizeMode='contain'
+          alt='image'
         />
       </Box>
       <Text className='text-sm font-nunito-700 text-gray-10 my-3'>{name}</Text>

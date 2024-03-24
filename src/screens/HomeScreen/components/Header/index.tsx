@@ -1,7 +1,7 @@
 import { Canvas, RoundedRect, Shadow } from '@shopify/react-native-skia';
-import { GestureResponderEvent, Text, TouchableOpacity, View } from 'react-native';
-import { memo } from 'react';
 import { Box } from 'native-base';
+import { memo } from 'react';
+import { Text, TouchableOpacity, View } from 'react-native';
 
 import { Svg } from '@/assets';
 import { PathName } from '@/constants';

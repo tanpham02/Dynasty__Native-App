@@ -21,6 +21,7 @@ const FooterBarContent = () => {
             height='100%'
             resizeMode='cover'
             className='rounded-lg'
+            alt='image'
           />
         </Box>
         <Box className='flex items-start justify-center'>

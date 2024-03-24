@@ -19,6 +19,7 @@ const HomeCategoryItem = ({ name, avatar }: HomeCategoryItemProps) => {
             }}
             className='w-full h-full'
             resizeMode='cover'
+            alt='avatar'
           />
         ) : (
           <Svg.Box className='text-zinc-600' width={45} height={45} />

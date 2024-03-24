@@ -19,6 +19,7 @@ const CartItemDetailBottomSheet = ({ visible, onClose, productId }: CartItemDeta
                 height={70}
                 resizeMode='cover'
                 className='rounded-xl'
+                alt='image'
               />
             </Box>
             <Box>

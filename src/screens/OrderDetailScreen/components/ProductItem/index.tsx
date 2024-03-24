@@ -5,7 +5,7 @@ import { NumberUtils } from '@/utils';
 const ProductItem = () => {
   return (
     <Box className='flex-row mt-1.5'>
-      <Image source={ProductImage} className='w-14 h-14 rounded-lg' />
+      <Image source={ProductImage} className='w-14 h-14 rounded-lg' alt='Product Image' />
       <Box className='flex-1 ml-2'>
         <Text className='font-nunito-700 text-sm text-zinc-800' numberOfLines={2}>
           Pizza hải sản đào

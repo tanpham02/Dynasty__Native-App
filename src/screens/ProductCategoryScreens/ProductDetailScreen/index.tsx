@@ -137,7 +137,7 @@ const ProductDetail = () => {
                   source={{
                     uri: 'https://thepizzacompany.vn/images/thumbs/000/0002252_garden-salad_300.png',
                   }}
-                  alt=''
+                  alt='image'
                   style={{
                     width: '100%',
                     height: '100%',

@@ -16,7 +16,12 @@ const ProductList = () => {
         renderItem={({ index, item }) => <ProductItem {...item} index={index} />}
       /> */}
       <Box className='items-center justify-center'>
-        <Image source={EmptyProductFavorite} className='w-48 h-48 mt-12 mb-6' resizeMode='contain' />
+        <Image
+          source={EmptyProductFavorite}
+          className='w-48 h-48 mt-12 mb-6'
+          resizeMode='contain'
+          alt='Empty Product Favorite'
+        />
         <Text className='text-center mx-10 text-zinc-800 text-xl font-nunito-700'>
           Chúng tôi biết bạn yêu Pizza. Tại sao bạn không thử thêm nó vào danh sách yêu thích ❤️ dành riêng cho bạn
         </Text>

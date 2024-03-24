@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { Image, Platform, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import * as AuthSession from 'expo-auth-session';
+import * as WebBrowser from 'expo-web-browser';
 
 import DynastyLogoBgWhite from '@/assets/images/logo/logo-bg-white.png';
 import PizzaBgRight from '@/assets/images/logo/pizza-5-loai-thit-va-rau-cu.png';
@@ -20,6 +20,7 @@ import authenticationService from '@/services/authenticationService';
 import styles from '@/styles';
 import { NavigationUtils } from '@/utils';
 import { tokenManager } from 'App';
+import { makeRedirectUri } from 'expo-auth-session';
 
 const { navigate } = NavigationUtils;
 const { TERM_AND_CONDITIONS_SCREEN, HOME_SCREEN, VERIFY_OTP_SCREEN } = PathName.PATH_SCREEN;
@@ -42,15 +43,11 @@ const topIntroduce = [
   },
 ];
 
+WebBrowser.maybeCompleteAuthSession();
+
 const SignInScreen = () => {
   useStatusBarForAndroid('#006a31');
   const [isAgreeReceiveOffer, setIsAgreeReceiveOffer] = useState<boolean>(true);
-
-  //   const auth0Domain = 'expo-auth0.us.auth0.com';
-  //   const authorizationEndpoint = `https://${auth0Domain}/authorize`;
-
-  //   const useProxy = Platform.select({ default: false });
-  //   const redirectUri = AuthSession.makeRedirectUri({ native: 'com.vtaan.dynastypizzaapp://' });
 
   const [request, googleAuthenticationResponse, promptAsync] = Google.useAuthRequest({
     iosClientId: configEnv.OAUTH_CLIENT_ID_IOS,
@@ -96,7 +93,7 @@ const SignInScreen = () => {
                 height: 180,
               }}
               className='absolute top-1/4 -left-[20%]'
-              alt=''
+              alt='Pizza Bg Left'
             />
 
             <Box className='flex items-center justify-center'>
@@ -107,7 +104,7 @@ const SignInScreen = () => {
                   objectFit: 'contain',
                 }}
                 className='mb-36'
-                alt=''
+                alt='Dynasty Logo Bg White'
               />
               <View className='absolute top-1/2 flex justify-center items-center'>
                 <Text className='font-nunito-300 text-white text-xl'>Login to Unlock</Text>
@@ -134,7 +131,7 @@ const SignInScreen = () => {
                 height: 200,
               }}
               className='absolute top-[10.5%] -right-[22%]'
-              alt=''
+              alt='Pizza Bg Right'
             />
           </Box>
           <Box className='bg-gray-6 h-[40%]'></Box>
@@ -181,6 +178,7 @@ const SignInScreen = () => {
                   className={`rounded-lg`}
                   onChange={handleChangeCheckedReceiveOffer}
                   value=''
+                  aria-label='check box'
                   isChecked={isAgreeReceiveOffer}
                   colorScheme='danger'
                   size='sm'
