@@ -34,6 +34,10 @@ module.exports = {
         'gray-9': '#666666',
         'gray-10': '#111111',
         'gray-11': '#444444',
+        danger: '#bb2124',
+        success: '	#22bb33',
+        warning: '#f0ad4e',
+        info: '#5bc0de',
       },
       zIndex: {
         999999: '999999',

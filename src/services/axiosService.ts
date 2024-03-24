@@ -4,13 +4,12 @@ import { API_BASE_URL } from 'src/constants/apiURL';
 import { checkTokenExp } from 'src/utils/tokenUtils';
 import { tokenManager } from '../../App';
 import authenticationService from './authenticationService';
+import { SignInResponse } from '@/models';
 
 let refreshTokenRequest: any = null;
 const loadRefreshToken = async (refreshToken: string) => {
   try {
-    const response = await authenticationService.refreshToken({
-      refreshToken: refreshToken,
-    });
+    const response = await authenticationService.refreshToken(refreshToken);
     return response;
   } catch (error) {
     throw error;
@@ -35,6 +34,7 @@ const axiosService = async (): Promise<AxiosInstance> => {
     },
   });
 
+  //
   axiosOption.interceptors.request.use(
     async (config) => {
       if (accessToken && !checkTokenExp(accessToken)) {
@@ -64,6 +64,7 @@ const axiosService = async (): Promise<AxiosInstance> => {
     },
   );
 
+  //
   axiosOption.interceptors.response.use(
     (response) => {
       return response;

@@ -65,9 +65,9 @@ const ProductItem = (props: ProductItemProps) => {
             {types.map((type, index) => {
               const { Icon, color } = ProductTypeIconList[type];
               return (
-                <Box className='rounded-full p-.5 border-2 border-white'>
-                  <Icon key={index} width={21} height={21} color={color} />
-                </Box>
+                // <Box className='rounded-full p-.5 border-2 border-white'>
+                <Icon key={index} width={19} height={19} color={color} />
+                // </Box>
               );
             })}
           </Box>
@@ -88,7 +88,7 @@ const ProductItem = (props: ProductItemProps) => {
         </Animated.View>
       </Box>
 
-      <Box className='relative pt-[40%]'>
+      <Box className='relative pt-[30%]'>
         <Image
           source={{
             uri: image,
@@ -102,8 +102,8 @@ const ProductItem = (props: ProductItemProps) => {
 
       <Box className='mt-3 p-3 flex-row items-center justify-between'>
         <Box>
-          <Text className='font-nunito-700 text-sm text-gray-10'>Giá chỉ từ</Text>
-          <Text className='font-nunito-800 text-lg text-secondary'>{formatCurrencyByLocale(price)}</Text>
+          <Text className='font-nunito-700 text-[13px] text-gray-10'>Giá chỉ từ</Text>
+          <Text className='font-nunito-800 text-base text-secondary'>{formatCurrencyByLocale(price)}</Text>
         </Box>
         <TouchableOpacity
           className='bg-secondary rounded-lg p-2 flex-row items-center'

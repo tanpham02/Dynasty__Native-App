@@ -4,24 +4,22 @@ import { SwipeListView } from 'react-native-swipe-list-view';
 import CartItem from '../CartItem';
 import { carts } from './data';
 import { CartItemProps } from './type';
+import styles from '@/styles';
+import CartItemHiddenRight from '../CartItemHiddenRight';
 
 const CartLists = ({ onOpenCartItemDetailBottomSheet }: CartItemProps) => {
   return (
     <SwipeListView
-      className='px-3 flex-1 flex flex-col pt-3'
+      className='px-3 flex-1 flex flex-col'
       data={carts}
       renderItem={({ index, item }) => (
         <CartItem key={index} {...item} onOpenCartItemDetailBottomSheet={onOpenCartItemDetailBottomSheet} />
       )}
       keyExtractor={(_, index: number) => index.toString()}
-      rightOpenValue={-75}
+      rightOpenValue={-80}
       disableRightSwipe
       closeOnRowOpen
-      renderHiddenItem={() => (
-        <Box className='w-fit ml-auto'>
-          <Text>Hello</Text>
-        </Box>
-      )}
+      renderHiddenItem={() => <CartItemHiddenRight />}
     />
   );
 };

@@ -16,7 +16,7 @@ const TotalPayment = () => {
         <Text className='text-gray-10 text-sm font-nunito-600'>{formatCurrencyByLocale(25000)}</Text>
       </Box>
       <Box className='flex flex-row justify-between items-center'>
-        <Text className='text-gray-11 font-nunito-600'>Tổng cộng</Text>
+        <Text className='text-gray-11 font-nunito-600'>Tổng tiền</Text>
         <Text className='text-secondary text-base font-nunito-700'>{formatCurrencyByLocale(7905000)}</Text>
       </Box>
     </Box>

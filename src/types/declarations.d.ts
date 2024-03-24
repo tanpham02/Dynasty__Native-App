@@ -6,26 +6,26 @@ declare module '*.svg' {
 }
 
 declare module '*.ttf' {
-  const content: unknown;
+  const content: string;
   export default content;
 }
 
 declare module '*.png' {
-  const content: unknown;
+  const content: string;
   export default content;
 }
 
 declare module '*.jpg' {
-  const content: unknown;
+  const content: string;
   export default content;
 }
 
 declare module '*.jpeg' {
-  const content: unknown;
+  const content: string;
   export default content;
 }
 
 declare module '*.gif' {
-  const content: unknown;
+  const content: string;
   export default content;
 }

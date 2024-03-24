@@ -1,10 +1,10 @@
+import * as Google from 'expo-auth-session/providers/google';
 import { Box, Checkbox, Divider, Flex, Input, KeyboardAvoidingView, Text } from 'native-base';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Image, Keyboard, View } from 'react-native';
+import { Image, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import * as Google from 'expo-auth-session/providers/google';
 
 import DynastyLogoBgWhite from '@/assets/images/logo/logo-bg-white.png';
 import PizzaBgRight from '@/assets/images/logo/pizza-5-loai-thit-va-rau-cu.png';
@@ -12,16 +12,16 @@ import PizzaBgLeft from '@/assets/images/logo/pizza-hai-san-cao-cap.png';
 import { Mobile as MobileSvg, Offer as OfferSvg, PizzaSlice } from '@/assets/svg';
 
 import { Svg } from '@/assets';
+import configEnv from '@/configs';
 import { PathName } from '@/constants';
 import { useStatusBarForAndroid } from '@/hooks';
+import authenticationService from '@/services/authenticationService';
 import styles from '@/styles';
 import { NavigationUtils } from '@/utils';
-import configEnv from '@/configs';
-import authenticationService from '@/services/authenticationService';
 import { tokenManager } from 'App';
 
 const { navigate } = NavigationUtils;
-const { TERM_AND_CONDITIONS_SCREEN, HOME_SCREEN } = PathName.PATH_SCREEN;
+const { TERM_AND_CONDITIONS_SCREEN, HOME_SCREEN, VERIFY_OTP_SCREEN } = PathName.PATH_SCREEN;
 
 const topIntroduce = [
   {
@@ -51,26 +51,30 @@ const SignInScreen = () => {
     webClientId: configEnv.OAUTH_CLIENT_ID_WEB,
     scopes: ['profile', 'email'],
   });
+  console.log('🚀 ~ SignInScreen ~ googleAuthenticationResponse:', googleAuthenticationResponse);
 
   const {} = useForm();
 
-  const handleLoginWithGoogle = async () => {
-    await promptAsync();
+  const signInWithGoogle = async () => {
+    const { accessToken, refreshToken, userInfo } = await authenticationService.signInWithGoogle({
+      accessToken: googleAuthenticationResponse.authentication.accessToken,
+    });
 
-    if (googleAuthenticationResponse.type === 'success') {
-      const { accessToken, refreshToken, userInfo } = await authenticationService.signInWithGoogle({
-        accessToken: googleAuthenticationResponse.authentication.accessToken,
-      });
-      console.log('🚀 ~ handleLoginWithGoogle ~ accessToken:', accessToken);
-
-      tokenManager.setAccessToken(accessToken);
-      tokenManager.setRefreshToken(refreshToken);
-    }
+    tokenManager.setAccessToken(accessToken);
+    tokenManager.setRefreshToken(refreshToken);
   };
+
+  useEffect(() => {
+    if (googleAuthenticationResponse && googleAuthenticationResponse.type === 'success') {
+      signInWithGoogle();
+    }
+  }, [googleAuthenticationResponse]);
 
   const handleChangeCheckedReceiveOffer = () => setIsAgreeReceiveOffer(!isAgreeReceiveOffer);
 
   const gotoTermAndConditionsScreen = () => navigate(TERM_AND_CONDITIONS_SCREEN);
+
+  const navigateToVerifyOTPScreen = () => navigate(VERIFY_OTP_SCREEN);
 
   return (
     <KeyboardAvoidingView className='flex-1 bg-gray-6'>
@@ -159,7 +163,11 @@ const SignInScreen = () => {
                 keyboardType='numeric'
               />
             </Box>
-            <TouchableOpacity style={styles.shadowX} className='bg-gray-7 rounded-lg py-3 mt-8 border border-[#faf1f3]'>
+            <TouchableOpacity
+              style={styles.shadowX}
+              className='bg-gray-7 rounded-lg py-3 mt-8 border border-[#faf1f3]'
+              onPress={navigateToVerifyOTPScreen}
+            >
               <Text className='text-secondary font-nunito-600 text-[15px] text-center'>SEND OTP</Text>
             </TouchableOpacity>
             <Flex className='flex-row items-center gap-2 mt-1.5'>
@@ -182,7 +190,7 @@ const SignInScreen = () => {
               <TouchableOpacity
                 style={styles.shadowX}
                 className='bg-white flex flex-row rounded-lg'
-                onPress={handleLoginWithGoogle}
+                onPress={promptAsync}
               >
                 <Box className='flex-row items-center justify-center w-fit mx-auto py-2 '>
                   <Svg.GoogleSvg width={30} height={30} className='mr-2' />

@@ -34,31 +34,39 @@ const DeliveryInstruction = () => {
               setIsSave(false);
             }}
           >
-            <Text className='text-fourth text-xs font-nunito-700 uppercase '>Chỉnh sửa</Text>
+            <Svg.Edit width={20} height={20} className='text-warning' />
+            {/* <Text className='text-fourth text-xs font-nunito-700 uppercase '>Chỉnh sửa</Text> */}
           </Pressable>
         )}
       </Pressable>
       {isShowBody || instructionValue ? (
-        <Animated.View className='w-full mt-3'>
-          <Box className='flex flex-row'>
-            <Box className='mr-2'>
+        <Animated.View className='w-full mt-1'>
+          <Box className='flex flex-row items-center'>
+            {/* <Box className='mr-2'>
               <Svg.Notepad width={24} height={24} />
-            </Box>
+            </Box> */}
             <Box className='flex-1 justify-center'>
               {instructionValue && isSaved ? (
-                <Box className='bg-fourth/10 rounded-lg p-2'>
-                  <Text className='text-xs text-gray-11 font-nunito-500'>{instructionValue}</Text>
+                <Box className='bg-fourth/10 rounded-lg p-3'>
+                  <Text className='text-sm font text-gray-10 font-nunito-600' numberOfLines={2}>
+                    {instructionValue}
+                  </Text>
                 </Box>
               ) : (
                 <TextArea
                   autoCompleteType=''
-                  outlineColor='#8c8c8c'
-                  focusOutlineColor='#8c8c8c'
+                  outlineColor='transparent'
+                  focusOutlineColor='transparent'
                   backgroundColor='#f5faff'
                   placeholder='Nhập hướng dẫn ở đây'
                   minHeight={30}
                   value={instructionValue}
                   onChangeText={setInstructionValue}
+                  style={{
+                    fontSize: 13,
+                    fontWeight: '500',
+                    lineHeight: 18,
+                  }}
                 />
               )}
             </Box>
