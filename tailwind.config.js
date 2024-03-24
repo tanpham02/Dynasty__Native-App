@@ -35,7 +35,7 @@ module.exports = {
         'gray-10': '#111111',
         'gray-11': '#444444',
         danger: '#bb2124',
-        success: '	#22bb33',
+        success: '#00b041',
         warning: '#f0ad4e',
         info: '#5bc0de',
       },

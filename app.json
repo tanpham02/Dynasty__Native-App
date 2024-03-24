@@ -24,6 +24,7 @@
       },
       "package": "com.vtaan.dynastypizzaapp"
     },
+    "scheme": "dynastypizzaapp",
     "web": {
       "favicon": "./src/assets/images/logo/dynasty-logo.png"
     },

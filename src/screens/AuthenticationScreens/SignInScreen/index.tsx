@@ -2,7 +2,7 @@ import * as Google from 'expo-auth-session/providers/google';
 import { Box, Checkbox, Divider, Flex, Input, KeyboardAvoidingView, Text } from 'native-base';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Image, View } from 'react-native';
+import { Image, Platform, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import * as WebBrowser from 'expo-web-browser';
@@ -53,6 +53,7 @@ const SignInScreen = () => {
     iosClientId: configEnv.OAUTH_CLIENT_ID_IOS,
     androidClientId: configEnv.OAUTH_CLIENT_ID_ANDROID,
     webClientId: configEnv.OAUTH_CLIENT_ID_WEB,
+    redirectUri: 'com.vtaan.dynastypizzaapp://',
     scopes: ['profile', 'email'],
   });
   console.log('🚀 ~ SignInScreen ~ googleAuthenticationResponse:', googleAuthenticationResponse);
@@ -192,7 +193,7 @@ const SignInScreen = () => {
               <TouchableOpacity
                 style={styles.shadowX}
                 className='bg-white flex flex-row rounded-lg'
-                onPress={promptAsync}
+                onPress={async () => await promptAsync()}
               >
                 <Box className='flex-row items-center justify-center w-fit mx-auto py-2 '>
                   <Svg.GoogleSvg width={30} height={30} className='mr-2' />
