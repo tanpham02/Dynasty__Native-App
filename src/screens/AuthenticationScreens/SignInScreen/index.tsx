@@ -2,9 +2,10 @@ import * as Google from 'expo-auth-session/providers/google';
 import { Box, Checkbox, Divider, Flex, Input, KeyboardAvoidingView, Text } from 'native-base';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Image, View } from 'react-native';
+import { Image, Platform, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import * as AuthSession from 'expo-auth-session';
 
 import DynastyLogoBgWhite from '@/assets/images/logo/logo-bg-white.png';
 import PizzaBgRight from '@/assets/images/logo/pizza-5-loai-thit-va-rau-cu.png';
@@ -45,10 +46,17 @@ const SignInScreen = () => {
   useStatusBarForAndroid('#006a31');
   const [isAgreeReceiveOffer, setIsAgreeReceiveOffer] = useState<boolean>(true);
 
+  //   const auth0Domain = 'expo-auth0.us.auth0.com';
+  //   const authorizationEndpoint = `https://${auth0Domain}/authorize`;
+
+  //   const useProxy = Platform.select({ default: false });
+  //   const redirectUri = AuthSession.makeRedirectUri({ native: 'com.vtaan.dynastypizzaapp://' });
+
   const [request, googleAuthenticationResponse, promptAsync] = Google.useAuthRequest({
     iosClientId: configEnv.OAUTH_CLIENT_ID_IOS,
     androidClientId: configEnv.OAUTH_CLIENT_ID_ANDROID,
     webClientId: configEnv.OAUTH_CLIENT_ID_WEB,
+    redirectUri: 'com.vtaan.dynastypizzaapp://',
     scopes: ['profile', 'email'],
   });
   console.log('🚀 ~ SignInScreen ~ googleAuthenticationResponse:', googleAuthenticationResponse);
@@ -187,7 +195,7 @@ const SignInScreen = () => {
               <TouchableOpacity
                 style={styles.shadowX}
                 className='bg-white flex flex-row rounded-lg'
-                onPress={promptAsync}
+                onPress={async () => await promptAsync()}
               >
                 <Box className='flex-row items-center justify-center w-fit mx-auto py-2 '>
                   <Svg.GoogleSvg width={30} height={30} className='mr-2' />
