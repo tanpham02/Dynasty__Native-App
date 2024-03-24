@@ -19,6 +19,7 @@ const CartItem = ({ extendName, image, name, price, quantity, onOpenCartItemDeta
           height={70}
           resizeMode='cover'
           className='rounded-xl'
+          alt='image'
         />
       </Box>
       <Box className='flex flex-col items-start flex-1'>

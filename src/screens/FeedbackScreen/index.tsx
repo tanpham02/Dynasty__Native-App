@@ -26,7 +26,7 @@ const FeedbackScreen = () => {
     <PrimaryLayout titleScreen='Đánh giá' containerClass='bg-gray-5'>
       <ScrollView>
         <Box className='flex items-center justify-center mt-2'>
-          <Image source={emojis[currentStar].icon} className='w-36 h-36' alt='' />
+          <Image source={emojis[currentStar].icon} className='w-36 h-36' alt='emoji' />
           <Text className='font-nunito-700 text-base mt-3'>{emojis[currentStar].label}</Text>
           <Text className='font-nunito-400 text-sm mt-1 text-zinc-500'>
             Mọi góp ý của bạn sẽ giúp chúng tôi tốt hơn

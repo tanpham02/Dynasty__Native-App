@@ -74,7 +74,7 @@ const VerifyOTPScreen = () => {
         <KeyboardAwareScrollView className='flex-1'>
           <Box className='flex-1 px-4 w-screen'>
             <Box className='flex justify-center items-center mb-1'>
-              <Image source={VerifyBg} width={widthScreen} resizeMode='contain' />
+              <Image source={VerifyBg} width={widthScreen} resizeMode='contain' alt='Verify Bg' />
             </Box>
             <Box className='justify-center items-center gap-6'>
               <Text className='text-lg  uppercase font-nunito-700'>OTP Xác thực</Text>

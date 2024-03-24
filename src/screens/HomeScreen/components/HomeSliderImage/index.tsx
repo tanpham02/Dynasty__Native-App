@@ -9,7 +9,7 @@ const HomeSliderImage = (props: { uri: string }) => {
         source={props}
         className='rounded-lg m-1 mr-2'
         style={[styles.heightOnePerFive, styles.widthFourPerFiveScreen]}
-        alt=''
+        alt='image'
       />
     </TouchableOpacity>
   );

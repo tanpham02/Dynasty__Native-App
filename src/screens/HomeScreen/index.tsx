@@ -9,6 +9,7 @@ import { RefreshControl, SideBar } from '@/components';
 import { useFetchAllBanner, useFetchAllCategories } from '@/hooks';
 import { BuyAction, BuyQueueTutorial, Header, HomeCategory, HomeSlider, ProductList } from './components';
 import { AppDispatch, getUserInfo } from '@/redux';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 type HomeScreenRefType = {
   toggleOpenSideBar(): void;

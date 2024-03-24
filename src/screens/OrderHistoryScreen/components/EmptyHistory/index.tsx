@@ -11,7 +11,7 @@ const EmptyHistory = () => {
 
   return (
     <Box className='flex-1 items-center p-10'>
-      <Image source={NoOrderBeforeImage} className='w-48 h-48' />
+      <Image source={NoOrderBeforeImage} className='w-48 h-48' alt='No Order Before Image' />
       <Text className='font-nunito-700 text-xl text-center'>Bạn chưa có đơn hàng nào</Text>
       <Text className='font-nunito-500 text-zinc-500 mt-2 text-sm text-center'>
         Hãy khám phá thử những món ăn yêu thích của bạn

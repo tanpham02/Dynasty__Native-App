@@ -14,7 +14,7 @@ const AddressSavedScreen = () => {
   return (
     <PrimaryLayout titleScreen='Địa chỉ của tôi' containerClass='bg-white'>
       <Box className='items-center mx-8 flex-1'>
-        <Image source={NoSavedAddressImage} className='w-48 h-48' />
+        <Image source={NoSavedAddressImage} className='w-48 h-48' alt='No Saved Address Image' />
         <Text className='font-nunito-700 text-black text-lg mt-4'>Chưa có địa chỉ nào được lưu</Text>
         <Text className='font-nunito-700 text-zinc-400 mt-2'>Thêm địa chỉ để chọn khi đặt hàng</Text>
         <TouchableOpacity
