@@ -9,7 +9,7 @@ import { CartItemProps } from './type';
 
 const CartItem = ({ extendName, image, name, price, quantity, onOpenCartItemDetailBottomSheet }: CartItemProps) => {
   return (
-    <Box className='flex flex-1 bg-third rounded-lg flex-row px-3 py-3 mb-3' style={styles.shadowX}>
+    <Box className='flex flex-1 bg-third rounded-lg flex-row p-3 my-3' style={styles.shadowX}>
       <Box className='border border-zinc-100 w-[70px] h-[70px] rounded-xl bg-white flex justify-start mr-2'>
         <Image
           source={{
@@ -38,7 +38,7 @@ const CartItem = ({ extendName, image, name, price, quantity, onOpenCartItemDeta
             <Svg.Minus width={16.5} height={16.5} className='text-white' />
           </Box>
           <Text className='text-gray-10 text-[14.5px] font-nunito-700'>{quantity}</Text>
-          <Box className='bg-secondary w-7 h-7 rounded-lg flex justify-center items-center'>
+          <Box className='bg-[#424957] w-7 h-7 rounded-lg flex justify-center items-center'>
             <Svg.Plus width={25} height={25} className='text-white' />
           </Box>
         </Box>

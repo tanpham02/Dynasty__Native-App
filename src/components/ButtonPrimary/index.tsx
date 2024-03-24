@@ -4,7 +4,14 @@ import { TouchableOpacity } from 'react-native';
 import { buttonColors, buttonShadows } from './data';
 import { ButtonPrimaryProps } from './type';
 
-const ButtonPrimary = ({ title, onPress, containerClass, isDisable, color = 'primary' }: ButtonPrimaryProps) => {
+const ButtonPrimary = ({
+  title,
+  onPress,
+  containerClass,
+  isDisable,
+  color = 'primary',
+  textClassName,
+}: ButtonPrimaryProps) => {
   return (
     <TouchableOpacity
       disabled={isDisable}
@@ -12,7 +19,7 @@ const ButtonPrimary = ({ title, onPress, containerClass, isDisable, color = 'pri
       style={buttonShadows?.[color]}
       onPress={onPress}
     >
-      <Text className='font-nunito-700 text-white'>{title}</Text>
+      <Text className={`font-nunito-700 text-white ${textClassName}`}>{title}</Text>
     </TouchableOpacity>
   );
 };

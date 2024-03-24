@@ -1,13 +1,13 @@
 import { Box, Image, Text } from 'native-base';
+import { useRef, useState } from 'react';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
-import { useEffect, useRef, useState } from 'react';
 
 import { Svg } from '@/assets';
-import { ButtonPrimary } from '@/components';
-import { widthScreen, NumberUtils } from '@/utils';
-import StorePickupItem from '../StorePickupItem';
-import { FlatList, TouchableOpacity } from 'react-native';
 import MakerContainerImage from '@/assets/images/marker-store.png';
+import { ButtonPrimary } from '@/components';
+import { NumberUtils, widthScreen } from '@/utils';
+import { FlatList, TouchableOpacity } from 'react-native';
+import StorePickupItem from '../StorePickupItem';
 
 const PickupTab = () => {
   const mapRef = useRef<MapView>(null);

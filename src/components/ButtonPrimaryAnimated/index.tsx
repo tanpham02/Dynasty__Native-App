@@ -26,7 +26,7 @@ const ButtonPrimaryAnimated = ({ children, className, onPress }: ButtonPrimaryAn
   return (
     <Pressable
       onPress={onPress}
-      className={`bg-white rounded-lg p-2 flex flex-row items-center justify-between relative overflow-hidden  ${className}`}
+      className={`bg-white rounded-lg p-2 flex flex-row items-center justify-between relative overflow-hidden ${className}`}
     >
       {children}
       <Animated.View

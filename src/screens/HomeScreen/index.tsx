@@ -1,6 +1,5 @@
 import { useIsFocused } from '@react-navigation/native';
 import { createRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { Animated, ScrollView, View } from 'react-native';
 import { Box } from 'native-base';
 import { useDispatch } from 'react-redux';

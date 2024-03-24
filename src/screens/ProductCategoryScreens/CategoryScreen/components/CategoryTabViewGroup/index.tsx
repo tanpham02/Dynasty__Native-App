@@ -7,8 +7,8 @@ import { Svg } from '@/assets';
 import styles from '@/styles';
 import { widthScreen } from '@/utils';
 import { CategoryTabViewList, CategoryTypeList, ProductFavoriteList } from '..';
-import { tabBarRoutes } from './data';
 import ProductList from '../ProductList';
+import { tabBarRoutes } from './data';
 
 const renderScene = SceneMap({
   deals: ProductList,

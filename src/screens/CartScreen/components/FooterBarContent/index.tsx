@@ -3,7 +3,9 @@ import { Box, Image, Text } from 'native-base';
 import { ButtonPrimaryAnimated, FooterBar } from '@/components';
 import { formatCurrencyByLocale } from '@/utils/numberUtils';
 
-const FooterBarContent = () => {
+import { FooterBarContentProps } from './type';
+
+const FooterBarContent = ({ onOpenModalShippingMethod }: FooterBarContentProps) => {
   return (
     <FooterBar wrapperClassName='h-[90px] flex justify-center' bodyClassName='flex items-center'>
       <Box className='flex flex-row items-center justify-center gap-3'>
@@ -19,12 +21,12 @@ const FooterBarContent = () => {
           />
         </Box>
         <Box className='flex items-start justify-center'>
-          <Text className='text-white text-[17px] font-nunito-800 mt-1.5'>{formatCurrencyByLocale(89000)}</Text>
-          <Text className='text-[10px] font-medium text-gray-3 opacity-80 -mt-1.5'>Giá đã bao gồm thuế</Text>
+          <Text className='text-white text-sm font-nunito-700'>Tổng tiền</Text>
+          <Text className='text-white text-lg font-nunito-800 '>{formatCurrencyByLocale(89000)}</Text>
         </Box>
       </Box>
-      <ButtonPrimaryAnimated>
-        <Text className='text-secondary text-[11px] uppercase font-nunito-800'>Thanh toán</Text>
+      <ButtonPrimaryAnimated onPress={onOpenModalShippingMethod}>
+        <Text className='text-secondary text-[11.5px] uppercase font-nunito-800 px-4'>Thanh toán</Text>
       </ButtonPrimaryAnimated>
     </FooterBar>
   );

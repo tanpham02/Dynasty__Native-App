@@ -4,7 +4,7 @@ import { PathName } from '@/constants';
 import {
   AddressSavedScreen,
   AddressUpdateScreen,
-  DeliveryAndPickupScreenScreen,
+  DeliveryAndPickupScreen,
   FAQsScreen,
   FeedbackScreen,
   HomeScreen,
@@ -22,7 +22,9 @@ import {
   CategoryScreen,
   ProductDetailScreen,
   VerifyOTPScreen,
+  OrderRecipientInformationScreen,
 } from '@/screens';
+import { Platform } from 'react-native';
 
 const RootStack = createStackNavigator();
 
@@ -32,6 +34,10 @@ const optionsMain = {
 
 const optionsRoot = {
   cardStyleInterpolator: CardStyleInterpolators.forFadeFromBottomAndroid,
+};
+
+const userPlatformAppropriateOption = () => {
+  return Platform.OS === 'ios' ? optionsMain : optionsRoot;
 };
 
 const RootStackNavigator = () => {
@@ -44,104 +50,134 @@ const RootStackNavigator = () => {
       initialRouteName={PathName.PATH_SCREEN.HOME_SCREEN}
     >
       {/* Main Screen */}
-      <RootStack.Screen name={PathName.PATH_SCREEN.HOME_SCREEN} component={HomeScreen} options={optionsMain} />
+      <RootStack.Screen
+        name={PathName.PATH_SCREEN.HOME_SCREEN}
+        component={HomeScreen}
+        options={userPlatformAppropriateOption}
+      />
 
       {/* Authentication Screens */}
-      <RootStack.Screen name={PathName.PATH_SCREEN.SIGN_IN_SCREEN} component={SignInScreen} options={optionsRoot} />
+      <RootStack.Screen
+        name={PathName.PATH_SCREEN.SIGN_IN_SCREEN}
+        component={SignInScreen}
+        options={userPlatformAppropriateOption}
+      />
 
       {/* Categories Screens */}
       <RootStack.Screen
         name={PathName.PATH_SCREEN.CATEGORIES_SCREEN}
         component={CategoryScreen}
-        options={optionsRoot}
+        options={userPlatformAppropriateOption}
       />
 
       {/* Product Detail Screens */}
       <RootStack.Screen
         name={PathName.PATH_SCREEN.PRODUCT_DETAIL_SCREEN}
         component={ProductDetailScreen}
-        options={optionsRoot}
+        options={userPlatformAppropriateOption}
       />
 
       {/* Cart Screens */}
-      <RootStack.Screen name={PathName.PATH_SCREEN.CART_SCREEN} component={CartScreen} options={optionsRoot} />
+      <RootStack.Screen
+        name={PathName.PATH_SCREEN.CART_SCREEN}
+        component={CartScreen}
+        options={userPlatformAppropriateOption}
+      />
+
+      <RootStack.Screen
+        name={PathName.PATH_SCREEN.ORDER_RECIPIENT_INFORMATION_SCREEN}
+        component={OrderRecipientInformationScreen}
+        options={userPlatformAppropriateOption}
+      />
 
       <RootStack.Screen
         name={PathName.PATH_SCREEN.DELIVERY_AND_PICKUP_SCREEN}
-        component={DeliveryAndPickupScreenScreen}
-        options={optionsMain}
+        component={DeliveryAndPickupScreen}
+        options={userPlatformAppropriateOption}
       />
 
-      <RootStack.Screen name={PathName.PATH_SCREEN.FEEDBACK_SCREEN} component={FeedbackScreen} options={optionsMain} />
+      <RootStack.Screen
+        name={PathName.PATH_SCREEN.FEEDBACK_SCREEN}
+        component={FeedbackScreen}
+        options={userPlatformAppropriateOption}
+      />
 
       <RootStack.Screen
         name={PathName.PATH_SCREEN.TERM_AND_CONDITIONS_SCREEN}
         component={TermAndConditionsScreen}
-        options={optionsMain}
+        options={userPlatformAppropriateOption}
       />
 
-      <RootStack.Screen name={PathName.PATH_SCREEN.FAQS_SCREEN} component={FAQsScreen} options={optionsMain} />
+      <RootStack.Screen
+        name={PathName.PATH_SCREEN.FAQS_SCREEN}
+        component={FAQsScreen}
+        options={userPlatformAppropriateOption}
+      />
 
       <RootStack.Screen
         name={PathName.PATH_SCREEN.PRIVACY_POLICY_SCREEN}
         component={PrivacyPolicyScreen}
-        options={optionsMain}
+        options={userPlatformAppropriateOption}
       />
 
       <RootStack.Screen
         name={PathName.PATH_SCREEN.NUTRITION_INFORMATION_SCREEN}
         component={NutritionInformationScreen}
-        options={optionsMain}
+        options={userPlatformAppropriateOption}
       />
 
       <RootStack.Screen
         name={PathName.PATH_SCREEN.MY_PROFILE_SCREEN}
         component={MyProfileScreen}
-        options={optionsMain}
+        options={userPlatformAppropriateOption}
       />
 
       <RootStack.Screen
         name={PathName.PATH_SCREEN.UPDATE_PROFILE_SCREEN}
         component={UpdateProfileScreen}
-        options={optionsMain}
+        options={userPlatformAppropriateOption}
       />
 
       <RootStack.Screen
         name={PathName.PATH_SCREEN.ADDRESS_SAVED_SCREEN}
         component={AddressSavedScreen}
-        options={optionsMain}
+        options={userPlatformAppropriateOption}
       />
 
       <RootStack.Screen
         name={PathName.PATH_SCREEN.ADDRESS_UPDATE_SCREEN}
         component={AddressUpdateScreen}
-        options={optionsMain}
+        options={userPlatformAppropriateOption}
       />
 
       <RootStack.Screen
         name={PathName.PATH_SCREEN.ORDER_HISTORY_SCREEN}
         component={OrderHistoryScreen}
-        options={optionsMain}
+        options={userPlatformAppropriateOption}
       />
 
       <RootStack.Screen
         name={PathName.PATH_SCREEN.NOTIFICATION_SCREEN}
         component={NotificationScreen}
-        options={optionsMain}
+        options={userPlatformAppropriateOption}
       />
 
       <RootStack.Screen
         name={PathName.PATH_SCREEN.ORDER_DETAIL_SCREEN}
         component={OrderDetailScreen}
-        options={optionsMain}
+        options={userPlatformAppropriateOption}
       />
 
-      <RootStack.Screen name={PathName.PATH_SCREEN.VOUCHER_SCREEN} component={VoucherScreen} options={optionsMain} />
+      <RootStack.Screen
+        name={PathName.PATH_SCREEN.VOUCHER_SCREEN}
+        component={VoucherScreen}
+        options={userPlatformAppropriateOption}
+      />
 
       <RootStack.Screen
         name={PathName.PATH_SCREEN.VERIFY_OTP_SCREEN}
         component={VerifyOTPScreen}
-        options={optionsMain}
+        options={userPlatformAppropriateOption}
       />
     </RootStack.Navigator>
   );
