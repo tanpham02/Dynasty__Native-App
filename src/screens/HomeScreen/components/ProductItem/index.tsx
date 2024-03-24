@@ -2,7 +2,6 @@ import { Canvas, RoundedRect, Shadow } from '@shopify/react-native-skia';
 import { Image, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-import styles from '@/styles';
 import { NumberUtils, widthScreen } from '@/utils';
 import { ProductItemProps } from './type';
 

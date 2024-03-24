@@ -15,10 +15,7 @@ export const useFetchProducts = ({ pageSize = 10, categoryId, options }: FetchPr
         queryFn: ({ pageParam = 0 }) =>
             ProductService.getProducts({ pageIndex: pageParam, pageSize, categoryId }),
         getNextPageParam: (paging) => {
-            if (!paging.isLastPage) {
-                return paging.pageSize + 1
-            }
-            return null
+            return paging.isLastPage ? undefined : paging.pageSize + 1
         },
         ...options
     })

@@ -8,19 +8,23 @@ import { SignInResponse } from '@/models';
 
 let refreshTokenRequest: any = null;
 const loadRefreshToken = async (refreshToken: string) => {
-  try {
-    const response = await authenticationService.refreshToken(refreshToken);
-    return response;
-  } catch (error) {
-    throw error;
-  }
+  //   try {
+  //     const response = await authenticationService.refreshToken({
+  //       refreshToken: refreshToken,
+  //     });
+  //     return response;
+  //   } catch (error) {
+  //     throw error;
+  //   }
 };
 
 const axiosService = async (): Promise<AxiosInstance> => {
   if (!tokenManager.initialized) {
     await tokenManager.initialize();
   }
-  const accessToken = tokenManager.getAccessToken();
+  const accessToken =
+    tokenManager.getAccessToken() ||
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZmRhNjM0YzljYTBjNDkwMTdlODMwNSIsImlhdCI6MTcxMTEyMTk5OCwiZXhwIjoxNzExNzI2Nzk4fQ.5m_t68AqimxabIdZ2-R-H6sjegmQnWgOJL9NJ6cvHDg';
   const refreshToken = tokenManager.getRefreshToken() || '';
   const userId = tokenManager.getUserId() || '';
 
@@ -34,7 +38,6 @@ const axiosService = async (): Promise<AxiosInstance> => {
     },
   });
 
-  //
   axiosOption.interceptors.request.use(
     async (config) => {
       if (accessToken && !checkTokenExp(accessToken)) {
@@ -64,7 +67,6 @@ const axiosService = async (): Promise<AxiosInstance> => {
     },
   );
 
-  //
   axiosOption.interceptors.response.use(
     (response) => {
       return response;

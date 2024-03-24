@@ -78,10 +78,7 @@ const SignInScreen = () => {
 
   return (
     <KeyboardAvoidingView className='flex-1 bg-gray-6'>
-      <KeyboardAwareScrollView
-        // extraScrollHeight={Platform.OS === 'ios' ? 0 : 20}
-        className='flex-1 bg-gray-6'
-      >
+      <KeyboardAwareScrollView className='flex-1 bg-gray-6'>
         <Box className='relative h-screen flex flex-col overflow-hidden bg-gray-6'>
           <Box className='relative bg-primary flex flex-1 justify-center items-center'>
             <Image

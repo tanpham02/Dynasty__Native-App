@@ -12,7 +12,7 @@ const UserSignInButton = () => {
   const goToMyProfileScreen = () => NavigationUtils.navigate(PathName.PATH_SCREEN.MY_PROFILE_SCREEN);
 
   return (
-    <TouchableOpacity className='flex-row items-center mb-2' onPress={goToSignInScreen}>
+    <TouchableOpacity className='flex-row items-center mb-2' onPress={goToMyProfileScreen}>
       <View
         style={styles.shadowSecondary}
         className='bg-secondary w-10 h-10 rounded-lg items-center justify-center m-2'

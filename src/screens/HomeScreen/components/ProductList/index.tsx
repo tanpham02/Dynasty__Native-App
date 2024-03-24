@@ -11,12 +11,6 @@ import ProductItemSkeleton from '../ProductItemSkeleton';
 import { ProductListProps } from './type';
 
 const ProductList = ({ isLoading, name, _id, childrenCategory, isRefetching }: ProductListProps) => {
-  //   useEffect(() => {
-  //     if (isRefetching) {
-  //       refetchProducts();
-  //     }
-  //   }, [isRefetching]);
-
   const categoryId = useMemo(() => {
     if (childrenCategory?.category?.length > 0) {
       return childrenCategory.category?.[0]?._id;

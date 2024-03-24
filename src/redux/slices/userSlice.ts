@@ -1,15 +1,34 @@
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+
 import { LocationInfoModel, UserModel } from '@/models';
-import { createSlice } from '@reduxjs/toolkit';
+import { RootState } from '../store';
+import { useFetchUserInfo } from '@/hooks';
+import { UserService } from '@/services';
 
 type initialStateType = {
-    user: UserModel
+    user: UserModel | null
     location: LocationInfoModel
 };
 
 const initialState: initialStateType = {
-    user: {},
+    user: null,
     location: {}
 };
+
+export const getUserInfo = createAsyncThunk(
+    "user/fetchUserCart",
+    async (_, { dispatch }) => {
+        try {
+            const user = await UserService.getInfoById("65fda634c9ca0c49017e8305");
+            console.log("🚀 ~ user:", user)
+
+            dispatch(setUser(user))
+
+        } catch (err) {
+            console.log(err);
+        }
+    }
+);
 
 const userSlice = createSlice({
     name: 'user',

@@ -1,11 +1,16 @@
 import { Box, Divider, Flex, Text } from 'native-base';
 import { TouchableOpacity } from 'react-native';
+import { useSelector } from 'react-redux';
 
 import styles from '@/styles';
-import { NavigationUtils } from '@/utils';
+import { RootState } from '@/redux';
+import { UserModel } from '@/models';
 import { PathName } from '@/constants';
+import { NavigationUtils } from '@/utils';
 
 const MyProfileCard = () => {
+  const user = useSelector<RootState, UserModel>((state) => state.userStore.user);
+
   const gotoUpdateProfileScreen = () => NavigationUtils.navigate(PathName.PATH_SCREEN.UPDATE_PROFILE_SCREEN);
 
   return (
@@ -15,8 +20,8 @@ const MyProfileCard = () => {
           <Text className='font-nunito-700 text-white uppercase'>V</Text>
         </Box>
         <Box className='flex-1 ml-4'>
-          <Text className='font-nunito-700 text-sm'>Phạm Văn Tân</Text>
-          <Text className='font-nunito-500 text-[13px]'>tanpham@gmail.com</Text>
+          <Text className='font-nunito-700 text-sm'>{user?.fullName}</Text>
+          <Text className='font-nunito-500 text-[13px]'>{user?.email}</Text>
         </Box>
       </Flex>
       <Divider className='mt-3' />
