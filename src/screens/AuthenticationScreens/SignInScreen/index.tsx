@@ -53,10 +53,9 @@ const SignInScreen = () => {
     iosClientId: configEnv.OAUTH_CLIENT_ID_IOS,
     androidClientId: configEnv.OAUTH_CLIENT_ID_ANDROID,
     webClientId: configEnv.OAUTH_CLIENT_ID_WEB,
-    redirectUri: 'com.vtaan.dynastypizzaapp://',
+    // redirectUri: 'com.vtaan.dynastypizzaapp://',
     scopes: ['profile', 'email'],
   });
-  console.log('🚀 ~ SignInScreen ~ googleAuthenticationResponse:', googleAuthenticationResponse);
 
   const {} = useForm();
 
