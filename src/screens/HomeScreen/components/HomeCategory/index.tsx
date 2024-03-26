@@ -4,7 +4,7 @@ import { Box, Text } from 'native-base';
 
 import { Svg } from '@/assets';
 import { PATH_SCREEN } from '@/constants/pathName';
-import { navigate } from '@/utils/navigationUtil';
+import { navigate } from '@/utils/navigationUtils';
 import HomeCategoryItem from '../HomeCategoryItem';
 import { HomeCategoryProps } from './type';
 import HomeCategoryItemSkeleton from '../HomeCategoryItemSkeleton';

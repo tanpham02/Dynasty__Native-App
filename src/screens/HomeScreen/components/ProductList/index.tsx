@@ -5,7 +5,7 @@ import { Box, Skeleton } from 'native-base';
 import { Svg } from '@/assets';
 import { PathName } from '@/constants';
 import { useFetchProducts } from '@/hooks';
-import { NavigationUtils } from '@/utils';
+import { navigate } from '@/utils';
 import ProductItem from '../ProductItem';
 import ProductItemSkeleton from '../ProductItemSkeleton';
 import { ProductListProps } from './type';
@@ -24,7 +24,7 @@ const ProductList = ({ isLoading, name, _id, childrenCategory, isRefetching }: P
     refetch: refetchProducts,
   } = useFetchProducts({ pageSize: 4, categoryId, options: { enabled: Boolean(!isLoading && categoryId) } });
 
-  const gotoCategoryDetail = () => NavigationUtils.navigate(PathName.PATH_SCREEN.CATEGORIES_SCREEN);
+  const gotoCategoryDetail = () => navigate(PathName.PATH_SCREEN.CATEGORIES_SCREEN);
 
   return (
     <Box className='-mt-2'>

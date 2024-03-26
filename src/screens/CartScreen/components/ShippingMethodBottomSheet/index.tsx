@@ -1,5 +1,6 @@
 import { Actionsheet, Box, Button, Divider, Modal, Text } from 'native-base';
 import React, { useState } from 'react';
+
 import { ShippingMethodBottomSheetProps } from './type';
 import { shippingMethodData } from './data';
 import { Image } from 'react-native';
@@ -8,10 +9,8 @@ import styles from '@/styles';
 import { OrderTypes } from '@/models/order';
 import { Svg } from '@/assets';
 import { ButtonPrimary } from '@/components';
-import { NavigationUtils } from '@/utils';
+import { navigate } from '@/utils';
 import { PATH_SCREEN } from '@/constants/pathName';
-
-const { navigate } = NavigationUtils;
 
 const ShippingMethodBottomSheet = ({ visible, onClose }: ShippingMethodBottomSheetProps) => {
   const [shippingMethodSelected, setShippingMethodSelected] = useState<OrderTypes>(OrderTypes.ORDER_DELIVERING);

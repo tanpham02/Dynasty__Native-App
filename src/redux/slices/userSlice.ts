@@ -16,14 +16,25 @@ const initialState: initialStateType = {
 };
 
 export const getUserInfo = createAsyncThunk(
-    "user/fetchUserCart",
-    async (_, { dispatch }) => {
+    "user/getUserInfo",
+    async (_, { dispatch, getState }) => {
         try {
-            const user = await UserService.getInfoById("65fda634c9ca0c49017e8305");
-            console.log("🚀 ~ user:", user)
+            const userStore = (getState() as RootState)?.userStore.user as UserModel;
+            const user = await UserService.getInfoById(userStore?._id);
 
             dispatch(setUser(user))
 
+        } catch (err) {
+            console.log(err);
+        }
+    }
+);
+
+export const updateUserInfo = createAsyncThunk(
+    "user/updateUserInfo",
+    async (user: FormData, { dispatch, getState }) => {
+        try {
+            console.log("🚀 ~ data:", user)
         } catch (err) {
             console.log(err);
         }

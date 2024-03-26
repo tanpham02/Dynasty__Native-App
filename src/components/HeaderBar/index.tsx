@@ -3,7 +3,7 @@ import { Box, Flex, Text, View } from 'native-base';
 import { TouchableOpacity } from 'react-native';
 
 import { Svg } from '@/assets';
-import { NavigationUtils } from '@/utils';
+import { goBack } from '@/utils';
 import { HeaderBarProps } from './type';
 import styles from '@/styles';
 
@@ -25,7 +25,7 @@ const HeaderBar = (props: HeaderBarProps) => {
           </RoundedRect>
         </Canvas>
         <TouchableOpacity
-          onPress={NavigationUtils.goBack}
+          onPress={goBack}
           className='w-[43px] h-[43px] rounded-lg items-center justify-center absolute top-2.5 left-3.5'
         >
           <Svg.ArrowLeft width={24} height={24} />

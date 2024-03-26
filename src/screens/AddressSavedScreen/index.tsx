@@ -3,13 +3,13 @@ import { TouchableOpacity } from 'react-native';
 
 import styles from '@/styles';
 import { PathName } from '@/constants';
-import { NavigationUtils } from '@/utils';
+import { navigate } from '@/utils';
 import { PrimaryLayout } from '@/components';
 import NoSavedAddressImage from '@/assets/images/address-saved.png';
 import { AddressItem } from './components';
 
 const AddressSavedScreen = () => {
-  const gotoUpdateAddressScreen = () => NavigationUtils.navigate(PathName.PATH_SCREEN.ADDRESS_UPDATE_SCREEN);
+  const gotoUpdateAddressScreen = () => navigate(PathName.PATH_SCREEN.ADDRESS_UPDATE_SCREEN);
 
   return (
     <PrimaryLayout titleScreen='Địa chỉ của tôi' containerClass='bg-white'>

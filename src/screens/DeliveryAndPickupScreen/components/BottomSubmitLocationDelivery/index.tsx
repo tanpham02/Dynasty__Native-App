@@ -4,11 +4,11 @@ import { TouchableOpacity } from 'react-native';
 import { Svg } from '@/assets';
 import styles from '@/styles';
 import { PathName } from '@/constants';
-import { NavigationUtils } from '@/utils';
+import { navigate } from '@/utils';
 import { BottomSubmitLocationDeliveryProps } from './type';
 
 const BottomSubmitLocationDelivery = ({ isFetching, useLocation, onSubmit }: BottomSubmitLocationDeliveryProps) => {
-  const gotoAddressSavedScreen = () => NavigationUtils.navigate(PathName.PATH_SCREEN.ADDRESS_SAVED_SCREEN);
+  const gotoAddressSavedScreen = () => navigate(PathName.PATH_SCREEN.ADDRESS_SAVED_SCREEN);
 
   return (
     <Box className='p-4 bg-white'>

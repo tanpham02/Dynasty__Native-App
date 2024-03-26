@@ -13,7 +13,7 @@ import GlobalLoading, { globalLoadingRef } from '@/components/GlobalLoading';
 import { TokenManager } from '@/helpers';
 import RootStackNavigator from '@/navigation/RootStackNavigator';
 import store from '@/redux/store';
-import { NavigationUtils } from '@/utils';
+import { navigationRef } from '@/utils';
 
 LogBox.ignoreAllLogs();
 global.atob = decode;
@@ -51,7 +51,7 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>
         <NativeBaseProvider>
-          <NavigationContainer ref={NavigationUtils.navigationRef}>
+          <NavigationContainer ref={navigationRef}>
             <RootStackNavigator />
           </NavigationContainer>
         </NativeBaseProvider>
