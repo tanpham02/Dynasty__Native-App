@@ -1,10 +1,9 @@
-import { Box, Input, ScrollView, Select, Text } from 'native-base';
-import { getProvinces, getDistricts, getWards } from 'vietnam-provinces';
+import { Box, Input, ScrollView, Select } from 'native-base';
 import { useEffect, useMemo, useState } from 'react';
 import { TouchableOpacity } from 'react-native';
+import { getDistricts, getProvinces, getWards } from 'vietnam-provinces';
 
-import { PrimaryLayout } from '@/components';
-import styles from '@/styles';
+import { ButtonPrimary, PrimaryLayout } from '@/components';
 
 const AddressUpdateScreen = () => {
   const [location, setLocation] = useState({
@@ -35,38 +34,26 @@ const AddressUpdateScreen = () => {
   return (
     <PrimaryLayout containerClass='bg-third'>
       <ScrollView className='flex-1 -mt-4'>
-        <Box className='bg-white mx-4 flex-1 p-4 my-4 rounded-lg' style={styles.shadowX}>
-          <Box className='mb-3'>
-            <Text className='font-nunito-700 text-xl text-zinc-500'>Thêm địa chỉ</Text>
-            <Text className='font-nunito-700 text-2xl'>Giao hàng</Text>
-            <Text className='font-nunito-500 text-zinc-500 text-sm'>Thêm địa chỉ để chọn khi đặt hàng</Text>
-          </Box>
-          <Box style={styles.shadowX} className='bg-white rounded-lg mb-3'>
-            <Input
-              borderRadius={8}
-              borderWidth={0}
-              placeholder='Họ và tên'
-              className='font-nunito-700'
-              _focus={{
-                backgroundColor: 'white',
-              }}
-            />
-          </Box>
-          <Box style={styles.shadowX} className='bg-white rounded-lg mb-3'>
-            <Input
-              borderRadius={8}
-              borderWidth={0}
-              placeholder='Số điện thoại'
-              keyboardType='numeric'
-              className='font-nunito-700'
-              _focus={{
-                backgroundColor: 'white',
-              }}
-            />
-          </Box>
-          <TouchableOpacity style={styles.shadowX} className='bg-white rounded-lg mb-3'>
+        <Box className='bg-white mx-4 flex-1 p-4 my-4 rounded-lg space-y-4'>
+          <Input
+            borderRadius={8}
+            placeholder='Họ và tên'
+            className='font-nunito-700'
+            _focus={{
+              backgroundColor: 'white',
+            }}
+          />
+          <Input
+            borderRadius={8}
+            placeholder='Số điện thoại'
+            keyboardType='numeric'
+            className='font-nunito-700'
+            _focus={{
+              backgroundColor: 'white',
+            }}
+          />
+          <TouchableOpacity>
             <Select
-              borderWidth={0}
               placeholder='Tỉnh, thành phố'
               className='font-nunito-700'
               selectedValue={location?.cityId}
@@ -75,10 +62,9 @@ const AddressUpdateScreen = () => {
               {cities?.map((city) => <Select.Item key={city.code} label={city?.name} value={city?.code} />)}
             </Select>
           </TouchableOpacity>
-          <TouchableOpacity disabled={!location?.cityId} style={styles.shadowX} className='bg-white rounded-lg mb-3'>
+          <TouchableOpacity disabled={!location?.cityId}>
             <Select
               isDisabled={!location?.cityId}
-              borderWidth={0}
               placeholder='Quận, huyện'
               className='font-nunito-700'
               selectedValue={location?.districtId}
@@ -89,14 +75,9 @@ const AddressUpdateScreen = () => {
               ))}
             </Select>
           </TouchableOpacity>
-          <TouchableOpacity
-            disabled={!location?.districtId}
-            style={styles.shadowX}
-            className='bg-white rounded-lg mb-3'
-          >
+          <TouchableOpacity disabled={!location?.districtId}>
             <Select
               isDisabled={!location?.districtId}
-              borderWidth={0}
               placeholder='Phường, xã, thị trấn'
               className='font-nunito-700'
               selectedValue={location?.wardId}
@@ -105,10 +86,9 @@ const AddressUpdateScreen = () => {
               {wards?.map((ward) => <Select.Item key={ward.code} label={ward?.name} value={ward?.code} />)}
             </Select>
           </TouchableOpacity>
-          <Box style={styles.shadowX} className='bg-white rounded-lg mb-3'>
+          <Box>
             <Input
               borderRadius={8}
-              borderWidth={0}
               placeholder='Số nhà, tên đường'
               className='font-nunito-700'
               _focus={{
@@ -116,9 +96,7 @@ const AddressUpdateScreen = () => {
               }}
             />
           </Box>
-          <TouchableOpacity className='bg-secondary py-2.5 px-4 items-center rounded-lg' style={styles.shadowSecondary}>
-            <Text className='text-white font-nunito-700 text-sm'>Lưu</Text>
-          </TouchableOpacity>
+          <ButtonPrimary title='Lưu' color='danger' />
         </Box>
       </ScrollView>
     </PrimaryLayout>
