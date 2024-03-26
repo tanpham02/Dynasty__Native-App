@@ -12,7 +12,7 @@ import { RootState } from '@/redux';
 import { UserModel } from '@/models';
 
 const UserSignInButton = () => {
-  const [isAuthenticated] = useState(tokenManager.getAccessToken());
+  const isAuthenticated = tokenManager.getAccessToken();
 
   const user = useSelector<RootState, UserModel>((state) => state.userStore.user);
 

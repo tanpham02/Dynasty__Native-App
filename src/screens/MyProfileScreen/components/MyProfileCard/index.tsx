@@ -1,33 +1,25 @@
-import { Box, Divider, Flex, Text } from 'native-base';
-import { TouchableOpacity } from 'react-native';
+import { Box, Text, Image } from 'native-base';
 import { useSelector } from 'react-redux';
 
-import styles from '@/styles';
-import { RootState } from '@/redux';
 import { UserModel } from '@/models';
-import { PathName } from '@/constants';
-import { navigate } from '@/utils';
+import { RootState } from '@/redux';
+import { getFullImageUrl } from '@/utils';
 
 const MyProfileCard = () => {
   const user = useSelector<RootState, UserModel>((state) => state.userStore.user);
 
-  const gotoUpdateProfileScreen = () => navigate(PathName.PATH_SCREEN.UPDATE_PROFILE_SCREEN);
-
   return (
-    <Box className='rounded-lg p-4 bg-white my-4' style={styles.shadowX}>
-      <Flex className='flex-row'>
-        <Box className='w-10 h-10 bg-secondary items-center justify-center rounded-lg'>
-          <Text className='font-nunito-700 text-white uppercase'>V</Text>
-        </Box>
-        <Box className='flex-1 ml-4'>
-          <Text className='font-nunito-700 text-sm'>{user?.fullName}</Text>
-          <Text className='font-nunito-500 text-[13px]'>{user?.email}</Text>
-        </Box>
-      </Flex>
-      <Divider className='mt-3' />
-      <TouchableOpacity className='items-center py-3 -mb-3' onPress={gotoUpdateProfileScreen}>
-        <Text className='text-orange-400 uppercase font-nunito-700 text-xs'>Cập nhật tài khoản</Text>
-      </TouchableOpacity>
+    <Box className='items-center p-4'>
+      <Box className='w-16 h-16 bg-primary items-center justify-center rounded-full relative'>
+        {user?.avatar ? (
+          <Image source={{ uri: getFullImageUrl(user.avatar) }} className='w-full h-full rounded-full' />
+        ) : (
+          <Text className='font-nunito-700 text-white uppercase text-lg'>{user?.fullName?.charAt(0)}</Text>
+        )}
+        <Box className='w-3.5 h-3.5 rounded-full absolute bottom-0 right-1 bg-green-600 border-2 border-white' />
+      </Box>
+      <Text className='font-nunito-700 text-lg mt-2 text-zinc-700'>{user?.fullName}</Text>
+      <Text className='font-nunito-500 text-[13px] text-zinc-500'>{user?.phoneNumber || user?.email}</Text>
     </Box>
   );
 };
