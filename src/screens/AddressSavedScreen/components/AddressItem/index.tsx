@@ -3,10 +3,10 @@ import { TouchableOpacity } from 'react-native';
 
 import styles from '@/styles';
 import { PathName } from '@/constants';
-import { NavigationUtils } from '@/utils';
+import { navigate } from '@/utils';
 
 const AddressItem = () => {
-  const gotoUpdateAddressScreen = () => NavigationUtils.navigate(PathName.PATH_SCREEN.ADDRESS_UPDATE_SCREEN);
+  const gotoUpdateAddressScreen = () => navigate(PathName.PATH_SCREEN.ADDRESS_UPDATE_SCREEN);
   return (
     <TouchableOpacity
       onPress={gotoUpdateAddressScreen}

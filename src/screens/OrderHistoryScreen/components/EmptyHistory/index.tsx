@@ -3,11 +3,11 @@ import { TouchableOpacity } from 'react-native';
 
 import styles from '@/styles';
 import { PathName } from '@/constants';
-import { NavigationUtils } from '@/utils';
+import { navigate } from '@/utils';
 import NoOrderBeforeImage from '@/assets/images/order-history.png';
 
 const EmptyHistory = () => {
-  const gotoCategoryScreen = () => NavigationUtils.navigate(PathName.PATH_SCREEN.CATEGORIES_SCREEN);
+  const gotoCategoryScreen = () => navigate(PathName.PATH_SCREEN.CATEGORIES_SCREEN);
 
   return (
     <Box className='flex-1 items-center p-10'>

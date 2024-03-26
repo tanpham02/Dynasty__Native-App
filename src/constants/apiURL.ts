@@ -1,6 +1,6 @@
 import configEnv from 'src/configs';
 
-export const API_BASE_URL: string = configEnv.API_BASE_URL;
+export const API_BASE_URL: string = `${configEnv.API_BASE_URL}/api`;
 
 const combineUrl = (...routes: string[]) => `${API_BASE_URL}/${routes.join("/")}`
 

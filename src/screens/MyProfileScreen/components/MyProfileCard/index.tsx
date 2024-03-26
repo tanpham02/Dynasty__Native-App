@@ -6,12 +6,12 @@ import styles from '@/styles';
 import { RootState } from '@/redux';
 import { UserModel } from '@/models';
 import { PathName } from '@/constants';
-import { NavigationUtils } from '@/utils';
+import { navigate } from '@/utils';
 
 const MyProfileCard = () => {
   const user = useSelector<RootState, UserModel>((state) => state.userStore.user);
 
-  const gotoUpdateProfileScreen = () => NavigationUtils.navigate(PathName.PATH_SCREEN.UPDATE_PROFILE_SCREEN);
+  const gotoUpdateProfileScreen = () => navigate(PathName.PATH_SCREEN.UPDATE_PROFILE_SCREEN);
 
   return (
     <Box className='rounded-lg p-4 bg-white my-4' style={styles.shadowX}>

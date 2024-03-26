@@ -2,7 +2,7 @@ import { Canvas, RoundedRect, Shadow } from '@shopify/react-native-skia';
 import { Image, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-import { NumberUtils, widthScreen } from '@/utils';
+import { formatMoneyVND, widthScreen } from '@/utils';
 import { ProductItemProps } from './type';
 
 const ProductItem = ({ name, price, image }: ProductItemProps) => {
@@ -42,7 +42,7 @@ const ProductItem = ({ name, price, image }: ProductItemProps) => {
           </Text>
           <View className='my-3 w-2/5 h-0.5 bg-secondary' />
           <View className='flex-row'>
-            <Text className='flex-1 font-nunito-600 text-zinc-700'>{NumberUtils.formatMoneyVND(price)}đ</Text>
+            <Text className='flex-1 font-nunito-600 text-zinc-700'>{formatMoneyVND(price)}đ</Text>
             <View className='border-2 border-secondary rounded p-0.5'>
               <Text className='text-xs font-nunito-500 text-zinc-700'>Mua ngay</Text>
             </View>

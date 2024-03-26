@@ -2,7 +2,7 @@ import { showMessage } from 'react-native-flash-message';
 import { Linking } from 'react-native';
 import { Svg } from '@/assets';
 import { PathName } from '@/constants';
-import { NavigationUtils } from '@/utils';
+import { navigate } from '@/utils';
 import { ProfileMenuItemProps } from '../ProfileMenuItem/type';
 
 export const menus: ProfileMenuItemProps[] = [
@@ -14,12 +14,12 @@ export const menus: ProfileMenuItemProps[] = [
     {
         Icon: Svg.Location,
         label: 'Địa chỉ đã lưu',
-        onPress: () => NavigationUtils.navigate(PathName.PATH_SCREEN.ADDRESS_SAVED_SCREEN),
+        onPress: () => navigate(PathName.PATH_SCREEN.ADDRESS_SAVED_SCREEN),
     },
     {
         Icon: Svg.Package,
         label: 'Đơn hàng của tôi',
-        onPress: () => NavigationUtils.navigate(PathName.PATH_SCREEN.ORDER_HISTORY_SCREEN),
+        onPress: () => navigate(PathName.PATH_SCREEN.ORDER_HISTORY_SCREEN),
     },
     {
         Icon: Svg.Support,
@@ -30,7 +30,7 @@ export const menus: ProfileMenuItemProps[] = [
         Icon: Svg.Logout,
         label: 'Đăng xuất',
         onPress: () => {
-            NavigationUtils.navigate(PathName.PATH_SCREEN.SIGN_IN_SCREEN);
+            navigate(PathName.PATH_SCREEN.SIGN_IN_SCREEN);
             showMessage({
                 message: 'Đăng xuất thành công!',
                 type: 'success',

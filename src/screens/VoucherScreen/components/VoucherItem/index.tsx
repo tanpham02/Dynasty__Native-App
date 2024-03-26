@@ -5,12 +5,12 @@ import { showMessage } from 'react-native-flash-message';
 import styles from '@/styles';
 import { ButtonPrimary } from '@/components';
 import { VoucherItemProps } from './type';
-import { NavigationUtils } from '@/utils';
+import { navigate } from '@/utils';
 import { PathName } from '@/constants';
 
 const VoucherItem = ({ onView }: VoucherItemProps) => {
   const handleApplyVoucher = () => {
-    NavigationUtils.navigate(PathName.PATH_SCREEN.CATEGORIES_SCREEN);
+    navigate(PathName.PATH_SCREEN.CATEGORIES_SCREEN);
     showMessage({
       message: 'Áp dụng voucher thành công!',
       type: 'success',

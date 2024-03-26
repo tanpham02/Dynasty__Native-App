@@ -1,7 +1,6 @@
 import { PathName } from "@/constants";
-import { NavigationUtils } from "@/utils";
+import { navigate } from "@/utils";
 
-const { navigate } = NavigationUtils
 const {
     FEEDBACK_SCREEN,
     FAQS_SCREEN,

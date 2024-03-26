@@ -1,15 +1,13 @@
 import { useIsFocused } from '@react-navigation/native';
+import { Box } from 'native-base';
 import { createRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import { Animated, ScrollView, View } from 'react-native';
-import { Box } from 'native-base';
-import { useDispatch } from 'react-redux';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import styles from '@/styles';
 import { RefreshControl, SideBar } from '@/components';
 import { useFetchAllBanner, useFetchAllCategories } from '@/hooks';
 import { BuyAction, BuyQueueTutorial, Header, HomeCategory, HomeSlider, ProductList } from './components';
-import { AppDispatch, getUserInfo } from '@/redux';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 type HomeScreenRefType = {
   toggleOpenSideBar(): void;
@@ -20,17 +18,11 @@ export const homeScreenRef = createRef<HomeScreenRefType>();
 const HomeScreen = () => {
   const isFocus = useIsFocused();
 
-  const dispatch = useDispatch<AppDispatch>();
-
   const [isOpenSideBar, setIsOpenSidebar] = useState<boolean>(true);
 
   const [isLoadingData, setIsLoadingData] = useState<boolean>();
 
   const sidebarAniValue = useRef(new Animated.Value(0)).current;
-
-  useEffect(() => {
-    dispatch(getUserInfo());
-  }, []);
 
   useEffect(() => {
     let timer = null;

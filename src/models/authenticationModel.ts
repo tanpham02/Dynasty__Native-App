@@ -5,7 +5,7 @@ export interface SignInWithGoogleRequest {
 }
 
 export interface SignInResponse {
-    userInfo: UserModel
+    customerInfo: UserModel
     accessToken: string
     refreshToken: string
 }

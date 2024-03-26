@@ -18,11 +18,14 @@ import { PathName } from '@/constants';
 import { useStatusBarForAndroid } from '@/hooks';
 import authenticationService from '@/services/authenticationService';
 import styles from '@/styles';
-import { NavigationUtils } from '@/utils';
+import { navigate } from '@/utils';
 import { tokenManager } from 'App';
 import { makeRedirectUri } from 'expo-auth-session';
+import { showMessage } from 'react-native-flash-message';
+import { useDispatch } from 'react-redux';
+import { AppDispatch, setUser } from '@/redux';
+import { GlobalLoading } from '@/components';
 
-const { navigate } = NavigationUtils;
 const { TERM_AND_CONDITIONS_SCREEN, HOME_SCREEN, VERIFY_OTP_SCREEN } = PathName.PATH_SCREEN;
 
 const topIntroduce = [
@@ -47,31 +50,45 @@ WebBrowser.maybeCompleteAuthSession();
 
 const SignInScreen = () => {
   useStatusBarForAndroid('#006a31');
+
+  const dispatch = useDispatch<AppDispatch>();
+
   const [isAgreeReceiveOffer, setIsAgreeReceiveOffer] = useState<boolean>(true);
 
-  const [request, googleAuthenticationResponse, promptAsync] = Google.useAuthRequest({
+  const [, googleAuthenticationResponse, promptAsync] = Google.useAuthRequest({
     iosClientId: configEnv.OAUTH_CLIENT_ID_IOS,
     androidClientId: configEnv.OAUTH_CLIENT_ID_ANDROID,
     webClientId: configEnv.OAUTH_CLIENT_ID_WEB,
-    // redirectUri: 'com.vtaan.dynastypizzaapp://',
     scopes: ['profile', 'email'],
   });
 
   const {} = useForm();
 
   const signInWithGoogle = async () => {
-    const { accessToken, refreshToken, userInfo } = await authenticationService.signInWithGoogle({
-      accessToken: googleAuthenticationResponse.authentication.accessToken,
-    });
+    try {
+      if (googleAuthenticationResponse && googleAuthenticationResponse.type === 'success') {
+        const { accessToken, refreshToken, customerInfo } = await authenticationService.signInWithGoogle({
+          accessToken: googleAuthenticationResponse.authentication.accessToken,
+        });
 
-    tokenManager.setAccessToken(accessToken);
-    tokenManager.setRefreshToken(refreshToken);
+        tokenManager.setAccessToken(accessToken);
+        tokenManager.setRefreshToken(refreshToken);
+        dispatch(setUser(customerInfo));
+        navigate(HOME_SCREEN);
+      }
+    } catch (err) {
+      console.log('🚀 ~ signInWithGoogle ~ err:', err);
+      showMessage({
+        message: 'Oops! Có lỗi xảy ra vui lòng thử lại sau!',
+        type: 'danger',
+      });
+    } finally {
+      GlobalLoading.hide();
+    }
   };
 
   useEffect(() => {
-    if (googleAuthenticationResponse && googleAuthenticationResponse.type === 'success') {
-      signInWithGoogle();
-    }
+    signInWithGoogle();
   }, [googleAuthenticationResponse]);
 
   const handleChangeCheckedReceiveOffer = () => setIsAgreeReceiveOffer(!isAgreeReceiveOffer);
@@ -79,6 +96,11 @@ const SignInScreen = () => {
   const gotoTermAndConditionsScreen = () => navigate(TERM_AND_CONDITIONS_SCREEN);
 
   const navigateToVerifyOTPScreen = () => navigate(VERIFY_OTP_SCREEN);
+
+  const startLoginWithGoogle = async () => {
+    GlobalLoading.show();
+    await promptAsync();
+  };
 
   return (
     <KeyboardAvoidingView className='flex-1 bg-gray-6'>
@@ -192,7 +214,7 @@ const SignInScreen = () => {
               <TouchableOpacity
                 style={styles.shadowX}
                 className='bg-white flex flex-row rounded-lg'
-                onPress={async () => await promptAsync()}
+                onPress={startLoginWithGoogle}
               >
                 <Box className='flex-row items-center justify-center w-fit mx-auto py-2 '>
                   <Svg.GoogleSvg width={30} height={30} className='mr-2' />

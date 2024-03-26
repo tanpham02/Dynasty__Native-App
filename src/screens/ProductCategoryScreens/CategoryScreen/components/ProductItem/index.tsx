@@ -6,7 +6,7 @@ import { Svg } from '@/assets';
 import { PathName } from '@/constants';
 import { ProductType } from '@/models/productModel';
 import styles from '@/styles';
-import { NavigationUtils } from '@/utils';
+import { navigate } from '@/utils';
 import { formatCurrencyByLocale } from '@/utils/numberUtils';
 import { ProductTypeIconList } from '../ProductList/data';
 import { ProductItemProps } from './type';
@@ -46,7 +46,7 @@ const ProductItem = (props: ProductItemProps) => {
     }).start();
   };
 
-  const handleNavigateProductDetail = () => NavigationUtils.navigate(PathName.PATH_SCREEN.PRODUCT_DETAIL_SCREEN);
+  const handleNavigateProductDetail = () => navigate(PathName.PATH_SCREEN.PRODUCT_DETAIL_SCREEN);
 
   return (
     <Box className='bg-third rounded-lg m-4' style={styles.shadowX}>

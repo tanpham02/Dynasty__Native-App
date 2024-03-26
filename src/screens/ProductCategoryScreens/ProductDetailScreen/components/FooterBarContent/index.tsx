@@ -3,11 +3,11 @@ import { Box, Image, Text } from 'native-base';
 import { Svg } from '@/assets';
 import { ButtonPrimaryAnimated, FooterBar } from '@/components';
 import { PathName } from '@/constants';
-import { NavigationUtils } from '@/utils';
+import { navigate } from '@/utils';
 import { formatCurrencyByLocale } from '@/utils/numberUtils';
 
 const FooterBarContent = () => {
-  const handleNavigateCartScreen = () => NavigationUtils.navigate(PathName.PATH_SCREEN.CART_SCREEN);
+  const handleNavigateCartScreen = () => navigate(PathName.PATH_SCREEN.CART_SCREEN);
 
   return (
     <FooterBar wrapperClassName='h-[90px] flex justify-center' bodyClassName='flex items-center'>
