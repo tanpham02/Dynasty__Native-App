@@ -29,12 +29,12 @@ const ShippingMethodBottomSheet = ({ visible, onClose }: ShippingMethodBottomShe
         <Box w='100%' h={60} justifyContent='center' className='mb-3'>
           <Text className='text-lg font-nunito-700 text-gray-10 text-center'>Hình thức đặt hàng</Text>
         </Box>
-        <Box w='100%'>
+        <Box w='100%' className='mb-3'>
           {shippingMethodData.map((shippingMethodItem) => (
             <Pressable
               key={shippingMethodItem.type}
-              className={`relative flex-row justify-between items-center mb-4 border rounded-lg py-4 px-2 ${shippingMethodSelected === shippingMethodItem.type ? 'border-primary' : 'border-[#e1e1e1] '}`}
-              style={styles.shadowX}
+              className={`relative flex-row justify-between items-center mb-4 border rounded-lg py-4 px-2 ${shippingMethodSelected === shippingMethodItem.type ? 'border-primary' : 'border-[#e1e1e1] '} min-h-[230px]`}
+              //   style={styles.shadowX}
               onPress={() => handleSwitchShippingMethod(shippingMethodItem.type)}
             >
               <Image
@@ -43,7 +43,7 @@ const ShippingMethodBottomSheet = ({ visible, onClose }: ShippingMethodBottomShe
                   width: 80,
                   height: 80,
                   objectFit: 'contain',
-                  marginRight: 8,
+                  marginRight: 12,
                 }}
               />
               <Box className='flex-1'>
@@ -79,7 +79,7 @@ const ShippingMethodBottomSheet = ({ visible, onClose }: ShippingMethodBottomShe
                 </Box>
               </Box>
               {shippingMethodItem.type === shippingMethodSelected && (
-                <Box className='absolute top-1 right-1 bg-secondary p-1 rounded-full'>
+                <Box className='absolute top-1.5 right-1.5 bg-success p-1 rounded-full'>
                   <Svg.Checked width={12} height={12} className='text-white' />
                 </Box>
               )}
