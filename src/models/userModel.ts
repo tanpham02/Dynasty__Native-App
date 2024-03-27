@@ -1,4 +1,4 @@
-import { BaseModel } from "@/types"
+import { BaseModel } from '@/types';
 
 export interface UserModel extends BaseModel {
     phoneNumber?: string,
@@ -14,8 +14,8 @@ export interface UserModel extends BaseModel {
 }
 
 export enum UserType {
-    NEW = "NEW",
-    EXIST = "EXIST",
-    POTENTIAL = "POTENTIAL",
-    BUY_THE_MOST_ORDERS = "BUY_THE_MOST_ORDERS"
+  NEW = 'NEW',
+  EXIST = 'EXIST',
+  POTENTIAL = 'POTENTIAL',
+  BUY_THE_MOST_ORDERS = 'BUY_THE_MOST_ORDERS',
 }

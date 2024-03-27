@@ -22,6 +22,7 @@ const CategoryTypeList = () => {
   };
 
   return (
+    // <Box className='absolute left-0 top-[90px] shadow-2xl flex-1'></Box>
     <FlatList
       scrollEventThrottle={16}
       pagingEnabled
@@ -38,7 +39,7 @@ const CategoryTypeList = () => {
           marginLeft: 4,
         },
       ]}
-      className='flex-1'
+      className='absolute left-0 top-[90px] shadow-2xl'
       snapToAlignment='center'
       renderItem={({ index, item }) => (
         <CategoryTypeItem
