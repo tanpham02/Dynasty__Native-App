@@ -100,7 +100,7 @@ const MyAvatar = () => {
             source={{ uri: getFullImageUrl(user.avatar) }}
           />
         ) : (
-          <Text className='font-nunito-700 text-white uppercase text-lg'>{user?.fullName?.charAt(0)}</Text>
+          <Text className='font-nunito-700 text-white uppercase text-lg'>{user?.fullName?.charAt(0) || 'A'}</Text>
         )}
         <Box className='w-6 h-6 bg-black/70 rounded-full absolute -bottom-1 right-0 items-center justify-center border border-white'>
           <Svg.Camera width={14} height={14} className='text-white' />

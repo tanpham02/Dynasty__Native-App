@@ -1,10 +1,11 @@
-export * from '@/utils/dateUtils';
-export * from '@/utils/locationUtils';
-export * from '@/utils/numberUtils';
-export * from '@/utils/regexUtils';
-export * from '@/utils/tokenUtils';
-export * from '@/utils/urlUtils';
-export * from '@/utils/navigationUtils';
-export * from '@/utils/imageUtils';
-export { widthScreen, heightScreen } from '@/utils/systemUtils';
+export * from './dateUtils';
+export * from './locationUtils';
+export * from './numberUtils';
+export * from './regexUtils';
+export * from './tokenUtils';
+export * from './urlUtils';
+export * from './navigationUtils';
+export * from './imageUtils';
+export * from './regexUtils';
+export { widthScreen, heightScreen } from './systemUtils';
 

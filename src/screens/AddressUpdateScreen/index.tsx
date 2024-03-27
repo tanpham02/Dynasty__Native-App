@@ -32,7 +32,7 @@ const AddressUpdateScreen = () => {
   }, [location?.districtId]);
 
   return (
-    <PrimaryLayout containerClass='bg-third'>
+    <PrimaryLayout containerClass='bg-third' titleScreen='Thêm địa chỉ gia hàng'>
       <ScrollView className='flex-1 -mt-4'>
         <Box className='bg-white mx-4 flex-1 p-4 my-4 rounded-lg space-y-4'>
           <Input
@@ -43,15 +43,17 @@ const AddressUpdateScreen = () => {
               backgroundColor: 'white',
             }}
           />
-          <Input
-            borderRadius={8}
-            placeholder='Số điện thoại'
-            keyboardType='numeric'
-            className='font-nunito-700'
-            _focus={{
-              backgroundColor: 'white',
-            }}
-          />
+          <Box>
+            <Input
+              borderRadius={8}
+              placeholder='Số điện thoại'
+              keyboardType='numeric'
+              className='font-nunito-700'
+              _focus={{
+                backgroundColor: 'white',
+              }}
+            />
+          </Box>
           <TouchableOpacity>
             <Select
               placeholder='Tỉnh, thành phố'
@@ -96,7 +98,7 @@ const AddressUpdateScreen = () => {
               }}
             />
           </Box>
-          <ButtonPrimary title='Lưu' color='danger' />
+          <ButtonPrimary title='Lưu' color='danger' containerClass='mt-4' />
         </Box>
       </ScrollView>
     </PrimaryLayout>

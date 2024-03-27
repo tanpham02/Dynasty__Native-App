@@ -1,6 +1,8 @@
 import LoaderBikeGif from '@/assets/gif/loader-bike.gif';
 import { createRef, forwardRef, useImperativeHandle, useState } from 'react';
 import { View, Platform, Image } from 'react-native';
+import LoadingJson from '@/assets/gif/loading.json';
+import Lottie from 'lottie-react-native';
 
 export const globalLoadingRef = createRef<{
   show: () => void;
@@ -38,6 +40,7 @@ const GlobalLoading = (__, ref) => {
             backgroundColor: `${Platform.OS === 'ios' ? 'rgba(0,0,0,0.8)' : 'rgba(0,0,0,0.7)'}`,
           }}
         >
+          {/* <Lottie source={LoadingJson} autoPlay /> */}
           <Image source={LoaderBikeGif} className='w-24 h-24' alt='Loader Bike Gif' />
         </View>
       )}
