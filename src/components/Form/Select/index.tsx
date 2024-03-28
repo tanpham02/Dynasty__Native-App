@@ -56,22 +56,22 @@ const FormSelect = <T,>(props: FormSelectProps<T>) => {
                     }}
                   />
                 ),
-                backgroundColor: '#e1e1e1',
+                backgroundColor: '#eeeeee',
                 borderRadius: 'lg',
                 _pressed: {
-                  backgroundColor: '#e1e1e1',
+                  backgroundColor: '#eeeeee',
                 },
                 _focus: {
-                  backgroundColor: '#e1e1e1',
+                  backgroundColor: '#eeeeee',
                 },
               }}
               _item={{
                 borderRadius: 'lg',
                 _pressed: {
-                  backgroundColor: '#e1e1e1',
+                  backgroundColor: '#eeeeee',
                 },
                 _focus: {
-                  backgroundColor: '#e1e1e1',
+                  backgroundColor: '#eeeeee',
                 },
               }}
               backgroundColor='#fafafa'
