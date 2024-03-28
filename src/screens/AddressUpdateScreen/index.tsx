@@ -1,104 +1,159 @@
-import { Box, Input, ScrollView, Select } from 'native-base';
-import { useEffect, useMemo, useState } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { Box, ScrollView } from 'native-base';
+import { useEffect, useMemo } from 'react';
 import { getDistricts, getProvinces, getWards } from 'vietnam-provinces';
+import { FormProvider, useForm } from 'react-hook-form';
+import { showMessage } from 'react-native-flash-message';
+import { useSelector } from 'react-redux';
 
-import { ButtonPrimary, PrimaryLayout } from '@/components';
+import { RootState } from '@/redux';
+import { PathName } from '@/constants';
+import { UserService } from '@/services';
+import { PATTERN, navigate } from '@/utils';
+import { UserAddressModel, UserAddressRequest, UserModel } from '@/models';
+import { ButtonPrimary, FormInput, FormSelect, GlobalLoading, PrimaryLayout } from '@/components';
 
 const AddressUpdateScreen = () => {
-  const [location, setLocation] = useState({
-    cityId: '',
-    districtId: '',
-    wardId: '',
-  });
+  const user = useSelector<RootState, UserModel>((state) => state.userStore.user);
+
+  const forms = useForm<UserAddressModel>();
+
+  const { handleSubmit, setValue, watch, reset } = forms;
+
+  const currentDeliveryData = watch();
 
   useEffect(() => {
-    setLocation({ ...location, districtId: '', wardId: '' });
-  }, [location?.cityId]);
+    setValue('wardId', undefined);
+    setValue('districtId', undefined);
+  }, [currentDeliveryData?.cityId]);
+
+  useEffect(() => {
+    if (user && Object.keys(user).length > 0) {
+      reset({
+        phoneNumber: user?.phoneNumber,
+        fullName: user?.fullName,
+      });
+    }
+  }, [JSON.stringify(user)]);
 
   const cities = useMemo(() => getProvinces(), []);
 
   const districts = useMemo(() => {
-    if (location?.cityId) return getDistricts(location.cityId);
+    if (currentDeliveryData?.cityId) return getDistricts(currentDeliveryData.cityId);
 
     return [];
-  }, [location?.cityId]);
+  }, [currentDeliveryData?.cityId]);
 
   const wards = useMemo(() => {
-    if (location?.districtId) {
-      return getWards(location.districtId);
+    if (currentDeliveryData?.districtId) {
+      return getWards(currentDeliveryData.districtId);
     }
     return [];
-  }, [location?.districtId]);
+  }, [currentDeliveryData.districtId]);
+
+  const onCreateOrUpdateDeliveryAddress = async (data: UserAddressModel) => {
+    try {
+      GlobalLoading.show();
+      const formData = new FormData();
+
+      const dataSubmit: UserAddressRequest = {
+        customerId: user?._id,
+        addressItem: data,
+      };
+      console.log('🚀 ~ onCreateOrUpdateDeliveryAddress ~ dataSubmit:', dataSubmit);
+
+      formData.append('customerAddressInfo', JSON.stringify(dataSubmit));
+
+      await UserService.createNewAddress(formData);
+      showMessage({
+        message: 'Thêm địa chỉ giao hàng thành công!',
+        type: 'success',
+      });
+      navigate(PathName.PATH_SCREEN.ADDRESS_SAVED_SCREEN);
+    } catch (err) {
+      showMessage({
+        message: 'Có lỗi xảy ra vui lòng thử lại sau!',
+        type: 'danger',
+      });
+      console.log('🚀 ~ onCreateOrUpdateDeliveryAddress ~ err:', err);
+    } finally {
+      GlobalLoading.hide();
+    }
+  };
 
   return (
     <PrimaryLayout containerClass='bg-third' titleScreen='Thêm địa chỉ gia hàng'>
       <ScrollView className='flex-1 -mt-4'>
-        <Box className='bg-white mx-4 flex-1 p-4 my-4 rounded-lg space-y-4'>
-          <Input
-            borderRadius={8}
-            placeholder='Họ và tên'
-            className='font-nunito-700'
-            _focus={{
-              backgroundColor: 'white',
-            }}
+        <Box className='flex-1 p-4 my-4'>
+          <FormProvider {...forms}>
+            <FormInput<UserAddressModel>
+              isRequired
+              name='fullName'
+              label='Họ và tên'
+              className='mb-2'
+              rules={{
+                required: 'Vui lòng nhập tên người nhận hàng!',
+              }}
+            />
+            <FormInput<UserAddressModel>
+              isRequired
+              name='phoneNumber'
+              label='Số điện thoại'
+              className='mb-2'
+              rules={{
+                required: 'Vui lòng nhập số điện thoại người nhận hàng!',
+                pattern: {
+                  value: PATTERN.PHONE_NUMBER,
+                  message: 'Số điện thoại không hợp lệ!',
+                },
+              }}
+            />
+            <FormSelect<UserAddressModel>
+              isRequired
+              name='cityId'
+              wrapperClassName='mb-2'
+              label='Tỉnh / Thành phố'
+              options={cities?.map((city) => ({ label: city.name, value: city.code }))}
+              rules={{
+                required: 'Vui lòng chọn tỉnh, thành phố!',
+              }}
+            />
+            <FormSelect<UserAddressModel>
+              isRequired
+              name='districtId'
+              wrapperClassName='mb-2'
+              label='Quận / Huyện'
+              isDisabled={!currentDeliveryData?.cityId}
+              options={districts?.map((district) => ({ label: district.name, value: district.code }))}
+              rules={{
+                required: 'Vui lòng chọn quận, huyện!',
+              }}
+            />
+            <FormSelect<UserAddressModel>
+              isRequired
+              name='wardId'
+              wrapperClassName='mb-2'
+              label='Phường / Xã / Thị Trấn'
+              isDisabled={!currentDeliveryData?.districtId}
+              options={wards?.map((ward) => ({ label: ward.name, value: ward.code }))}
+              rules={{
+                required: 'Vui lòng chọn phường, xã, thị trấn!',
+              }}
+            />
+            <FormInput<UserAddressModel>
+              isRequired
+              name='location'
+              label='Số nhà, tên đường'
+              rules={{
+                required: 'Vui lòng nhập số nhà tên đường!',
+              }}
+            />
+          </FormProvider>
+          <ButtonPrimary
+            title='Lưu'
+            color='danger'
+            containerClass='mt-4'
+            onPress={handleSubmit(onCreateOrUpdateDeliveryAddress)}
           />
-          <Box>
-            <Input
-              borderRadius={8}
-              placeholder='Số điện thoại'
-              keyboardType='numeric'
-              className='font-nunito-700'
-              _focus={{
-                backgroundColor: 'white',
-              }}
-            />
-          </Box>
-          <TouchableOpacity>
-            <Select
-              placeholder='Tỉnh, thành phố'
-              className='font-nunito-700'
-              selectedValue={location?.cityId}
-              onValueChange={(cityId) => setLocation({ ...location, cityId })}
-            >
-              {cities?.map((city) => <Select.Item key={city.code} label={city?.name} value={city?.code} />)}
-            </Select>
-          </TouchableOpacity>
-          <TouchableOpacity disabled={!location?.cityId}>
-            <Select
-              isDisabled={!location?.cityId}
-              placeholder='Quận, huyện'
-              className='font-nunito-700'
-              selectedValue={location?.districtId}
-              onValueChange={(districtId) => setLocation({ ...location, districtId })}
-            >
-              {districts?.map((district) => (
-                <Select.Item key={district.code} label={district?.name} value={district?.code} />
-              ))}
-            </Select>
-          </TouchableOpacity>
-          <TouchableOpacity disabled={!location?.districtId}>
-            <Select
-              isDisabled={!location?.districtId}
-              placeholder='Phường, xã, thị trấn'
-              className='font-nunito-700'
-              selectedValue={location?.wardId}
-              onValueChange={(wardId) => setLocation({ ...location, wardId })}
-            >
-              {wards?.map((ward) => <Select.Item key={ward.code} label={ward?.name} value={ward?.code} />)}
-            </Select>
-          </TouchableOpacity>
-          <Box>
-            <Input
-              borderRadius={8}
-              placeholder='Số nhà, tên đường'
-              className='font-nunito-700'
-              _focus={{
-                backgroundColor: 'white',
-              }}
-            />
-          </Box>
-          <ButtonPrimary title='Lưu' color='danger' containerClass='mt-4' />
         </Box>
       </ScrollView>
     </PrimaryLayout>

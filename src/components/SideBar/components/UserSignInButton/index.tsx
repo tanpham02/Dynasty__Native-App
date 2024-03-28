@@ -1,15 +1,14 @@
-import { Box, Text, View } from 'native-base';
-import { useSelector } from 'react-redux';
+import { Box, Image, Text, View } from 'native-base';
 import { TouchableOpacity } from 'react-native';
-import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
-import styles from '@/styles';
 import { Svg } from '@/assets';
 import { PathName } from '@/constants';
-import { navigate } from '@/utils';
-import { tokenManager } from 'App';
-import { RootState } from '@/redux';
 import { UserModel } from '@/models';
+import { RootState } from '@/redux';
+import styles from '@/styles';
+import { getFullImageUrl, navigate } from '@/utils';
+import { tokenManager } from 'App';
 
 const UserSignInButton = () => {
   const isAuthenticated = tokenManager.getAccessToken();
@@ -33,9 +32,19 @@ const UserSignInButton = () => {
       <Box className='flex-row items-center mb-2'>
         <Box
           style={styles.shadowSecondary}
-          className='bg-secondary w-10 h-10 rounded-lg items-center justify-center m-2'
+          className='bg-secondary w-10 h-10 rounded-lg items-center justify-center m-2 overflow-hidden'
         >
-          <Svg.UserPlus width={25} height={25} className='text-white' />
+          {isAuthenticated ? (
+            <>
+              {user?.avatar ? (
+                <Image source={{ uri: getFullImageUrl(user.avatar) }} className='w-full h-full' />
+              ) : (
+                <Text className='text-white text-base font-nunito-700'>{user?.fullName?.charAt(0)}</Text>
+              )}
+            </>
+          ) : (
+            <Svg.UserPlus width={25} height={25} className='text-white' />
+          )}
         </Box>
         <View className='ml-1'>
           {isAuthenticated ? (
@@ -53,7 +62,12 @@ const UserSignInButton = () => {
           )}
         </View>
       </Box>
-      {!isAuthenticated && (
+      {isAuthenticated ? (
+        <Box className='flex-row gap-x-4'>
+          <Svg.Setting width={22} height={22} className='text-zinc-700' />
+          <Svg.Notification width={22} height={22} className='text-zinc-700' />
+        </Box>
+      ) : (
         <Box className='bg-secondary py-1.5 px-3 rounded-xl'>
           <Text className='text-white font-nunito-500 text-[10px] uppercase'>Đăng nhập</Text>
         </Box>

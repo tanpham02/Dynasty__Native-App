@@ -17,6 +17,7 @@ import { navigationRef } from '@/utils';
 
 LogBox.ignoreAllLogs();
 global.atob = decode;
+
 export const tokenManager = TokenManager.getInstance();
 
 export const queryClient = new QueryClient();

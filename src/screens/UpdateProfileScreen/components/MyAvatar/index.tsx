@@ -55,8 +55,9 @@ const MyAvatar = () => {
 
           if (fileSelected && user?._id) {
             GlobalLoading.show();
+
             const formData = new FormData();
-            formData.append('avatar', {
+            formData.append('file', {
               uri: fileSelected,
               name: filename,
               type,
@@ -95,6 +96,7 @@ const MyAvatar = () => {
       >
         {user?.avatar ? (
           <Image
+            alt='avatar'
             resizeMode='cover'
             className='w-full h-full rounded-full'
             source={{ uri: getFullImageUrl(user.avatar) }}

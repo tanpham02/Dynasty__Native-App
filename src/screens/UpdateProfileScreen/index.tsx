@@ -45,7 +45,7 @@ const UpdateProfileScreen = () => {
     <PrimaryLayout titleScreen='Cập nhật tài khoản'>
       <Box className='px-3 space-y-4'>
         <MyAvatar />
-        <Box className='bg-white rounded-lg p-4 space-y-4'>
+        <Box className='bg-white rounded-lg p-4'>
           <FormProvider {...forms}>
             <UpdateForm />
           </FormProvider>

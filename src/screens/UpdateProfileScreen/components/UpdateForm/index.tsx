@@ -6,7 +6,7 @@ import { FormDatePicker, FormInput } from '@/components';
 
 const UpdateForm = () => {
   return (
-    <Box>
+    <>
       <FormInput<UserModel>
         isRequired
         name='fullName'
@@ -42,7 +42,7 @@ const UpdateForm = () => {
         }}
       />
       <FormDatePicker<UserModel> name='birthday' label='Ngày sinh' placeholder='DD / MM / YYYY' />
-    </Box>
+    </>
   );
 };
 

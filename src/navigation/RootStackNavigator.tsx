@@ -46,8 +46,7 @@ const RootStackNavigator = () => {
       screenOptions={{
         headerShown: false,
       }}
-      //   drawerContent={() => <SideBar />}
-      initialRouteName={PathName.PATH_SCREEN.UPDATE_PROFILE_SCREEN}
+      initialRouteName={PathName.PATH_SCREEN.HOME_SCREEN}
     >
       {/* Main Screen */}
       <RootStack.Screen

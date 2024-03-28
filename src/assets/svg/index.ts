@@ -56,3 +56,4 @@ export { default as Minus } from './minus.svg';
 export { default as Edit } from './edit.svg';
 export { default as TimesCircle } from './times-circle.svg';
 export { default as Camera } from './camera.svg';
+export { default as Setting } from './setting.svg';

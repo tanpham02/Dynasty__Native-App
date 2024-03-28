@@ -25,6 +25,7 @@ const FormInput = <T,>(props: FormInputProps<T>) => {
               onChangeText={onChange}
               value={value as string}
               ref={ref}
+              spellCheck={false}
               selectionColor='#111111'
               selectTextOnFocus={false}
               className={`border rounded-lg px-4 h-[45px] bg-gray-13 text-sm font-nunito-600 ${error ? ' border-danger' : 'border-gray-12'} ${className}`}

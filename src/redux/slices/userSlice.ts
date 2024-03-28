@@ -20,7 +20,7 @@ export const getUserInfo = createAsyncThunk(
     async (_, { dispatch, getState }) => {
         try {
             const userStore = (getState() as RootState)?.userStore.user as UserModel;
-            const user = await UserService.getInfoById(userStore?._id);
+            const user = await UserService.getInfoById(userStore?._id || "660577c24ba07df3e3860a1d");
 
             dispatch(setUser(user))
 

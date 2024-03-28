@@ -8,6 +8,8 @@ import styles from '@/styles';
 import { RefreshControl, SideBar } from '@/components';
 import { useFetchAllBanner, useFetchAllCategories } from '@/hooks';
 import { BuyAction, BuyQueueTutorial, Header, HomeCategory, HomeSlider, ProductList } from './components';
+import { useDispatch } from 'react-redux';
+import { AppDispatch, getUserInfo } from '@/redux';
 
 type HomeScreenRefType = {
   toggleOpenSideBar(): void;
@@ -16,6 +18,8 @@ type HomeScreenRefType = {
 export const homeScreenRef = createRef<HomeScreenRefType>();
 
 const HomeScreen = () => {
+  const dispatch = useDispatch<AppDispatch>();
+
   const isFocus = useIsFocused();
 
   const [isOpenSideBar, setIsOpenSidebar] = useState<boolean>(true);
@@ -35,6 +39,10 @@ const HomeScreen = () => {
       clearTimeout(timer);
     };
   }, [isFocus, isOpenSideBar]);
+
+  useEffect(() => {
+    dispatch(getUserInfo());
+  }, []);
 
   const toggleOpenSideBar = () => {
     Animated.timing(sidebarAniValue, {

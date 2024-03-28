@@ -1,10 +1,10 @@
 export interface UserAddressModel {
     city?: string,
-    cityId?: number,
+    cityId?: string,
     district?: string,
-    districtId?: number,
+    districtId?: string,
     ward?: string,
-    wardId?: number,
+    wardId?: string,
     location?: string,
     fullName?: string,
     phoneNumber?: string,
@@ -18,5 +18,5 @@ export interface UserAddressResponse {
 
 export interface UserAddressRequest {
     customerId?: string
-    addressList?: UserAddressModel
+    addressItem?: UserAddressModel
 }

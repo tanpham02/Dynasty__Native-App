@@ -51,6 +51,7 @@ const userService = {
             })
     },
     createNewAddress: async (data: FormData): Promise<UserAddressResponse> => {
+        console.log("🚀 ~ return ~ ApiURL.API_CUSTOMER_ADDRESS_URL:", ApiURL.API_CUSTOMER_ADDRESS_URL)
         return (await axiosService())({
             baseURL: ApiURL.API_CUSTOMER_ADDRESS_URL,
             method: "POST",

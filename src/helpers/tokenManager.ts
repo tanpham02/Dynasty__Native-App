@@ -1,5 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { LocalStorageKey } from 'src/constants';
+
+import { LocalStorageKey } from '@/constants';
 
 class TokenManager {
     private accessToken: string | null = null;
@@ -8,6 +9,9 @@ class TokenManager {
     public initialized: boolean = false;
     private static instance: TokenManager | null = null;
 
+    private constructor() {
+        this.initialize();
+    }
 
     // khởi tạo nơi lưu trữ
     public static getInstance(): TokenManager {
