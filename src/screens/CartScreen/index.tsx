@@ -39,6 +39,7 @@ const CartScreen = () => {
               className='bg-third pt-3 flex-1 mb-[100px] pb-3'
               style={styles.shadowX}
               // refreshControl={<RefreshControl refreshing={true} />}
+              //NOTE: I RECOMMEND YOU USE showsHorizontalScrollIndicator, showsVerticalScrollIndicator PROPS TO HIDE SCROLL BAR WHEN USING: ScrollView, FlatList, SectionList in ReactNative.
             >
               <CartLists onOpenCartItemDetailBottomSheet={onOpenCartItemDetailBottomSheet} />
               <Box style={styles.shadowX} className='px-3 py-3'>

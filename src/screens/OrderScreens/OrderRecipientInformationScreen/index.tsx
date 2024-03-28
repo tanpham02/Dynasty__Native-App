@@ -8,7 +8,7 @@ import { ButtonPrimary, PrimaryLayout } from '@/components';
 import FormInput from '@/components/Form/Input';
 import FormSelect from '@/components/Form/Select';
 import { UserModel } from '@/models';
-import PATTERN from '@/utils/regexUtils';
+import { PATTERN } from '@/utils';
 
 const OrderRecipientInformationScreen = () => {
   const formMethods = useForm<UserModel>();

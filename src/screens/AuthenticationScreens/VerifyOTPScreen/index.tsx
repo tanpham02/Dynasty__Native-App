@@ -11,19 +11,22 @@ import {
 
 import { ButtonPrimary, PrimaryLayout } from '@/components';
 import { useEffect, useRef, useState } from 'react';
-import PATTERN from '@/utils/regexUtils';
+import { PATTERN } from '@/utils';
 import VerifyBg from '@/assets/images/verify-otp-bg.jpg';
 import PizzaBgRight from '@/assets/images/logo/pizza-5-loai-thit-va-rau-cu.png';
 import { widthScreen } from '@/utils';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+// NOTE: REMEMBER TO REMOVE UNNECESSARY IMPORT
 
 const VerifyOTPScreen = () => {
+  // FIXME: CREATE TWO TYPE FOR BLOW STATE IT WILL LOOK BETTER
   const [inputState, setInputState] = useState<
     {
       value?: string;
       disable?: boolean;
     }[]
   >([]);
+
   const [selection, setSelection] = useState<{ start: number; end: number }>({ start: 0, end: 0 });
 
   const inputRefs = useRef<Array<TextInput>>([]);
@@ -60,7 +63,7 @@ const VerifyOTPScreen = () => {
       inputRefs.current[index]?.focus();
     }
   };
-
+  // NOTE: REMOVE UNUSED CODE
   const onSelectionChange = ({ nativeEvent: { selection } }) => {
     setSelection({ start: selection.end, end: selection.end });
   };
@@ -72,6 +75,7 @@ const VerifyOTPScreen = () => {
     >
       <KeyboardAvoidingView className='flex-1'>
         <KeyboardAwareScrollView className='flex-1'>
+          {/* NOTE: CAN YOU SPLIT COMPONENT FOR BELOW CODE IF OK IT WILL READABLE ? (NOT REQUIRED) */}
           <Box className='flex-1 px-4 w-screen'>
             <Box className='flex justify-center items-center mb-1'>
               <Image source={VerifyBg} width={widthScreen} resizeMode='contain' alt='Verify Bg' />
@@ -91,6 +95,8 @@ const VerifyOTPScreen = () => {
             <Flex className='w-full flex-row justify-between items-center my-8'>
               {[...new Array(6)].map((_, index) => (
                 <TextInput
+                  // FIXME: SPLIT BELOW FUNCTION
+                  //NOTE: (WHY YOU MUST TO CHECK IS EXISTED INPUT REF ? GIVE ME ANSWER AFTER YOU RESOLVE THIS CODE)
                   ref={(ref) => {
                     if (ref && !inputRefs.current.includes(ref)) {
                       inputRefs.current = [...inputRefs.current, ref];
@@ -113,8 +119,8 @@ const VerifyOTPScreen = () => {
               <Text className='text-secondary font-nunito-700 text-[15px]'>Gửi lại</Text>
             </Box>
             <ButtonPrimary
-              title='Đăng nhập'
               color='danger'
+              title='Đăng nhập'
               containerClass='py-3'
               textClassName='uppercase font-nunito-700'
             />

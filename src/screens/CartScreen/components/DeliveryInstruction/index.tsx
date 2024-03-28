@@ -20,6 +20,7 @@ const DeliveryInstruction = () => {
             handleOpenOrCloseBodyDeliveryInstruction();
             setIsSave(false);
           }
+          // FIXME: YOUR CODE ARE REPEAT IN LINE 20, 34 and 80. (Replace it with a function have a paramjk)
         }}
       >
         <Box className='flex-1 flex-row items-center'>
@@ -40,6 +41,7 @@ const DeliveryInstruction = () => {
         )}
       </Pressable>
       {isShowBody || instructionValue ? (
+        //NOTE: Animated Component is not necessary in here
         <Animated.View className='w-full mt-1'>
           <Box className='flex flex-row items-center'>
             {/* <Box className='mr-2'>

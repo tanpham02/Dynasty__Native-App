@@ -25,12 +25,14 @@ const ShippingMethodBottomSheet = ({ visible, onClose }: ShippingMethodBottomShe
   return (
     <Actionsheet isOpen={visible} onClose={onClose}>
       <Actionsheet.Content className='px-6 max-w-full'>
+        {/* BUG: YOUR CODE HAVE AN ERROR UI IN ANDROID PLATFORM */}
         <Box w='100%' h={60} justifyContent='center' className='mb-3'>
           <Text className='text-lg font-nunito-700 text-gray-10 text-center'>Hình thức đặt hàng</Text>
         </Box>
         <Box w='100%' className='mb-3'>
           {shippingMethodData.map((shippingMethodItem) => (
             <Pressable
+              //   {/* FIXME: REFACTOR BELOW CODE FROM LINE 34 TO 88. WHY YOU SPLIT THEM AS AN COMPONENT */}
               key={shippingMethodItem.type}
               className={`relative flex-row justify-between items-center mb-4 border rounded-lg py-4 px-2 ${shippingMethodSelected === shippingMethodItem.type ? 'border-primary' : 'border-[#e1e1e1] '} min-h-[230px]`}
               //   style={styles.shadowX}

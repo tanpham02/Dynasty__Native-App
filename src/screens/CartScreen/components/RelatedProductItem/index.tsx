@@ -3,7 +3,7 @@ import React from 'react';
 
 import { Svg } from '@/assets';
 import styles from '@/styles';
-import { formatCurrencyByLocale } from '@/utils/numberUtils';
+import { formatCurrencyByLocale } from '@/utils';
 import { RelatedProductItemProps } from './type';
 
 const RelatedProductItem = ({ name, image, price }: RelatedProductItemProps) => {

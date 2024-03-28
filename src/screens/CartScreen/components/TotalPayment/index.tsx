@@ -7,6 +7,7 @@ import { formatCurrencyByLocale } from '@/utils/numberUtils';
 const TotalPayment = () => {
   return (
     <Box style={styles.shadowX} className='bg-third p-3 rounded-lg'>
+      {/* FIXME: YOUR BELOW CODE ARE REPEATED */}
       <Box className='flex flex-row justify-between items-center'>
         <Text className='text-gray-11 font-nunito-600'>Tạm tính</Text>
         <Text className='text-gray-10 text-sm font-nunito-600'>{formatCurrencyByLocale(50000000)}</Text>
