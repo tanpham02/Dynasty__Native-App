@@ -1,13 +1,13 @@
 import { Box } from 'native-base';
 import { useEffect, useState } from 'react';
 
-import { NavigationUtils } from '@/utils';
+import { getParams } from '@/utils';
 import { BuyActionType, buyActions } from './data';
 import { DeliveryTab, PickupTab } from './components';
 import { BuyActionItem, PrimaryLayout } from '@/components';
 
 const DeliveryAndPickupScreenScreen = () => {
-  const params = NavigationUtils.getParams();
+  const params = getParams();
 
   const [tabActiveKey, setTabActiveKey] = useState<BuyActionType>(BuyActionType.DELIVERY);
 

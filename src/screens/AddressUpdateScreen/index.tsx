@@ -6,7 +6,7 @@ import { showMessage } from 'react-native-flash-message';
 import { useSelector } from 'react-redux';
 
 import { RootState } from '@/redux';
-import { PathName } from '@/constants';
+import { PATH_SCREEN } from '@/constants';
 import { UserService } from '@/services';
 import { PATTERN, navigate } from '@/utils';
 import { UserAddressModel, UserAddressRequest, UserModel } from '@/models';
@@ -68,7 +68,7 @@ const AddressUpdateScreen = () => {
         message: 'Thêm địa chỉ giao hàng thành công!',
         type: 'success',
       });
-      navigate(PathName.PATH_SCREEN.ADDRESS_SAVED_SCREEN);
+      navigate(PATH_SCREEN.ADDRESS_SAVED_SCREEN);
     } catch (err) {
       showMessage({
         message: 'Có lỗi xảy ra vui lòng thử lại sau!',

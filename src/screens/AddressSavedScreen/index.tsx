@@ -2,14 +2,14 @@ import { Box, Image, Text } from 'native-base';
 import { TouchableOpacity } from 'react-native';
 
 import styles from '@/styles';
-import { PathName } from '@/constants';
+import { PATH_SCREEN } from '@/constants';
 import { navigate } from '@/utils';
 import { PrimaryLayout } from '@/components';
 import NoSavedAddressImage from '@/assets/images/address-saved.png';
 import { AddressItem } from './components';
 
 const AddressSavedScreen = () => {
-  const gotoUpdateAddressScreen = () => navigate(PathName.PATH_SCREEN.ADDRESS_UPDATE_SCREEN);
+  const gotoUpdateAddressScreen = () => navigate(PATH_SCREEN.ADDRESS_UPDATE_SCREEN);
 
   return (
     <PrimaryLayout titleScreen='Địa chỉ của tôi' containerClass='bg-white'>

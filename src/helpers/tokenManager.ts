@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import { LocalStorageKey } from '@/constants';
+import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY, USER_ID_KEY } from '@/constants';
 
 class TokenManager {
     private accessToken: string | null = null;
@@ -9,11 +9,11 @@ class TokenManager {
     public initialized: boolean = false;
     private static instance: TokenManager | null = null;
 
+    // khởi tạo nơi lưu trữ
     private constructor() {
         this.initialize();
     }
 
-    // khởi tạo nơi lưu trữ
     public static getInstance(): TokenManager {
         if (!TokenManager.instance) {
             TokenManager.instance = new TokenManager();
@@ -27,8 +27,8 @@ class TokenManager {
         }
 
         // Fetch the access token from AsyncStorage if it hasn't been fetched already
-        this.accessToken = (await AsyncStorage.getItem(LocalStorageKey.ACCESS_TOKEN_KEY)) || '';
-        this.refreshToken = (await AsyncStorage.getItem(LocalStorageKey.REFRESH_TOKEN_KEY)) || '';
+        this.accessToken = (await AsyncStorage.getItem(ACCESS_TOKEN_KEY)) || '';
+        this.refreshToken = (await AsyncStorage.getItem(REFRESH_TOKEN_KEY)) || '';
         this.initialized = true;
     }
 
@@ -39,7 +39,7 @@ class TokenManager {
     public async setAccessToken(newAccessToken: string): Promise<void> {
         this.accessToken = newAccessToken;
 
-        await AsyncStorage.setItem(LocalStorageKey.ACCESS_TOKEN_KEY, newAccessToken);
+        await AsyncStorage.setItem(ACCESS_TOKEN_KEY, newAccessToken);
     }
 
     public getUserId(): string | null {
@@ -49,7 +49,7 @@ class TokenManager {
     public async setUserId(newUserId: string): Promise<void> {
         this.userId = newUserId;
 
-        await AsyncStorage.setItem(LocalStorageKey.USER_ID_KEY, newUserId);
+        await AsyncStorage.setItem(USER_ID_KEY, newUserId);
     }
 
     public getRefreshToken(): string | null {
@@ -59,7 +59,7 @@ class TokenManager {
     public async setRefreshToken(newRefreshToken: string): Promise<void> {
         this.refreshToken = newRefreshToken;
 
-        await AsyncStorage.setItem(LocalStorageKey.REFRESH_TOKEN_KEY, newRefreshToken);
+        await AsyncStorage.setItem(REFRESH_TOKEN_KEY, newRefreshToken);
     }
 }
 

@@ -1,4 +1,4 @@
-import { PathName } from '@/constants';
+import { PATH_SCREEN } from '@/constants';
 import { navigate } from '@/utils';
 import { Text } from 'native-base';
 import { TouchableOpacity } from 'react-native';
@@ -6,7 +6,7 @@ import { showMessage } from 'react-native-flash-message';
 
 const SignOutButton = () => {
   const handleSignOut = () => {
-    navigate(PathName.PATH_SCREEN.SIGN_IN_SCREEN);
+    navigate(PATH_SCREEN.SIGN_IN_SCREEN);
     showMessage({
       message: 'Đăng xuất thành công!',
       type: 'success',

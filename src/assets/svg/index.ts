@@ -57,3 +57,4 @@ export { default as Edit } from './edit.svg';
 export { default as TimesCircle } from './times-circle.svg';
 export { default as Camera } from './camera.svg';
 export { default as Setting } from './setting.svg';
+export { default as Authentication } from './authentication.svg';

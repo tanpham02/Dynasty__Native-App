@@ -3,7 +3,7 @@ import { FlatList, Text, TouchableOpacity } from 'react-native';
 import { Box, Skeleton } from 'native-base';
 
 import { Svg } from '@/assets';
-import { PathName } from '@/constants';
+import { PATH_SCREEN } from '@/constants';
 import { useFetchProducts } from '@/hooks';
 import { navigate } from '@/utils';
 import ProductItem from '../ProductItem';
@@ -24,7 +24,7 @@ const ProductList = ({ isLoading, name, _id, childrenCategory, isRefetching }: P
     refetch: refetchProducts,
   } = useFetchProducts({ pageSize: 4, categoryId, options: { enabled: Boolean(!isLoading && categoryId) } });
 
-  const gotoCategoryDetail = () => navigate(PathName.PATH_SCREEN.CATEGORIES_SCREEN);
+  const gotoCategoryDetail = () => navigate(PATH_SCREEN.CATEGORIES_SCREEN);
 
   return (
     <Box className='-mt-2'>

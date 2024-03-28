@@ -5,12 +5,12 @@ import { memo } from 'react';
 import styles from '@/styles';
 import { Svg } from '@/assets';
 import DataRow from '../DataRow';
-import { PathName } from '@/constants';
+import { PATH_SCREEN } from '@/constants';
 import { OrderStatusTag } from '@/components';
 import { DATE_FORMAT_HHMMDDMMYYYY, formatCurrencyByLocale, formatDate, navigate } from '@/utils';
 
 const OrderHistoryItem = () => {
-  const viewOrderDetail = () => navigate(PathName.PATH_SCREEN.ORDER_DETAIL_SCREEN);
+  const viewOrderDetail = () => navigate(PATH_SCREEN.ORDER_DETAIL_SCREEN);
 
   return (
     <TouchableOpacity className='bg-white border border-zinc-100 mx-3 my-2 p-4 rounded-lg' style={styles.shadowX}>

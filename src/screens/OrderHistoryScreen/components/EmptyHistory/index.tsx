@@ -2,12 +2,12 @@ import { Box, Image, Text } from 'native-base';
 import { TouchableOpacity } from 'react-native';
 
 import styles from '@/styles';
-import { PathName } from '@/constants';
+import { PATH_SCREEN } from '@/constants';
 import { navigate } from '@/utils';
 import NoOrderBeforeImage from '@/assets/images/order-history.png';
 
 const EmptyHistory = () => {
-  const gotoCategoryScreen = () => navigate(PathName.PATH_SCREEN.CATEGORIES_SCREEN);
+  const gotoCategoryScreen = () => navigate(PATH_SCREEN.CATEGORIES_SCREEN);
 
   return (
     <Box className='flex-1 items-center p-10'>

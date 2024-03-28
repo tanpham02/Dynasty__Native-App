@@ -14,7 +14,7 @@ import { Mobile as MobileSvg, Offer as OfferSvg, PizzaSlice } from '@/assets/svg
 
 import { Svg } from '@/assets';
 import configEnv from '@/configs';
-import { PathName } from '@/constants';
+import { PATH_SCREEN } from '@/constants';
 import { useStatusBarForAndroid } from '@/hooks';
 import authenticationService from '@/services/authenticationService';
 import styles from '@/styles';
@@ -26,7 +26,7 @@ import { useDispatch } from 'react-redux';
 import { AppDispatch, setUser } from '@/redux';
 import { GlobalLoading } from '@/components';
 
-const { TERM_AND_CONDITIONS_SCREEN, HOME_SCREEN, VERIFY_OTP_SCREEN } = PathName.PATH_SCREEN;
+const { TERM_AND_CONDITIONS_SCREEN, HOME_SCREEN, VERIFY_OTP_SCREEN } = PATH_SCREEN;
 
 const topIntroduce = [
   {

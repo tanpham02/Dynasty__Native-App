@@ -5,7 +5,7 @@ import { Image, TouchableOpacity } from 'react-native';
 
 import { Svg } from '@/assets';
 import styles from '@/styles';
-import { PathName } from '@/constants';
+import { PATH_SCREEN } from '@/constants';
 import { navigate } from '@/utils';
 import { PrimaryLayout } from '@/components';
 import { emojis, feedbackTopics } from './data';
@@ -19,7 +19,7 @@ const FeedbackScreen = () => {
       message: 'Cảm ơn bạn đã gửi những đánh giá quý báu của bạn cho chúng tôi',
       type: 'success',
     });
-    navigate(PathName.PATH_SCREEN.HOME_SCREEN);
+    navigate(PATH_SCREEN.HOME_SCREEN);
   };
 
   return (

@@ -3,13 +3,14 @@ import { Box } from 'native-base';
 import { createRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import { Animated, ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useDispatch } from 'react-redux';
 
 import styles from '@/styles';
 import { RefreshControl, SideBar } from '@/components';
 import { useFetchAllBanner, useFetchAllCategories } from '@/hooks';
 import { BuyAction, BuyQueueTutorial, Header, HomeCategory, HomeSlider, ProductList } from './components';
-import { useDispatch } from 'react-redux';
 import { AppDispatch, getUserInfo } from '@/redux';
+import { tokenManager } from 'App';
 
 type HomeScreenRefType = {
   toggleOpenSideBar(): void;
@@ -18,6 +19,8 @@ type HomeScreenRefType = {
 export const homeScreenRef = createRef<HomeScreenRefType>();
 
 const HomeScreen = () => {
+  const isAuthenticated = tokenManager.getAccessToken();
+
   const dispatch = useDispatch<AppDispatch>();
 
   const isFocus = useIsFocused();
@@ -43,6 +46,12 @@ const HomeScreen = () => {
   useEffect(() => {
     dispatch(getUserInfo());
   }, []);
+
+  //   useEffect(() => {
+  //     if (isAuthenticated) {
+  //       enableBiometrics();
+  //     }
+  //   }, [isAuthenticated]);
 
   const toggleOpenSideBar = () => {
     Animated.timing(sidebarAniValue, {

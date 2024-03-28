@@ -3,7 +3,7 @@ import { TouchableOpacity } from 'react-native';
 import { useSelector } from 'react-redux';
 
 import { Svg } from '@/assets';
-import { PathName } from '@/constants';
+import { PATH_SCREEN } from '@/constants';
 import { UserModel } from '@/models';
 import { RootState } from '@/redux';
 import styles from '@/styles';
@@ -15,9 +15,9 @@ const UserSignInButton = () => {
 
   const user = useSelector<RootState, UserModel>((state) => state.userStore.user);
 
-  const goToSignInScreen = () => navigate(PathName.PATH_SCREEN.SIGN_IN_SCREEN);
+  const goToSignInScreen = () => navigate(PATH_SCREEN.SIGN_IN_SCREEN);
 
-  const goToMyProfileScreen = () => navigate(PathName.PATH_SCREEN.MY_PROFILE_SCREEN);
+  const goToMyProfileScreen = () => navigate(PATH_SCREEN.MY_PROFILE_SCREEN);
 
   const handlePressButton = () => {
     if (isAuthenticated) {

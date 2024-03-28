@@ -6,11 +6,11 @@ import styles from '@/styles';
 import { ButtonPrimary } from '@/components';
 import { VoucherItemProps } from './type';
 import { navigate } from '@/utils';
-import { PathName } from '@/constants';
+import { PATH_SCREEN } from '@/constants';
 
 const VoucherItem = ({ onView }: VoucherItemProps) => {
   const handleApplyVoucher = () => {
-    navigate(PathName.PATH_SCREEN.CATEGORIES_SCREEN);
+    navigate(PATH_SCREEN.CATEGORIES_SCREEN);
     showMessage({
       message: 'Áp dụng voucher thành công!',
       type: 'success',

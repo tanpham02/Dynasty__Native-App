@@ -5,7 +5,7 @@ import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import { Svg } from '@/assets';
 import MakerContainerImage from '@/assets/images/marker-store.png';
 import { ButtonPrimary } from '@/components';
-import { NumberUtils, widthScreen } from '@/utils';
+import { pad, widthScreen } from '@/utils';
 import { FlatList, TouchableOpacity } from 'react-native';
 import StorePickupItem from '../StorePickupItem';
 
@@ -109,7 +109,7 @@ const PickupTab = () => {
       </Box>
       <Box className='bg-white pb-2'>
         <Box className='flex-row gap-1 items-center px-4 py-2'>
-          <Text className='font-nunito-700'>{NumberUtils.pad(stores.length)} Cửa hàng gần bạn</Text>
+          <Text className='font-nunito-700'>{pad(stores.length)} Cửa hàng gần bạn</Text>
           <Svg.CheckCircle width={20} height={20} className='text-secondary' />
         </Box>
         <Box>

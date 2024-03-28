@@ -5,9 +5,9 @@ import { showMessage } from 'react-native-flash-message';
 import MapView, { MapPressEvent, Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import { useQuery } from 'react-query';
 
-import { QueryKey } from '@/constants';
+import { QUERY_KEY } from '@/constants';
 import { OpenStreetMapService } from '@/services';
-import { NavigationUtils, widthScreen } from '@/utils';
+import { widthScreen, goBack } from '@/utils';
 import BottomSubmitLocationDelivery from '../BottomSubmitLocationDelivery';
 
 const MarkerKey = 'CURRENT_LOCATION';
@@ -31,7 +31,7 @@ const DeliveryTab = () => {
   }, [coordinate?.latitude, coordinate?.longitude]);
 
   const { data: userLocationInfo, isFetching: isFetchingUserLocationInfo } = useQuery({
-    queryKey: [QueryKey.QUERY_KEY.LOCATION, coordinate],
+    queryKey: [QUERY_KEY.LOCATION, coordinate],
     queryFn: async () => {
       try {
         if (coordinate?.latitude && coordinate?.longitude)
@@ -114,7 +114,7 @@ const DeliveryTab = () => {
       <BottomSubmitLocationDelivery
         isFetching={isFetchingUserLocationInfo}
         useLocation={userLocationInfo?.display_name}
-        onSubmit={NavigationUtils.goBack}
+        onSubmit={goBack}
       />
     </Box>
   );

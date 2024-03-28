@@ -4,12 +4,12 @@ import { memo } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 
 import { Svg } from '@/assets';
-import { PathName } from '@/constants';
+import { PATH_SCREEN } from '@/constants';
 import { navigate, widthScreen } from '@/utils';
 import { homeScreenRef } from '../..';
 
 const Header = () => {
-  const goToNotificationScreen = () => navigate(PathName.PATH_SCREEN.NOTIFICATION_SCREEN);
+  const goToNotificationScreen = () => navigate(PATH_SCREEN.NOTIFICATION_SCREEN);
 
   const openSidebar = () => {
     homeScreenRef.current.toggleOpenSideBar();

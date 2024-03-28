@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Animated, Easing, GestureResponderEvent, Pressable, Text, TouchableOpacity } from 'react-native';
 
 import { Svg } from '@/assets';
-import { PathName } from '@/constants';
+import { PATH_SCREEN } from '@/constants';
 import { ProductType } from '@/models/productModel';
 import styles from '@/styles';
 import { navigate } from '@/utils';
@@ -46,7 +46,7 @@ const ProductItem = (props: ProductItemProps) => {
     }).start();
   };
 
-  const handleNavigateProductDetail = () => navigate(PathName.PATH_SCREEN.PRODUCT_DETAIL_SCREEN);
+  const handleNavigateProductDetail = () => navigate(PATH_SCREEN.PRODUCT_DETAIL_SCREEN);
 
   return (
     <Box className='bg-third rounded-lg m-4' style={styles.shadowX}>
