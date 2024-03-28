@@ -11,10 +11,12 @@ const FormInput = <T,>(props: FormInputProps<T>) => {
 
   return (
     <Box>
-      <Box className='flex-row mb-0.5'>
-        {label && <Text className='text-[13.5px] font-nunito-700 text-gray-10 mr-1'>{label}</Text>}
-        {isRequired && <Text className='font-nunito-700 text-danger'>*</Text>}
-      </Box>
+      {label && (
+        <Text className='text-[13.5px] font-nunito-700 text-gray-10 mr-1 block mb-0.5'>
+          {label}
+          {isRequired && <Text className='font-nunito-700 text-danger'>*</Text>}
+        </Text>
+      )}
       <Controller
         control={control}
         name={name}
