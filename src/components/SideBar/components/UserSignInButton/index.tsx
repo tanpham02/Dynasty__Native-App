@@ -37,7 +37,7 @@ const UserSignInButton = () => {
           {isAuthenticated ? (
             <>
               {user?.avatar ? (
-                <Image source={{ uri: getFullImageUrl(user.avatar) }} className='w-full h-full' />
+                <Image source={{ uri: getFullImageUrl(user?.avatar) }} className='w-full h-full' />
               ) : (
                 <Text className='text-white text-base font-nunito-700'>{user?.fullName?.charAt(0)}</Text>
               )}

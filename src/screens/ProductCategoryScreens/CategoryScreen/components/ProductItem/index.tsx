@@ -12,7 +12,7 @@ import { ProductTypeIconList } from '../ProductList/data';
 import { ProductItemProps } from './type';
 
 const ProductItem = (props: ProductItemProps) => {
-  const { index, name, description, types, image, price } = props;
+  const { index, name, description, types, image, price, length } = props;
 
   const [haveProductFavored, setHaveProductFavorite] = useState<number[]>([]);
 
@@ -49,7 +49,15 @@ const ProductItem = (props: ProductItemProps) => {
   const handleNavigateProductDetail = () => navigate(PATH_SCREEN.PRODUCT_DETAIL_SCREEN);
 
   return (
-    <Box className='bg-third rounded-lg m-4' style={styles.shadowX}>
+    <Box
+      className='bg-third rounded-lg mx-4 mt-4'
+      style={[
+        styles.shadowX,
+        {
+          marginBottom: index === length - 1 ? 16 : 0,
+        },
+      ]}
+    >
       <Box className='p-3 gap-1'>
         <Text className='text-base text-black font-nunito-700'>{name || ''}</Text>
         {description && (

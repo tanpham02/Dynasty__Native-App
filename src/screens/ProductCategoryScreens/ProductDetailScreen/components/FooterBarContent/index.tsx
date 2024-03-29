@@ -10,7 +10,7 @@ const FooterBarContent = () => {
   const handleNavigateCartScreen = () => navigate(PATH_SCREEN.CART_SCREEN);
 
   return (
-    <FooterBar wrapperClassName='h-[90px] flex justify-center' bodyClassName='flex items-center'>
+    <FooterBar bodyClassName='flex items-center'>
       <Box className='flex flex-row items-center justify-center gap-3'>
         <Box className='w-12 h-12 bg-white rounded-lg border-2 border-white'>
           <Image

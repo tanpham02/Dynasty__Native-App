@@ -97,7 +97,7 @@ const ProductDetail = () => {
           )}
 
           <Animated.ScrollView
-            className='mb-[100px]'
+            className='mb-4'
             scrollEventThrottle={5}
             ref={scrollRef}
             showsVerticalScrollIndicator={false}

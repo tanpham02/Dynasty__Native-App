@@ -4,6 +4,8 @@ export interface CartItemProps {
   image: string;
   description: string;
   price: number;
+  index: number;
+  length: number;
   quantity: number;
   onOpenCartItemDetailBottomSheet: () => void;
 }
