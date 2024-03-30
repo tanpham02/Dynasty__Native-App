@@ -3,6 +3,8 @@ import React from 'react';
 
 import { formatCurrencyByLocale } from '@/utils/numberUtils';
 import { CartItemDetailBottomSheetProps } from './type';
+import { ButtonPrimary } from '@/components';
+import { View } from 'react-native';
 
 const CartItemDetailBottomSheet = ({ visible, onClose, productId }: CartItemDetailBottomSheetProps) => {
   return (
@@ -37,6 +39,16 @@ const CartItemDetailBottomSheet = ({ visible, onClose, productId }: CartItemDeta
               Pizza siêu thượng hạng với vô vàn loại thịt đặc biệt như xúc xích bò, giăm bông, thịt xông khói.
             </Text>
           </Box>
+
+          <View className='flex-row justify-between items-center mt-6'>
+            <ButtonPrimary
+              onPress={onClose}
+              title='Đóng'
+              containerClass='bg-third w-[48%]'
+              textClassName='text-gray-11'
+            />
+            <ButtonPrimary title='Cập nhật' containerClass='w-[48%]' color='danger' />
+          </View>
         </Box>
       </Actionsheet.Content>
     </Actionsheet>

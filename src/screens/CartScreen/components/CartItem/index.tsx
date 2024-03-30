@@ -7,9 +7,26 @@ import styles from '@/styles';
 import { formatCurrencyByLocale } from '@/utils/numberUtils';
 import { CartItemProps } from './type';
 
-const CartItem = ({ extendName, image, name, price, quantity, onOpenCartItemDetailBottomSheet }: CartItemProps) => {
+const CartItem = ({
+  extendName,
+  image,
+  name,
+  price,
+  quantity,
+  index,
+  length,
+  onOpenCartItemDetailBottomSheet,
+}: CartItemProps) => {
   return (
-    <Box className='flex flex-1 bg-third rounded-lg flex-row p-3 my-3' style={styles.shadowX}>
+    <Box
+      className='flex bg-third rounded-lg flex-row p-3 mt-4 mx-4'
+      style={[
+        styles.shadowX,
+        {
+          marginBottom: index === length - 1 ? 20 : 0,
+        },
+      ]}
+    >
       <Box className='border border-zinc-100 w-[70px] h-[70px] rounded-xl bg-white flex justify-start mr-2'>
         <Image
           source={{
@@ -36,7 +53,11 @@ const CartItem = ({ extendName, image, name, price, quantity, onOpenCartItemDeta
         <Text className='text-gray-10 font-nunito-700 text-[12.5px]'>{formatCurrencyByLocale(price)}</Text>
         <Box className='flex flex-row items-center gap-3'>
           <Box className='bg-[#424957] w-7 h-7 rounded-lg flex justify-center items-center'>
-            <Svg.Minus width={16.5} height={16.5} className='text-white' />
+            {quantity === 1 ? (
+              <Svg.TrashBinLight width={18} height={18} className='text-white' strokeWidth={1} />
+            ) : (
+              <Svg.Minus width={15} height={15} className='text-white' />
+            )}
           </Box>
           <Text className='text-gray-10 text-[14.5px] font-nunito-700'>{quantity}</Text>
           <Box className='bg-[#424957] w-7 h-7 rounded-lg flex justify-center items-center'>

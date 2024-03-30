@@ -99,7 +99,7 @@ const MyAvatar = () => {
             alt='avatar'
             resizeMode='cover'
             className='w-full h-full rounded-full'
-            source={{ uri: getFullImageUrl(user.avatar) }}
+            source={{ uri: getFullImageUrl(user?.avatar) }}
           />
         ) : (
           <Text className='font-nunito-700 text-white uppercase text-lg'>{user?.fullName?.charAt(0) || 'A'}</Text>

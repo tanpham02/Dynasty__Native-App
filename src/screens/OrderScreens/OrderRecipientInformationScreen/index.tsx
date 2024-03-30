@@ -110,7 +110,12 @@ const OrderRecipientInformationScreen = () => {
                 }}
               />
             </FormProvider>
-            <ButtonPrimary title='Tiếp tục' onPress={handleSubmit(submitHandler)} containerClass='mt-4' />
+            <ButtonPrimary
+              title='Tiếp tục'
+              color='danger'
+              onPress={handleSubmit(submitHandler)}
+              containerClass='mt-4'
+            />
           </Box>
         </KeyboardAwareScrollView>
       </KeyboardAvoidingView>
