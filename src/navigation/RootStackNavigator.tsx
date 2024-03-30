@@ -22,7 +22,7 @@ import {
   CategoryScreen,
   ProductDetailScreen,
   VerifyOTPScreen,
-  OrderRecipientInformationScreen,
+  OrderInformationScreen,
 } from '@/screens';
 import { Platform } from 'react-native';
 
@@ -49,11 +49,7 @@ const RootStackNavigator = () => {
       initialRouteName={PATH_SCREEN.HOME_SCREEN}
     >
       {/* Main Screen */}
-      <RootStack.Screen
-        name={PATH_SCREEN.HOME_SCREEN}
-        component={HomeScreen}
-        options={userPlatformAppropriateOption}
-      />
+      <RootStack.Screen name={PATH_SCREEN.HOME_SCREEN} component={HomeScreen} options={userPlatformAppropriateOption} />
 
       {/* Authentication Screens */}
       <RootStack.Screen
@@ -77,15 +73,11 @@ const RootStackNavigator = () => {
       />
 
       {/* Cart Screens */}
-      <RootStack.Screen
-        name={PATH_SCREEN.CART_SCREEN}
-        component={CartScreen}
-        options={userPlatformAppropriateOption}
-      />
+      <RootStack.Screen name={PATH_SCREEN.CART_SCREEN} component={CartScreen} options={userPlatformAppropriateOption} />
 
       <RootStack.Screen
-        name={PATH_SCREEN.ORDER_RECIPIENT_INFORMATION_SCREEN}
-        component={OrderRecipientInformationScreen}
+        name={PATH_SCREEN.ORDER_INFORMATION_SCREEN}
+        component={OrderInformationScreen}
         options={userPlatformAppropriateOption}
       />
 
@@ -107,11 +99,7 @@ const RootStackNavigator = () => {
         options={userPlatformAppropriateOption}
       />
 
-      <RootStack.Screen
-        name={PATH_SCREEN.FAQS_SCREEN}
-        component={FAQsScreen}
-        options={userPlatformAppropriateOption}
-      />
+      <RootStack.Screen name={PATH_SCREEN.FAQS_SCREEN} component={FAQsScreen} options={userPlatformAppropriateOption} />
 
       <RootStack.Screen
         name={PATH_SCREEN.PRIVACY_POLICY_SCREEN}

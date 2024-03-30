@@ -1,12 +1,13 @@
-import React from 'react';
-import { FooterBarProps } from './type';
 import { Box } from 'native-base';
-import styles from '@/styles';
+import React from 'react';
 
-const FooterBar = ({ children, wrapperClassName, bodyClassName }: FooterBarProps) => {
+import styles from '@/styles';
+import { FooterBarProps } from './type';
+
+const FooterBar = ({ children, wrapperClassName }: FooterBarProps) => {
   return (
     <Box className={`bg-white p-3 ${wrapperClassName}`} style={[styles.shadowX]}>
-      <Box className={`bg-secondary rounded-lg flex flex-row justify-between p-3 ${bodyClassName}`}>{children}</Box>
+      {children}
     </Box>
   );
 };

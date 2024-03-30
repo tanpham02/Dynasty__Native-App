@@ -31,7 +31,7 @@ const ProductVariantContentItem = (props: ProductVariantContentItemProps) => {
           {title}
         </Text>
         {[...new Array(4)].map((_, index) => (
-          <Box>
+          <Box key={index}>
             <Text onTextLayout={handleTextLayout}>
               {index + 1}. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
               labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut

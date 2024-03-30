@@ -4,9 +4,20 @@ import { Controller, useFormContext } from 'react-hook-form';
 
 import { FormSelectProps } from './type';
 import { Svg } from '@/assets';
+import { border } from 'native-base/lib/typescript/theme/styled-system';
 
 const FormSelect = <T,>(props: FormSelectProps<T>) => {
-  const { name, rules, className, label, isRequired, wrapperClassName, options, allowClear } = props;
+  const {
+    name,
+    rules,
+    className,
+    label,
+    isRequired,
+    wrapperClassName,
+    options,
+    allowClear,
+    borderColor = '#e1e1e1',
+  } = props;
   const { control } = useFormContext<T>();
 
   const handleClearValueSelected = (cb: (...event: any[]) => void) => {
@@ -15,10 +26,12 @@ const FormSelect = <T,>(props: FormSelectProps<T>) => {
 
   return (
     <Box>
-      <Box className='flex-row mb-0.5'>
-        {label && <Text className='text-[13.5px] font-nunito-700 text-gray-10 mr-1'>{label}</Text>}
-        {isRequired && <Text className='font-nunito-700 text-danger'>*</Text>}
-      </Box>
+      {label && (
+        <Text className='text-[13.5px] font-nunito-700 text-gray-10 mr-1 block mb-0.5'>
+          {label}
+          {isRequired && <Text className='font-nunito-700 text-danger'> *</Text>}
+        </Text>
+      )}
       <Controller
         control={control}
         name={name}
@@ -39,10 +52,10 @@ const FormSelect = <T,>(props: FormSelectProps<T>) => {
                     onPress={() => handleClearValueSelected(onChange)}
                   />
                 ) : (
-                  <Svg.ArrowDown width={22} height={22} className='text-gray-9 mr-3' />
+                  <Svg.ArrowDown width={20} height={20} className='text-gray-9 mr-3' />
                 )
               }
-              borderColor={error ? '#ff0505' : '#e1e1e1'}
+              borderColor={error ? '#ff0505' : borderColor}
               _selectedItem={{
                 endIcon: (
                   <CheckIcon
@@ -75,6 +88,7 @@ const FormSelect = <T,>(props: FormSelectProps<T>) => {
                 },
               }}
               backgroundColor='#fafafa'
+              placeholderTextColor='#999'
               className={`!rounded-lg px-4 h-[45px] text-sm font-nunito-600  ${className}`}
               {...props}
             >
