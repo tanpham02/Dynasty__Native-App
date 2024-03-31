@@ -4,15 +4,8 @@ import { Controller, Path, useFormContext } from 'react-hook-form';
 
 import { FormRadioProps } from './type';
 
-const FormRadio = <T,>({
-  fieldName,
-  defaultValue,
-  children,
-  wrapperClassName,
-  className,
-  label,
-  isRequired,
-}: FormRadioProps<T>) => {
+const FormRadio = <T,>(props: FormRadioProps<T>) => {
+  const { fieldName, defaultValue, children, wrapperClassName, className, label, isRequired } = props;
   const { control } = useFormContext<T>();
 
   return (

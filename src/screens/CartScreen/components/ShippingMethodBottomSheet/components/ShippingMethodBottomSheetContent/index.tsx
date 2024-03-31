@@ -1,20 +1,25 @@
-import { OrderTypes } from '@/models/order';
+import { OrderTypes } from '@/models/orderModel';
 import { Box, Divider, Image, Text } from 'native-base';
 import { Pressable } from 'react-native';
 import { ShippingMethodBottomSheetContentProps } from './type';
 import { useState } from 'react';
 import { Svg } from '@/assets';
 
-const ShippingMethodBottomSheetContent = ({ image, title, type }: ShippingMethodBottomSheetContentProps) => {
-  const [shippingMethodSelected, setShippingMethodSelected] = useState<OrderTypes>(OrderTypes.ORDER_DELIVERING);
-
-  const handleSwitchShippingMethod = (type: OrderTypes) => setShippingMethodSelected(type);
+const ShippingMethodBottomSheetContent = ({
+  image,
+  title,
+  type,
+  shippingMethodSelected,
+  setShippingMethodSelected,
+}: ShippingMethodBottomSheetContentProps) => {
+  const handleSwitchShippingMethod = (type: OrderTypes) => {
+    setShippingMethodSelected(type);
+  };
 
   return (
     <Pressable
       key={type}
       className={`relative flex-row justify-between items-center mb-4 border rounded-lg py-4 px-2 ${shippingMethodSelected === type ? 'border-primary' : 'border-[#e1e1e1] '} min-h-[230px]`}
-      //   style={styles.shadowX}
       onPress={() => handleSwitchShippingMethod(type)}
     >
       <Image

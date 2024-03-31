@@ -19,3 +19,4 @@ export { default as DeliveryAndPickupScreen } from './DeliveryAndPickupScreen';
 export { default as VerifyOTPScreen } from './AuthenticationScreens/VerifyOTPScreen';
 export { default as CartScreen } from './CartScreen';
 export { default as OrderInformationScreen } from './OrderScreens/OrderInformationScreen';
+export { default as OrderStoreToPickUpScreen } from './OrderScreens/OrderStoreToPickUpScreen';

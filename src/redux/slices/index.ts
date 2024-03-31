@@ -1,4 +1,5 @@
-import userReducer from './userSlice';
+export { default as userReducer } from './userSlice';
+export { default as orderReducer } from './orderSlice';
 
-export { userReducer };
-export * from "./userSlice"
+export * from './userSlice';
+export * from './orderSlice';

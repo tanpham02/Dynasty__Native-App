@@ -1,20 +1,27 @@
-import { Actionsheet, Box, Divider, Text } from 'native-base';
+import { Actionsheet, Box, Text } from 'native-base';
 import React, { useState } from 'react';
 
-import { Svg } from '@/assets';
 import { ButtonPrimary } from '@/components';
 import { PATH_SCREEN } from '@/constants/pathName';
-import { OrderTypes } from '@/models/order';
 import { navigate } from '@/utils';
-import { Image, Pressable } from 'react-native';
+import ShippingMethodBottomSheetContent from './components/ShippingMethodBottomSheetContent';
 import { shippingMethodData } from './data';
 import { ShippingMethodBottomSheetProps } from './type';
-import ShippingMethodBottomSheetContent from './components/ShippingMethodBottomSheetContent';
+import { OrderModel, OrderTypes } from '@/models/orderModel';
+import { useDispatch } from 'react-redux';
+import { AppDispatch, setOrder } from '@/redux';
 
 const ShippingMethodBottomSheet = ({ visible, onClose }: ShippingMethodBottomSheetProps) => {
+  const dispatch = useDispatch<AppDispatch>();
+
+  const [shippingMethodSelected, setShippingMethodSelected] = useState<OrderTypes>(OrderTypes.ORDER_DELIVERING);
+
   const goToOrderRecipientInformationScreen = () => {
     onClose();
     navigate(PATH_SCREEN.ORDER_INFORMATION_SCREEN);
+
+    const payload: OrderModel = { orderType: shippingMethodSelected };
+    dispatch(setOrder(payload));
   };
 
   return (
@@ -26,7 +33,11 @@ const ShippingMethodBottomSheet = ({ visible, onClose }: ShippingMethodBottomShe
         </Box>
         <Box w='100%' className='mb-3'>
           {shippingMethodData.map((shippingMethodItem) => (
-            <ShippingMethodBottomSheetContent {...shippingMethodItem} />
+            <ShippingMethodBottomSheetContent
+              {...shippingMethodItem}
+              shippingMethodSelected={shippingMethodSelected}
+              setShippingMethodSelected={setShippingMethodSelected}
+            />
           ))}
         </Box>
 
