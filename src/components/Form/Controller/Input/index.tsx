@@ -14,7 +14,7 @@ const FormInput = <T,>(props: FormInputProps<T>) => {
       {label && (
         <Text className='text-[13.5px] font-nunito-700 text-gray-10 mr-1 block mb-0.5'>
           {label}
-          {isRequired && <Text className='font-nunito-700 text-danger'>*</Text>}
+          {isRequired && <Text className='font-nunito-700 text-danger'> *</Text>}
         </Text>
       )}
       <Controller
@@ -29,6 +29,7 @@ const FormInput = <T,>(props: FormInputProps<T>) => {
               ref={ref}
               spellCheck={false}
               selectionColor='#111111'
+              placeholderTextColor='#999'
               selectTextOnFocus={false}
               className={`border rounded-lg px-4 h-[45px] bg-gray-13 text-sm font-nunito-600 ${error ? ' border-danger' : 'border-gray-12'} ${className}`}
               {...props}

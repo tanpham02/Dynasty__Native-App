@@ -1,72 +1,14 @@
-import { Box, Flex, Input, Pressable, Text } from 'native-base';
-import {
-  TextInput,
-  StyleSheet,
-  NativeSyntheticEvent,
-  TextInputChangeEventData,
-  TextInputKeyPressEventData,
-  Image,
-  KeyboardAvoidingView,
-} from 'react-native';
-
-import { ButtonPrimary, PrimaryLayout } from '@/components';
+import { Box, Flex, Text } from 'native-base';
 import { useEffect, useRef, useState } from 'react';
-import { PATTERN } from '@/utils';
-import VerifyBg from '@/assets/images/verify-otp-bg.jpg';
-import PizzaBgRight from '@/assets/images/logo/pizza-5-loai-thit-va-rau-cu.png';
-import { widthScreen } from '@/utils';
+import { Image, KeyboardAvoidingView, NativeSyntheticEvent, TextInput, TextInputKeyPressEventData } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-// NOTE: REMEMBER TO REMOVE UNNECESSARY IMPORT
+
+import VerifyBg from '@/assets/images/verify-otp-bg.jpg';
+import { ButtonPrimary, PrimaryLayout } from '@/components';
+import { PATTERN, widthScreen } from '@/utils';
+import InputVerify from './components/InputVerify';
 
 const VerifyOTPScreen = () => {
-  // FIXME: CREATE TWO TYPE FOR BLOW STATE IT WILL LOOK BETTER
-  const [inputState, setInputState] = useState<
-    {
-      value?: string;
-      disable?: boolean;
-    }[]
-  >([]);
-
-  const [selection, setSelection] = useState<{ start: number; end: number }>({ start: 0, end: 0 });
-
-  const inputRefs = useRef<Array<TextInput>>([]);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      inputRefs.current[0]?.focus();
-    }, 250);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  const handleChangeTextInput = (value: string, index: number) => {
-    const newInputState = [...inputState];
-    if (!PATTERN.WHITE_SPACE.test(value)) {
-      newInputState[index] = { value };
-      setInputState(newInputState);
-      if (index <= inputRefs.current.length - 1) {
-        if (value) {
-          inputRefs.current[index + 1]?.focus();
-          return;
-        }
-        if (index === 0) {
-          inputRefs.current[index]?.focus();
-          return;
-        }
-        inputRefs.current[index - 1]?.focus();
-      }
-    }
-  };
-
-  const handleIgnoreSpaceKey = (e: NativeSyntheticEvent<TextInputKeyPressEventData>, index: number) => {
-    if (e.nativeEvent.key === ' ' || PATTERN.WHITE_SPACE.test(inputState[index]?.value)) {
-      inputRefs.current[index]?.focus();
-    }
-  };
-  // NOTE: REMOVE UNUSED CODE
-  const onSelectionChange = ({ nativeEvent: { selection } }) => {
-    setSelection({ start: selection.end, end: selection.end });
-  };
   return (
     <PrimaryLayout
       titleScreen='Xác minh số điện thoại'
@@ -92,28 +34,9 @@ const VerifyOTPScreen = () => {
                 </Text>
               </Box>
             </Box>
-            <Flex className='w-full flex-row justify-between items-center my-8'>
-              {[...new Array(6)].map((_, index) => (
-                <TextInput
-                  // FIXME: SPLIT BELOW FUNCTION
-                  //NOTE: (WHY YOU MUST TO CHECK IS EXISTED INPUT REF ? GIVE ME ANSWER AFTER YOU RESOLVE THIS CODE)
-                  ref={(ref) => {
-                    if (ref && !inputRefs.current.includes(ref)) {
-                      inputRefs.current = [...inputRefs.current, ref];
-                    }
-                  }}
-                  maxLength={1}
-                  contextMenuHidden
-                  onChangeText={(value) => handleChangeTextInput(value, index)}
-                  onKeyPress={(e) => handleIgnoreSpaceKey(e, index)}
-                  className='text-center text-xl font-nunito-600 text-secondary w-[55px] h-[55px] border-2 border-[#d9d9d9] rounded-xl'
-                  selectTextOnFocus={false}
-                  selectionColor='black'
-                  value={inputState[index]?.value}
-                  keyboardType='numeric'
-                />
-              ))}
-            </Flex>
+
+            <InputVerify />
+
             <Box className='flex flex-row justify-center items-center gap-1 mb-8'>
               <Text className='text-sm font-nunito-600'>Bạn chưa nhận được mã?</Text>
               <Text className='text-secondary font-nunito-700 text-[15px]'>Gửi lại</Text>

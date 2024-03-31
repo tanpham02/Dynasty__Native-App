@@ -1,6 +1,6 @@
 import { Box, Pressable, Text, TextArea } from 'native-base';
 import React, { useState } from 'react';
-import { Animated } from 'react-native';
+import { Animated, View } from 'react-native';
 
 import { Svg } from '@/assets';
 
@@ -9,7 +9,10 @@ const DeliveryInstruction = () => {
   const [instructionValue, setInstructionValue] = useState<string>('');
   const [isSaved, setIsSave] = useState<boolean>(false);
 
-  const handleOpenOrCloseBodyDeliveryInstruction = () => setIsShowBody(!isShowBody);
+  const handleOpenOrCloseBodyDeliveryInstruction = (isSaved: boolean) => {
+    setIsShowBody(!isShowBody);
+    setIsSave(isSaved);
+  };
 
   return (
     <>
@@ -17,10 +20,8 @@ const DeliveryInstruction = () => {
         className='flex flex-row items-center p-3 bg-third rounded-lg'
         onPress={() => {
           if (!instructionValue && !isShowBody) {
-            handleOpenOrCloseBodyDeliveryInstruction();
-            setIsSave(false);
+            handleOpenOrCloseBodyDeliveryInstruction(false);
           }
-          // FIXME: YOUR CODE ARE REPEAT IN LINE 20, 34 and 80. (Replace it with a function have a paramjk)
         }}
       >
         <Box className='flex-1 flex-row items-center'>
@@ -31,8 +32,7 @@ const DeliveryInstruction = () => {
           <Pressable
             className='w-fit ml-auto'
             onPress={() => {
-              handleOpenOrCloseBodyDeliveryInstruction();
-              setIsSave(false);
+              handleOpenOrCloseBodyDeliveryInstruction(false);
             }}
           >
             <Svg.Edit width={20} height={20} className='text-warning' />
@@ -41,12 +41,8 @@ const DeliveryInstruction = () => {
         )}
       </Pressable>
       {isShowBody || instructionValue ? (
-        //NOTE: Animated Component is not necessary in here
-        <Animated.View className='w-full mt-1'>
+        <View className='w-full mt-1'>
           <Box className='flex flex-row items-center'>
-            {/* <Box className='mr-2'>
-              <Svg.Notepad width={24} height={24} />
-            </Box> */}
             <Box className='flex-1 justify-center'>
               {instructionValue && isSaved ? (
                 <Box className='bg-fourth/10 rounded-lg p-3'>
@@ -77,14 +73,13 @@ const DeliveryInstruction = () => {
             <Pressable
               className='w-fit ml-auto bg-secondary py-2 px-4 rounded-lg mt-3'
               onPress={() => {
-                setIsSave(true);
-                handleOpenOrCloseBodyDeliveryInstruction();
+                handleOpenOrCloseBodyDeliveryInstruction(true);
               }}
             >
               <Text className='text-white font-nunito-600 text-sm '>Lưu</Text>
             </Pressable>
           )}
-        </Animated.View>
+        </View>
       ) : (
         <></>
       )}

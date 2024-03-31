@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
 import { Box, Modal, Pressable, Text, WarningOutlineIcon } from 'native-base';
-import { Controller, useFormContext } from 'react-hook-form';
+import React, { useState } from 'react';
+import { useFormContext } from 'react-hook-form';
 import DatePicker from 'react-native-neat-date-picker';
 
-import { FormDatePickerProps } from './type';
 import { DATE_FORMAT_DDMMYYYY, formatDate } from '@/utils';
+import { FormDatePickerProps } from './type';
 
 const FormDatePicker = <T,>(props: FormDatePickerProps<T>) => {
   const secondaryColor = '#e8002a';
