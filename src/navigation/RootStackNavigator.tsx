@@ -28,16 +28,15 @@ import { Platform } from 'react-native';
 
 const RootStack = createStackNavigator();
 
-const optionsMain = {
-  cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-};
-
-const optionsRoot = {
-  cardStyleInterpolator: CardStyleInterpolators.forFadeFromBottomAndroid,
-};
-
 const userPlatformAppropriateOption = () => {
-  return Platform.OS === 'ios' ? optionsMain : optionsRoot;
+  return Platform.select({
+    ios: {
+      cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+    },
+    android: {
+      cardStyleInterpolator: CardStyleInterpolators.forFadeFromBottomAndroid,
+    },
+  });
 };
 
 const RootStackNavigator = () => {
@@ -46,14 +45,10 @@ const RootStackNavigator = () => {
       screenOptions={{
         headerShown: false,
       }}
-      initialRouteName={PATH_SCREEN.HOME_SCREEN}
+      initialRouteName={PATH_SCREEN.MY_PROFILE_SCREEN}
     >
       {/* Main Screen */}
-      <RootStack.Screen
-        name={PATH_SCREEN.HOME_SCREEN}
-        component={HomeScreen}
-        options={userPlatformAppropriateOption}
-      />
+      <RootStack.Screen name={PATH_SCREEN.HOME_SCREEN} component={HomeScreen} options={userPlatformAppropriateOption} />
 
       {/* Authentication Screens */}
       <RootStack.Screen
@@ -77,11 +72,7 @@ const RootStackNavigator = () => {
       />
 
       {/* Cart Screens */}
-      <RootStack.Screen
-        name={PATH_SCREEN.CART_SCREEN}
-        component={CartScreen}
-        options={userPlatformAppropriateOption}
-      />
+      <RootStack.Screen name={PATH_SCREEN.CART_SCREEN} component={CartScreen} options={userPlatformAppropriateOption} />
 
       <RootStack.Screen
         name={PATH_SCREEN.ORDER_RECIPIENT_INFORMATION_SCREEN}
@@ -107,11 +98,7 @@ const RootStackNavigator = () => {
         options={userPlatformAppropriateOption}
       />
 
-      <RootStack.Screen
-        name={PATH_SCREEN.FAQS_SCREEN}
-        component={FAQsScreen}
-        options={userPlatformAppropriateOption}
-      />
+      <RootStack.Screen name={PATH_SCREEN.FAQS_SCREEN} component={FAQsScreen} options={userPlatformAppropriateOption} />
 
       <RootStack.Screen
         name={PATH_SCREEN.PRIVACY_POLICY_SCREEN}

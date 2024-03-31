@@ -49,9 +49,8 @@ const topIntroduce = [
 WebBrowser.maybeCompleteAuthSession();
 
 const SignInScreen = () => {
-  const token = tokenManager.getAccessToken();
-  console.log('🚀 ~ SignInScreen ~ token:', token);
   useStatusBarForAndroid('#006a31');
+  const token = tokenManager.getAccessToken();
 
   const dispatch = useDispatch<AppDispatch>();
 

@@ -1,4 +1,4 @@
-import { authenticateAsync, hasHardwareAsync } from 'expo-local-authentication';
+import { authenticateAsync, hasHardwareAsync, supportedAuthenticationTypesAsync } from 'expo-local-authentication';
 import { RSA } from 'react-native-rsa-native';
 import { showMessage } from 'react-native-flash-message';
 
@@ -16,7 +16,8 @@ const askForBiometrics = async () =>
     });
 
 const enableBiometrics = async () => {
-    const isSupportBiometrics = await hasHardwareAsync()
+    const isSupportBiometrics = await supportedAuthenticationTypesAsync()
+    console.log("🚀 ~ enableBiometrics ~ isSupportBiometrics:", isSupportBiometrics)
 
     if (isSupportBiometrics) {
         const biometricsResult = await askForBiometrics();

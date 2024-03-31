@@ -1,14 +1,14 @@
+import * as Clipboard from 'expo-clipboard';
 import { Actionsheet, Box, Text } from 'native-base';
 import { TouchableOpacity } from 'react-native';
-import * as Clipboard from 'expo-clipboard';
+import { showMessage } from 'react-native-flash-message';
 
 import { Svg } from '@/assets';
-import RowData from '../RowData';
-import { DateUtils } from '@/utils';
 import { ButtonPrimary } from '@/components';
+import { DATE_FORMAT_DDMMYYYY, formatDate } from '@/utils';
+import RowData from '../RowData';
 import VoucherDecoration from '../VoucherDecoration';
 import { VoucherDetailBottomSheetProps } from './type';
-import { showMessage } from 'react-native-flash-message';
 
 const VoucherDetailBottomSheet = ({ isOpen, onClose }: VoucherDetailBottomSheetProps) => {
   const copyToClipboard = async () => {
@@ -42,7 +42,7 @@ const VoucherDetailBottomSheet = ({ isOpen, onClose }: VoucherDetailBottomSheetP
             </TouchableOpacity>
             <ButtonPrimary title='Bắt đầu đặt hàng' color='danger' containerClass='px-4 rounded-[30px] mt-4' />
           </Box>
-          <RowData label='Ngày hết hạn: ' value={DateUtils.formatDate(new Date(), DateUtils.DATE_FORMAT_DDMMYYYY)} />
+          <RowData label='Ngày hết hạn: ' value={formatDate(new Date(), DATE_FORMAT_DDMMYYYY)} />
           <Text className='py-4 text-sm text-zinc-700 font-nunito-500'>
             - Mua 1 Pizza từ size M và 1 thức uống bất kỳ được giảm ngay 50% khi mua Pizza thứ 2, cùng cỡ. Bánh Pizza
             thứ 2 có giá trị bằng hoặc thấp hơn so với Pizza thứ nhất. - Áp dụng tất cả các ngày trong tuần. Áp dụng cho
