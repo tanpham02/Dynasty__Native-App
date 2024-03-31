@@ -7,9 +7,10 @@ import { navigate } from '@/utils';
 import ShippingMethodBottomSheetContent from './components/ShippingMethodBottomSheetContent';
 import { shippingMethodData } from './data';
 import { ShippingMethodBottomSheetProps } from './type';
-import { OrderModel, OrderTypes } from '@/models/orderModel';
+import { OrderModel, OrderTypes } from '@/models';
 import { useDispatch } from 'react-redux';
 import { AppDispatch, setOrder } from '@/redux';
+// FIXME: REMEMBER TO SORTING IMPORT
 
 const ShippingMethodBottomSheet = ({ visible, onClose }: ShippingMethodBottomSheetProps) => {
   const dispatch = useDispatch<AppDispatch>();
@@ -48,6 +49,7 @@ const ShippingMethodBottomSheet = ({ visible, onClose }: ShippingMethodBottomShe
             textClassName='text-gray-10'
             onPress={onClose}
           />
+
           <ButtonPrimary
             title='Tiếp tục'
             containerClass='w-[48%] bg-secondary'

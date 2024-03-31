@@ -3,6 +3,7 @@ import { Box, Center, useColorModeValue } from 'native-base';
 import { useState } from 'react';
 import { Animated, Pressable, StatusBar } from 'react-native';
 import { SceneMap, TabView } from 'react-native-tab-view';
+// FIXME: REMEMBER TO SORTING IMPORT
 
 const StoreTabView = () => {
   const FirstRoute = () => (

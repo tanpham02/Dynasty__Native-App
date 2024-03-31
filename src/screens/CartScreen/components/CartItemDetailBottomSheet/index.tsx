@@ -6,10 +6,13 @@ import { CartItemDetailBottomSheetProps } from './type';
 import { ButtonPrimary } from '@/components';
 import { View } from 'react-native';
 
+// NOTE: I KNOW YOU ARE TOO BUSY BUT WHEN YOU ARE COMPLETE UI, FUTURE OR ANYTHING PLEASE SCROLL INTO HEAD OF FILE AND SORTING IMPORT. IT WILL MAKE OUR PROJECT ARE CLEAN AND PROFESSIONAL 😁😁😁
+
 const CartItemDetailBottomSheet = ({ visible, onClose, productId }: CartItemDetailBottomSheetProps) => {
   return (
     <Actionsheet isOpen={visible} onClose={onClose}>
       <Actionsheet.Content>
+        {/*NOTE: I SUGGEST YOU USING className for all apply css if it not have problem */}
         <Box minHeight={50} className='px-2 py-2' justifyContent='start'>
           <Box w='100%' className='mb-4 flex flex-row gap-2'>
             <Box className='border border-zinc-100 w-[70px] h-[70px] rounded-xl bg-white flex justify-start'>

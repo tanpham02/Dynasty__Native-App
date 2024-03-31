@@ -46,7 +46,7 @@ const RootStackNavigator = () => {
       screenOptions={{
         headerShown: false,
       }}
-      initialRouteName={PATH_SCREEN.MY_PROFILE_SCREEN}
+      initialRouteName={PATH_SCREEN.HOME_SCREEN}
     >
       {/* Main Screen */}
       <RootStack.Screen name={PATH_SCREEN.HOME_SCREEN} component={HomeScreen} options={usePlatformAppropriateOption} />

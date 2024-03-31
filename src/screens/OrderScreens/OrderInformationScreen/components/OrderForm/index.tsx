@@ -34,6 +34,7 @@ const OrderForm = () => {
           </Box>
         </KeyboardAwareScrollView>
       </KeyboardAvoidingView>
+      {/* PASS TWO PROPS FOR BELOW COMPONENT IS UNNECESSARY. USE ONLY ONE PROPS FOR BOTH ex: onSubmit or any */}
       <FooterBarContent handleSubmit={handleSubmit} submitHandler={submitHandler} />
     </>
   );

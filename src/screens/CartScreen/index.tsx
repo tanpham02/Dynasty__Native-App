@@ -16,6 +16,7 @@ import {
   ShippingMethodModal,
   TotalPayment,
 } from './components';
+// FIXME: REMEMBER TO SORTING IMPORT
 
 const CartScreen = () => {
   const {

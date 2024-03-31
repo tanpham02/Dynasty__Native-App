@@ -1,10 +1,13 @@
-import { OrderTypes } from '@/models/orderModel';
-import { Box, Divider, Image, Text } from 'native-base';
-import { Pressable } from 'react-native';
-import { ShippingMethodBottomSheetContentProps } from './type';
 import { useState } from 'react';
-import { Svg } from '@/assets';
+import { Pressable } from 'react-native';
+import { Box, Divider, Image, Text } from 'native-base';
 
+import { Svg } from '@/assets';
+import { OrderTypes } from '@/models';
+import { ShippingMethodBottomSheetContentProps } from './type';
+
+// FIXME: REMEMBER TO SORTING IMPORT
+// FIXME: ONLY ACCEPT ONE FOLDER COMPONENTS AT HIGHEST PARENT FOLDER
 const ShippingMethodBottomSheetContent = ({
   image,
   title,
@@ -12,10 +15,13 @@ const ShippingMethodBottomSheetContent = ({
   shippingMethodSelected,
   setShippingMethodSelected,
 }: ShippingMethodBottomSheetContentProps) => {
+  // FIXME: THERE ARE TWO PROBLEM AT HERE
+  //  1: pass a prop isActive instead of check: shippingMethodSelected === type
+  //   2: using a prop content or any  to fix from line 42 to 67
+  // 3: using a prop onSelect or any,it will readable
   const handleSwitchShippingMethod = (type: OrderTypes) => {
     setShippingMethodSelected(type);
   };
-
   return (
     <Pressable
       key={type}

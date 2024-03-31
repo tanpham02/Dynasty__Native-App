@@ -23,6 +23,7 @@ const CartItem = ({
       style={[
         styles.shadowX,
         {
+          // FIXME: USE ANOTHER WAY TO FIX THIS ISSUE UI
           marginBottom: index === length - 1 ? 20 : 0,
         },
       ]}
@@ -39,6 +40,7 @@ const CartItem = ({
           alt='image'
         />
       </Box>
+      {/* NOTE: UNNECESSARY className: flex flex-col is default in react native */}
       <Box className='flex flex-col items-start flex-1'>
         <Box className='mb-5 flex-1'>
           <Text className='text-gray-10 font-nunito-700 text-[13.5px]'>{name}</Text>

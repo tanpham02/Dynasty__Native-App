@@ -5,14 +5,14 @@ import { NativeSyntheticEvent, TextInput, TextInputKeyPressEventData } from 'rea
 import { PATTERN } from '@/utils';
 
 const InputVerify = () => {
-  // FIXME: CREATE TWO TYPE FOR BLOW STATE IT WILL LOOK BETTER
+  // FIXME: CREATE TYPE FOR BELOW STATE IT WILL LOOK BETTER
   const [inputState, setInputState] = useState<
     {
       value?: string;
       disable?: boolean;
     }[]
   >([]);
-
+  // FIXME: CREATE TYPE FOR BELOW STATE IT WILL LOOK BETTER
   const [selection, setSelection] = useState<{ start: number; end: number }>({ start: 0, end: 0 });
 
   const inputRefs = useRef<Array<TextInput>>([]);

@@ -34,7 +34,6 @@ const VerifyOTPScreen = () => {
                 </Text>
               </Box>
             </Box>
-
             <InputVerify />
 
             <Box className='flex flex-row justify-center items-center gap-1 mb-8'>

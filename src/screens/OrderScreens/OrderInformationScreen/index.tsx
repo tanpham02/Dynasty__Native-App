@@ -6,6 +6,7 @@ import { OrderModel } from '@/models';
 import { RootState } from '@/redux';
 import OrderForm from './components/OrderForm';
 
+//FIXME: ONLY HAVE ONE components folder is allow in this folder. You are create too much it
 const OrderRecipientInformationScreen = () => {
   const orderInfo = useSelector<RootState, OrderModel>((state) => state.orderStore.order);
 
