@@ -36,6 +36,7 @@ const FormDatePicker = <T,>(props: FormDatePickerProps<T>) => {
 
   return (
     <Box className={wrapperClassName}>
+      {/* FIXME: RENDER LABEL CODE IS REPEATED AT ALL FORM COMPONENT */}
       {label && (
         <Text className='text-[13.5px] font-nunito-700 text-gray-10 mr-1 mb-0.5'>
           {label}
@@ -50,6 +51,7 @@ const FormDatePicker = <T,>(props: FormDatePickerProps<T>) => {
           {currentDatePicked ? formatDate(currentDatePicked as string, DATE_FORMAT_DDMMYYYY) : placeholder}
         </Text>
       </Pressable>
+      {/* FIXME: RENDER LABEL CODE IS REPEATED AT ALL FORM COMPONENT */}
       {datePickerState?.error && (
         <Box className='flex-row items-center'>
           <WarningOutlineIcon size='xs' color='#ff0505' />

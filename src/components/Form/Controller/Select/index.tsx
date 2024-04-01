@@ -13,6 +13,7 @@ const FormSelect = <T,>(props: FormSelectProps<T>) => {
 
   return (
     <Box>
+      {/* FIXME: RENDER LABEL CODE IS REPEATED AT ALL FORM COMPONENT */}
       {label && (
         <Text className='text-[13.5px] font-nunito-700 text-gray-10 mr-1 block mb-0.5'>
           {label}
@@ -33,6 +34,7 @@ const FormSelect = <T,>(props: FormSelectProps<T>) => {
               isFormController={isFormController}
               {...props}
             />
+            {/* FIXME: RENDER ERROR CODE IS REPEATED AT ALL FORM COMPONENT */}
             {error && (
               <Box className='flex-row items-center'>
                 <WarningOutlineIcon size='xs' color='#ff0505' />

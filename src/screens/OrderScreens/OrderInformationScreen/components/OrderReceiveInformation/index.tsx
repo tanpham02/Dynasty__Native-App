@@ -3,6 +3,7 @@ import { Box, Text } from 'native-base';
 import { useSelector } from 'react-redux';
 
 import { OrderModel, OrderTypes } from '@/models';
+// NOTE: MISSING INDEX FILE TO IMPORT ABOVE COMPONENT
 import RecipientAddressInformation from './components/RecipientAddressInformation';
 import RecipientInformation from './components/RecipientInformation';
 

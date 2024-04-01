@@ -5,6 +5,7 @@ import StoreTabView from './components/StoreTabView';
 import { OrderStoreToPickUpScreenProps } from './type';
 import { PrimaryLayout } from '@/components';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+// NOTE: I KNOW YOU ARE TOO BUSY BUT WHEN YOU ARE COMPLETE UI, FUTURE OR ANYTHING PLEASE SCROLL INTO HEAD OF FILE AND SORTING IMPORT. IT WILL MAKE OUR PROJECT ARE CLEAN AND PROFESSIONAL 😁😁😁
 
 const OrderStoreToPickUpScreen = ({}: OrderStoreToPickUpScreenProps) => {
   return (

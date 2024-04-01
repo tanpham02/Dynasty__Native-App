@@ -7,6 +7,7 @@ import VerifyBg from '@/assets/images/verify-otp-bg.jpg';
 import { ButtonPrimary, PrimaryLayout } from '@/components';
 import { PATTERN, widthScreen } from '@/utils';
 import InputVerify from './components/InputVerify';
+// NOTE: I KNOW YOU ARE TOO BUSY BUT WHEN YOU ARE COMPLETE UI, FUTURE OR ANYTHING PLEASE SCROLL INTO HEAD OF FILE AND SORTING IMPORT. IT WILL MAKE OUR PROJECT ARE CLEAN AND PROFESSIONAL 😁😁😁
 
 const VerifyOTPScreen = () => {
   return (
@@ -17,7 +18,7 @@ const VerifyOTPScreen = () => {
     >
       <KeyboardAvoidingView className='flex-1'>
         <KeyboardAwareScrollView className='flex-1'>
-          {/* NOTE: CAN YOU SPLIT COMPONENT FOR BELOW CODE IF OK IT WILL READABLE ? (NOT REQUIRED) */}
+          {/* NOTE: CAN YOU SPLIT COMPONENT FOR BELOW CODE IF OK IT WILL READABLE */}
           <Box className='flex-1 px-4 w-screen'>
             <Box className='flex justify-center items-center mb-1'>
               <Image source={VerifyBg} width={widthScreen} resizeMode='contain' alt='Verify Bg' />

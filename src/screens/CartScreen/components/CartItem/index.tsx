@@ -4,6 +4,7 @@ import { Pressable } from 'react-native';
 
 import { Svg } from '@/assets';
 import styles from '@/styles';
+// NOTE: REMEMBER TO IMPORT ANYTHING AT HIGHEST LEVEL OF EACH FOLDER
 import { formatCurrencyByLocale } from '@/utils/numberUtils';
 import { CartItemProps } from './type';
 

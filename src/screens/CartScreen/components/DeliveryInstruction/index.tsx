@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Animated, View } from 'react-native';
 
 import { Svg } from '@/assets';
+// NOTE: I KNOW YOU ARE TOO BUSY BUT WHEN YOU ARE COMPLETE UI, FUTURE OR ANYTHING PLEASE SCROLL INTO HEAD OF FILE AND SORTING IMPORT. IT WILL MAKE OUR PROJECT ARE CLEAN AND PROFESSIONAL 😁😁😁
 
 const DeliveryInstruction = () => {
   const [isShowBody, setIsShowBody] = useState<boolean>(false);
@@ -72,6 +73,7 @@ const DeliveryInstruction = () => {
           {!isSaved && (
             <Pressable
               className='w-fit ml-auto bg-secondary py-2 px-4 rounded-lg mt-3'
+              //   NOTE: using shorthand code with remove bracket of below function
               onPress={() => {
                 handleOpenOrCloseBodyDeliveryInstruction(true);
               }}

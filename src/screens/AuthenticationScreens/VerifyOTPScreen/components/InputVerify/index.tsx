@@ -75,3 +75,4 @@ const InputVerify = () => {
 };
 
 export default InputVerify;
+// FIXME: MISSING index file to export this component

@@ -1,11 +1,11 @@
 import * as Google from 'expo-auth-session/providers/google';
+import * as WebBrowser from 'expo-web-browser';
 import { Box, Checkbox, Divider, Flex, Input, KeyboardAvoidingView, Text } from 'native-base';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Image, Platform, View } from 'react-native';
+import { Image, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import * as WebBrowser from 'expo-web-browser';
 
 import DynastyLogoBgWhite from '@/assets/images/logo/logo-bg-white.png';
 import PizzaBgRight from '@/assets/images/logo/pizza-5-loai-thit-va-rau-cu.png';
@@ -13,18 +13,17 @@ import PizzaBgLeft from '@/assets/images/logo/pizza-hai-san-cao-cap.png';
 import { Mobile as MobileSvg, Offer as OfferSvg, PizzaSlice } from '@/assets/svg';
 
 import { Svg } from '@/assets';
+import { GlobalLoading } from '@/components';
 import configEnv from '@/configs';
 import { PATH_SCREEN } from '@/constants';
 import { useStatusBarForAndroid } from '@/hooks';
+import { AppDispatch, setUser } from '@/redux';
 import authenticationService from '@/services/authenticationService';
 import styles from '@/styles';
 import { navigate } from '@/utils';
 import { tokenManager } from 'App';
-import { makeRedirectUri } from 'expo-auth-session';
 import { showMessage } from 'react-native-flash-message';
 import { useDispatch } from 'react-redux';
-import { AppDispatch, setUser } from '@/redux';
-import { GlobalLoading } from '@/components';
 
 const { TERM_AND_CONDITIONS_SCREEN, HOME_SCREEN, VERIFY_OTP_SCREEN } = PATH_SCREEN;
 

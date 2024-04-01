@@ -41,7 +41,7 @@
 
   ![import noop](./src/assets/images/rules/component-folder-good.png)
 
-## 5. Use one kind of styles for apply css, limit use unnecessary className, and use config value if impossible and not have any problem
+## 5. Use one kind of styles for apply css, limit use unnecessary className, and use config value if possible and not have any problem
 
 - Noop. It will make my code in each line too long
 

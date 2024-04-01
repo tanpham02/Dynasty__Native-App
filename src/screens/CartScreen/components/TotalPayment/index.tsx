@@ -2,6 +2,7 @@ import { Box, Text } from 'native-base';
 import React from 'react';
 
 import styles from '@/styles';
+// NOTE: REMEMBER TO IMPORT ANYTHING AT HIGHEST LEVEL OF EACH FOLDER
 import { formatCurrencyByLocale } from '@/utils/numberUtils';
 
 const TotalPayment = () => {

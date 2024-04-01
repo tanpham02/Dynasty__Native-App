@@ -10,4 +10,5 @@ export { globalLoading as GlobalLoading } from './GlobalLoading';
 export { default as ButtonPrimary } from './ButtonPrimary';
 export { default as ButtonPrimaryAnimated } from './ButtonPrimaryAnimated';
 export { default as FooterBar } from './FooterBar';
+export { default as AppLoading } from './AppLoading';
 export * from "./Form"

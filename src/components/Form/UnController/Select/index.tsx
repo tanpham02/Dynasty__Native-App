@@ -21,6 +21,7 @@ const FormSelectUnController = ({
 
   return (
     <Box className={`${wrapperClassName}`}>
+      {/* FIXME: RENDER LABEL CODE IS REPEATED AT ALL FORM COMPONENT */}
       {label && !isFormController && (
         <Text className='text-[13.5px] font-nunito-700 text-gray-10 mr-1 block mb-0.5'>{label}</Text>
       )}

@@ -1,6 +1,7 @@
 import { Actionsheet, Box, Image, Text } from 'native-base';
 import React from 'react';
 
+// NOTE: REMEMBER TO IMPORT ANYTHING AT HIGHEST LEVEL OF EACH FOLDER
 import { formatCurrencyByLocale } from '@/utils/numberUtils';
 import { CartItemDetailBottomSheetProps } from './type';
 import { ButtonPrimary } from '@/components';
