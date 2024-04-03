@@ -1,13 +1,11 @@
-import { OrderModel, UserModel } from '@/models';
 import { Box, KeyboardAvoidingView, VStack } from 'native-base';
 import { FormProvider, useForm } from 'react-hook-form';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
-import FooterBarContent from '../FooterBarContent';
-import OrderRecipientInformation from '../OrderReceiveInformation';
-import OrderReceiveTime from '../OrderReceiveTime';
-import { navigate } from '@/utils';
 import { PATH_SCREEN } from '@/constants';
+import { OrderModel, UserModel } from '@/models';
+import { navigate } from '@/utils';
+import { FooterBarContent, OrderReceiveInformation, OrderReceiveTime } from '..';
 
 const OrderForm = () => {
   const formMethods = useForm<UserModel>();
@@ -27,7 +25,7 @@ const OrderForm = () => {
           <Box className='px-4 flex-1'>
             <FormProvider {...formMethods}>
               <VStack space={4} className='mt-4'>
-                <OrderRecipientInformation />
+                <OrderReceiveInformation />
                 <OrderReceiveTime />
               </VStack>
             </FormProvider>

@@ -3,7 +3,7 @@ import React from 'react';
 
 import { FormController } from '@/components';
 import { OrderModel, OrderReceivingTime } from '@/models';
-import { orderReceiveTimeData } from '../../data';
+import { orderReceiveTimeData } from '../OrderReceiveTime/data';
 import { SelectReceiveTimeTypeProps } from './type';
 
 const SelectReceiveTimeType = ({ orderReceivingTime }: SelectReceiveTimeTypeProps) => {

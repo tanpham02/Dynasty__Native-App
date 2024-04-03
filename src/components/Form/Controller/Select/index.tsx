@@ -10,6 +10,7 @@ const FormSelect = <T,>(props: FormSelectProps<T>) => {
   const { FormSelect } = FormUnController;
 
   const { control } = useFormContext<T>();
+  const colorError = '#ff0505';
 
   return (
     <Box>
@@ -32,12 +33,13 @@ const FormSelect = <T,>(props: FormSelectProps<T>) => {
               value={value as string}
               onChange={onChange}
               isFormController={isFormController}
+              borderColor={error ? colorError : '#e1e1e1'}
               {...props}
             />
             {/* FIXME: RENDER ERROR CODE IS REPEATED AT ALL FORM COMPONENT */}
             {error && (
               <Box className='flex-row items-center'>
-                <WarningOutlineIcon size='xs' color='#ff0505' />
+                <WarningOutlineIcon size='xs' color={colorError} />
                 <Text className='text-danger ml-1 font-nunito-600 text-[11.5px]'>{error.message}</Text>
               </Box>
             )}

@@ -6,9 +6,8 @@ import { TITLE_BY_ORDER_TYPES } from '@/constants/order';
 import { OrderModel } from '@/models';
 import { RootState } from '@/redux';
 // NOTE: MISSING INDEX FILE TO IMPORT ABOVE COMPONENT
-import OrderForm from './components/OrderForm';
+import { OrderForm } from './components';
 
-//FIXME: ONLY HAVE ONE components folder is allow in this folder. You are create too much it
 const OrderRecipientInformationScreen = () => {
   const orderInfo = useSelector<RootState, OrderModel>((state) => state.orderStore.order);
 

@@ -16,8 +16,11 @@ const FormSelectUnController = ({
   onChange,
 }: FormSelectUnControllerProps) => {
   const handleClearValueSelected = (cb?: (...event: any[]) => void) => {
-    cb?.('');
+    cb?.(null);
   };
+
+  console.log('value', value);
+  console.log('defaultValue', defaultValue);
 
   return (
     <Box className={`${wrapperClassName}`}>
