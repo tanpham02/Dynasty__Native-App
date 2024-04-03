@@ -3,8 +3,8 @@ import { useFormContext } from 'react-hook-form';
 import { Box, Text } from 'native-base';
 
 import { OrderModel, OrderReceivingTime } from '@/models';
-import SelectReceiveTime from './components/SelectReceiveTime';
-import SelectReceiveTimeType from './components/SelectReceiveTimeType';
+import SelectReceiveTime from '../SelectReceiveTime';
+import SelectReceiveTimeType from '../SelectReceiveTimeType';
 
 const OrderReceiveTime = () => {
   const { watch } = useFormContext<OrderModel>();

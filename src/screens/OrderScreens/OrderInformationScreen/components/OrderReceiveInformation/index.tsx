@@ -3,9 +3,8 @@ import { Box, Text } from 'native-base';
 import { useSelector } from 'react-redux';
 
 import { OrderModel, OrderTypes } from '@/models';
+import { RecipientInformation, RecipientAddressInformation } from '..';
 // NOTE: MISSING INDEX FILE TO IMPORT ABOVE COMPONENT
-import RecipientAddressInformation from './components/RecipientAddressInformation';
-import RecipientInformation from './components/RecipientInformation';
 
 const OrderRecipientInformation = () => {
   const orderInfo = useSelector<RootState, OrderModel>((state) => state.orderStore.order);
