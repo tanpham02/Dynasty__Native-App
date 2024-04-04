@@ -1,9 +1,8 @@
 import { Box, Pressable, Text, TextArea } from 'native-base';
-import React, { useState } from 'react';
-import { Animated, View } from 'react-native';
+import { useState } from 'react';
+import { View } from 'react-native';
 
 import { Svg } from '@/assets';
-// NOTE: I KNOW YOU ARE TOO BUSY BUT WHEN YOU ARE COMPLETE UI, FUTURE OR ANYTHING PLEASE SCROLL INTO HEAD OF FILE AND SORTING IMPORT. IT WILL MAKE OUR PROJECT ARE CLEAN AND PROFESSIONAL 😁😁😁
 
 const DeliveryInstruction = () => {
   const [isShowBody, setIsShowBody] = useState<boolean>(false);
@@ -73,10 +72,7 @@ const DeliveryInstruction = () => {
           {!isSaved && (
             <Pressable
               className='w-fit ml-auto bg-secondary py-2 px-4 rounded-lg mt-3'
-              //   NOTE: using shorthand code with remove bracket of below function
-              onPress={() => {
-                handleOpenOrCloseBodyDeliveryInstruction(true);
-              }}
+              onPress={() => handleOpenOrCloseBodyDeliveryInstruction(true)}
             >
               <Text className='text-white font-nunito-600 text-sm '>Lưu</Text>
             </Pressable>

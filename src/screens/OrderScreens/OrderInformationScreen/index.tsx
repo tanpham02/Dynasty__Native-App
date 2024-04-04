@@ -1,11 +1,9 @@
 import { useSelector } from 'react-redux';
 
 import { PrimaryLayout } from '@/components';
-// NOTE: REMEMBER TO IMPORT ANYTHING AT HIGHEST LEVEL OF EACH FOLDER
-import { TITLE_BY_ORDER_TYPES } from '@/constants/order';
+import { TITLE_BY_ORDER_TYPES } from '@/constants';
 import { OrderModel } from '@/models';
 import { RootState } from '@/redux';
-// NOTE: MISSING INDEX FILE TO IMPORT ABOVE COMPONENT
 import { OrderForm } from './components';
 
 const OrderRecipientInformationScreen = () => {

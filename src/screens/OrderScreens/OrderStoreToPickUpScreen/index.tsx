@@ -1,11 +1,9 @@
-import { Box, KeyboardAvoidingView, Text } from 'native-base';
-
-import FormFilter from './components/FormFilter';
-import StoreTabView from './components/StoreTabView';
-import { OrderStoreToPickUpScreenProps } from './type';
-import { PrimaryLayout } from '@/components';
+import { Box, KeyboardAvoidingView } from 'native-base';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-// NOTE: I KNOW YOU ARE TOO BUSY BUT WHEN YOU ARE COMPLETE UI, FUTURE OR ANYTHING PLEASE SCROLL INTO HEAD OF FILE AND SORTING IMPORT. IT WILL MAKE OUR PROJECT ARE CLEAN AND PROFESSIONAL 😁😁😁
+
+import { PrimaryLayout } from '@/components';
+import { FormFilter, StoreTabView } from './components';
+import { OrderStoreToPickUpScreenProps } from './type';
 
 const OrderStoreToPickUpScreen = ({}: OrderStoreToPickUpScreenProps) => {
   return (

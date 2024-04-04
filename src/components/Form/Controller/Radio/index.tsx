@@ -3,6 +3,7 @@ import React from 'react';
 import { Controller, Path, useFormContext } from 'react-hook-form';
 
 import { FormRadioProps } from './type';
+import { FieldLabel } from '@/components';
 
 const FormRadio = <T,>(props: FormRadioProps<T>) => {
   const { fieldName, defaultValue, children, wrapperClassName, className, label, isRequired } = props;
@@ -10,13 +11,7 @@ const FormRadio = <T,>(props: FormRadioProps<T>) => {
 
   return (
     <Box>
-      {/* FIXME: RENDER LABEL CODE IS REPEATED AT ALL FORM COMPONENT */}
-      {label && (
-        <Text className='text-[13.5px] font-nunito-700 text-gray-10 mr-1 block mb-0.5'>
-          {label}
-          {isRequired && <Text className='font-nunito-700 text-danger'>*</Text>}
-        </Text>
-      )}
+      <FieldLabel isRequired={isRequired} label={label} />
       <Controller
         control={control}
         name={fieldName as Path<T>}
@@ -32,7 +27,7 @@ const FormRadio = <T,>(props: FormRadioProps<T>) => {
             >
               {children}
             </Radio.Group>
-            {/* FIXME: RENDER ERROR CODE IS REPEATED AT ALL FORM COMPONENT */}
+
             {error && (
               <Box className='flex-row items-center'>
                 <WarningOutlineIcon size='xs' color='#ff0505' />

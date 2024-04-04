@@ -1,9 +1,9 @@
-import { widthScreen } from '@/utils';
 import { Box, Center, useColorModeValue } from 'native-base';
 import { useState } from 'react';
 import { Animated, Pressable, StatusBar } from 'react-native';
 import { SceneMap, TabView } from 'react-native-tab-view';
-// NOTE: I KNOW YOU ARE TOO BUSY BUT WHEN YOU ARE COMPLETE UI, FUTURE OR ANYTHING PLEASE SCROLL INTO HEAD OF FILE AND SORTING IMPORT. IT WILL MAKE OUR PROJECT ARE CLEAN AND PROFESSIONAL 😁😁😁
+
+import { widthScreen } from '@/utils';
 
 const StoreTabView = () => {
   const FirstRoute = () => (

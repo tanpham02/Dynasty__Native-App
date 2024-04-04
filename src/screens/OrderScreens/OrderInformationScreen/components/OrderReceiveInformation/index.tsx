@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 
 import { OrderModel, OrderTypes } from '@/models';
 import { RecipientInformation, RecipientAddressInformation } from '..';
-// NOTE: MISSING INDEX FILE TO IMPORT ABOVE COMPONENT
 
 const OrderRecipientInformation = () => {
   const orderInfo = useSelector<RootState, OrderModel>((state) => state.orderStore.order);

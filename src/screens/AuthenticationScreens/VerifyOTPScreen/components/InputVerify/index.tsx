@@ -3,17 +3,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import { NativeSyntheticEvent, TextInput, TextInputKeyPressEventData } from 'react-native';
 
 import { PATTERN } from '@/utils';
+import { InputVerifyState } from './type';
 
 const InputVerify = () => {
-  // FIXME: CREATE TYPE FOR BELOW STATE IT WILL LOOK BETTER
-  const [inputState, setInputState] = useState<
-    {
-      value?: string;
-      disable?: boolean;
-    }[]
-  >([]);
-  // FIXME: CREATE TYPE FOR BELOW STATE IT WILL LOOK BETTER
-  const [selection, setSelection] = useState<{ start: number; end: number }>({ start: 0, end: 0 });
+  const [inputState, setInputState] = useState<InputVerifyState[]>([]);
 
   const inputRefs = useRef<Array<TextInput>>([]);
 
@@ -75,4 +68,3 @@ const InputVerify = () => {
 };
 
 export default InputVerify;
-// FIXME: MISSING index file to export this component

@@ -1,10 +1,9 @@
 import { Box } from 'native-base';
-
 import { ScrollView } from 'react-native';
+
 import CartItem from '../CartItem';
 import { carts } from './data';
 import { CartItemProps } from './type';
-// NOTE: I KNOW YOU ARE TOO BUSY BUT WHEN YOU ARE COMPLETE UI, FUTURE OR ANYTHING PLEASE SCROLL INTO HEAD OF FILE AND SORTING IMPORT. IT WILL MAKE OUR PROJECT ARE CLEAN AND PROFESSIONAL 😁😁😁
 
 const CartLists = ({ onOpenCartItemDetailBottomSheet }: CartItemProps) => {
   return (
