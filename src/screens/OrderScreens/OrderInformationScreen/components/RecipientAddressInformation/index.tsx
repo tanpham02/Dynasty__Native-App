@@ -1,21 +1,26 @@
 import { FormController } from '@/components';
 import { OrderModel } from '@/models';
+import { VStack } from 'native-base';
+import { useFormContext } from 'react-hook-form';
 
 const RecipientAddressInformation = () => {
   const { FormInput, FormSelect } = FormController;
 
+  const { watch } = useFormContext();
+
+  console.log('parent value: ', watch('cityId'));
+
   return (
-    <>
+    <VStack space={3}>
       <FormSelect<OrderModel>
         label='Tỉnh/Thành'
         options={[
-          { label: 'Thành phố Hồ Chí Minh', value: 1 },
-          { label: 'Thành phố Hà Nội', value: 2 },
+          { label: 'Thành phố Hồ Chí Minh', value: '1' },
+          { label: 'Thành phố Hà Nội', value: '2' },
         ]}
         allowClear
         isRequired
         name='cityId'
-        wrapperClassName='mb-3'
         rules={{
           required: 'Tỉnh/Thành bắt buộc chọn',
         }}
@@ -28,7 +33,6 @@ const RecipientAddressInformation = () => {
         ]}
         isRequired
         name='districtId'
-        wrapperClassName='mb-3'
         rules={{
           required: 'Quận/Huyện bắt buộc chọn',
         }}
@@ -41,7 +45,6 @@ const RecipientAddressInformation = () => {
         ]}
         isRequired
         name='wardId'
-        wrapperClassName='mb-3'
         rules={{
           required: 'Phường/Xã bắt buộc chọn',
         }}
@@ -51,12 +54,11 @@ const RecipientAddressInformation = () => {
         label='Tên đường, số nhà'
         isRequired
         name='location'
-        wrapperClassName='mb-3'
         rules={{
           required: 'Tên đường, số nhà bắt buộc nhập',
         }}
       />
-    </>
+    </VStack>
   );
 };
 

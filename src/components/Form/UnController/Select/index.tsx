@@ -1,43 +1,31 @@
-import { Box, CheckIcon, Select, Text } from 'native-base';
+import { Box, CheckIcon, Select } from 'native-base';
 
-import { FormSelectUnControllerProps } from './type';
 import { Svg } from '@/assets';
 import FieldLabel from '../../FieldLabel';
+import { FormSelectUnControllerProps } from './type';
 
-const FormSelectUnController = ({
-  defaultValue,
-  value,
-  options,
-  allowClear,
-  label,
-  borderColor = '#e1e1e1',
-  className,
-  wrapperClassName,
-  isFormController = false,
-  onChange,
-}: FormSelectUnControllerProps) => {
-  const handleClearValueSelected = (cb?: (...event: any[]) => void) => {
-    cb?.(null);
-  };
-
-  console.log('value', value);
-  console.log('defaultValue', defaultValue);
-
+const FormSelectUnController = (props: FormSelectUnControllerProps) => {
+  const {
+    value,
+    options,
+    allowClear,
+    label,
+    borderColor = '#e1e1e1',
+    className,
+    wrapperClassName,
+    isFormController = false,
+    onChange,
+  } = props;
   return (
     <Box className={`${wrapperClassName}`}>
       {!isFormController && <FieldLabel label={label} />}
       <Select
         onValueChange={onChange}
-        selectedValue={(value as string) || (defaultValue as string)}
+        selectedValue={value as string}
         borderRadius='lg'
         dropdownIcon={
           value && allowClear ? (
-            <Svg.TimesCircle
-              width={19}
-              height={19}
-              className='text-gray-9 mr-3'
-              onPress={() => handleClearValueSelected(onChange)}
-            />
+            <Svg.TimesCircle width={19} height={19} className='text-gray-9 mr-3' onPress={() => onChange('')} />
           ) : (
             <Svg.ArrowDown width={20} height={20} className='text-gray-9 mr-3' />
           )
@@ -77,6 +65,7 @@ const FormSelectUnController = ({
         backgroundColor='#fafafa'
         placeholderTextColor='#999'
         className={`!rounded-lg px-4 h-[45px] text-sm font-nunito-600  ${className}`}
+        {...props}
       >
         {options.length ? (
           options.map((options, index) => <Select.Item key={index} label={options.label} value={options.value} />)

@@ -1,17 +1,17 @@
 import { FormController } from '@/components';
 import { OrderModel } from '@/models';
 import { PATTERN } from '@/utils';
+import { VStack } from 'native-base';
 
 const RecipientInformation = () => {
   const { FormInput } = FormController;
 
   return (
-    <>
+    <VStack space={3}>
       <FormInput<OrderModel>
         label='Họ và tên'
         isRequired
         name='fullName'
-        wrapperClassName='mb-3'
         className='capitalize'
         rules={{
           required: 'Họ và tên bắt buộc nhập',
@@ -22,7 +22,6 @@ const RecipientInformation = () => {
         isRequired
         name='phoneNumber'
         keyboardType='numeric'
-        wrapperClassName='mb-3'
         rules={{
           required: 'Số điện thoại bắt buộc nhập',
           pattern: {
@@ -31,7 +30,7 @@ const RecipientInformation = () => {
           },
         }}
       />
-    </>
+    </VStack>
   );
 };
 

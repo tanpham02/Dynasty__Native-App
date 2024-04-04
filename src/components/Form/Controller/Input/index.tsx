@@ -7,11 +7,11 @@ import { FormInputProps } from './type';
 import { FieldLabel } from '@/components';
 
 const FormInput = <T,>(props: FormInputProps<T>) => {
-  const { name, rules, className, label, isRequired, wrapperClassName } = props;
+  const { name, rules, className, label, isRequired, wrapperClassName, rootClassName } = props;
   const { control } = useFormContext<T>();
 
   return (
-    <Box>
+    <Box className={rootClassName}>
       <FieldLabel isRequired={isRequired} label={label} />
       <Controller
         control={control}

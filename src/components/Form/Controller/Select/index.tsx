@@ -2,25 +2,25 @@ import { Box, Text, WarningOutlineIcon } from 'native-base';
 import React from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 
-import { FormUnController, FieldLabel } from '@/components';
+import { FieldLabel, FormUnController } from '@/components';
 import { FormSelectProps } from './type';
 
 const FormSelect = <T,>(props: FormSelectProps<T>) => {
-  const { name, rules, label, isRequired, wrapperClassName, options, isFormController = true } = props;
+  const { name, rules, label, isRequired, wrapperClassName, options, isFormController = true, className } = props;
   const { FormSelect } = FormUnController;
 
   const { control } = useFormContext<T>();
   const colorError = '#ff0505';
 
   return (
-    <Box>
+    <Box className={`${wrapperClassName}`}>
       <FieldLabel isRequired={isRequired} label={label} />
       <Controller
         control={control}
         name={name}
         rules={rules}
         render={({ field: { onChange, value }, fieldState: { error } }) => (
-          <Box className={`flex flex-col gap-[.2px] ${wrapperClassName}`}>
+          <Box className={`flex flex-col gap-[.2px] ${className}`}>
             <FormSelect
               options={options}
               name={name}

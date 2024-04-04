@@ -6,11 +6,11 @@ import { FormRadioProps } from './type';
 import { FieldLabel } from '@/components';
 
 const FormRadio = <T,>(props: FormRadioProps<T>) => {
-  const { fieldName, defaultValue, children, wrapperClassName, className, label, isRequired } = props;
+  const { fieldName, defaultValue, children, wrapperClassName, className, label, isRequired, rootClassName } = props;
   const { control } = useFormContext<T>();
 
   return (
-    <Box>
+    <Box className={rootClassName}>
       <FieldLabel isRequired={isRequired} label={label} />
       <Controller
         control={control}
