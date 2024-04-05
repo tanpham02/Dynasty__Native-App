@@ -1,16 +1,15 @@
-import { IRadioGroupProps, InterfaceRadioProps } from 'native-base/lib/typescript/components/primitives/Radio/types';
-import { HTMLProps, ReactNode } from 'react';
-import { FieldPath, FieldValues, RegisterOptions } from 'react-hook-form';
+import { IRadioGroupProps } from 'native-base/lib/typescript/components/primitives/Radio/types';
+import { ReactNode } from 'react';
+import { FieldPath, FieldValues } from 'react-hook-form';
+
+import { FormBaseProps } from '@/types';
 
 export interface FormRadioProps<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
-> extends IRadioGroupProps {
+> extends IRadioGroupProps,
+    FormBaseProps<TFieldValues, TName> {
   fieldName: TName;
   children: ReactNode;
-  label?: string;
-  isRequired?: boolean;
-  rules?: Omit<RegisterOptions<TFieldValues, TName>, 'valueAsNumber' | 'valueAsDate' | 'setValueAs' | 'disabled'>;
-  wrapperClassName?: HTMLProps<HTMLElement>['className'];
-  className?: HTMLProps<HTMLElement>['className'];
+  name: TName; // conflict with field name of IRadioGroupProps
 }

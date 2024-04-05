@@ -1,9 +1,7 @@
 import { Box, Image, Text } from 'native-base';
 
 import { ButtonPrimaryAnimated, FooterBar } from '@/components';
-// NOTE: REMEMBER TO IMPORT ANYTHING AT HIGHEST LEVEL OF EACH FOLDER
-import { formatCurrencyByLocale } from '@/utils/numberUtils';
-
+import { formatCurrencyByLocale } from '@/utils';
 import { FooterBarContentProps } from './type';
 
 const FooterBarContent = ({ onOpenModalShippingMethod }: FooterBarContentProps) => {

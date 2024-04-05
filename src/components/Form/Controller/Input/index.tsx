@@ -4,20 +4,15 @@ import { Controller, useFormContext } from 'react-hook-form';
 import { TextInput } from 'react-native';
 
 import { FormInputProps } from './type';
+import { FieldLabel } from '@/components';
 
 const FormInput = <T,>(props: FormInputProps<T>) => {
-  const { name, rules, className, label, isRequired, wrapperClassName } = props;
+  const { name, rules, className, label, isRequired, wrapperClassName, rootClassName } = props;
   const { control } = useFormContext<T>();
 
   return (
-    <Box>
-      {/* FIXME: RENDER LABEL CODE IS REPEATED AT ALL FORM COMPONENT */}
-      {label && (
-        <Text className='text-[13.5px] font-nunito-700 text-gray-10 mr-1 block mb-0.5'>
-          {label}
-          {isRequired && <Text className='font-nunito-700 text-danger'> *</Text>}
-        </Text>
-      )}
+    <Box className={rootClassName}>
+      <FieldLabel isRequired={isRequired} label={label} />
       <Controller
         control={control}
         name={name}
@@ -35,7 +30,6 @@ const FormInput = <T,>(props: FormInputProps<T>) => {
               className={`border rounded-lg px-4 h-[45px] bg-gray-13 text-sm font-nunito-600 ${error ? ' border-danger' : 'border-gray-12'} ${className}`}
               {...props}
             />
-            {/* FIXME: RENDER ERROR CODE IS REPEATED AT ALL FORM COMPONENT */}
             {error && (
               <Box className='flex-row items-center'>
                 <WarningOutlineIcon size='xs' color='#ff0505' />

@@ -9,3 +9,4 @@ export { default as RelatedProductsFlatList } from './RelatedProductsFlatList';
 export { default as TotalPayment } from './TotalPayment';
 export { default as CartItemDetailBottomSheet } from './CartItemDetailBottomSheet';
 export { default as ShippingMethodModal } from './ShippingMethodBottomSheet';
+export { default as TotalPaymentRow } from './TotalPaymentRow';

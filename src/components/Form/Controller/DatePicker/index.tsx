@@ -5,6 +5,7 @@ import DatePicker from 'react-native-neat-date-picker';
 
 import { DATE_FORMAT_DDMMYYYY, formatDate } from '@/utils';
 import { FormDatePickerProps } from './type';
+import { FieldLabel } from '@/components';
 
 const FormDatePicker = <T,>(props: FormDatePickerProps<T>) => {
   const secondaryColor = '#e8002a';
@@ -36,13 +37,7 @@ const FormDatePicker = <T,>(props: FormDatePickerProps<T>) => {
 
   return (
     <Box className={wrapperClassName}>
-      {/* FIXME: RENDER LABEL CODE IS REPEATED AT ALL FORM COMPONENT */}
-      {label && (
-        <Text className='text-[13.5px] font-nunito-700 text-gray-10 mr-1 mb-0.5'>
-          {label}
-          {isRequired && <Text className='font-nunito-700 text-danger'>*</Text>}
-        </Text>
-      )}
+      <FieldLabel isRequired={isRequired} label={label} />
       <Pressable
         onPress={toggleOpen}
         className='bg-gray-13 h-[45px] justify-center px-4 border border-gray-12 rounded-lg'
@@ -51,7 +46,6 @@ const FormDatePicker = <T,>(props: FormDatePickerProps<T>) => {
           {currentDatePicked ? formatDate(currentDatePicked as string, DATE_FORMAT_DDMMYYYY) : placeholder}
         </Text>
       </Pressable>
-      {/* FIXME: RENDER LABEL CODE IS REPEATED AT ALL FORM COMPONENT */}
       {datePickerState?.error && (
         <Box className='flex-row items-center'>
           <WarningOutlineIcon size='xs' color='#ff0505' />

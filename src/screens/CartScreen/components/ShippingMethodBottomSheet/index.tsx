@@ -1,16 +1,15 @@
 import { Actionsheet, Box, Text } from 'native-base';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { ButtonPrimary } from '@/components';
-import { PATH_SCREEN } from '@/constants/pathName';
+import { PATH_SCREEN } from '@/constants';
+import { OrderModel, OrderTypes } from '@/models';
+import { AppDispatch, setOrder } from '@/redux';
 import { navigate } from '@/utils';
-import ShippingMethodBottomSheetContent from './components/ShippingMethodBottomSheetContent';
+import ShippingMethodBottomSheetContent from '../ShippingMethodBottomSheetContent';
 import { shippingMethodData } from './data';
 import { ShippingMethodBottomSheetProps } from './type';
-import { OrderModel, OrderTypes } from '@/models';
-import { useDispatch } from 'react-redux';
-import { AppDispatch, setOrder } from '@/redux';
-// FIXME: REMEMBER TO SORTING IMPORT
 
 const ShippingMethodBottomSheet = ({ visible, onClose }: ShippingMethodBottomSheetProps) => {
   const dispatch = useDispatch<AppDispatch>();
@@ -36,8 +35,8 @@ const ShippingMethodBottomSheet = ({ visible, onClose }: ShippingMethodBottomShe
           {shippingMethodData.map((shippingMethodItem) => (
             <ShippingMethodBottomSheetContent
               {...shippingMethodItem}
-              shippingMethodSelected={shippingMethodSelected}
-              setShippingMethodSelected={setShippingMethodSelected}
+              isActive={shippingMethodSelected === shippingMethodItem.type}
+              onSelect={() => setShippingMethodSelected(shippingMethodItem.type)}
             />
           ))}
         </Box>

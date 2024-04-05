@@ -4,8 +4,7 @@ import { Pressable } from 'react-native';
 
 import { Svg } from '@/assets';
 import styles from '@/styles';
-// NOTE: REMEMBER TO IMPORT ANYTHING AT HIGHEST LEVEL OF EACH FOLDER
-import { formatCurrencyByLocale } from '@/utils/numberUtils';
+import { formatCurrencyByLocale } from '@/utils';
 import { CartItemProps } from './type';
 
 const CartItem = ({
@@ -41,8 +40,8 @@ const CartItem = ({
           alt='image'
         />
       </Box>
-      {/* NOTE: UNNECESSARY className: flex flex-col is default in react native */}
-      <Box className='flex flex-col items-start flex-1'>
+
+      <Box className='items-start flex-1'>
         <Box className='mb-5 flex-1'>
           <Text className='text-gray-10 font-nunito-700 text-[13.5px]'>{name}</Text>
           <Text className='text-gray-10 font-nunito-600 text-[10px]'>{extendName}</Text>

@@ -1,10 +1,9 @@
 import { RootState } from '@/redux';
-import { Box, Text } from 'native-base';
+import { Box, Text, VStack } from 'native-base';
 import { useSelector } from 'react-redux';
 
 import { OrderModel, OrderTypes } from '@/models';
-import { RecipientInformation, RecipientAddressInformation } from '..';
-// NOTE: MISSING INDEX FILE TO IMPORT ABOVE COMPONENT
+import { RecipientAddressInformation, RecipientInformation } from '..';
 
 const OrderRecipientInformation = () => {
   const orderInfo = useSelector<RootState, OrderModel>((state) => state.orderStore.order);
@@ -12,10 +11,10 @@ const OrderRecipientInformation = () => {
   return (
     <Box>
       <Text className='text-gray-10 font-nunito-700 text-base mt-1'>Thông tin nhận hàng</Text>
-      <Box className='mt-2'>
+      <VStack space={3} className='mt-2'>
         <RecipientInformation />
         {orderInfo.orderType === OrderTypes.ORDER_DELIVERING && <RecipientAddressInformation />}
-      </Box>
+      </VStack>
     </Box>
   );
 };

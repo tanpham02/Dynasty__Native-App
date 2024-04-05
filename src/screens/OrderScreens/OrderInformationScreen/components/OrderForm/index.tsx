@@ -7,8 +7,12 @@ import { OrderModel, UserModel } from '@/models';
 import { navigate } from '@/utils';
 import { FooterBarContent, OrderReceiveInformation, OrderReceiveTime } from '..';
 
+const defaultValues: OrderModel = {
+  cityId: '1',
+};
+
 const OrderForm = () => {
-  const formMethods = useForm<UserModel>();
+  const formMethods = useForm<OrderModel>({ defaultValues });
   const {
     handleSubmit,
     formState: { errors },
@@ -24,7 +28,7 @@ const OrderForm = () => {
         <KeyboardAwareScrollView className='flex-1' showsVerticalScrollIndicator={false} scrollEventThrottle={16}>
           <Box className='px-4 flex-1'>
             <FormProvider {...formMethods}>
-              <VStack space={4} className='mt-4'>
+              <VStack space={5} className='mt-4'>
                 <OrderReceiveInformation />
                 <OrderReceiveTime />
               </VStack>
@@ -32,8 +36,8 @@ const OrderForm = () => {
           </Box>
         </KeyboardAwareScrollView>
       </KeyboardAvoidingView>
-      {/* PASS TWO PROPS FOR BELOW COMPONENT IS UNNECESSARY. USE ONLY ONE PROPS FOR BOTH ex: onSubmit or any */}
-      <FooterBarContent handleSubmit={handleSubmit} submitHandler={submitHandler} />
+
+      <FooterBarContent submitHandler={handleSubmit(submitHandler)} />
     </>
   );
 };

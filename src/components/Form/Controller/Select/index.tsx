@@ -2,31 +2,25 @@ import { Box, Text, WarningOutlineIcon } from 'native-base';
 import React from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 
-import { FormUnController } from '@/components';
+import { FieldLabel, FormUnController } from '@/components';
 import { FormSelectProps } from './type';
 
 const FormSelect = <T,>(props: FormSelectProps<T>) => {
-  const { name, rules, label, isRequired, wrapperClassName, options, isFormController = true } = props;
+  const { name, rules, label, isRequired, wrapperClassName, options, isFormController = true, className } = props;
   const { FormSelect } = FormUnController;
 
   const { control } = useFormContext<T>();
   const colorError = '#ff0505';
 
   return (
-    <Box>
-      {/* FIXME: RENDER LABEL CODE IS REPEATED AT ALL FORM COMPONENT */}
-      {label && (
-        <Text className='text-[13.5px] font-nunito-700 text-gray-10 mr-1 block mb-0.5'>
-          {label}
-          {isRequired && <Text className='font-nunito-700 text-danger'> *</Text>}
-        </Text>
-      )}
+    <Box className={`${wrapperClassName}`}>
+      <FieldLabel isRequired={isRequired} label={label} />
       <Controller
         control={control}
         name={name}
         rules={rules}
         render={({ field: { onChange, value }, fieldState: { error } }) => (
-          <Box className={`flex flex-col gap-[.2px] ${wrapperClassName}`}>
+          <Box className={`flex flex-col gap-[.2px] ${className}`}>
             <FormSelect
               options={options}
               name={name}
@@ -36,7 +30,7 @@ const FormSelect = <T,>(props: FormSelectProps<T>) => {
               borderColor={error ? colorError : '#e1e1e1'}
               {...props}
             />
-            {/* FIXME: RENDER ERROR CODE IS REPEATED AT ALL FORM COMPONENT */}
+
             {error && (
               <Box className='flex-row items-center'>
                 <WarningOutlineIcon size='xs' color={colorError} />
