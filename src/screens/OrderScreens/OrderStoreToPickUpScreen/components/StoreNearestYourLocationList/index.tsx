@@ -7,7 +7,7 @@ import { heightScreen } from '@/utils';
 
 const StoreNearestYourLocationList = ({}: StoreNearestYourLocationListProps) => {
   return (
-    <Box className='mt-3'>
+    <Box className='mt-3 max-h-[500px]'>
       <FlatList
         data={data}
         renderItem={({ index, item }) => <StoreNearestYourLocationItem key={index} {...item} />}

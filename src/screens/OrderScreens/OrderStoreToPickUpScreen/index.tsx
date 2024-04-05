@@ -14,17 +14,14 @@ const OrderStoreToPickUpScreen = ({}: OrderStoreToPickUpScreenProps) => {
 
   return (
     <PrimaryLayout statusBarBackgroundColor='white' containerClass='bg-white' titleScreen='Chọn cửa hàng đến lấy'>
-      <KeyboardAvoidingView className='flex-1'>
-        <KeyboardAwareScrollView className='flex-1' showsVerticalScrollIndicator={false}>
-          <Box className='mt-1 px-4'>
-            <FormProvider {...formMethods}>
-              <FormFilter />
-              <StoreTabViews />
-              <StoreNearestYourLocationList />
-            </FormProvider>
-          </Box>
-        </KeyboardAwareScrollView>
-      </KeyboardAvoidingView>
+      <Box className='mt-1 px-4 flex-1'>
+        <FormProvider {...formMethods}>
+          <FormFilter />
+          <StoreTabViews />
+          {/* <StoreNearestYourLocationList /> */}
+        </FormProvider>
+      </Box>
+
       <FooterBarContent submitHandler={handleSubmit(onSubmit)} />
     </PrimaryLayout>
   );
