@@ -1,4 +1,5 @@
 export interface UserAddressModel {
+    _id?: string
     city?: string,
     cityId?: string,
     district?: string,

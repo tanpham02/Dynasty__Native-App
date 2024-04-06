@@ -1,12 +1,26 @@
 import * as ApiURL from "@/constants"
 import { UserAddressResponse, UserModel } from "@/models"
 import axiosService from "./axiosService"
+import { tokenManager } from "App"
 
 const userService = {
     getInfoById: async (userId: string): Promise<UserModel> => {
         return (await axiosService())({
             baseURL: `${ApiURL.API_CUSTOMER_URL}/${userId}`,
             method: "GET",
+        })
+            .then(res => res.data)
+            .catch(err => {
+                throw err
+            })
+    },
+    getInfo: async (): Promise<UserModel> => {
+        return (await axiosService())({
+            baseURL: ApiURL.API_CUSTOMER_INFO_URL,
+            method: "POST",
+            data: {
+                accessToken: tokenManager.getAccessToken() || ''
+            }
         })
             .then(res => res.data)
             .catch(err => {

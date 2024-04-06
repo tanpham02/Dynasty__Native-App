@@ -25,6 +25,7 @@ export const API_BANNER_SEARCH_URL = combineUrl("banners", "search")
 
 // CUSTOMER URL
 export const API_CUSTOMER_URL = combineUrl("customers")
+export const API_CUSTOMER_INFO_URL = combineUrl("customers", "customer-info")
 
 //CUSTOMER ADDRESS URL
 export const API_CUSTOMER_ADDRESS_URL = combineUrl("customers", "customer-address")

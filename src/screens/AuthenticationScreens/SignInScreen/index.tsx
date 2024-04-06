@@ -70,6 +70,7 @@ const SignInScreen = () => {
         const { accessToken, refreshToken, customerInfo } = await authenticationService.signInWithGoogle({
           accessToken: googleAuthenticationResponse.authentication.accessToken,
         });
+        console.log('🚀 ~ signInWithGoogle ~ accessToken:', accessToken);
 
         tokenManager.setAccessToken(accessToken);
         tokenManager.setRefreshToken(refreshToken);

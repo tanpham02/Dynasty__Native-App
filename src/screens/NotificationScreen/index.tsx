@@ -30,7 +30,6 @@ const NotificationScreen = () => {
         previewOpenValue={-40}
         previewOpenDelay={3000}
         showsVerticalScrollIndicator={false}
-        showsHorizontalScrollIndicator={false}
         renderItem={() => <NotificationItem />}
         data={Array.from({ length: 10 }).fill({})}
         keyExtractor={(_, index) => index.toString()}

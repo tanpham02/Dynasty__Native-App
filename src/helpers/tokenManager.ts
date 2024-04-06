@@ -38,7 +38,6 @@ class TokenManager {
 
     public async setAccessToken(newAccessToken: string): Promise<void> {
         this.accessToken = newAccessToken;
-
         await AsyncStorage.setItem(ACCESS_TOKEN_KEY, newAccessToken);
     }
 

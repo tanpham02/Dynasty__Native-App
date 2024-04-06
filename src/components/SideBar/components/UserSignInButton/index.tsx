@@ -32,12 +32,12 @@ const UserSignInButton = () => {
       <Box className='flex-row items-center mb-2'>
         <Box
           style={styles.shadowSecondary}
-          className='bg-secondary w-10 h-10 rounded-lg items-center justify-center m-2 overflow-hidden'
+          className='bg-secondary w-10 h-10 rounded-full items-center justify-center m-2 overflow-hidden'
         >
           {isAuthenticated ? (
             <>
               {user?.avatar ? (
-                <Image source={{ uri: getFullImageUrl(user?.avatar) }} className='w-full h-full' />
+                <Image source={{ uri: getFullImageUrl(user?.avatar) }} className='w-full h-full' alt='Avatar' />
               ) : (
                 <Text className='text-white text-base font-nunito-700'>{user?.fullName?.charAt(0)}</Text>
               )}

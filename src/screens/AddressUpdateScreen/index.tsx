@@ -1,4 +1,4 @@
-import { Box, ScrollView } from 'native-base';
+import { Box, ScrollView, VStack } from 'native-base';
 import { useEffect, useMemo } from 'react';
 import { getDistricts, getProvinces, getWards } from 'vietnam-provinces';
 import { FormProvider, useForm } from 'react-hook-form';
@@ -10,7 +10,9 @@ import { PATH_SCREEN } from '@/constants';
 import { UserService } from '@/services';
 import { PATTERN, navigate } from '@/utils';
 import { UserAddressModel, UserAddressRequest, UserModel } from '@/models';
-import { ButtonPrimary, FormInput, FormSelect, GlobalLoading, PrimaryLayout } from '@/components';
+import { ButtonPrimary, GlobalLoading, PrimaryLayout, FormController } from '@/components';
+
+const { FormInput, FormSelect } = FormController;
 
 const AddressUpdateScreen = () => {
   const user = useSelector<RootState, UserModel>((state) => state.userStore.user);
@@ -56,8 +58,13 @@ const AddressUpdateScreen = () => {
       const formData = new FormData();
 
       const dataSubmit: UserAddressRequest = {
-        customerId: user?._id,
-        addressItem: data,
+        customerId: '6610186d6861b729f3d2ffc5',
+        addressItem: {
+          ...data,
+          cityId: Number(data.cityId),
+          districtId: Number(data.districtId),
+          wardId: Number(data.wardId),
+        },
       };
       console.log('🚀 ~ onCreateOrUpdateDeliveryAddress ~ dataSubmit:', dataSubmit);
 
@@ -81,79 +88,71 @@ const AddressUpdateScreen = () => {
   };
 
   return (
-    <PrimaryLayout containerClass='bg-third' titleScreen='Thêm địa chỉ gia hàng'>
+    <PrimaryLayout containerClass='bg-white' titleScreen='Thêm địa chỉ gia hàng'>
       <ScrollView className='flex-1 -mt-4'>
         <Box className='flex-1 p-4 my-4'>
           <FormProvider {...forms}>
-            <FormInput<UserAddressModel>
-              isRequired
-              name='fullName'
-              label='Họ và tên'
-              className='mb-2'
-              rules={{
-                required: 'Vui lòng nhập tên người nhận hàng!',
-              }}
-            />
-            <FormInput<UserAddressModel>
-              isRequired
-              name='phoneNumber'
-              label='Số điện thoại'
-              className='mb-2'
-              rules={{
-                required: 'Vui lòng nhập số điện thoại người nhận hàng!',
-                pattern: {
-                  value: PATTERN.PHONE_NUMBER,
-                  message: 'Số điện thoại không hợp lệ!',
-                },
-              }}
-            />
-            <FormSelect<UserAddressModel>
-              isRequired
-              name='cityId'
-              wrapperClassName='mb-2'
-              label='Tỉnh / Thành phố'
-              options={cities?.map((city) => ({ label: city.name, value: city.code }))}
-              rules={{
-                required: 'Vui lòng chọn tỉnh, thành phố!',
-              }}
-            />
-            <FormSelect<UserAddressModel>
-              isRequired
-              name='districtId'
-              wrapperClassName='mb-2'
-              label='Quận / Huyện'
-              isDisabled={!currentDeliveryData?.cityId}
-              options={districts?.map((district) => ({ label: district.name, value: district.code }))}
-              rules={{
-                required: 'Vui lòng chọn quận, huyện!',
-              }}
-            />
-            <FormSelect<UserAddressModel>
-              isRequired
-              name='wardId'
-              wrapperClassName='mb-2'
-              label='Phường / Xã / Thị Trấn'
-              isDisabled={!currentDeliveryData?.districtId}
-              options={wards?.map((ward) => ({ label: ward.name, value: ward.code }))}
-              rules={{
-                required: 'Vui lòng chọn phường, xã, thị trấn!',
-              }}
-            />
-            <FormInput<UserAddressModel>
-              isRequired
-              name='location'
-              label='Số nhà, tên đường'
-              rules={{
-                required: 'Vui lòng nhập số nhà tên đường!',
-              }}
-            />
+            <VStack space={3}>
+              <FormInput<UserAddressModel>
+                isRequired
+                name='fullName'
+                label='Họ và tên'
+                rules={{
+                  required: 'Vui lòng nhập tên người nhận hàng!',
+                }}
+              />
+              <FormInput<UserAddressModel>
+                isRequired
+                name='phoneNumber'
+                label='Số điện thoại'
+                rules={{
+                  required: 'Vui lòng nhập số điện thoại người nhận hàng!',
+                  pattern: {
+                    value: PATTERN.PHONE_NUMBER,
+                    message: 'Số điện thoại không hợp lệ!',
+                  },
+                }}
+              />
+              <FormSelect<UserAddressModel>
+                isRequired
+                name='cityId'
+                label='Tỉnh / Thành phố'
+                options={cities?.map((city) => ({ label: city.name, value: city.code }))}
+                rules={{
+                  required: 'Vui lòng chọn tỉnh, thành phố!',
+                }}
+              />
+              <FormSelect<UserAddressModel>
+                isRequired
+                name='districtId'
+                label='Quận / Huyện'
+                isDisabled={!currentDeliveryData?.cityId}
+                options={districts?.map((district) => ({ label: district.name, value: district.code }))}
+                rules={{
+                  required: 'Vui lòng chọn quận, huyện!',
+                }}
+              />
+              <FormSelect<UserAddressModel>
+                isRequired
+                name='wardId'
+                label='Phường / Xã / Thị Trấn'
+                isDisabled={!currentDeliveryData?.districtId}
+                options={wards?.map((ward) => ({ label: ward.name, value: ward.code }))}
+                rules={{
+                  required: 'Vui lòng chọn phường, xã, thị trấn!',
+                }}
+              />
+              <FormInput<UserAddressModel>
+                isRequired
+                name='location'
+                label='Số nhà, tên đường'
+                rules={{
+                  required: 'Vui lòng nhập số nhà tên đường!',
+                }}
+              />
+              <ButtonPrimary title='Lưu' color='danger' onPress={handleSubmit(onCreateOrUpdateDeliveryAddress)} />
+            </VStack>
           </FormProvider>
-          <ButtonPrimary
-            title='Lưu'
-            color='danger'
-            containerClass='mt-4'
-            onPress={handleSubmit(onCreateOrUpdateDeliveryAddress)}
-          />
         </Box>
       </ScrollView>
     </PrimaryLayout>

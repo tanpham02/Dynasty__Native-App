@@ -100,3 +100,4 @@
 - https://dev.to/sathishskdev/part-4-writing-clean-and-efficient-react-code-best-practices-and-optimization-techniques-423d
 - https://betterprogramming.pub/21-best-practices-for-a-clean-react-project-df788a682fb
 - https://dev.to/sakhnyuk/300-react-interview-questions-2ko4#table-of-contents
+- https://blog.bitsrc.io/react-design-patterns-for-2024-5f2696868222

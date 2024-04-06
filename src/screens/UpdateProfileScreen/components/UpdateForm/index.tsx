@@ -1,17 +1,18 @@
-import { Box } from 'native-base';
+import { VStack } from 'native-base';
 
+import { FormController } from '@/components';
 import { UserModel } from '@/models';
 import { PATTERN } from '@/utils';
-import { FormDatePicker, FormInput } from '@/components';
+
+const { FormInput, FormDatePicker } = FormController;
 
 const UpdateForm = () => {
   return (
-    <>
+    <VStack space={3}>
       <FormInput<UserModel>
         isRequired
         name='fullName'
         label='Họ và tên'
-        wrapperClassName='mb-2'
         rules={{
           required: 'Vui lòng nhập họ và tên của bạn!',
         }}
@@ -21,7 +22,6 @@ const UpdateForm = () => {
         name='phoneNumber'
         label='Số điện thoại'
         keyboardType='number-pad'
-        wrapperClassName='mb-2'
         rules={{
           required: 'Vui lòng nhập số điện thoại của bạn!',
           pattern: {
@@ -33,7 +33,6 @@ const UpdateForm = () => {
       <FormInput<UserModel>
         name='email'
         label='Email'
-        wrapperClassName='mb-2'
         rules={{
           pattern: {
             value: PATTERN.EMAIL,
@@ -42,7 +41,7 @@ const UpdateForm = () => {
         }}
       />
       <FormDatePicker<UserModel> name='birthday' label='Ngày sinh' placeholder='DD / MM / YYYY' />
-    </>
+    </VStack>
   );
 };
 

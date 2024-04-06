@@ -1,21 +1,32 @@
+import { useEffect } from 'react';
 import { Box } from 'native-base';
 import { FormProvider, useForm } from 'react-hook-form';
 import { showMessage } from 'react-native-flash-message';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import { UserModel } from '@/models';
 import { MyAvatar, UpdateForm } from './components';
-import { AppDispatch, getUserInfo, updateUserInfo } from '@/redux';
 import { ButtonPrimary, GlobalLoading, PrimaryLayout } from '@/components';
+import { AppDispatch, RootState, getUserInfo, updateUserInfo } from '@/redux';
 
 const UpdateProfileScreen = () => {
   const dispatch = useDispatch<AppDispatch>();
 
+  const user = useSelector<RootState, UserModel>((state) => state.userStore.user);
+
   const forms = useForm<UserModel>();
 
-  const { handleSubmit } = forms;
+  const { handleSubmit, reset } = forms;
+
+  useEffect(() => {
+    if (user && Object.keys(user).length > 0) {
+      reset({ ...user });
+    }
+  }, [JSON.stringify(user)]);
 
   const onUpdateUserInfo = async (data: UserModel) => {
+    console.log('🚀 ~ onUpdateUserInfo ~ data:', data);
     try {
       GlobalLoading.show();
 
@@ -43,20 +54,22 @@ const UpdateProfileScreen = () => {
 
   return (
     <PrimaryLayout titleScreen='Cập nhật tài khoản'>
-      <Box className='px-3 space-y-4'>
-        <MyAvatar />
-        <Box className='bg-white rounded-lg p-4'>
-          <FormProvider {...forms}>
-            <UpdateForm />
-          </FormProvider>
-          <ButtonPrimary
-            title='Lưu thay đổi'
-            color='danger'
-            containerClass='mt-4'
-            onPress={handleSubmit(onUpdateUserInfo)}
-          />
+      <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
+        <Box className='px-3 space-y-4'>
+          <MyAvatar />
+          <Box className='bg-white rounded-lg p-4'>
+            <FormProvider {...forms}>
+              <UpdateForm />
+            </FormProvider>
+            <ButtonPrimary
+              title='Lưu thay đổi'
+              color='danger'
+              containerClass='mt-4'
+              onPress={handleSubmit(onUpdateUserInfo)}
+            />
+          </Box>
         </Box>
-      </Box>
+      </KeyboardAwareScrollView>
     </PrimaryLayout>
   );
 };

@@ -11,6 +11,7 @@ import { UserModel } from '@/models';
 import { AppDispatch, RootState, getUserInfo } from '@/redux';
 import { UserService } from '@/services';
 import { getFullImageUrl } from '@/utils';
+import { tokenManager } from 'App';
 
 const MyAvatar = () => {
   const dispatch = useDispatch<AppDispatch>();

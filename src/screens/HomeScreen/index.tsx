@@ -6,11 +6,11 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useDispatch } from 'react-redux';
 
 import styles from '@/styles';
+import { tokenManager } from 'App';
+import { AppDispatch, getUserInfo } from '@/redux';
 import { RefreshControl, SideBar } from '@/components';
 import { useFetchAllBanner, useFetchAllCategories } from '@/hooks';
 import { BuyAction, BuyQueueTutorial, Header, HomeCategory, HomeSlider, ProductList } from './components';
-import { AppDispatch, getUserInfo } from '@/redux';
-import { tokenManager } from 'App';
 
 type HomeScreenRefType = {
   toggleOpenSideBar(): void;
@@ -44,14 +44,8 @@ const HomeScreen = () => {
   }, [isFocus, isOpenSideBar]);
 
   useEffect(() => {
-    dispatch(getUserInfo());
+    if (isAuthenticated) dispatch(getUserInfo());
   }, []);
-
-  //   useEffect(() => {
-  //     if (isAuthenticated) {
-  //       enableBiometrics();
-  //     }
-  //   }, [isAuthenticated]);
 
   const toggleOpenSideBar = () => {
     Animated.timing(sidebarAniValue, {

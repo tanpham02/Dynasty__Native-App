@@ -13,7 +13,7 @@ const MyProfileCard = () => {
       <Avatar
         size='lg'
         source={{ uri: getFullImageUrl(user?.avatar) }}
-        className='items-center justify-center rounded-full relative'
+        className='items-center justify-center rounded-full relative bg-secondary'
       >
         {user?.fullName?.charAt(0)}
         <Avatar.Badge />
