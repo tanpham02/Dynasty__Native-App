@@ -1,9 +1,9 @@
-import { Box, Center, HStack } from 'native-base';
+import { HStack } from 'native-base';
 import { useState } from 'react';
 import { StatusBar } from 'react-native';
 import { NavigationState, SceneMap, SceneRendererProps, TabView } from 'react-native-tab-view';
 
-import { heightScreen, widthScreen } from '@/utils';
+import { widthScreen } from '@/utils';
 import { StoreNearestYourLocationList, StoreTabView } from '..';
 
 const StoreTabViews = () => {
@@ -11,8 +11,8 @@ const StoreTabViews = () => {
     width: widthScreen,
   };
   const renderScene = SceneMap({
-    first: () => <></>,
-    second: () => <></>,
+    first: StoreNearestYourLocationList,
+    second: StoreNearestYourLocationList,
   });
 
   const [activeTabView, setActiveTabView] = useState(0);
