@@ -24,6 +24,7 @@ import {
   VerifyOTPScreen,
   OrderInformationScreen,
   OrderStoreToPickUpScreen,
+  OrderPaymentResultScreen,
 } from '@/screens';
 import { Platform } from 'react-native';
 
@@ -84,6 +85,12 @@ const RootStackNavigator = () => {
       <RootStack.Screen
         name={PATH_SCREEN.ORDER_STORE_TO_PICK_UP_SCREEN}
         component={OrderStoreToPickUpScreen}
+        options={usePlatformAppropriateOption}
+      />
+
+      <RootStack.Screen
+        name={PATH_SCREEN.ORDER_PAYMENT_RESULT_SCREEN}
+        component={OrderPaymentResultScreen}
         options={usePlatformAppropriateOption}
       />
 

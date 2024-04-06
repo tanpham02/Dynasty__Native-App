@@ -20,6 +20,7 @@ export { default as VerifyOTPScreen } from './AuthenticationScreens/VerifyOTPScr
 export { default as CartScreen } from './CartScreen';
 export { default as OrderInformationScreen } from './OrderScreens/OrderInformationScreen';
 export { default as OrderStoreToPickUpScreen } from './OrderScreens/OrderStoreToPickUpScreen';
+export { default as OrderPaymentResultScreen } from './OrderScreens/OrderPaymentResultScreen';
 
 // import { lazy } from "react";
 

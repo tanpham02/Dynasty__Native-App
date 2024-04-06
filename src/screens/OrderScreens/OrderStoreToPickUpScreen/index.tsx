@@ -1,16 +1,24 @@
-import { Box, KeyboardAvoidingView } from 'native-base';
+import { Box } from 'native-base';
 import { FormProvider, useForm } from 'react-hook-form';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import { PrimaryLayout } from '@/components';
-import { FooterBarContent, FormFilter, StoreNearestYourLocationList, StoreTabViews } from './components';
+import { FooterBarContent, FormFilter, StoreTabViews } from './components';
 import { OrderStoreToPickUpScreenProps } from './type';
+import { navigate } from '@/utils';
+import { PATH_SCREEN } from '@/constants';
+import { OrderModel } from '@/models';
+
+const defaultValues: OrderModel = {
+  orderAtStore: '1',
+};
 
 const OrderStoreToPickUpScreen = ({}: OrderStoreToPickUpScreenProps) => {
-  const formMethods = useForm();
+  const formMethods = useForm({ defaultValues });
   const { handleSubmit } = formMethods;
 
-  const onSubmit = () => {};
+  const onSubmit = () => {
+    navigate(PATH_SCREEN.ORDER_PAYMENT_RESULT_SCREEN);
+  };
 
   return (
     <PrimaryLayout statusBarBackgroundColor='white' containerClass='bg-white' titleScreen='Chọn cửa hàng đến lấy'>
@@ -18,7 +26,6 @@ const OrderStoreToPickUpScreen = ({}: OrderStoreToPickUpScreenProps) => {
         <FormProvider {...formMethods}>
           <FormFilter />
           <StoreTabViews />
-          {/* <StoreNearestYourLocationList /> */}
         </FormProvider>
       </Box>
 

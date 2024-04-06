@@ -32,7 +32,7 @@ const UserSignInButton = () => {
       <Box className='flex-row items-center mb-2'>
         <Box
           style={styles.shadowSecondary}
-          className='bg-secondary w-10 h-10 rounded-lg items-center justify-center m-2 overflow-hidden'
+          className='bg-secondary w-10 h-10 rounded-full items-center justify-center m-2 overflow-hidden'
         >
           {isAuthenticated ? (
             <>

@@ -2,11 +2,11 @@ import { Box, Radio, Text, WarningOutlineIcon } from 'native-base';
 import React from 'react';
 import { Controller, Path, useFormContext } from 'react-hook-form';
 
-import { FormRadioProps } from './type';
 import { FieldLabel } from '@/components';
+import { FormRadioProps } from './type';
 
 const FormRadio = <T,>(props: FormRadioProps<T>) => {
-  const { fieldName, defaultValue, children, wrapperClassName, className, label, isRequired, rootClassName } = props;
+  const { fieldName, children, wrapperClassName, className, label, isRequired, rootClassName } = props;
   const { control } = useFormContext<T>();
 
   return (
@@ -20,7 +20,6 @@ const FormRadio = <T,>(props: FormRadioProps<T>) => {
             <Radio.Group
               ref={ref as any}
               onChange={onChange}
-              defaultValue={defaultValue}
               value={value as string}
               name={fieldName}
               className={`${className}`}

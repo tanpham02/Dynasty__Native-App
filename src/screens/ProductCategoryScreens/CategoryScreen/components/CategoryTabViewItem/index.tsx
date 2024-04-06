@@ -8,7 +8,7 @@ import { CategoryTabViewItemProps } from './type';
 const CategoryTabViewItem = ({ activeTabKey, categoryItem, index, onScrollToIndex }: CategoryTabViewItemProps) => {
   return (
     <Box
-      className={`relative border-b-2 px-3 mb-0.5 mt-[3px] ${index === activeTabKey ? ' border-b-secondary text-secondary font-nunito-600' : 'border-b-transparent'} `}
+      className={`relative border-b-2 px-3 mb-1 mt-[3px] ${index === activeTabKey ? ' border-b-secondary text-secondary font-nunito-600' : 'border-b-transparent'} `}
     >
       <Pressable
         onPress={() => onScrollToIndex(index)}
