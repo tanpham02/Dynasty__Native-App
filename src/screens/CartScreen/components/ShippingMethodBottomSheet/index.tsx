@@ -27,8 +27,7 @@ const ShippingMethodBottomSheet = ({ visible, onClose }: ShippingMethodBottomShe
   return (
     <Actionsheet isOpen={visible} onClose={onClose}>
       <Actionsheet.Content className='px-6 max-w-full'>
-        {/* BUG: YOUR CODE HAVE AN ERROR UI IN ANDROID PLATFORM */}
-        <Box w='100%' h={60} justifyContent='center' className='mb-3'>
+        <Box className='mb-4'>
           <Text className='text-lg font-nunito-700 text-gray-10 text-center'>Hình thức đặt hàng</Text>
         </Box>
         <Box w='100%' className='mb-3'>
@@ -41,15 +40,13 @@ const ShippingMethodBottomSheet = ({ visible, onClose }: ShippingMethodBottomShe
             />
           ))}
         </Box>
-
-        <Box width='100%' className='flex-row justify-between items-center'>
+        <Box width='100%' className='flex-row justify-between items-center mb-2'>
           <ButtonPrimary
             title='Đóng'
             containerClass='w-[48%] bg-zinc-100 '
             textClassName='text-gray-10'
             onPress={onClose}
           />
-
           <ButtonPrimary
             title='Tiếp tục'
             containerClass='w-[48%] bg-secondary'

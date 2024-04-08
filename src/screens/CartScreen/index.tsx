@@ -1,4 +1,4 @@
-import { VStack, useDisclose } from 'native-base';
+import { Box, VStack, useDisclose } from 'native-base';
 
 import { PrimaryLayout } from '@/components';
 import { CartItemDetailBottomSheet, CartLists, FooterBarContent, ShippingMethodModal } from './components';
@@ -19,11 +19,10 @@ const CartScreen = () => {
   return (
     <>
       <PrimaryLayout containerClass='bg-third' statusBarBackgroundColor='white' titleScreen='Giỏ hàng'>
-        <VStack className='flex-1'>
+        <Box className='flex-1'>
           <CartLists onOpenCartItemDetailBottomSheet={onOpenCartItemDetailBottomSheet} />
-
           <FooterBarContent onOpenModalShippingMethod={onOpenModalShippingMethod} />
-        </VStack>
+        </Box>
       </PrimaryLayout>
       <CartItemDetailBottomSheet
         visible={visibleCartItemDetailBottomSheet}

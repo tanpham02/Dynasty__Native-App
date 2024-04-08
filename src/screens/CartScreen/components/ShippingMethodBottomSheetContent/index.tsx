@@ -13,7 +13,7 @@ const ShippingMethodBottomSheetContent = ({
 }: ShippingMethodBottomSheetContentProps) => {
   return (
     <Pressable
-      className={`relative flex-row justify-between items-center mb-4 border rounded-lg py-4 px-2 ${isActive ? 'border-primary' : 'border-[#e1e1e1] '} min-h-[200px]`}
+      className={`relative flex-row justify-between items-center mb-4 border rounded-lg py-4 px-2 ${isActive ? 'border-primary' : 'border-[#e1e1e1]'}`}
       onPress={onSelect}
     >
       <Image
