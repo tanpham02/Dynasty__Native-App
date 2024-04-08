@@ -3,14 +3,14 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import { PATH_SCREEN } from '@/constants';
-import { OrderModel, OrderTypes, UserModel, OrderReceivingTime } from '@/models';
+import { OrderModel, OrderTypes, OrderReceivingTime } from '@/models';
 import { navigate } from '@/utils';
 import { FooterBarContent, OrderReceiveInformation, OrderReceiveTime } from '..';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/redux';
 
 const defaultValues: OrderModel = {
-  cityId: '1',
+  cityId: '1' as unknown as number,
   orderReceivingTime: OrderReceivingTime.NOW,
 };
 
@@ -36,7 +36,7 @@ const OrderForm = () => {
         <KeyboardAwareScrollView className='flex-1' showsVerticalScrollIndicator={false} scrollEventThrottle={16}>
           <Box className='px-4 flex-1'>
             <FormProvider {...formMethods}>
-              <VStack space={5} className='mt-4'>
+              <VStack space={6}>
                 <OrderReceiveInformation />
                 <OrderReceiveTime />
               </VStack>

@@ -7,6 +7,7 @@ import FlashMessage from 'react-native-flash-message';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Provider } from 'react-redux';
 import { decode } from 'base-64';
+import { SelectProvider } from '@mobile-reality/react-native-select-pro';
 
 import { Font as MyFont } from '@/assets';
 import GlobalLoading, { globalLoadingRef } from '@/components/GlobalLoading';
@@ -53,9 +54,11 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>
         <NativeBaseProvider>
-          <NavigationContainer ref={navigationRef}>
-            <RootStackNavigator />
-          </NavigationContainer>
+          <SelectProvider>
+            <NavigationContainer ref={navigationRef}>
+              <RootStackNavigator />
+            </NavigationContainer>
+          </SelectProvider>
         </NativeBaseProvider>
         <FlashMessage position='bottom' floating />
         <GlobalLoading ref={globalLoadingRef} />

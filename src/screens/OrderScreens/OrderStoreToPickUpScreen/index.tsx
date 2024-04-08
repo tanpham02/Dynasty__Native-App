@@ -22,7 +22,7 @@ const OrderStoreToPickUpScreen = ({}: OrderStoreToPickUpScreenProps) => {
 
   return (
     <PrimaryLayout statusBarBackgroundColor='white' containerClass='bg-white' titleScreen='Chọn cửa hàng đến lấy'>
-      <Box className='mt-1 px-4 flex-1'>
+      <Box className='px-4 flex-1'>
         <FormProvider {...formMethods}>
           <FormFilter />
           <StoreTabViews />

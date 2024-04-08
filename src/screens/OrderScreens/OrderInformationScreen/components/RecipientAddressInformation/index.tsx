@@ -8,8 +8,6 @@ const RecipientAddressInformation = () => {
 
   const { watch } = useFormContext();
 
-  console.log('parent value: ', watch('cityId'));
-
   return (
     <VStack space={3}>
       <FormSelect<OrderModel>
@@ -28,8 +26,8 @@ const RecipientAddressInformation = () => {
       <FormSelect<OrderModel>
         label='Quận/Huyện'
         options={[
-          { label: 'Quận Gò Vấp', value: 1 },
-          { label: 'Quận Tân Bình', value: 2 },
+          { label: 'Quận Gò Vấp', value: '3' },
+          { label: 'Quận Tân Bình', value: '4' },
         ]}
         isRequired
         name='districtId'
@@ -40,8 +38,8 @@ const RecipientAddressInformation = () => {
       <FormSelect<OrderModel>
         label='Phường/Xã'
         options={[
-          { label: 'Phường 1', value: 1 },
-          { label: 'Phường 2', value: 2 },
+          { label: 'Phường 1', value: '5' },
+          { label: 'Phường 2', value: '6' },
         ]}
         isRequired
         name='wardId'

@@ -34,6 +34,7 @@ const ShippingMethodBottomSheet = ({ visible, onClose }: ShippingMethodBottomShe
         <Box w='100%' className='mb-3'>
           {shippingMethodData.map((shippingMethodItem) => (
             <ShippingMethodBottomSheetContent
+              key={shippingMethodItem.type}
               {...shippingMethodItem}
               isActive={shippingMethodSelected === shippingMethodItem.type}
               onSelect={() => setShippingMethodSelected(shippingMethodItem.type)}

@@ -10,6 +10,6 @@ export interface FormRadioProps<
 > extends IRadioGroupProps,
     FormBaseProps<TFieldValues, TName> {
   fieldName: TName;
-  children: ReactNode;
   name: TName; // conflict with field name of IRadioGroupProps
+  children: ReactNode;
 }
