@@ -1,0 +1,9 @@
+export { default as CustomerInformation } from './CustomerInformation';
+export { default as PaymentMethods } from './PaymentMethods';
+export { default as PaymentMethodItem } from './PaymentMethodItem';
+export { default as FooterBarContent } from './FooterBarContent';
+export { default as OrderProducts } from './OrderProducts';
+export { default as OrderProduct } from './OrderProduct';
+export { default as RowCustomerInformation } from './RowCustomerInformation';
+export { default as TotalPayment } from './TotalPayment';
+export { default as TotalPaymentRow } from './TotalPaymentRow';

@@ -18,7 +18,7 @@ const FormInput = (props: FormInputProps) => {
           selectionColor='#111111'
           placeholderTextColor='#999'
           selectTextOnFocus={false}
-          className={`border border-gray-12 rounded-lg px-4 h-[45px] bg-gray-13 text-sm font-nunito-600 ${className}`}
+          className={`border border-gray-12 rounded-lg px-4 min-h-[45px] bg-gray-13 text-sm font-nunito-600 ${className}`}
           {...props}
         />
       </Box>

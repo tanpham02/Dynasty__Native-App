@@ -60,3 +60,7 @@ export { default as Setting } from './setting.svg';
 export { default as Authentication } from './authentication.svg';
 export { default as PhoneCall } from './phone-call.svg';
 export { default as LocationSolid } from './location-solid.svg';
+export { default as Bank } from './bank.svg';
+export { default as COD } from './COD.svg';
+export { default as Momo } from './momo.svg';
+export { default as VNPay } from './vnpay.svg';

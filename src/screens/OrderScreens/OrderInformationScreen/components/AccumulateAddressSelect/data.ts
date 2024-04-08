@@ -1,0 +1,26 @@
+export const accumulateAddresses = [
+  {
+    id: 1,
+    fullName: 'Phạm Văn Tân',
+    phoneNumber: '0372800762',
+    cityId: '1',
+    city: 'Thành phố Hồ Chí Minh',
+    districtId: '3',
+    district: 'Quận 1',
+    wardId: '5',
+    ward: 'Phường Đa Kao',
+    location: '170 Nguyễn Văn Thủ',
+  },
+  {
+    id: 2,
+    fullName: 'Tân Văn Phạm',
+    phoneNumber: '0356651085',
+    cityId: '2',
+    city: 'Thành phố Hồ Chí Minh',
+    districtId: '4',
+    district: 'Quận Bình Thạnh',
+    wardId: '6',
+    ward: 'Phường 3',
+    location: '45 Phan Đăng Lưu',
+  },
+];

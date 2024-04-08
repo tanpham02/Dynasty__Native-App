@@ -28,7 +28,7 @@ export const shippingMethodData = [
           <Text className='text-secondary font-nunito-600'>25,000đ</Text>
         </Text>{' '}
         cho mỗi đơn đặt hàng qua Hotline 037280076 hoặc Website, bao gồm hoá đơn có các sản phẩm thuộc chương trình
-        khuyến mại.
+        khuyến mãi.
       </Text>
     ),
   },

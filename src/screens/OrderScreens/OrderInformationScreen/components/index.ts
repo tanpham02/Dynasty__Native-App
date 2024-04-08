@@ -6,4 +6,4 @@ export { default as RecipientAddressInformation } from './RecipientAddressInform
 export { default as RecipientInformation } from './RecipientInformation';
 export { default as SelectReceiveTime } from './SelectReceiveTime';
 export { default as SelectReceiveTimeType } from './SelectReceiveTimeType';
-
+export { default as AccumulateAddressSelect } from './AccumulateAddressSelect';

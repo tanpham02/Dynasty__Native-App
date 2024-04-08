@@ -3,13 +3,10 @@ import { useState } from 'react';
 import { StatusBar } from 'react-native';
 import { NavigationState, SceneMap, SceneRendererProps, TabView } from 'react-native-tab-view';
 
-import { widthScreen } from '@/utils';
+import { heightScreen, widthScreen } from '@/utils';
 import { StoreNearestYourLocationList, StoreTabView } from '..';
 
 const StoreTabViews = () => {
-  const initialLayout = {
-    width: widthScreen,
-  };
   const renderScene = SceneMap({
     first: StoreNearestYourLocationList,
     second: StoreNearestYourLocationList,
@@ -35,7 +32,7 @@ const StoreTabViews = () => {
     navigationState: NavigationState<any>;
   }) => {
     return (
-      <HStack space={2} className='flex-row items-center'>
+      <HStack space={2} className='items-center'>
         {routes.map((route, index) => {
           const isActive = index === activeTabView;
           return <StoreTabView isActive={isActive} title={route.title} onPress={() => handleChangeTab(index)} />;
@@ -45,7 +42,7 @@ const StoreTabViews = () => {
   };
 
   return (
-    <Box className='h-full flex-1 mt-2'>
+    <Box className='flex-1 mt-4'>
       <TabView
         navigationState={{
           index: activeTabView,
@@ -54,10 +51,6 @@ const StoreTabViews = () => {
         renderScene={renderScene}
         renderTabBar={renderTabBar}
         onIndexChange={handleChangeTab}
-        initialLayout={initialLayout}
-        style={{
-          marginTop: StatusBar.currentHeight,
-        }}
       />
     </Box>
   );

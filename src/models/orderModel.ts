@@ -27,6 +27,7 @@ enum PaymentMethod {
   ATM_CARD = 'ATM_CARD',
   SHOPEE_PAY = 'SHOPEE_PAY',
   ZALO_PAY = 'ZALO_PAY',
+  VN_PAY = 'VN_PAY',
 }
 
 interface OrderModel {
