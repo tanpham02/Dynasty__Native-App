@@ -1,23 +1,23 @@
 export interface UserAddressModel {
-    _id?: string
-    city?: string,
-    cityId?: string,
-    district?: string,
-    districtId?: string,
-    ward?: string,
-    wardId?: string,
-    location?: string,
-    fullName?: string,
-    phoneNumber?: string,
-    isDefault?: boolean
+  _id?: string;
+  city?: string;
+  cityId?: string;
+  district?: string;
+  districtId?: string;
+  ward?: string;
+  wardId?: string;
+  location?: string;
+  fullName?: string;
+  phoneNumber?: string;
+  isDefault?: boolean;
 }
 
 export interface UserAddressResponse {
-    customerId?: string
-    addressList?: UserAddressModel[]
+  customerId?: string;
+  addressList?: UserAddressModel[];
 }
 
 export interface UserAddressRequest {
-    customerId?: string
-    addressItem?: UserAddressModel
+  customerId?: string;
+  addressItem?: UserAddressModel;
 }

@@ -1,4 +1,4 @@
 export enum NotificationType {
-    DISCOUNT_NEWS,
-    MY_NEWS
+  DISCOUNT_NEWS,
+  MY_NEWS,
 }

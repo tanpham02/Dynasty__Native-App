@@ -8,4 +8,3 @@ export * from './navigationUtils';
 export * from './imageUtils';
 export * from './regexUtils';
 export { widthScreen, heightScreen } from './systemUtils';
-

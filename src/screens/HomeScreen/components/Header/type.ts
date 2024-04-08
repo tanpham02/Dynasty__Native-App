@@ -1,3 +1,3 @@
 export interface HeaderProps {
-    openSidebar(): void
+  openSidebar(): void;
 }

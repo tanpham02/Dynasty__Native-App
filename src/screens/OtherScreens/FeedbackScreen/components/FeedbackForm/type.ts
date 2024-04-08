@@ -1,3 +1,3 @@
 export interface FeedbackFormProps {
-    formMethods: any
+  formMethods: any;
 }

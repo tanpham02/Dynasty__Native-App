@@ -1,3 +1,3 @@
 export interface PrivacyPolicyListProps {
-    data: any[]
+  data: any[];
 }

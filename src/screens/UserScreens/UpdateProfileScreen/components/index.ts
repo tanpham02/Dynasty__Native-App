@@ -1,2 +1,2 @@
-export { default as MyAvatar } from "./MyAvatar"
-export { default as UpdateForm } from "./UpdateForm"
+export { default as MyAvatar } from './MyAvatar';
+export { default as UpdateForm } from './UpdateForm';

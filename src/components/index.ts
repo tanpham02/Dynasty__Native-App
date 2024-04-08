@@ -12,4 +12,4 @@ export { default as ButtonIcon } from './ButtonIcon';
 export { default as ButtonPrimaryAnimated } from './ButtonPrimaryAnimated';
 export { default as FooterBar } from './FooterBar';
 export { default as AppLoading } from './AppLoading';
-export * from "./Form"
+export * from './Form';

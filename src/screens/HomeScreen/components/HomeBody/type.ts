@@ -1,3 +1,3 @@
 export interface HomeBodyProps {
-    openSidebar(): void
+  openSidebar(): void;
 }

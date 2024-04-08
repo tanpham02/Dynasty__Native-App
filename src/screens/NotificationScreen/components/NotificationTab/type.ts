@@ -1,6 +1,6 @@
-import { NotificationType } from "../../type";
+import { NotificationType } from '../../type';
 
 export interface NotificationTabProps {
-    activeTab: NotificationType
-    onChangeTab(tabKey: NotificationType): void
+  activeTab: NotificationType;
+  onChangeTab(tabKey: NotificationType): void;
 }

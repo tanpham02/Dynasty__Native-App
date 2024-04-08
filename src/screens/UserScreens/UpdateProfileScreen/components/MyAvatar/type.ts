@@ -1,6 +1,6 @@
-import { UserModel } from "@/models"
+import { UserModel } from '@/models';
 
 export interface MyAvatarProps {
-    onChangeAvatar(): void
-    user: UserModel
+  onChangeAvatar(): void;
+  user: UserModel;
 }

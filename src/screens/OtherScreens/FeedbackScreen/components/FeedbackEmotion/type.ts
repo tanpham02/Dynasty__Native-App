@@ -1,3 +1,3 @@
 export interface FeedbackEmotionProps {
-    currentStar: number
+  currentStar: number;
 }

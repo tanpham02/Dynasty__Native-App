@@ -1,6 +1,6 @@
-import { CategoryModel } from "@/models";
+import { CategoryModel } from '@/models';
 
 export interface ProductListProps extends CategoryModel {
-    isLoading: boolean
-    isRefetching?: boolean
+  isLoading: boolean;
+  isRefetching?: boolean;
 }

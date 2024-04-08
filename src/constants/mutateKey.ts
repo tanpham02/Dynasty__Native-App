@@ -1,3 +1,3 @@
 export enum MUTATE_KEY {
-    USER_ADDRESS = "USER_ADDRESS"
+  USER_ADDRESS = 'USER_ADDRESS',
 }

@@ -1,1 +1,1 @@
-export { default as TermAndPolicyList } from "./TermAndPolicyList"
+export { default as TermAndPolicyList } from './TermAndPolicyList';

@@ -1,1 +1,1 @@
-export { default as PrivacyPolicyList } from "./PrivacyPolicyList"
+export { default as PrivacyPolicyList } from './PrivacyPolicyList';

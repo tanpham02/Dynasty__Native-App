@@ -1,5 +1,5 @@
 export * from './UserScreens';
-export * from "./OtherScreens"
+export * from './OtherScreens';
 export { default as HomeScreen } from './HomeScreen';
 export { default as VoucherScreen } from './VoucherScreen';
 export { default as FeedbackScreen } from './OtherScreens/FeedbackScreen';

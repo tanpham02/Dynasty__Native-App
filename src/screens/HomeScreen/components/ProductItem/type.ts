@@ -1,3 +1,3 @@
-import { ProductModel } from "@/models";
+import { ProductModel } from '@/models';
 
-export interface ProductItemProps extends ProductModel { }
+export interface ProductItemProps extends ProductModel {}

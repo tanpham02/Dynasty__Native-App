@@ -1,4 +1,3 @@
-import { CategoryModel } from "@/models";
+import { CategoryModel } from '@/models';
 
-export interface HomeCategoryItemProps extends CategoryModel {
-}
+export interface HomeCategoryItemProps extends CategoryModel {}
