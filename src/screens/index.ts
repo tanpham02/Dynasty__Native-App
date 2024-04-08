@@ -1,17 +1,14 @@
 export * from './UserScreens';
-export { default as FAQsScreen } from './FAQsScreen';
+export * from "./OtherScreens"
 export { default as HomeScreen } from './HomeScreen';
 export { default as VoucherScreen } from './VoucherScreen';
-export { default as FeedbackScreen } from './FeedbackScreen';
+export { default as FeedbackScreen } from './OtherScreens/FeedbackScreen';
 export { default as OrderDetailScreen } from './OrderDetailScreen';
 export { default as NotificationScreen } from './NotificationScreen';
 export { default as OrderHistoryScreen } from './OrderHistoryScreen';
-export { default as PrivacyPolicyScreen } from './PrivacyPolicyScreen';
 export { default as CategoryScreen } from './ProductCategoryScreens/CategoryScreen';
 export { default as ProductDetailScreen } from './ProductCategoryScreens/ProductDetailScreen';
 export { default as SignInScreen } from './AuthenticationScreens/SignInScreen';
-export { default as TermAndConditionsScreen } from './TermAndConditionsScreen';
-export { default as NutritionInformationScreen } from './NutritionInformationScreen';
 export { default as DeliveryAndPickupScreen } from './DeliveryAndPickupScreen';
 export { default as VerifyOTPScreen } from './AuthenticationScreens/VerifyOTPScreen';
 export { default as CartScreen } from './CartScreen';

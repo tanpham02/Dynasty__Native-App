@@ -1,9 +1,9 @@
-import { Box, Divider, FlatList, Text } from 'native-base';
-import { useEffect } from 'react';
+import { Box, Divider, FlatList } from 'native-base';
 
-import { ExpandItem, GlobalLoading, PrimaryLayout } from '@/components';
+import { ExpandItem, PrimaryLayout } from '@/components';
+import { PrivacyPolicyList } from './components';
 
-const datas = [
+const data = [
   {
     label: 'Câu hỏi 1',
     value:
@@ -27,33 +27,11 @@ const datas = [
 ];
 
 const PrivacyPolicyScreen = () => {
-  useEffect(() => {
-    GlobalLoading.show();
-
-    const timer = setTimeout(() => {
-      GlobalLoading.hide();
-    }, 3000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
-    <PrimaryLayout
-      containerClass='bg-third'
-      headerBarClass='flex-col items-start'
-      renderTitle={() => <Text className='font-nunito-700 text-2xl pt-1 px-4'>Chính sách bảo mật</Text>}
-    >
-      <Box className='flex-1 '>
+    <PrimaryLayout containerClass='bg-white' titleScreen='Chính sách bảo mật'>
+      <Box className='flex-1'>
         <Divider className='mt-2 bg-zinc-300' />
-        <Box className='flex-1 bg-white'>
-          <FlatList
-            data={datas}
-            scrollEventThrottle={16}
-            showsVerticalScrollIndicator={false}
-            renderItem={({ item }) => <ExpandItem {...item} />}
-            keyExtractor={(_, index) => index.toString()}
-          />
-        </Box>
+        <PrivacyPolicyList data={data} />
       </Box>
     </PrimaryLayout>
   );
