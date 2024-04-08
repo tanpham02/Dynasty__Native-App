@@ -1,4 +1,4 @@
-import { HStack } from 'native-base';
+import { Box, HStack } from 'native-base';
 import { useState } from 'react';
 import { StatusBar } from 'react-native';
 import { NavigationState, SceneMap, SceneRendererProps, TabView } from 'react-native-tab-view';
@@ -45,19 +45,21 @@ const StoreTabViews = () => {
   };
 
   return (
-    <TabView
-      navigationState={{
-        index: activeTabView,
-        routes,
-      }}
-      renderScene={renderScene}
-      renderTabBar={renderTabBar}
-      onIndexChange={handleChangeTab}
-      initialLayout={initialLayout}
-      style={{
-        marginTop: StatusBar.currentHeight,
-      }}
-    />
+    <Box className='h-full flex-1 mt-2'>
+      <TabView
+        navigationState={{
+          index: activeTabView,
+          routes,
+        }}
+        renderScene={renderScene}
+        renderTabBar={renderTabBar}
+        onIndexChange={handleChangeTab}
+        initialLayout={initialLayout}
+        style={{
+          marginTop: StatusBar.currentHeight,
+        }}
+      />
+    </Box>
   );
 };
 

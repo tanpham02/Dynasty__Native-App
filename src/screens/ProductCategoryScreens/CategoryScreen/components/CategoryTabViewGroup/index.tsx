@@ -8,7 +8,6 @@ import styles from '@/styles';
 import { CategoryTabViewList, CategoryTypeList, ProductFavoriteList } from '..';
 import ProductList from '../ProductList';
 import { tabBarRoutes } from './data';
-import { heightScreen } from '@/utils';
 
 const renderScene = SceneMap({
   deals: ProductList,
@@ -34,7 +33,7 @@ const CategoryTabViewGroup = () => {
   };
 
   return (
-    <Box className='relative flex-1 h-screen' style={styles.shadowX}>
+    <Box className='relative h-screen flex-1' style={styles.shadowX}>
       <Box className='absolute left-2 px-2 flex justify-center items-center flex-col pr-4'>
         <Box
           className='bg-secondary w-14 h-14 rounded-full flex justify-center items-center'
@@ -49,7 +48,6 @@ const CategoryTabViewGroup = () => {
           index: activeTabKey,
           routes: tabBarRoutes,
         }}
-        sceneContainerStyle={{}}
         renderScene={renderScene}
         renderTabBar={() => (
           <CategoryTabViewList
@@ -59,12 +57,6 @@ const CategoryTabViewGroup = () => {
           />
         )}
         onIndexChange={setActiveTabKey}
-        initialLayout={
-          {
-            //   width: widthScreen,
-            //   height: heightScreen + 1000000,
-          }
-        }
         onSwipeStart={() => handleScrollToIndex(activeTabKey)}
       />
 
