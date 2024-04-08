@@ -1,20 +1,16 @@
 import { Box, Text } from 'native-base';
-import { TouchableOpacity } from 'react-native';
 import { memo } from 'react';
+import { TouchableOpacity } from 'react-native';
 
 import styles from '@/styles';
-import { navigate } from '@/utils';
-import { PATH_SCREEN } from '@/constants';
 import { AddressItemProps } from './type';
 
-const AddressItem = ({ phoneNumber, fullName, isDefault }: AddressItemProps) => {
-  const gotoUpdateAddressScreen = () => navigate(PATH_SCREEN.ADDRESS_UPDATE_SCREEN);
-
+const AddressItem = ({ phoneNumber, fullName, isDefault, _id, onUpdate }: AddressItemProps) => {
   return (
     <Box className='bg-white w-[90%] mx-auto'>
       <TouchableOpacity
         style={styles.shadowX}
-        onPress={gotoUpdateAddressScreen}
+        onPress={onUpdate}
         className='border border-zinc-100 my-2 rounded-lg bg-white p-4'
       >
         {isDefault && (

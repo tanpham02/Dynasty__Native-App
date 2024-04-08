@@ -1,7 +1,7 @@
-import * as ApiURL from "@/constants"
-import { UserAddressResponse, UserModel } from "@/models"
-import axiosService from "./axiosService"
 import { tokenManager } from "App"
+import * as ApiURL from "@/constants"
+import axiosService from "./axiosService"
+import { UserAddressModel, UserAddressResponse, UserModel } from "@/models"
 
 const userService = {
     getInfoById: async (userId: string): Promise<UserModel> => {
@@ -57,6 +57,16 @@ const userService = {
     getSavedAddress: async (userId: string): Promise<UserAddressResponse> => {
         return (await axiosService())({
             baseURL: `${ApiURL.API_CUSTOMER_ADDRESS_URL}/${userId}`,
+            method: "GET",
+        })
+            .then(res => res.data)
+            .catch(err => {
+                throw err
+            })
+    },
+    getSavedAddressById: async (addressId: string): Promise<UserAddressModel> => {
+        return (await axiosService())({
+            baseURL: `${ApiURL.API_CUSTOMER_ADDRESS_URL}/${addressId}`,
             method: "GET",
         })
             .then(res => res.data)

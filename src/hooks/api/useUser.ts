@@ -25,14 +25,3 @@ export const useFetchUserAddress = () => {
         queryFn: () => UserService.getSavedAddress(userId),
     })
 }
-
-interface DeleteUserAddressProps extends UseMutationOptions<UserAddressResponse, unknown, string, unknown> {
-}
-
-
-export const useDeleteUserAddress = (props: DeleteUserAddressProps) => {
-    return useMutation({
-        mutationFn: (data) => UserService.deleteAddressById(data),
-        ...props
-    })
-}

@@ -6,7 +6,7 @@ import { AddressList } from './components';
 import { ButtonPrimary, PrimaryLayout } from '@/components';
 
 const AddressSavedScreen = () => {
-  const gotoUpdateAddressScreen = () => navigate(PATH_SCREEN.ADDRESS_UPDATE_SCREEN);
+  const createNewUserAddress = () => navigate(PATH_SCREEN.ADDRESS_UPDATE_SCREEN);
 
   return (
     <PrimaryLayout titleScreen='Địa chỉ của tôi' containerClass='bg-white'>
@@ -15,7 +15,7 @@ const AddressSavedScreen = () => {
         <ButtonPrimary
           color='danger'
           title='Thêm địa chỉ'
-          onPress={gotoUpdateAddressScreen}
+          onPress={createNewUserAddress}
           containerClass='w-[90%] my-4 mx-auto'
         />
       </Box>

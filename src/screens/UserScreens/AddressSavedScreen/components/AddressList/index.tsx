@@ -1,31 +1,27 @@
-import { SwipeListView } from 'react-native-swipe-list-view';
+import { useIsFocused } from '@react-navigation/native';
 import { FlatList } from 'native-base';
-import { showMessage } from 'react-native-flash-message';
+import { useEffect } from 'react';
+import { SwipeListView } from 'react-native-swipe-list-view';
 
 import { RefreshControl } from '@/components';
-import { useDeleteUserAddress, useFetchUserAddress } from '@/hooks';
 import { AddressEmptyList, AddressItem, AddressItemActions, AddressItemSkeleton } from '..';
-import { useEffect } from 'react';
-import { useIsFocused } from '@react-navigation/native';
+import { useUserAddressList } from '../../useUserAddressList';
 
 const AddressList = () => {
   const isFocused = useIsFocused();
 
   const {
-    data: userSavedAddresses,
-    isFetching: isFetchingUserAddress,
-    refetch: refetchUserAddress,
-    isRefetching: isRefetchingUserAddress,
-  } = useFetchUserAddress();
+    isFetchingUserAddress,
+    userSavedAddresses,
+    refetchUserAddress,
+    isRefetchingUserAddress,
+    deleteUserAddress,
+    updateUserAddress,
+  } = useUserAddressList();
 
   useEffect(() => {
     if (isFocused) refetchUserAddress();
   }, [isFocused]);
-
-  const { mutate: deleteUserAddressById } = useDeleteUserAddress({
-    onSuccess: () => refetchUserAddress(),
-    onError: () => showMessage({ message: 'Có lỗi xảy ra vui lòng thử lại sau!', type: 'danger' }),
-  });
 
   return (
     <>
@@ -44,11 +40,15 @@ const AddressList = () => {
           previewOpenValue={-40}
           previewOpenDelay={3000}
           showsVerticalScrollIndicator={false}
-          renderItem={({ item }) => <AddressItem {...item} />}
+          renderItem={({ item }) => <AddressItem {...item} onUpdate={() => updateUserAddress(item._id)} />}
           data={userSavedAddresses?.addressList || []}
           keyExtractor={(_, index) => index.toString()}
           renderHiddenItem={({ item }) => (
-            <AddressItemActions {...item} onDelete={() => deleteUserAddressById(item._id)} />
+            <AddressItemActions
+              {...item}
+              onDelete={() => deleteUserAddress(item._id)}
+              onUpdate={() => updateUserAddress(item._id)}
+            />
           )}
         />
       ) : (
