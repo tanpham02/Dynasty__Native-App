@@ -1,99 +1,19 @@
-import { useIsFocused } from '@react-navigation/native';
-import { Box } from 'native-base';
-import { createRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
-import { Animated, ScrollView, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { useDispatch } from 'react-redux';
+import { Animated, View } from 'react-native';
 
 import styles from '@/styles';
-import { RefreshControl, SideBar } from '@/components';
-import { useFetchAllBanner, useFetchAllCategories } from '@/hooks';
-import { BuyAction, BuyQueueTutorial, Header, HomeCategory, HomeSlider, ProductList } from './components';
-import { AppDispatch, getUserInfo } from '@/redux';
-import { tokenManager } from 'App';
-
-type HomeScreenRefType = {
-  toggleOpenSideBar(): void;
-};
-
-export const homeScreenRef = createRef<HomeScreenRefType>();
+import { SideBar } from '@/components';
+import { HomeBody } from './components';
+import { useHomeLayout } from './useHomeLayout';
 
 const HomeScreen = () => {
-  const isAuthenticated = tokenManager.getAccessToken();
-
-  const dispatch = useDispatch<AppDispatch>();
-
-  const isFocus = useIsFocused();
-
-  const [isOpenSideBar, setIsOpenSidebar] = useState<boolean>(true);
-
-  const [isLoadingData, setIsLoadingData] = useState<boolean>();
-
-  const sidebarAniValue = useRef(new Animated.Value(0)).current;
-
-  useEffect(() => {
-    let timer = null;
-    if (!isFocus && !isOpenSideBar) {
-      timer = setTimeout(() => {
-        toggleOpenSideBar();
-      }, 200);
-    }
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [isFocus, isOpenSideBar]);
-
-  useEffect(() => {
-    dispatch(getUserInfo());
-  }, []);
-
-  //   useEffect(() => {
-  //     if (isAuthenticated) {
-  //       enableBiometrics();
-  //     }
-  //   }, [isAuthenticated]);
-
-  const toggleOpenSideBar = () => {
-    Animated.timing(sidebarAniValue, {
-      toValue: isOpenSideBar ? 1 : 0,
-      duration: 250,
-      useNativeDriver: false,
-    }).start();
-    setIsOpenSidebar(!isOpenSideBar);
-  };
-
-  useImperativeHandle(homeScreenRef, () => ({
-    toggleOpenSideBar,
-  }));
-
   const {
-    data: categoriesData,
-    isFetching: isFetchingCategories,
-    refetch: refetchCategories,
-  } = useFetchAllCategories();
-
-  const { data: bannersData, isFetching: isFetchingBanners, refetch: refetchBanners } = useFetchAllBanner();
-
-  const interpolatedTop = sidebarAniValue.interpolate({
-    inputRange: [0, 1],
-    outputRange: ['0%', '15%'],
-  });
-
-  const interpolatedLeft = sidebarAniValue.interpolate({
-    inputRange: [0, 1],
-    outputRange: ['0%', '60%'],
-  });
-
-  const interpolatedScale = sidebarAniValue.interpolate({
-    inputRange: [0, 1],
-    outputRange: [1.2, 1],
-  });
-
-  const refetchHomeData = async () => {
-    setIsLoadingData(true);
-    await Promise.all([refetchCategories(), refetchBanners()]);
-    setIsLoadingData(false);
-  };
+    isOpenSideBar,
+    toggleOpenSideBar,
+    interpolatedLeft,
+    interpolatedOpacity,
+    interpolatedScale,
+    interpolatedTop,
+  } = useHomeLayout();
 
   return (
     <View className='flex-1 bg-white'>
@@ -105,7 +25,7 @@ const HomeScreen = () => {
               scale: interpolatedScale,
             },
           ],
-          opacity: sidebarAniValue,
+          opacity: interpolatedOpacity,
         }}
       >
         <SideBar />
@@ -121,35 +41,7 @@ const HomeScreen = () => {
           styles.shadowX,
         ]}
       >
-        <SafeAreaView className='flex-1'>
-          <View className='flex-1'>
-            <Header />
-            <ScrollView
-              scrollEventThrottle={16}
-              showsVerticalScrollIndicator={false}
-              showsHorizontalScrollIndicator={false}
-              keyboardShouldPersistTaps='always'
-              refreshControl={<RefreshControl refreshing={isLoadingData} onRefresh={refetchHomeData} />}
-            >
-              <View className='flex-1'>
-                <BuyAction />
-                <HomeSlider data={bannersData} isLoading={isFetchingBanners} />
-                <HomeCategory data={categoriesData} isLoading={isFetchingCategories} />
-                <BuyQueueTutorial />
-                <Box className='mt-4 w-screen'>
-                  {categoriesData?.map((category, key) => (
-                    <ProductList
-                      key={key}
-                      {...category}
-                      isLoading={isFetchingCategories}
-                      isRefetching={isLoadingData}
-                    />
-                  ))}
-                </Box>
-              </View>
-            </ScrollView>
-          </View>
-        </SafeAreaView>
+        <HomeBody openSidebar={toggleOpenSideBar} />
         {!isOpenSideBar && <View onTouchStart={toggleOpenSideBar} className='absolute top-0 left-0 right-0 bottom-0' />}
       </Animated.View>
     </View>

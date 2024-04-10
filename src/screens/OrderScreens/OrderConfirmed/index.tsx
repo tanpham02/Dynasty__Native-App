@@ -29,7 +29,7 @@ const OrderConfirmed = () => {
   return (
     <NoneLayout backgroundStatusBar='#00b041'>
       <Box className='bg-[#00b041] flex-1 justify-center items-center'>
-        <Animated.View
+        {/* <Animated.View
           className={`bg-white w-[200px] h-[200px] ${canStartChangeBg ? 'rounded-full' : ''}`}
           style={{
             top: StatusBar.currentHeight,
@@ -39,7 +39,16 @@ const OrderConfirmed = () => {
               },
             ],
           }}
-        ></Animated.View>
+        ></Animated.View> */}
+        <LottieView
+          autoPlay
+          style={{
+            width: 200,
+            height: 200,
+          }}
+          resizeMode='contain'
+          source={require('@/assets/lotties/green-tick.json')}
+        />
       </Box>
     </NoneLayout>
   );

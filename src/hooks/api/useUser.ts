@@ -1,23 +1,27 @@
-import { useQuery } from "react-query"
+import { QueryKey, UseMutationOptions, UseQueryOptions, useMutation, useQuery } from 'react-query';
 
-import { QUERY_KEY } from "@/constants"
-import { UserService } from "@/services"
-import { UserAddressResponse, UserModel } from "@/models"
+import { MUTATE_KEY, QUERY_KEY } from '@/constants';
+import { UserService } from '@/services';
+import { UserAddressResponse, UserModel } from '@/models';
 
 interface FetchUserParams {
-    userId: string
+  userId: string;
+  options?: UseQueryOptions<UserModel, Error, UserModel, QueryKey>;
 }
 
-export const useFetchUserInfo = ({ userId }: FetchUserParams) => {
-    return useQuery<UserModel, Error>({
-        queryKey: [QUERY_KEY.USER, userId],
-        queryFn: async () => await UserService.getInfoById(userId),
-    })
-}
+export const useFetchUserInfo = ({ userId, options }: FetchUserParams) => {
+  return useQuery<UserModel, Error>({
+    queryKey: [QUERY_KEY.USER, userId],
+    queryFn: () => UserService.getInfoById(userId),
+    ...options,
+  });
+};
 
-export const useFetchUserAddress = ({ userId }: FetchUserParams) => {
-    return useQuery<UserAddressResponse, Error>({
-        queryKey: [QUERY_KEY.USER_ADDRESS, userId],
-        queryFn: async () => await UserService.getSavedAddress(userId),
-    })
-}
+export const useFetchUserAddress = () => {
+  const userId = '6610186d6861b729f3d2ffc5';
+
+  return useQuery<UserAddressResponse, Error>({
+    queryKey: [QUERY_KEY.USER_ADDRESS, userId],
+    queryFn: () => UserService.getSavedAddress(userId),
+  });
+};

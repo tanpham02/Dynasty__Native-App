@@ -48,3 +48,8 @@ export interface FormBaseProps<
   className?: HTMLProps<HTMLElement>['className'];
   placeholder?: string;
 }
+
+export interface OptionsType {
+  label: string;
+  value: string;
+}

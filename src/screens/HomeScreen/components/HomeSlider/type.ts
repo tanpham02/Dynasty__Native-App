@@ -1,6 +1,6 @@
-import { BannerModel } from "@/models";
+import { BannerModel } from '@/models';
 
 export interface HomeSliderProps {
-    isLoading?: boolean
-    data: BannerModel[]
+  isLoading?: boolean;
+  data: BannerModel[];
 }

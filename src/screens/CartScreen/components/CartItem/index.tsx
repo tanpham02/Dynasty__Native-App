@@ -18,16 +18,7 @@ const CartItem = ({
   onOpenCartItemDetailBottomSheet,
 }: CartItemProps) => {
   return (
-    <Box
-      className='flex bg-third rounded-lg flex-row p-3 mt-4 mx-4'
-      style={[
-        styles.shadowX,
-        {
-          // FIXME: USE ANOTHER WAY TO FIX THIS ISSUE UI
-          marginBottom: index === length - 1 ? 20 : 0,
-        },
-      ]}
-    >
+    <Box className='flex bg-third rounded-lg flex-row p-3 my-2 mx-4' style={styles.shadowX}>
       <Box className='border border-zinc-100 w-[70px] h-[70px] rounded-xl bg-white flex justify-start mr-2'>
         <Image
           source={{

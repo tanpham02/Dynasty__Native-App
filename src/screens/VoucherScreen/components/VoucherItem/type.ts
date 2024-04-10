@@ -1,3 +1,3 @@
 export interface VoucherItemProps {
-    onView?(): void
+  onView?(): void;
 }

@@ -1,6 +1,6 @@
 import { Box, Text } from 'native-base';
 
-import { DateUtils } from '@/utils';
+import { formatDate, DATE_FORMAT_HHMMDDMMYYYY } from '@/utils';
 import { OrderStatusTag } from '@/components';
 
 const OrderDetailHeader = () => {
@@ -13,9 +13,7 @@ const OrderDetailHeader = () => {
         </Text>
         <Text className='text-xs font-nunito-400 text-zinc-600'>
           Thời gian đặt:{' '}
-          <Text className='font-nunito-700 text-zinc-800'>
-            {DateUtils.formatDate(new Date(), DateUtils.DATE_FORMAT_HHMMDDMMYYYY)}
-          </Text>
+          <Text className='font-nunito-700 text-zinc-800'>{formatDate(new Date(), DATE_FORMAT_HHMMDDMMYYYY)}</Text>
         </Text>
       </Box>
     </>

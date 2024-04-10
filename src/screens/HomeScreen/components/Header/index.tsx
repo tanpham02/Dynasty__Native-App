@@ -4,16 +4,12 @@ import { memo } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 
 import { Svg } from '@/assets';
+import { HeaderProps } from './type';
 import { PATH_SCREEN } from '@/constants';
 import { navigate, widthScreen } from '@/utils';
-import { homeScreenRef } from '../..';
 
-const Header = () => {
+const Header = ({ openSidebar }: HeaderProps) => {
   const goToNotificationScreen = () => navigate(PATH_SCREEN.NOTIFICATION_SCREEN);
-
-  const openSidebar = () => {
-    homeScreenRef.current.toggleOpenSideBar();
-  };
 
   return (
     <View className='flex-row justify-between items-center gap-3'>
