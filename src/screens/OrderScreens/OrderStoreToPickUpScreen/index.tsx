@@ -1,7 +1,7 @@
 import { Box } from 'native-base';
 import { FormProvider, useForm } from 'react-hook-form';
 
-import { PrimaryLayout } from '@/components';
+import { PrimaryLayout } from '@/layouts';
 import { FooterBarContent, FormFilter, StoreTabViews } from './components';
 import { OrderStoreToPickUpScreenProps } from './type';
 import { navigate } from '@/utils';

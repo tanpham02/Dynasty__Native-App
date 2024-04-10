@@ -4,7 +4,7 @@ import { TouchableOpacity } from 'react-native';
 import styles from '@/styles';
 import { PATH_SCREEN } from '@/constants';
 import { navigate } from '@/utils';
-import { PrimaryLayout } from '@/components';
+import { PrimaryLayout } from '@/layouts';
 import NoSavedAddressImage from '@/assets/images/address-saved.png';
 import { AddressItem } from './components';
 

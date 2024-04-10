@@ -1,6 +1,6 @@
 import { Box, FlatList, Text } from 'native-base';
 
-import { PrimaryLayout } from '@/components';
+import { PrimaryLayout } from '@/layouts';
 import { FaqItem } from './components';
 
 const faqs = [

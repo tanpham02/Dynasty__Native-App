@@ -5,7 +5,7 @@ import { TouchableOpacity } from 'react-native';
 
 import { Svg } from '@/assets';
 import { NotificationType } from './type';
-import { PrimaryLayout } from '@/components';
+import { PrimaryLayout } from '@/layouts';
 import { NotificationHiddenItem, NotificationItem, NotificationTab } from './components';
 
 const NotificationScreen = () => {

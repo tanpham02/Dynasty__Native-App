@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 
-import { PrimaryLayout } from '@/components';
+import { PrimaryLayout } from '@/layouts';
 import { TITLE_BY_ORDER_TYPES } from '@/constants';
 import { OrderModel } from '@/models';
 import { RootState } from '@/redux';

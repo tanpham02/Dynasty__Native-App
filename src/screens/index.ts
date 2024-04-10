@@ -21,6 +21,7 @@ export { default as CartScreen } from './CartScreen';
 export { default as OrderInformationScreen } from './OrderScreens/OrderInformationScreen';
 export { default as OrderStoreToPickUpScreen } from './OrderScreens/OrderStoreToPickUpScreen';
 export { default as OrderPaymentInformationScreen } from './OrderScreens/OrderPaymentInformationScreen';
+export { default as OrderConfirmed } from './OrderScreens/OrderConfirmed';
 
 // import { lazy } from "react";
 

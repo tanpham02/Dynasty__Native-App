@@ -3,7 +3,7 @@ import { Image, KeyboardAvoidingView } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import VerifyBg from '@/assets/images/verify-otp-bg.jpg';
-import { PrimaryLayout } from '@/components';
+import { PrimaryLayout } from '@/layouts';
 import { widthScreen } from '@/utils';
 import { InputVerify, InputVerifyFooter, InputVerifyNotificationContent } from './components';
 

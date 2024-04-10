@@ -25,6 +25,7 @@ import {
   OrderInformationScreen,
   OrderStoreToPickUpScreen,
   OrderPaymentInformationScreen,
+  OrderConfirmed,
 } from '@/screens';
 import { Platform } from 'react-native';
 
@@ -91,6 +92,12 @@ const RootStackNavigator = () => {
       <RootStack.Screen
         name={PATH_SCREEN.ORDER_PAYMENT_RESULT_SCREEN}
         component={OrderPaymentInformationScreen}
+        options={usePlatformAppropriateOption}
+      />
+
+      <RootStack.Screen
+        name={PATH_SCREEN.ORDER_CONFIRMED}
+        component={OrderConfirmed}
         options={usePlatformAppropriateOption}
       />
 

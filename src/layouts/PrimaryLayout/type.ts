@@ -7,9 +7,9 @@ export interface PrimaryLayoutProps {
   barStyle?: null | StatusBarStyle | undefined;
   headerBarClass?: string;
   style?: StyleProp<ViewStyle>;
-  goBack?(): void;
-  renderTitle?: () => ReactNode;
   children?: ReactNode;
   containerClass?: string;
   titleScreen?: string;
+  goBack?(): void;
+  renderTitle?: () => ReactNode;
 }

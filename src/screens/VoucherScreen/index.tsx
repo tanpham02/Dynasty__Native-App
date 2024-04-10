@@ -1,6 +1,6 @@
 import { FlatList, useDisclose } from 'native-base';
 
-import { PrimaryLayout } from '@/components';
+import { PrimaryLayout } from '@/layouts';
 import { VoucherDetailBottomSheet, VoucherItem } from './components';
 
 const VoucherScreen = () => {

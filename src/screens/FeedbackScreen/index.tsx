@@ -7,7 +7,7 @@ import { Svg } from '@/assets';
 import styles from '@/styles';
 import { PATH_SCREEN } from '@/constants';
 import { navigate } from '@/utils';
-import { PrimaryLayout } from '@/components';
+import { PrimaryLayout } from '@/layouts';
 import { emojis, feedbackTopics } from './data';
 import { ScrollView } from 'react-native';
 

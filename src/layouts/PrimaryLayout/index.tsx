@@ -4,8 +4,8 @@ import { SafeAreaView, View } from 'react-native';
 
 import { useStatusBarForAndroid } from '@/hooks';
 import { PrimaryLayoutProps } from './type';
-import HeaderBar from '../../HeaderBar';
-import MyStatusBar from '../../MyStatusBar';
+import HeaderBar from '../../components/HeaderBar';
+import MyStatusBar from '../../components/MyStatusBar';
 
 const PrimaryLayout = ({
   barStyle,
