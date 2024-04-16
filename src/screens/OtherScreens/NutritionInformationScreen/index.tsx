@@ -1,7 +1,7 @@
 import { Box, Divider, Text } from 'native-base';
 import RenderHtml, { HTMLContentModel, HTMLElementModel } from 'react-native-render-html';
 
-import { PrimaryLayout } from '@/components';
+import { PrimaryLayout } from '@/layouts';
 import { widthScreen } from '@/utils';
 
 const NutritionInformationScreen = () => {

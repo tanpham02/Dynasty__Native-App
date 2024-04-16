@@ -1,11 +1,10 @@
 import { Canvas, RoundedRect, Shadow } from '@shopify/react-native-skia';
-import { Box, Flex, Text, View } from 'native-base';
+import { Flex, Text, View } from 'native-base';
 import { TouchableOpacity } from 'react-native';
 
 import { Svg } from '@/assets';
 import { goBack } from '@/utils';
 import { HeaderBarProps } from './type';
-import styles from '@/styles';
 
 const HeaderBar = (props: HeaderBarProps) => {
   const { title, headerClass, renderTitle } = props;
@@ -24,6 +23,7 @@ const HeaderBar = (props: HeaderBarProps) => {
             <Shadow dx={-6} dy={-6} blur={10} color='#ffffff' />
           </RoundedRect>
         </Canvas>
+
         <TouchableOpacity
           onPress={goBack}
           className='w-[43px] h-[43px] rounded-lg items-center justify-center absolute top-2.5 left-3.5'

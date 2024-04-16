@@ -1,7 +1,7 @@
 import { Box } from 'native-base';
 
 import { FaqList } from './components';
-import { PrimaryLayout } from '@/components';
+import { PrimaryLayout } from '@/layouts';
 
 const FAQsScreen = () => {
   return (

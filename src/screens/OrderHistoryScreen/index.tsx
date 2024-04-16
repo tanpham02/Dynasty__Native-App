@@ -3,7 +3,7 @@ import { useRef, useState } from 'react';
 import { FlatList } from 'react-native';
 
 import { orderStatus } from './data';
-import { PrimaryLayout } from '@/components';
+import { PrimaryLayout } from '@/layouts';
 import { OrderHistoryItem, OrderStatusItemList } from './components';
 
 const OrderHistoryScreen = () => {

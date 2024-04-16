@@ -1,6 +1,6 @@
 import { Box, VStack, useDisclose } from 'native-base';
 
-import { PrimaryLayout } from '@/components';
+import { PrimaryLayout } from '@/layouts';
 import { CartItemDetailBottomSheet, CartLists, FooterBarContent, ShippingMethodModal } from './components';
 
 const CartScreen = () => {

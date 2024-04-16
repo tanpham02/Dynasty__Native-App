@@ -1,6 +1,7 @@
 import { Box, Image, Text, VStack } from 'native-base';
-import { OrderProductProps } from './type';
+
 import { formatCurrencyByLocale } from '@/utils';
+import { OrderProductProps } from './type';
 
 const OrderProduct = ({ extendVariantName, image, name, price, quantity }: OrderProductProps) => {
   return (

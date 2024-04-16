@@ -1,6 +1,6 @@
 import { Box } from 'native-base';
 
-import { PrimaryLayout } from '@/components/Layout';
+import { PrimaryLayout } from '@/layouts';
 import { CategoryTabViewGroup } from './components';
 import { CategoryScreenProps } from './type';
 

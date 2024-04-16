@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { PrimaryLayout } from '@/components';
+import { PrimaryLayout } from '@/layouts';
 import { NotificationType } from './type';
 import { NotificationHeader, NotificationList, NotificationTab } from './components';
 

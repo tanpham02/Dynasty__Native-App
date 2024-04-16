@@ -1,6 +1,6 @@
 import { Box, Divider } from 'native-base';
 
-import { PrimaryLayout } from '@/components';
+import { PrimaryLayout } from '@/layouts';
 import { TermAndPolicyList } from './components';
 
 const TermAndConditionsScreen = () => {

@@ -8,6 +8,7 @@ import styles from '@/styles';
 import { CategoryTabViewList, CategoryTypeList, ProductFavoriteList } from '..';
 import ProductList from '../ProductList';
 import { tabBarRoutes } from './data';
+import { heightScreen, widthScreen } from '@/utils';
 
 const renderScene = SceneMap({
   deals: ProductList,
@@ -48,6 +49,7 @@ const CategoryTabViewGroup = () => {
           index: activeTabKey,
           routes: tabBarRoutes,
         }}
+        
         renderScene={renderScene}
         renderTabBar={() => (
           <CategoryTabViewList
@@ -56,6 +58,10 @@ const CategoryTabViewGroup = () => {
             onScrollToIndex={handleScrollToIndex}
           />
         )}
+        initialLayout={{
+          height: 0,
+          width: widthScreen,
+        }}
         onIndexChange={setActiveTabKey}
         onSwipeStart={() => handleScrollToIndex(activeTabKey)}
       />

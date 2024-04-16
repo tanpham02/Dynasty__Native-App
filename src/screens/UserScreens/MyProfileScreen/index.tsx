@@ -1,6 +1,6 @@
 import { Box, ScrollView } from 'native-base';
 
-import { PrimaryLayout } from '@/components';
+import { PrimaryLayout } from '@/layouts';
 import { MyProfileCard, ProfileMenu, SignOutButton } from './components';
 
 const MyProfileScreen = () => {
