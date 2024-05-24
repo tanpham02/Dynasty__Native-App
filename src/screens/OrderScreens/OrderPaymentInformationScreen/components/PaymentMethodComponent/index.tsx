@@ -1,17 +1,17 @@
-import { FormController } from '@/components';
-import { OrderModel, PaymentMethod } from '@/models';
-import { Box, Radio, Text, VStack } from 'native-base';
-import { paymentMethods } from './data';
+import { Text, VStack } from 'native-base';
 import { useFormContext } from 'react-hook-form';
-import { Pressable } from 'react-native';
+
+import { FormController } from '@/components';
+import { OrderModel, PaymentMethods } from '@/models';
 import PaymentMethodItem from '../PaymentMethodItem';
+import { paymentMethods } from './data';
 
 const { FormRadio } = FormController;
 
-const PaymentMethods = () => {
+const PaymentMethodComponent = () => {
   const { setValue } = useFormContext<OrderModel>();
 
-  const handleChangePaymentMethod = (paymentMethod: PaymentMethod) => setValue('paymentMethod', paymentMethod);
+  const handleChangePaymentMethod = (paymentMethod: PaymentMethods) => setValue('paymentMethod', paymentMethod);
 
   return (
     <>
@@ -27,4 +27,4 @@ const PaymentMethods = () => {
   );
 };
 
-export default PaymentMethods;
+export default PaymentMethodComponent;

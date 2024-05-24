@@ -1,5 +1,5 @@
 export { default as CustomerInformation } from './CustomerInformation';
-export { default as PaymentMethods } from './PaymentMethods';
+export { default as PaymentMethodComponent } from './PaymentMethodComponent';
 export { default as PaymentMethodItem } from './PaymentMethodItem';
 export { default as FooterBarContent } from './FooterBarContent';
 export { default as OrderProducts } from './OrderProducts';

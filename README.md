@@ -58,7 +58,7 @@
   ![import noop](./src/assets/images/rules/split-noop.png)
   ![import noop](./src/assets/images/rules/split-1-noop.png)
 
-- Good. It will make easy to read and know what is purple of this component
+- Good. It will make easy to read and know what is purpose of this component
 
   ![import noop](./src/assets/images/rules/split-good.png)
   ![import noop](./src/assets/images/rules/split-1-good.png)
@@ -69,7 +69,7 @@
 
   ![import noop](./src/assets/images/rules/split-2-noop.png)
 
-- Good. It will make easy to read and know what is purple of this component
+- Good. It will make easy to read and know what is purpose of this component
 
   ![import noop](./src/assets/images/rules/split-2-good.png)
 

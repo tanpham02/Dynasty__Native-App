@@ -10,7 +10,7 @@ import { memo } from 'react';
 const BuyQueueTutorial = () => {
   return (
     <View className='h-[185px]'>
-      <Canvas
+      {/* <Canvas
         style={{
           flex: 1,
           backgroundColor: '#f5faff',
@@ -20,7 +20,7 @@ const BuyQueueTutorial = () => {
           <Shadow dx={10} dy={10} blur={10} color='#dfe6ee' />
           <Shadow dx={-10} dy={-10} blur={10} color='#ffffff' />
         </RoundedRect>
-      </Canvas>
+      </Canvas> */}
       <View className='mt-4 rounded-lg p-4 mx-3 absolute top-0 left-0 right-0 bottom-0'>
         <View>
           <Text className='text-sm font-nunito-700 text-zinc-800'>Quy trình đặt</Text>

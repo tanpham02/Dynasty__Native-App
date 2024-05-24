@@ -31,7 +31,7 @@ const HomeScreen = () => {
         <SideBar />
       </Animated.View>
       <Animated.View
-        className='flex-1 bg-third absolute'
+        className='flex-1 bg-white absolute'
         style={[
           {
             top: interpolatedTop,

@@ -2,13 +2,19 @@ import { Divider, VStack } from 'native-base';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import { PrimaryLayout } from '@/layouts';
-import { OrderModel, PaymentMethod } from '@/models';
+import { OrderModel, PaymentMethods } from '@/models';
 import { ScrollView } from 'react-native';
-import { CustomerInformation, FooterBarContent, OrderProducts, PaymentMethods, TotalPayment } from './components';
+import {
+  CustomerInformation,
+  FooterBarContent,
+  OrderProducts,
+  PaymentMethodComponent,
+  TotalPayment,
+} from './components';
 import { navigate } from '@/utils';
 import { PATH_SCREEN } from '@/constants';
 
-const defaultValues: OrderModel = { paymentMethod: PaymentMethod.PAYMENT_ON_DELIVERY };
+const defaultValues: OrderModel = { paymentMethod: PaymentMethods.CASH };
 
 const OrderPaymentInformationScreen = () => {
   const formMethods = useForm({ defaultValues });
@@ -25,7 +31,7 @@ const OrderPaymentInformationScreen = () => {
         <FormProvider {...formMethods}>
           <VStack space={5} className='px-4'>
             <CustomerInformation />
-            <PaymentMethods />
+            <PaymentMethodComponent />
             <OrderProducts />
             <Divider />
             <TotalPayment />

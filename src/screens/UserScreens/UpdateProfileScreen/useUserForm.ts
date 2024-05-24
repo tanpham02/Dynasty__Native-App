@@ -7,7 +7,7 @@ import { launchImageLibraryAsync, requestMediaLibraryPermissionsAsync } from 'ex
 import { UserModel } from '@/models';
 import { tokenManager } from 'App';
 import { UserService } from '@/services';
-import { GlobalLoading } from '@/components';
+import { GlobalLoading, globalLoading } from '@/components';
 import { AppDispatch, RootState, getUserInfo } from '@/redux';
 
 export const useUserForm = () => {
@@ -24,7 +24,7 @@ export const useUserForm = () => {
   const updateUserInfo = async (data: UserModel) => {
     console.log('🚀 ~ onUpdateUserInfo ~ data:', data);
     try {
-      GlobalLoading.show();
+      globalLoading.show();
 
       const formData = new FormData();
 
@@ -44,7 +44,7 @@ export const useUserForm = () => {
         type: 'danger',
       });
     } finally {
-      GlobalLoading.hide();
+      globalLoading.hide();
     }
   };
 
@@ -81,7 +81,7 @@ export const useUserForm = () => {
           let type = match ? `image/${match[1]}` : `image`;
 
           if (fileSelected && user?._id) {
-            GlobalLoading.show();
+            globalLoading.show();
             console.log('🚀 ~ updateUserAvatar ~ fileSelected:', fileSelected);
 
             const formData = new FormData();
@@ -111,7 +111,7 @@ export const useUserForm = () => {
       console.log('🚀 ~ handleUploadAvatar ~ err:', err);
       isOpeningPhotosLibrary.current = false;
     } finally {
-      GlobalLoading.hide();
+      globalLoading.hide();
     }
   };
 
