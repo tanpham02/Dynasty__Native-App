@@ -7,11 +7,11 @@ import { widthScreen } from '@/utils';
 
 const ProductItemSkeleton = () => {
   return (
-    <Box style={styles.widthTwoPerFive} className='relative h-[260px]'>
+    <Box style={styles.widthTwoPerFive} className='relative min-h-[280px]'>
       <Canvas
         style={{
           flex: 1,
-          height: 260,
+          height: 280,
         }}
       >
         <RoundedRect x={10} y={10} r={8} height={230} width={widthScreen * 0.5 - 45} color='#f0f6fc'>
@@ -21,7 +21,7 @@ const ProductItemSkeleton = () => {
       </Canvas>
       <View className='absolute top-1 left-1 right-0 bottom-1'>
         <Box className='mr-3 rounded-lg p-2 mb-2 ml-1'>
-          <Skeleton className='w-full h-full max-h-32 rounded-lg mt-1' />
+          <Skeleton className='w-full h-full max-h-[150px] rounded-lg mt-1' />
           <Skeleton className='mt-2 h-3 rounded-lg' />
           <Skeleton className='mt-1 h-3 rounded-lg' />
           <View className='my-3 w-2/5 h-0.5 bg-secondary' />

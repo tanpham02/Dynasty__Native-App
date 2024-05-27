@@ -17,10 +17,10 @@ export enum ModelStatus {
 }
 
 export interface BaseModel {
-  _id: string;
-  status: ModelStatus;
-  createdAt: string;
-  updatedAt: string;
+  _id?: string;
+  status?: ModelStatus;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface ListDataResponse<T> {

@@ -27,7 +27,7 @@ const ProductList = ({ isLoading, name, _id, childrenCategory, isRefetching }: P
   const gotoCategoryDetail = () => navigate(PATH_SCREEN.CATEGORIES_SCREEN);
 
   return (
-    <Box className='-mt-2'>
+    <Box className='mb-6'>
       {isFetchingProducts ? (
         <Box className='flex-row justify-between items-center mx-4'>
           <Skeleton className='h-4 rounded-lg w-2/5' />
@@ -37,13 +37,13 @@ const ProductList = ({ isLoading, name, _id, childrenCategory, isRefetching }: P
         <Box className='flex-row items-center mx-3'>
           <Box className='flex-row items-center flex-1 mr-3'>
             <Svg.Box width={16} height={16} className='text-zinc-700' />
-            <Text className='text-sm font-nunito-700 text-zinc-700 ml-2' numberOfLines={1}>
+            <Text className='text-[14.5px] font-nunito-700 text-gray-10 ml-2' numberOfLines={1}>
               {name}
             </Text>
           </Box>
           <TouchableOpacity className='flex-row items-center gap-1' onPress={gotoCategoryDetail}>
-            <Text className='font-nunito-600 text-[13px] text-zinc-600'>Xem thêm</Text>
-            <Svg.ArrowRight width={16} height={16} className='text-zinc-600' />
+            <Text className='font-nunito-600 text-[12.5px] text-gray-10'>Xem thêm</Text>
+            <Svg.ArrowRight width={15.5} height={15.5} className='text-gray-10' />
           </TouchableOpacity>
         </Box>
       )}
@@ -59,13 +59,13 @@ const ProductList = ({ isLoading, name, _id, childrenCategory, isRefetching }: P
         />
       ) : (
         <FlatList
-          className='mt-2 ml-2'
+          className='mt-2 ml-2 '
           data={productsData?.pages?.[0]?.data}
           horizontal
           scrollEventThrottle={16}
           showsHorizontalScrollIndicator={false}
           renderItem={({ item }) => <ProductItem {...item} />}
-          ItemSeparatorComponent={() => <Box className='-mx-3' />}
+          ItemSeparatorComponent={() => <Box className='-m-3' />}
           keyExtractor={(_, index) => index.toString()}
         />
       )}

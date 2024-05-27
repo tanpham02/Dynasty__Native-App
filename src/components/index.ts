@@ -5,7 +5,7 @@ export { default as BuyActionItem } from './BuyActionItem';
 export { default as SideBar } from './SideBar';
 export { default as ExpandItem } from './ExpandItem';
 export { default as OrderStatusTag } from './OrderStatusTag';
-export { globalLoading as GlobalLoading } from './GlobalLoading';
+export { default as GlobalLoading, globalLoadingRef, globalLoading } from './GlobalLoading';
 export { default as ButtonPrimary } from './ButtonPrimary';
 export { default as ButtonIcon } from './ButtonIcon';
 export { default as ButtonPrimaryAnimated } from './ButtonPrimaryAnimated';

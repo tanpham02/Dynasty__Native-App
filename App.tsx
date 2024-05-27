@@ -1,21 +1,20 @@
+import { SelectProvider } from '@mobile-reality/react-native-select-pro';
 import { NavigationContainer } from '@react-navigation/native';
+import { decode } from 'base-64';
 import * as Font from 'expo-font';
 import { NativeBaseProvider } from 'native-base';
-import { Suspense, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { LogBox } from 'react-native';
 import FlashMessage from 'react-native-flash-message';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Provider } from 'react-redux';
-import { decode } from 'base-64';
-import { SelectProvider } from '@mobile-reality/react-native-select-pro';
 
 import { Font as MyFont } from '@/assets';
-import GlobalLoading, { globalLoadingRef } from '@/components/GlobalLoading';
+import { GlobalLoading, globalLoadingRef } from '@/components';
 import { TokenManager } from '@/helpers';
 import RootStackNavigator from '@/navigation/RootStackNavigator';
 import store from '@/redux/store';
 import { navigationRef } from '@/utils';
-import { AppLoading } from '@/components';
 
 LogBox.ignoreAllLogs();
 global.atob = decode;

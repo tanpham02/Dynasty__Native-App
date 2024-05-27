@@ -10,7 +10,7 @@ export interface UserModel extends BaseModel {
   otp?: string;
   orderIds: string[];
   customerType: UserType;
-  avatar?: string;
+  image?: string;
 }
 
 export enum UserType {

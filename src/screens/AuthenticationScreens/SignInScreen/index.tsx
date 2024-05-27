@@ -13,7 +13,7 @@ import PizzaBgLeft from '@/assets/images/logo/pizza-hai-san-cao-cap.png';
 import { Mobile as MobileSvg, Offer as OfferSvg, PizzaSlice } from '@/assets/svg';
 
 import { Svg } from '@/assets';
-import { GlobalLoading } from '@/components';
+import { GlobalLoading, globalLoading, globalLoadingRef } from '@/components';
 import configEnv from '@/configs';
 import { PATH_SCREEN } from '@/constants';
 import { useStatusBarForAndroid } from '@/hooks';
@@ -84,7 +84,7 @@ const SignInScreen = () => {
         type: 'danger',
       });
     } finally {
-      GlobalLoading.hide();
+      globalLoading.hide();
     }
   };
 
@@ -99,7 +99,7 @@ const SignInScreen = () => {
   const navigateToVerifyOTPScreen = () => navigate(VERIFY_OTP_SCREEN);
 
   const startLoginWithGoogle = async () => {
-    GlobalLoading.show();
+    globalLoading.show();
     await promptAsync();
   };
 

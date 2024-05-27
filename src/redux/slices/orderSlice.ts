@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { OrderModel } from '@/models/orderModel';
+import { OrderModel } from '@/models';
 
 const orderInitialState: { order: OrderModel } = {
   order: {},

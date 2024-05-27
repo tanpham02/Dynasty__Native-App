@@ -1,4 +1,4 @@
-import { Box, Text, Image, Avatar } from 'native-base';
+import { Avatar, Box, Text } from 'native-base';
 import { useSelector } from 'react-redux';
 
 import { UserModel } from '@/models';
@@ -12,7 +12,7 @@ const MyProfileCard = () => {
     <Box className='items-center p-4'>
       <Avatar
         size='lg'
-        source={{ uri: getFullImageUrl(user?.avatar) }}
+        source={{ uri: getFullImageUrl(user?.image) }}
         className='items-center justify-center rounded-full relative bg-secondary'
       >
         {user?.fullName?.charAt(0)}

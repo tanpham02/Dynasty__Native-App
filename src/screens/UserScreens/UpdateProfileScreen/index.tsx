@@ -5,7 +5,8 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 
 import { useUserForm } from './useUserForm';
 import { MyAvatar, UpdateForm } from './components';
-import { ButtonPrimary, PrimaryLayout } from '@/components';
+import { ButtonPrimary } from '@/components';
+import { PrimaryLayout } from '@/layouts';
 
 const UpdateProfileScreen = () => {
   const { user, fillUserData, formMethods, handleSubmitUserForm, updateUserAvatar } = useUserForm();

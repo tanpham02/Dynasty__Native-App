@@ -1,5 +1,5 @@
 import { View } from 'react-native';
-import { Box, ScrollView } from 'native-base';
+import { Box, ScrollView, VStack } from 'native-base';
 import React, { memo, useEffect } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -22,7 +22,7 @@ const HomeBody = ({ openSidebar }: HomeBodyProps) => {
   useEffect(() => getUserLoginInfo(), []);
 
   return (
-    <SafeAreaView className='flex-1'>
+    <SafeAreaView className='flex-1 bg-white'>
       <View className='flex-1'>
         <Header openSidebar={openSidebar} />
         <ScrollView

@@ -7,6 +7,7 @@ import { Svg } from '@/assets';
 import { HeaderProps } from './type';
 import { PATH_SCREEN } from '@/constants';
 import { navigate, widthScreen } from '@/utils';
+import styles from '@/styles';
 
 const Header = ({ openSidebar }: HeaderProps) => {
   const goToNotificationScreen = () => navigate(PATH_SCREEN.NOTIFICATION_SCREEN);
@@ -14,7 +15,7 @@ const Header = ({ openSidebar }: HeaderProps) => {
   return (
     <View className='flex-row justify-between items-center gap-3'>
       <View className='flex-1 h-[85px] relative'>
-        <Canvas
+        {/* <Canvas
           style={{
             flex: 1,
             backgroundColor: '#f5faff',
@@ -28,7 +29,7 @@ const Header = ({ openSidebar }: HeaderProps) => {
             <Shadow dx={10} dy={10} blur={10} color='#dfe6ee' />
             <Shadow dx={-10} dy={-10} blur={10} color='#ffffff' />
           </RoundedRect>
-        </Canvas>
+        </Canvas> */}
         <TouchableOpacity onPress={goToNotificationScreen} className='absolute top-7 right-6'>
           <Svg.Notification width={24} height={24} />
           <Box className='bg-secondary w-[18px] h-[18px] rounded-full items-center justify-center absolute -top-2 -right-2'>

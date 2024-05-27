@@ -1,3 +1,5 @@
+import { BaseModel } from '@/types';
+
 enum OrderStatuses {
   PENDING = 'PENDING', // Chờ xác nhận
   DELIVERING = 'DELIVERING', // Đang vận chuyển
@@ -6,9 +8,10 @@ enum OrderStatuses {
   WAITING_FOR_DELIVERING = 'WAITING_FOR_DELIVERING', // Chờ lấy hàng
   WAITING_FOR_PAYMENT = 'WAITING_FOR_PAYMENT', // Chờ thanh toán
 }
+
 enum OrderTypes {
-  ORDER_TO_PICK_UP = 'ORDER_TO_PICK_UP', // Đặt đến lấy
-  ORDER_DELIVERING = 'ORDER_DELIVERING', // Đặt giao hàng
+  PICK_UP = 'PICK_UP', // Đặt đến lấy
+  DELIVERY = 'DELIVERY', // Đặt giao hàng
 }
 
 enum OrderReceivingTime {
@@ -21,53 +24,39 @@ enum StatusCheckout {
   ORDER_CONFIRMATION = 'ORDER_CONFIRMATION', // Bước xác nhận đăt hàng, chọn phương thức thanh toán = > chờ xác nhân (PENDING)
 }
 
-enum PaymentMethod {
-  PAYMENT_ON_DELIVERY = 'PAYMENT_ON_DELIVERY', // Thanh toán khi nhân hàng
-  MONO = 'MONO',
+enum PaymentMethods {
+  CASH = 'CASH',
+  MOMO = 'MOMO',
   ATM_CARD = 'ATM_CARD',
   SHOPEE_PAY = 'SHOPEE_PAY',
   ZALO_PAY = 'ZALO_PAY',
-  VN_PAY = 'VN_PAY',
 }
 
-interface OrderModel {
-  _id?: string;
+interface OrderProductItem {
+  product?: string;
+  note?: string;
+  quantity?: number;
+}
+
+interface OrderModel extends BaseModel {
   customerId?: string;
-  productsFromCart?: Array<{
-    product?: string;
-    note?: string;
-    productQuantities: number;
-  }>;
-  productsWhenTheCustomerIsNotLoggedIn?: Array<{
-    product?: string;
-    note?: string;
-    productQuantities: number;
-  }>;
+  products?: OrderProductItem[];
   shipFee?: number;
-  totalAmountBeforeUsingDiscount?: number;
-  statusOrder?: OrderStatuses;
+  orderStatus?: OrderStatuses;
   fullName?: string;
   phoneNumber?: string;
-  location?: string;
-  city?: string;
-  cityId?: number;
-  district?: string;
-  districtId?: number;
-  ward?: string;
-  wardId?: number;
   orderType?: OrderTypes;
   orderReceivingTime?: OrderReceivingTime;
-  dateTimeOrderReceive?: Date | string;
+  orderReceivingTimeAt?: Date | string;
+  storeId?: string;
   voucherId?: string;
-  orderAtStore?: string;
-  reasonOrderCancel?: string;
-  totalOrder?: number;
-  createdAt?: string | Date;
-  updatedAt?: string | Date;
-  statusCheckout?: StatusCheckout;
-  paymentMethod?: PaymentMethod;
+  shipperId?: string;
+  reasonCancel?: string;
+  paymentMethod?: PaymentMethods;
   note?: string;
+  subTotal?: number;
+  total?: number;
 }
 
-export { OrderReceivingTime, PaymentMethod, StatusCheckout, OrderStatuses, OrderTypes };
+export { OrderReceivingTime, PaymentMethods, StatusCheckout, OrderStatuses, OrderTypes };
 export default OrderModel;

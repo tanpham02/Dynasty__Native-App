@@ -8,9 +8,9 @@ const combineUrl = (...routes: string[]) => `${API_BASE_URL}/${routes.join('/')}
 export const API_SIGN_IN_URL = combineUrl('auth', 'customer', 'login', 'social-account', 'google');
 
 //CATEGORY URL
-export const API_CATEGORY_URL = combineUrl('category');
-export const API_CATEGORY_SEARCH_URL = combineUrl('category', 'search');
-export const API_CATEGORY_SEARCH_ALL_URL = combineUrl('category', 'search-all');
+export const API_CATEGORY_URL = combineUrl('categories');
+export const API_CATEGORY_SEARCH_URL = combineUrl('categories', 'search');
+export const API_CATEGORY_SEARCH_ALL_URL = combineUrl('categories', 'search-all');
 
 // TERM AND POLICY URL
 export const API_TERM_AND_POLICY_SEARCH_URL = combineUrl('term-and-policy', 'search-all');
