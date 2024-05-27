@@ -12,12 +12,12 @@ const MyAvatar = ({ onChangeAvatar, user }: MyAvatarProps) => {
         onPress={onChangeAvatar}
         className='w-16 h-16 bg-secondary items-center justify-center rounded-full relative'
       >
-        {user?.image ? (
+        {user?.avatar ? (
           <Image
             alt='avatar'
             resizeMode='cover'
             className='w-full h-full rounded-full'
-            source={{ uri: getFullImageUrl(user?.image) }}
+            source={{ uri: getFullImageUrl(user.avatar) }}
           />
         ) : (
           <Text className='font-nunito-700 text-white uppercase text-lg'>{user?.fullName?.charAt(0) || 'A'}</Text>

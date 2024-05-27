@@ -5,6 +5,7 @@ import HomeSliderImage from '../HomeSliderImage';
 import { HomeSliderProps } from './type';
 import { Skeleton } from 'native-base';
 import styles from '@/styles';
+import { getFullImageUrl } from '@/utils';
 
 const HomeSlider = ({ data, isLoading }: HomeSliderProps) => {
   return (
@@ -33,7 +34,7 @@ const HomeSlider = ({ data, isLoading }: HomeSliderProps) => {
           snapToAlignment='center'
           scrollEventThrottle={16}
           showsHorizontalScrollIndicator={false}
-          renderItem={({ item }) => <HomeSliderImage uri={`https://dynasty-ws.vtaan.id.vn${item?.url}`} />}
+          renderItem={({ item }) => <HomeSliderImage uri={getFullImageUrl(item?.url)} />}
           keyExtractor={(_, index) => index.toString()}
         />
       )}

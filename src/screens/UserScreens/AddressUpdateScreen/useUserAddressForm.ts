@@ -1,11 +1,11 @@
 import { useForm } from 'react-hook-form';
 import { showMessage } from 'react-native-flash-message';
 
-import { navigate } from '@/utils';
-import { UserService } from '@/services';
+import { globalLoading } from '@/components';
 import { PATH_SCREEN } from '@/constants';
-import { GlobalLoading } from '@/components';
 import { UserAddressModel, UserAddressRequest, UserModel } from '@/models';
+import { UserService } from '@/services';
+import { navigate } from '@/utils';
 
 export const useUserAddressForm = () => {
   const formMethods = useForm<UserAddressModel>();
@@ -16,16 +16,16 @@ export const useUserAddressForm = () => {
 
   const createOrUpdateUserAddress = async (data: UserAddressModel) => {
     try {
-      GlobalLoading.show();
+      globalLoading.show();
       const formData = new FormData();
 
       const dataSubmit: UserAddressRequest = {
         customerId: '6610186d6861b729f3d2ffc5',
         addressItem: {
           ...data,
-          cityId: Number(data.cityId),
-          districtId: Number(data.districtId),
-          wardId: Number(data.wardId),
+          cityId: data.cityId,
+          districtId: data.districtId,
+          wardId: data.wardId,
         },
       };
 
@@ -44,7 +44,7 @@ export const useUserAddressForm = () => {
       });
       console.log('🚀 ~ onCreateOrUpdateDeliveryAddress ~ err:', err);
     } finally {
-      GlobalLoading.hide();
+      globalLoading.hide();
     }
   };
 
@@ -63,7 +63,7 @@ export const useUserAddressForm = () => {
     if (!userAddressId) return;
 
     try {
-      GlobalLoading.show();
+      globalLoading.show();
       const userAddressResponse = await UserService.getSavedAddressById(userAddressId);
       reset({ ...userAddressResponse });
     } catch (err) {
@@ -73,7 +73,7 @@ export const useUserAddressForm = () => {
         type: 'danger',
       });
     } finally {
-      GlobalLoading.show();
+      globalLoading.hide();
     }
   };
 

@@ -7,7 +7,6 @@ import { useUserAuthentication } from './useUserAuthentication';
 
 const UserSignInButton = () => {
   const { isAuthenticated, userLogin, loginOrViewProfile } = useUserAuthentication();
-  console.log('🚀 ~ UserSignInButton ~ userLogin:', userLogin);
 
   return (
     <TouchableOpacity className='flex-row items-center justify-between' onPress={loginOrViewProfile}>
@@ -15,8 +14,8 @@ const UserSignInButton = () => {
         <Box className='bg-secondary w-10 h-10 rounded-full items-center justify-center m-2 overflow-hidden'>
           {isAuthenticated ? (
             <>
-              {userLogin?.image ? (
-                <Image source={{ uri: getFullImageUrl(userLogin.image) }} className='w-full h-full' alt='Avatar' />
+              {userLogin?.avatar ? (
+                <Image source={{ uri: getFullImageUrl(userLogin.avatar) }} className='w-full h-full' alt='Avatar' />
               ) : (
                 <Text className='text-white text-base font-nunito-700'>{userLogin?.fullName?.charAt(0)}</Text>
               )}
