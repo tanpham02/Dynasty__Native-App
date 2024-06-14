@@ -1,6 +1,6 @@
 import { Box, Image } from 'native-base';
 import React, { useState } from 'react';
-import { Animated, Easing, GestureResponderEvent, Pressable, Text, TouchableOpacity } from 'react-native';
+import { Animated, GestureResponderEvent, Pressable, Text, TouchableOpacity } from 'react-native';
 
 import { Svg } from '@/assets';
 import { PATH_SCREEN } from '@/constants';
@@ -30,21 +30,17 @@ const ProductItem = (props: ProductItemProps) => {
       }
       return [...prev, index];
     });
+    onScaleFavoriteIcon()
   };
 
-  const pressInHandler = () => {
-    Animated.spring(animation, {
+  const onScaleFavoriteIcon = () => {
+    Animated.timing(animation, {
       toValue: 1,
+      duration: 1000,
       useNativeDriver: true,
     }).start();
   };
 
-  const pressOutHandler = () => {
-    Animated.spring(animation, {
-      toValue: 0,
-      useNativeDriver: true,
-    }).start();
-  };
 
   const handleNavigateProductDetail = () => navigate(PATH_SCREEN.PRODUCT_DETAIL_SCREEN);
 
@@ -73,9 +69,7 @@ const ProductItem = (props: ProductItemProps) => {
             {types.map((type, index) => {
               const { Icon, color } = ProductTypeIconList[type];
               return (
-                // <Box className='rounded-full p-.5 border-2 border-white'>
                 <Icon key={index} width={19} height={19} color={color} />
-                // </Box>
               );
             })}
           </Box>
@@ -83,11 +77,10 @@ const ProductItem = (props: ProductItemProps) => {
         <Animated.View style={[{ transform: [{ scale: scale }] }]} className='w-fit ml-auto'>
           <Pressable
             onPress={handlePressProductFavorite}
-            onTouchStart={pressInHandler}
-            onPressOut={pressOutHandler}
+
             className='item-center'
           >
-            {haveProductFavored.includes(index) ? (
+            {haveProductFavored.some((value) => value === index ) ? (
               <Svg.HeartSolid width={21} height={21} color='#e8002a' />
             ) : (
               <Svg.HeartOutline width={21} height={21} color='#000000' />

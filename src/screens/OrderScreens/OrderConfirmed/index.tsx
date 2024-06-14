@@ -1,8 +1,9 @@
-import { NoneLayout, PrimaryLayout } from '@/layouts';
-import { Box, Text } from 'native-base';
-import { useEffect, useRef, useState } from 'react';
-import { Animated, Easing, StatusBar } from 'react-native';
 import LottieView from 'lottie-react-native';
+import { Box } from 'native-base';
+import { useEffect, useRef, useState } from 'react';
+import { Animated, Easing } from 'react-native';
+
+import { NoneLayout } from '@/layouts';
 
 const OrderConfirmed = () => {
   const bgAnimateRef = useRef(new Animated.Value(0)).current;
