@@ -2,7 +2,7 @@ import { Canvas, RoundedRect, Shadow } from '@shopify/react-native-skia';
 import { Image, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-import { formatMoneyVND, widthScreen } from '@/utils';
+import { formatMoneyVND, getFullImageUrl, widthScreen } from '@/utils';
 import { ProductItemProps } from './type';
 import styles from '@/styles';
 import { Svg } from '@/assets';
@@ -35,9 +35,7 @@ const ProductItem = ({ name, price, image }: ProductItemProps) => {
           </View>
           <Image
             source={{
-              uri: image
-                ? `https://dynasty-ws.vtaan.id.vn${image}`
-                : 'https://dynasty-ws.vtaan.id.vn/public/uploads/image/products/pizza-hai-san-dao.png',
+              uri: getFullImageUrl(image),
             }}
             className='w-full h-full max-h-[140px] mt-1 rounded-lg'
             resizeMode='cover'
@@ -49,7 +47,6 @@ const ProductItem = ({ name, price, image }: ProductItemProps) => {
               className='font-nunito-700 text-[14.5px] text-zinc-700 leading-tight mt-0.5 min-h-[40px]'
               numberOfLines={2}
             >
-              {name}
               {name}
             </Text>
             <Text className='font-nunito-700 mt-2 text-[13.5px] text-secondary'>{formatMoneyVND(price)}đ</Text>

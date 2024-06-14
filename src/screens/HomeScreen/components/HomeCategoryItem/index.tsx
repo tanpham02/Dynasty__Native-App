@@ -1,33 +1,38 @@
-import { Image } from 'native-base';
+import { Box, Image } from 'native-base';
 import { Text, TouchableOpacity, View } from 'react-native';
 
 import { Svg } from '@/assets';
 import styles from '@/styles';
 import { HomeCategoryItemProps } from './type';
+import { getFullImageUrl } from '@/utils';
 
 const HomeCategoryItem = ({ name, avatar }: HomeCategoryItemProps) => {
   return (
-    <View className='items-center w-1/3 mt-4'>
-      <TouchableOpacity
-        className='w-[85px] h-[85px] rounded-full bg-white p-[3px] items-center justify-center overflow-hidden'
-        style={styles.shadowX}
-      >
-        {avatar ? (
-          <Image
-            source={{
-              uri: `https://dynasty-ws.vtaan.id.vn/${avatar}`,
-            }}
-            className='w-full h-full'
-            resizeMode='contain'
-            alt='avatar'
-          />
-        ) : (
-          <Svg.Box className='text-zinc-600' width={45} height={45} />
-        )}
+    <View className='items-center w-1/3 mt-4 '>
+      <TouchableOpacity className='bg-third rounded-tl-full rounded-tr-full relative'>
+        <Box className='h-[2.5px] bg-[#ff9e0b] absolute bottom-0 left-0 right-0'></Box>
+
+        <Box className='w-[85px] h-[85px] rounded-full bg-white p-[3px] items-center justify-center overflow-hidden'>
+          {avatar ? (
+            <Image
+              source={{
+                uri: getFullImageUrl(avatar),
+              }}
+              className='w-full h-full'
+              resizeMode='contain'
+              alt='avatar'
+            />
+          ) : (
+            <Svg.Box className='text-zinc-600' width={45} height={45} />
+          )}
+        </Box>
+        <Text
+          numberOfLines={2}
+          className='mt-2 text-[13px] font-nunito-700 text-zinc-700 text-center capitalize pb-[6px]'
+        >
+          {name}
+        </Text>
       </TouchableOpacity>
-      <Text numberOfLines={2} className='mt-2 text-[13px] font-nunito-700 text-zinc-700 text-center capitalize'>
-        {name}
-      </Text>
     </View>
   );
 };
