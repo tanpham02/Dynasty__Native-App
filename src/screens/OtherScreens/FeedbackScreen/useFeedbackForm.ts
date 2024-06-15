@@ -13,7 +13,6 @@ export const useFeedbackForm = () => {
   const { handleSubmit } = formMethods;
 
   const sendFeedback = (data) => {
-    console.log('🚀 ~ sendFeedback ~ data:', data);
     showMessage({
       message: 'Cảm ơn bạn đã gửi những đánh giá quý báu của bạn cho chúng tôi',
       type: 'success',

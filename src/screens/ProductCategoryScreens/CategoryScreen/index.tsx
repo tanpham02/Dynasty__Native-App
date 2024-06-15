@@ -9,11 +9,9 @@ const CategoryScreen = (props: CategoryScreenProps) => {
     <PrimaryLayout
       titleScreen='Khám phá Menu'
       statusBarBackgroundColor='#f5faff'
-      containerClass='bg-third relative top-0 h-screen flex-1'
+      containerClass='bg-third'
     >
-      <Box className='flex-1 h-full'>
         <CategoryTabViewGroup />
-      </Box>
     </PrimaryLayout>
   );
 };

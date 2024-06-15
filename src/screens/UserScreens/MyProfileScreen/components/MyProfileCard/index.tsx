@@ -12,7 +12,7 @@ const MyProfileCard = () => {
     <Box className='items-center p-4'>
       <Avatar
         size='lg'
-        source={{ uri: getFullImageUrl(user?.image) }}
+        source={{ uri: getFullImageUrl(user?.avatar) }}
         className='items-center justify-center rounded-full relative bg-secondary'
       >
         {user?.fullName?.charAt(0)}

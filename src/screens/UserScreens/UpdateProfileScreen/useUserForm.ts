@@ -19,18 +19,22 @@ export const useUserForm = () => {
 
   const formMethods = useForm<UserModel>();
 
-  const { handleSubmit, reset } = formMethods;
+  const { handleSubmit, reset, getFieldState } = formMethods;
 
   const updateUserInfo = async (data: UserModel) => {
-    console.log('🚀 ~ onUpdateUserInfo ~ data:', data);
     try {
       globalLoading.show();
 
       const formData = new FormData();
+      let dataSubmit: UserModel = { _id: data._id };
 
-      formData.append('customerInfo', JSON.stringify(data));
+      Object.keys(data).forEach((key) => {
+        if (getFieldState(key).isDirty) dataSubmit[key] = data[key];
+      });
 
-      await UserService.updateInfoById(tokenManager.getUserId(), formData);
+      formData.append('customerInfo', JSON.stringify(dataSubmit));
+
+      await UserService.updateInfoById(dataSubmit._id, formData);
       await dispatch(getUserInfo());
 
       showMessage({

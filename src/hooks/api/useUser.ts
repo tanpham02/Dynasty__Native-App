@@ -1,8 +1,8 @@
-import { QueryKey, UseMutationOptions, UseQueryOptions, useMutation, useQuery } from 'react-query';
+import { QueryKey, UseQueryOptions, useQuery } from 'react-query';
 
-import { MUTATE_KEY, QUERY_KEY } from '@/constants';
-import { UserService } from '@/services';
+import { QUERY_KEY } from '@/constants';
 import { UserAddressResponse, UserModel } from '@/models';
+import { UserService } from '@/services';
 
 interface FetchUserParams {
   userId: string;

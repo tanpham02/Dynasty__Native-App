@@ -8,9 +8,11 @@ export interface UserModel extends BaseModel {
   birthday?: string;
   customerAddressId?: string;
   otp?: string;
-  orderIds: string[];
-  customerType: UserType;
-  image?: string;
+  orderIds?: string[];
+  customerType?: UserType;
+  avatar?: string;
+
+  [key: string]: any;
 }
 
 export enum UserType {

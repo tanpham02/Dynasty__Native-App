@@ -1,10 +1,10 @@
 import { showMessage } from 'react-native-flash-message';
 
-import { UserService } from '@/services';
-import { GlobalLoading } from '@/components';
-import { useFetchUserAddress } from '@/hooks';
-import { navigate } from '@/utils';
+import { globalLoading } from '@/components';
 import { PATH_SCREEN } from '@/constants';
+import { useFetchUserAddress } from '@/hooks';
+import { UserService } from '@/services';
+import { navigate } from '@/utils';
 
 export const useUserAddressList = () => {
   const {
@@ -16,7 +16,7 @@ export const useUserAddressList = () => {
 
   const deleteUserAddress = async (userAddressId: string) => {
     try {
-      GlobalLoading.show();
+      globalLoading.show();
       await UserService.deleteAddressById(userAddressId);
       await refetchUserAddress();
       showMessage({
@@ -30,7 +30,7 @@ export const useUserAddressList = () => {
         type: 'danger',
       });
     } finally {
-      GlobalLoading.hide();
+      globalLoading.hide();
     }
   };
 

@@ -10,7 +10,7 @@ const ProductVariantContentItem = (props: ProductVariantContentItemProps) => {
   const defaultNumberOfLinesForEachItem = useRef<number>();
 
   const onLayout = (event) => {
-    const { x, y, width, height } = event.nativeEvent.layout;
+    const { y, height } = event.nativeEvent.layout;
     flatListItemLayout.current = {
       ...flatListItemLayout.current,
       [itemIdex]: {

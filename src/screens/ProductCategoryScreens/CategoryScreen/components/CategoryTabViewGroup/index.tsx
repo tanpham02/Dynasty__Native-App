@@ -10,13 +10,21 @@ import ProductList from '../ProductList';
 import { tabBarRoutes } from './data';
 import { heightScreen, widthScreen } from '@/utils';
 
+// const renderScene = SceneMap({
+//   deals: ProductList,
+//   'for-me': ProductList,
+//   pizza: ProductList,
+//   starters: ProductList,
+//   'salads-and-pasta': ProductList,
+//   drinks: ProductFavoriteList,
+// });
 const renderScene = SceneMap({
   deals: ProductList,
-  'for-me': ProductList,
-  pizza: ProductList,
-  starters: ProductList,
-  'salads-and-pasta': ProductList,
-  drinks: ProductFavoriteList,
+  'for-me': () => <></>,
+  pizza: () => <></>,
+  starters: () => <></>,
+  'salads-and-pasta': () => <></>,
+  drinks: () => <></>,
 });
 
 const CategoryTabViewGroup = () => {
@@ -49,7 +57,7 @@ const CategoryTabViewGroup = () => {
           index: activeTabKey,
           routes: tabBarRoutes,
         }}
-        
+
         renderScene={renderScene}
         renderTabBar={() => (
           <CategoryTabViewList
@@ -59,7 +67,7 @@ const CategoryTabViewGroup = () => {
           />
         )}
         initialLayout={{
-          height: 0,
+          height: heightScreen,
           width: widthScreen,
         }}
         onIndexChange={setActiveTabKey}
