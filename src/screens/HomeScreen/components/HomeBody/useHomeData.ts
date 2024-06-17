@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { tokenManager } from 'App';
-import { AppDispatch, getUserInfo } from '@/redux';
+import { AppDispatch, getStoreConfig, getUserInfo } from '@/redux';
 import { useFetchAllBanner, useFetchAllCategories } from '@/hooks';
 
 export const useHomeData = () => {
@@ -25,6 +25,10 @@ export const useHomeData = () => {
       dispatch(getUserInfo());
     }
   };
+
+  useEffect(() => {
+    dispatch(getStoreConfig());
+  }, [dispatch]);
 
   const refetchHomeData = async () => {
     setIsRefetchingHomeData(true);

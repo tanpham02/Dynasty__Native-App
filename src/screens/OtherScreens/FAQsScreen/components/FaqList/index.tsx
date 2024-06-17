@@ -1,32 +1,17 @@
 import { FlatList } from 'native-base';
+import { useSelector } from 'react-redux';
 
 import { FaqItem } from '..';
-
-const faqs = [
-  {
-    question: 'Question 1',
-    answer:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum autem, deleniti sint ratione quaerat error totam debitis rerum, fugit eius, veritatis aliquam esse ipsam ea aut corporis! Ratione, deleniti cumque.',
-  },
-  {
-    question: 'Question 1',
-    answer: 'answer 1',
-  },
-  {
-    question: 'Question 1',
-    answer: 'answer 1',
-  },
-  {
-    question: 'Question 1',
-    answer: 'answer 1',
-  },
-];
+import { RootState } from '@/redux';
+import { StoreConfigModel } from '@/models';
 
 const FaqList = () => {
+  const storeConfig = useSelector<RootState, StoreConfigModel>((state) => state.storeStore.storeConfig);
+
   return (
     <FlatList
       className='mt-2'
-      data={faqs}
+      data={storeConfig?.faqs || []}
       scrollEventThrottle={16}
       showsVerticalScrollIndicator={false}
       renderItem={({ item }) => <FaqItem {...item} />}

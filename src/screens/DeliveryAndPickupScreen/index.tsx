@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react';
 import { getParams } from '@/utils';
 import { BuyActionType, buyActions } from './data';
 import { DeliveryTab, PickupTab } from './components';
-import { BuyActionItem, PrimaryLayout } from '@/components';
+import { BuyActionItem } from '@/components';
+import { PrimaryLayout } from '@/layouts';
 
 const DeliveryAndPickupScreenScreen = () => {
   const params = getParams();

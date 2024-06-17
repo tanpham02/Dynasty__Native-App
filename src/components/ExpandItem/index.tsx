@@ -1,14 +1,16 @@
 import { Text, Skeleton } from 'native-base';
 import { useEffect, useRef, useState } from 'react';
 import { Animated, Easing, TouchableOpacity } from 'react-native';
+import RenderHtml from 'react-native-render-html';
 
 import { Svg } from '@/assets';
 import { ExpandItemProps } from './type';
+import { widthScreen } from '@/utils';
 
 const ExpandItem = ({ label, isLoading, value = 'Chưa có thông tin' }: ExpandItemProps) => {
   const [isExpand, setIsExpand] = useState<boolean>(false);
 
-  const expandAnimation = useRef(new Animated.Value(50)).current;
+  const expandAnimation = useRef(new Animated.Value(4000)).current;
   const rotateAnimation = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
@@ -19,7 +21,7 @@ const ExpandItem = ({ label, isLoading, value = 'Chưa có thông tin' }: Expand
 
   const toggleExpand = () => {
     Animated.timing(expandAnimation, {
-      toValue: isExpand ? 500 : 50,
+      toValue: isExpand ? 5000 : 50,
       useNativeDriver: false,
       easing: Easing.linear,
       duration: isExpand ? 500 : 200,
@@ -67,7 +69,13 @@ const ExpandItem = ({ label, isLoading, value = 'Chưa có thông tin' }: Expand
           </Animated.View>
         )}
       </TouchableOpacity>
-      <Text className='font-nunito-500 pt-1 pb-2 px-6 text-zinc-500'>{value}</Text>
+      <RenderHtml
+        source={{ html: value }}
+        contentWidth={widthScreen}
+        baseStyle={{
+          padding: 16,
+        }}
+      />
     </Animated.View>
   );
 };

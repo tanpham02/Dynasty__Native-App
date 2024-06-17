@@ -2,8 +2,9 @@ import { Box } from 'native-base';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import { useFeedbackForm } from './useFeedbackForm';
-import { ButtonPrimary, PrimaryLayout } from '@/components';
+import { ButtonPrimary } from '@/components';
 import { FeedbackEmotion, FeedbackForm, FeedbackStar } from './components';
+import { PrimaryLayout } from '@/layouts';
 
 const FeedbackScreen = () => {
   const { currentStar, setCurrentStar, handleSendFeedback, formMethods } = useFeedbackForm();

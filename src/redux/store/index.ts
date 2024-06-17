@@ -1,9 +1,11 @@
 import { AnyAction, Reducer, combineReducers, configureStore } from '@reduxjs/toolkit';
-import { userReducer, orderReducer } from '../slices';
+
+import { userReducer, orderReducer, storeReducer } from '../slices';
 
 const appReducer = combineReducers({
   userStore: userReducer,
   orderStore: orderReducer,
+  storeStore: storeReducer,
 });
 
 const rootReducer: Reducer = (state: RootState, action: AnyAction) => {

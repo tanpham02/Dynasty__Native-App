@@ -1,19 +1,21 @@
 import { Box, FlatList } from 'native-base';
 import { useMemo } from 'react';
+import { useSelector } from 'react-redux';
 
-import { ExpandItem, RefreshControl } from '@/components';
-import { useFetchTermsAndPolicies } from '@/hooks';
+import { ExpandItem } from '@/components';
+import { StoreConfigModel } from '@/models';
+import { RootState } from '@/redux';
 
 const TermAndPolicyList = () => {
-  const { data: termAndPolicies, isRefetching, isFetching, refetch } = useFetchTermsAndPolicies();
+  const storeConfig = useSelector<RootState, StoreConfigModel>((state) => state.storeStore.storeConfig);
 
   const termAndPoliciesData = useMemo(
     () => [
-      { label: 'Chính sách vận chuyển', value: termAndPolicies?.deliveryPolicy },
-      { label: 'Chính sách riêng tư', value: termAndPolicies?.privatePolicy },
-      { label: 'Điều khoản và điều kiện', value: termAndPolicies?.termAndCondition },
+      { label: 'Chính sách vận chuyển', value: storeConfig?.termAndPolicy?.deliveryPolicy },
+      { label: 'Chính sách riêng tư', value: storeConfig?.termAndPolicy?.privatePolicy },
+      { label: 'Điều khoản và điều kiện', value: storeConfig?.termAndPolicy?.termAndCondition },
     ],
-    [termAndPolicies],
+    [storeConfig],
   );
 
   return (
@@ -21,9 +23,8 @@ const TermAndPolicyList = () => {
       <FlatList
         data={termAndPoliciesData}
         scrollEventThrottle={16}
-        refreshControl={<RefreshControl refreshing={isRefetching} onRefresh={refetch} />}
         showsVerticalScrollIndicator={false}
-        renderItem={({ item }) => <ExpandItem {...item} isLoading={isFetching} />}
+        renderItem={({ item }) => <ExpandItem {...item} />}
         keyExtractor={(_, index) => index.toString()}
       />
     </Box>

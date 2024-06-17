@@ -6,3 +6,4 @@ export { default as TermAndPolicyService } from './termAndPolicyService';
 export { default as ProductService } from './productService';
 export { default as BannerService } from './bannerService';
 export { default as UserService } from './userService';
+export { default as StoreConfigService } from './storeConfigService';
