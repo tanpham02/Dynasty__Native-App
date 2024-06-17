@@ -28,7 +28,7 @@ const HomeCategoryItem = ({ name, avatar }: HomeCategoryItemProps) => {
         </Box>
         <Text
           numberOfLines={2}
-          className='mt-2 text-[12.5px] font-nunito-700 text-zinc-700 text-center capitalize pb-[6px]'
+          className='mt-2 text-[12.5px] font-nunito-700 text-zinc-700 text-center capitalize pb-[6px] pt-1'
         >
           {name}
         </Text>

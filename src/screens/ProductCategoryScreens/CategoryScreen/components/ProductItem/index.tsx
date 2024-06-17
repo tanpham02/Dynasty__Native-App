@@ -1,5 +1,5 @@
 import { Box, Image } from 'native-base';
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Animated, GestureResponderEvent, Pressable, Text, TouchableOpacity } from 'react-native';
 
 import { Svg } from '@/assets';
@@ -14,11 +14,12 @@ import { ProductItemProps } from './type';
 const ProductItem = (props: ProductItemProps) => {
   const { index, name, description, types, image, price, length } = props;
 
+  const animation = useRef(new Animated.Value(0)).current;
+
   const [haveProductFavored, setHaveProductFavorite] = useState<number[]>([]);
+  const [isResetAnimated, setIsResetAnimated] = useState<boolean>(true);
 
-  const animation = new Animated.Value(0);
-
-  const scale = animation.interpolate({ inputRange: [0, 1], outputRange: [1, 1.5] });
+  const scale = animation.interpolate({ inputRange: [0, 1], outputRange: [1, 1.4] });
 
   const handlePressProductFavorite = (evt: GestureResponderEvent) => {
     evt.stopPropagation();
@@ -30,19 +31,30 @@ const ProductItem = (props: ProductItemProps) => {
       }
       return [...prev, index];
     });
-    onScaleFavoriteIcon()
+    onScaleFavoriteIcon();
   };
 
   const onScaleFavoriteIcon = () => {
+    setIsResetAnimated(false);
     Animated.timing(animation, {
-      toValue: 1,
-      duration: 1000,
+      toValue: isResetAnimated ? 1 : 0,
+      duration: 400,
       useNativeDriver: true,
     }).start();
   };
 
-
   const handleNavigateProductDetail = () => navigate(PATH_SCREEN.PRODUCT_DETAIL_SCREEN);
+
+  useEffect(() => {
+    let timerId = null;
+    if (!isResetAnimated) {
+      timerId = setTimeout(() => {
+        onScaleFavoriteIcon();
+        setIsResetAnimated(true);
+      }, 400);
+    }
+    return () => clearTimeout(timerId);
+  }, [isResetAnimated]);
 
   return (
     <Box
@@ -68,19 +80,13 @@ const ProductItem = (props: ProductItemProps) => {
           <Box className='flex-row gap-1'>
             {types.map((type, index) => {
               const { Icon, color } = ProductTypeIconList[type];
-              return (
-                <Icon key={index} width={19} height={19} color={color} />
-              );
+              return <Icon key={index} width={19} height={19} color={color} />;
             })}
           </Box>
         )}
-        <Animated.View style={[{ transform: [{ scale: scale }] }]} className='w-fit ml-auto'>
-          <Pressable
-            onPress={handlePressProductFavorite}
-
-            className='item-center'
-          >
-            {haveProductFavored.some((value) => value === index ) ? (
+        <Animated.View style={[{ transform: [{ scale }] }]} className='w-fit ml-auto'>
+          <Pressable onPress={handlePressProductFavorite} className='item-center'>
+            {haveProductFavored.some((value) => value === index) ? (
               <Svg.HeartSolid width={21} height={21} color='#e8002a' />
             ) : (
               <Svg.HeartOutline width={21} height={21} color='#000000' />
