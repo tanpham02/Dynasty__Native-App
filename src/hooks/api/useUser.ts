@@ -3,6 +3,7 @@ import { QueryKey, UseQueryOptions, useQuery } from 'react-query';
 import { QUERY_KEY } from '@/constants';
 import { UserAddressResponse, UserModel } from '@/models';
 import { UserService } from '@/services';
+import { tokenManager } from 'App';
 
 interface FetchUserParams {
   userId: string;
@@ -18,7 +19,7 @@ export const useFetchUserInfo = ({ userId, options }: FetchUserParams) => {
 };
 
 export const useFetchUserAddress = () => {
-  const userId = '6610186d6861b729f3d2ffc5';
+  const userId = tokenManager.getUserId();
 
   return useQuery<UserAddressResponse, Error>({
     queryKey: [QUERY_KEY.USER_ADDRESS, userId],

@@ -4,8 +4,24 @@ import { TouchableOpacity } from 'react-native';
 
 import styles from '@/styles';
 import { AddressItemProps } from './type';
+import { useAddressData } from '@/hooks';
 
-const AddressItem = ({ phoneNumber, fullName, isDefault, _id, onUpdate }: AddressItemProps) => {
+const AddressItem = ({
+  phoneNumber,
+  fullName,
+  isDefault,
+  onUpdate,
+  cityId,
+  districtId,
+  wardId,
+  location,
+}: AddressItemProps) => {
+  const { addressInfo } = useAddressData({
+    cityId,
+    districtId,
+    wardId,
+    location,
+  });
   return (
     <Box className='bg-white w-[90%] mx-auto'>
       <TouchableOpacity
@@ -21,9 +37,7 @@ const AddressItem = ({ phoneNumber, fullName, isDefault, _id, onUpdate }: Addres
         <Text className='font-nunito-700 mt-2'>
           {fullName} | {phoneNumber || ''}
         </Text>
-        <Text className='font-nunito-400 text-[13px] mt-1'>
-          ấp Vĩnh Thạnh, xã Phước Vĩnh Đông, huyện Cần Giuộc, tỉnh Long An
-        </Text>
+        <Text className='font-nunito-400 text-[13px] mt-1'>{addressInfo?.fullAddress}</Text>
       </TouchableOpacity>
     </Box>
   );

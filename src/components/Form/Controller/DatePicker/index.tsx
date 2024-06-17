@@ -20,7 +20,7 @@ const FormDatePicker = <T,>(props: FormDatePickerProps<T>) => {
 
   const { wrapperClassName, name, label, isRequired, placeholder, ...desc } = props;
 
-  const { setValue, getFieldState, watch } = useFormContext<T>();
+  const { setValue, getFieldState, watch, getValues } = useFormContext<T>();
 
   const [isOpenDatePicker, setIsOpenDatePicker] = useState<boolean>(false);
 
@@ -31,8 +31,11 @@ const FormDatePicker = <T,>(props: FormDatePickerProps<T>) => {
   const toggleOpen = () => setIsOpenDatePicker(!isOpenDatePicker);
 
   const onConfirmSingle = (output) => {
+    setValue(name, output?.date, {
+      shouldDirty: true,
+    });
+    console.log('date', getValues(name));
     toggleOpen();
-    setValue(name, output?.date);
   };
 
   return (

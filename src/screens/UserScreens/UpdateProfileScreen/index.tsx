@@ -11,7 +11,7 @@ import { PrimaryLayout } from '@/layouts';
 const UpdateProfileScreen = () => {
   const { user, fillUserData, formMethods, handleSubmitUserForm, updateUserAvatar } = useUserForm();
 
-  useEffect(() => fillUserData(), [JSON.stringify(user)]);
+  useEffect(() => fillUserData(), []);
 
   return (
     <PrimaryLayout titleScreen='Cập nhật tài khoản'>

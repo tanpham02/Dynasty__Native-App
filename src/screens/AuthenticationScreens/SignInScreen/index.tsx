@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import { Image, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { useDispatch } from 'react-redux';
 
 import DynastyLogoBgWhite from '@/assets/images/logo/logo-bg-white.png';
 import PizzaBgRight from '@/assets/images/logo/pizza-5-loai-thit-va-rau-cu.png';
@@ -23,7 +24,6 @@ import styles from '@/styles';
 import { navigate } from '@/utils';
 import { tokenManager } from 'App';
 import { showMessage } from 'react-native-flash-message';
-import { useDispatch } from 'react-redux';
 
 const { TERM_AND_CONDITIONS_SCREEN, HOME_SCREEN, VERIFY_OTP_SCREEN } = PATH_SCREEN;
 
@@ -73,6 +73,7 @@ const SignInScreen = () => {
 
         tokenManager.setAccessToken(accessToken);
         tokenManager.setRefreshToken(refreshToken);
+        tokenManager.setUserId(customerInfo?._id);
         dispatch(setUser(customerInfo));
         navigate(HOME_SCREEN);
       }

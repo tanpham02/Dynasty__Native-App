@@ -23,6 +23,8 @@ const AddressList = () => {
     if (isFocused) refetchUserAddress();
   }, [isFocused]);
 
+  console.log('addess', userSavedAddresses);
+
   return (
     <>
       {isFetchingUserAddress ? (

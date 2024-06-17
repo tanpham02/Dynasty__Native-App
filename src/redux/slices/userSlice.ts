@@ -16,7 +16,7 @@ const initialState: initialStateType = {
 
 export const getUserInfo = createAsyncThunk('user/getUserInfo', async (_, { dispatch }) => {
   try {
-    const user = await UserService.getInfo();
+    const user = await UserService.getInfoById(tokenManager.getUserId());
     dispatch(setUser(user));
   } catch (err) {
     console.log(err);

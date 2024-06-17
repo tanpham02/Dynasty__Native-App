@@ -6,8 +6,9 @@ import { UserModel } from '@/models';
 import { RootState } from '@/redux';
 import { UserAddressForm } from './components';
 import { useUserAddressForm } from './useUserAddressForm';
-import { ButtonPrimary, PrimaryLayout } from '@/components';
+import { ButtonPrimary } from '@/components';
 import { getParams } from '@/utils';
+import { PrimaryLayout } from '@/layouts';
 
 const AddressUpdateScreen = () => {
   const { id: userAddressId } = getParams() || {};
@@ -27,16 +28,16 @@ const AddressUpdateScreen = () => {
 
   useEffect(() => fillUserData(user), [JSON.stringify(user)]);
 
-  //   useEffect(() => {
-  //     handleFillCreatedAddressData(userAddressId);
-  //   }, [userAddressId]);
+  useEffect(() => {
+    handleFillCreatedAddressData(userAddressId);
+  }, [userAddressId]);
 
   return (
     <PrimaryLayout containerClass='bg-white' titleScreen='Thêm địa chỉ gia hàng'>
       <ScrollView className='flex-1 -mt-4' showsVerticalScrollIndicator={false}>
         <Box className='flex-1 p-4 my-4'>
           <UserAddressForm formMethods={formMethods} currentUserAddressData={currentUserAddressData} />
-          <ButtonPrimary title='Lưu' color='danger' onPress={handleSubmitUserAddressForm} />
+          <ButtonPrimary title='Lưu' color='danger' containerClass='mt-4' onPress={handleSubmitUserAddressForm} />
         </Box>
       </ScrollView>
     </PrimaryLayout>

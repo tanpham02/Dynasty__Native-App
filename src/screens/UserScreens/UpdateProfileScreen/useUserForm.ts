@@ -35,7 +35,7 @@ export const useUserForm = () => {
       formData.append('customerInfo', JSON.stringify(dataSubmit));
 
       await UserService.updateInfoById(dataSubmit._id, formData);
-      await dispatch(getUserInfo());
+      dispatch(getUserInfo());
 
       showMessage({
         message: 'Cập nhật thông tin cá nhân thành công!',
@@ -123,6 +123,7 @@ export const useUserForm = () => {
 
   const fillUserData = () => {
     if (user && Object.keys(user).length > 0) {
+      console.log('user', user);
       reset({ ...user });
     }
   };
