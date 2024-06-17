@@ -1,6 +1,6 @@
 import { Image, TouchableOpacity } from 'react-native';
-
 import { useEffect, useRef } from 'react';
+
 import styles from '@/styles';
 import { getFullImageUrl, heightScreen, widthScreen } from '@/utils';
 import { HomeSliderImageProps } from './type';
@@ -20,7 +20,7 @@ const HomeSliderImage = ({ setFlatListItemLayout, index, item }: HomeSliderImage
     <TouchableOpacity
       ref={itemRef}
       className='bg-white rounded-lg m-1 p-1.5'
-      style={[{ height: heightScreen * 0.18, width: widthScreen * 0.8 }, styles.shadowPrimary]}
+      style={[{ height: heightScreen * 0.18, width: widthScreen * 0.8 }, styles.shadowX]}
     >
       <Image
         source={{ uri: getFullImageUrl(item.url) }}
