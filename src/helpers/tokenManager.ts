@@ -29,6 +29,7 @@ class TokenManager {
     // Fetch the access token from AsyncStorage if it hasn't been fetched already
     this.accessToken = (await AsyncStorage.getItem(ACCESS_TOKEN_KEY)) || '';
     this.refreshToken = (await AsyncStorage.getItem(REFRESH_TOKEN_KEY)) || '';
+    this.userId = (await AsyncStorage.getItem(USER_ID_KEY)) || '';
     this.initialized = true;
   }
 

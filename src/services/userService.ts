@@ -1,7 +1,7 @@
 import { tokenManager } from 'App';
 import * as ApiURL from '@/constants';
 import axiosService from './axiosService';
-import { UserAddressModel, UserAddressResponse, UserModel } from '@/models';
+import { UserAddressModel, UserAddressRequest, UserAddressResponse, UserModel } from '@/models';
 
 const userService = {
   getInfoById: async (userId: string): Promise<UserModel> => {
@@ -74,13 +74,10 @@ const userService = {
         throw err;
       });
   },
-  createNewAddress: async (data: FormData): Promise<UserAddressResponse> => {
+  createNewAddress: async (data: UserAddressRequest): Promise<UserAddressResponse> => {
     return (await axiosService())({
       baseURL: ApiURL.API_CUSTOMER_ADDRESS_URL,
       method: 'POST',
-      headers: {
-        'Content-Type': 'multipart-form/data',
-      },
       data,
     })
       .then((res) => res.data)

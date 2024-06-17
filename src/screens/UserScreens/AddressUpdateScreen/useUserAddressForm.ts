@@ -6,6 +6,7 @@ import { PATH_SCREEN } from '@/constants';
 import { UserAddressModel, UserAddressRequest, UserModel } from '@/models';
 import { UserService } from '@/services';
 import { navigate } from '@/utils';
+import { tokenManager } from 'App';
 
 export const useUserAddressForm = () => {
   const formMethods = useForm<UserAddressModel>();
@@ -17,10 +18,9 @@ export const useUserAddressForm = () => {
   const createOrUpdateUserAddress = async (data: UserAddressModel) => {
     try {
       globalLoading.show();
-      const formData = new FormData();
 
       const dataSubmit: UserAddressRequest = {
-        customerId: '6610186d6861b729f3d2ffc5',
+        customerId: tokenManager.getUserId(),
         addressItem: {
           ...data,
           cityId: data.cityId,
@@ -29,9 +29,7 @@ export const useUserAddressForm = () => {
         },
       };
 
-      formData.append('customerAddressInfo', JSON.stringify(dataSubmit));
-
-      await UserService.createNewAddress(formData);
+      await UserService.createNewAddress(dataSubmit);
       showMessage({
         message: 'Thêm địa chỉ giao hàng thành công!',
         type: 'success',
