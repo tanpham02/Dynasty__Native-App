@@ -1,31 +1,14 @@
 import { Box, Text } from 'native-base';
 import { useRef, useState } from 'react';
-import { FlatList } from 'react-native';
-import { SceneMap, TabView } from 'react-native-tab-view';
+import { FlatList, ImageSourcePropType } from 'react-native';
+import { SceneRendererProps, TabView } from 'react-native-tab-view';
 
 import { Svg } from '@/assets';
 import styles from '@/styles';
+import { widthScreen } from '@/utils';
 import { CategoryTabViewList, CategoryTypeList, ProductFavoriteList } from '..';
 import ProductList from '../ProductList';
 import { tabBarRoutes } from './data';
-import { heightScreen, widthScreen } from '@/utils';
-
-// const renderScene = SceneMap({
-//   deals: ProductList,
-//   'for-me': ProductList,
-//   pizza: ProductList,
-//   starters: ProductList,
-//   'salads-and-pasta': ProductList,
-//   drinks: ProductFavoriteList,
-// });
-const renderScene = SceneMap({
-  deals: ProductList,
-  'for-me': () => <></>,
-  pizza: () => <></>,
-  starters: () => <></>,
-  'salads-and-pasta': () => <></>,
-  drinks: () => <></>,
-});
 
 const CategoryTabViewGroup = () => {
   const topCategoriesRef = useRef<FlatList>();
@@ -41,8 +24,45 @@ const CategoryTabViewGroup = () => {
     setActiveTabKey(index);
   };
 
+  const renderTabBar = () => (
+    <CategoryTabViewList ref={topCategoriesRef} activeTabKey={activeTabKey} onScrollToIndex={handleScrollToIndex} />
+  );
+
+  const renderScene = ({
+    route,
+  }: SceneRendererProps & {
+    route: {
+      key: string;
+      name: string;
+      icon?: ImageSourcePropType;
+    };
+  }) => {
+    switch (route.key) {
+      case 'deals':
+        return <ProductList />;
+
+      case 'for-me':
+        return <></>;
+
+      case 'pizza':
+        return <></>;
+
+      case 'starters':
+        return <></>;
+
+      case 'salads-and-pasta':
+        return <></>;
+
+      case 'favorite':
+        return <ProductFavoriteList />;
+
+      default:
+        return <></>;
+    }
+  };
+
   return (
-    <Box className='relative h-screen flex-1' style={styles.shadowX}>
+    <Box className='relative flex-1' style={styles.shadowX}>
       <Box className='absolute left-2 px-2 flex justify-center items-center flex-col pr-4'>
         <Box
           className='bg-secondary w-14 h-14 rounded-full flex justify-center items-center'
@@ -53,23 +73,15 @@ const CategoryTabViewGroup = () => {
         <Text className='text-[13px] text-secondary font-nunito-700 mt-2'>Menu</Text>
       </Box>
       <TabView
+        initialLayout={{
+          width: widthScreen,
+        }}
         navigationState={{
           index: activeTabKey,
           routes: tabBarRoutes,
         }}
-
         renderScene={renderScene}
-        renderTabBar={() => (
-          <CategoryTabViewList
-            ref={topCategoriesRef}
-            activeTabKey={activeTabKey}
-            onScrollToIndex={handleScrollToIndex}
-          />
-        )}
-        initialLayout={{
-          height: heightScreen,
-          width: widthScreen,
-        }}
+        renderTabBar={renderTabBar}
         onIndexChange={setActiveTabKey}
         onSwipeStart={() => handleScrollToIndex(activeTabKey)}
       />

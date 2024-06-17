@@ -5,7 +5,7 @@ import { productData } from './data';
 
 const ProductList = () => {
   return (
-    <Box className='absolute top-[55px] left-0 right-0 bottom-0 bg-white '>
+    <Box className='relative top-[55px] left-0 right-0 bottom-0 bg-white'>
       <FlatList
         scrollEventThrottle={16}
         keyExtractor={(_, index) => index.toString()}
