@@ -1,13 +1,13 @@
+import { Box, Text } from 'native-base';
 import { memo } from 'react';
 import { TouchableOpacity } from 'react-native';
-import { Box, Text } from 'native-base';
 
 import { Svg } from '@/assets';
 import { PATH_SCREEN } from '@/constants/pathName';
 import { navigate } from '@/utils/navigationUtils';
 import HomeCategoryItem from '../HomeCategoryItem';
-import { HomeCategoryProps } from './type';
 import HomeCategoryItemSkeleton from '../HomeCategoryItemSkeleton';
+import { HomeCategoryProps } from './type';
 
 const HomeCategory = ({ isLoading, data = [] }: HomeCategoryProps) => {
   return (
@@ -25,7 +25,7 @@ const HomeCategory = ({ isLoading, data = [] }: HomeCategoryProps) => {
       <Box className='flex-row flex-wrap gap-x-4'>
         {isLoading
           ? Array.from({ length: 6 }).map((_, index) => <HomeCategoryItemSkeleton key={index} />)
-          : data.map((category, index) => <HomeCategoryItem key={index} {...category} />)}
+          : data.slice(0, 6).map((category, index) => <HomeCategoryItem key={index} {...category} />)}
       </Box>
     </Box>
   );
