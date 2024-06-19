@@ -1,4 +1,4 @@
-import { Box, FlatList } from 'native-base';
+import { Box, FlatList, ScrollView } from 'native-base';
 
 import { RefreshControl } from '@/components';
 import { useFetchProducts } from '@/hooks';
@@ -6,6 +6,7 @@ import { ProductListSkeleton } from '@/screens/ProductCategoryScreens/CategorySc
 import LottieView from 'lottie-react-native';
 import { useMemo } from 'react';
 import ProductItem from '../ProductItem';
+import { heightScreen } from '@/utils';
 
 const ProductList = ({ categoryId }: { categoryId: string }) => {
   const { data: products, isFetching: isFetchingProducts, refetch: refetchProduct } = useFetchProducts({ categoryId });
