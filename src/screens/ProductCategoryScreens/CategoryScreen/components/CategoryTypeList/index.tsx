@@ -22,7 +22,6 @@ const CategoryTypeList = () => {
   };
 
   return (
-    // <Box className='absolute left-0 top-[90px] shadow-2xl flex-1'></Box>
     <FlatList
       scrollEventThrottle={16}
       pagingEnabled

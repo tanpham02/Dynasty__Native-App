@@ -1,4 +1,4 @@
-import { memo, useMemo } from 'react';
+import { memo, useEffect, useMemo } from 'react';
 import { FlatList, Text, TouchableOpacity } from 'react-native';
 import { Box, Skeleton } from 'native-base';
 
@@ -47,6 +47,7 @@ const ProductList = ({ isLoading, name, _id, childrenCategory, isRefetching }: P
           </TouchableOpacity>
         </Box>
       )}
+
       {isFetchingProducts ? (
         <FlatList
           className='mt-2 ml-2'

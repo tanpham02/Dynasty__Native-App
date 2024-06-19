@@ -1,6 +1,6 @@
-import { CategoryTabViewListProps } from '../CategoryTabViewList/type';
+import { CategoryTabViewDateItem, CategoryTabViewListProps } from '../CategoryTabViewList/type';
 
-export interface CategoryTabViewItemProps extends CategoryTabViewListProps {
-  categoryItem: any;
+export interface CategoryTabViewItemProps extends Omit<CategoryTabViewListProps, 'tabBarRoutes'> {
+  categoryItem: CategoryTabViewDateItem;
   index: number;
 }

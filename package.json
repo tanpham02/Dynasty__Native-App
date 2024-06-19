@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "expo start --dev-client",
-    "android": "expo prebuild -p android && chmod +x run-android.sh && ./run-android.sh && expo run:android",
+    "android": "rm -rf android && expo prebuild -p android && chmod +x run-android.sh && ./run-android.sh && expo run:android",
     "android-device": "expo run:android --device",
     "ios": "expo run:ios",
     "ios-device": "expo run:ios --device",

@@ -22,7 +22,7 @@ const HomeCategory = ({ isLoading, data = [] }: HomeCategoryProps) => {
           <Svg.ArrowRight width={16} height={16} className='text-gray-10' />
         </TouchableOpacity>
       </Box>
-      <Box className='flex-row flex-wrap gap-x-4'>
+      <Box className='flex-row justify-center items-center flex-wrap'>
         {isLoading
           ? Array.from({ length: 6 }).map((_, index) => <HomeCategoryItemSkeleton key={index} />)
           : data.slice(0, 6).map((category, index) => <HomeCategoryItem key={index} {...category} />)}

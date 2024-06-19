@@ -6,3 +6,5 @@ export { default as ProductFavoriteList } from './ProductFavoriteList';
 export { default as CategoryTabViewItem } from './CategoryTabViewItem';
 export { default as CategoryTabViewList } from './CategoryTabViewList';
 export { default as CategoryTabViewGroup } from './CategoryTabViewGroup';
+export { default as ProductListSkeleton } from './ProductListSkeleton';
+export { default as CategoryTabViewListSkeleton } from './CategoryTabViewListSkeleton';

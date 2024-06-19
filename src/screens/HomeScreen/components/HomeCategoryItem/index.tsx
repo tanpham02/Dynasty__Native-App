@@ -2,17 +2,16 @@ import { Box, Image } from 'native-base';
 import { Text, TouchableOpacity, View } from 'react-native';
 
 import { Svg } from '@/assets';
-import styles from '@/styles';
-import { HomeCategoryItemProps } from './type';
 import { getFullImageUrl } from '@/utils';
+import { HomeCategoryItemProps } from './type';
 
 const HomeCategoryItem = ({ name, avatar }: HomeCategoryItemProps) => {
   return (
     <View className='items-center mt-4 w-1/3'>
-      <TouchableOpacity className='bg-third rounded-tl-full rounded-tr-full relative flex justify-center items-center w-2/3'>
+      <TouchableOpacity className='bg-third rounded-tl-full rounded-tr-full relative flex justify-center items-center w-[80%]'>
         <Box className='h-[2.5px] bg-[#ff9e0b] absolute bottom-0 left-0 right-0'></Box>
 
-        <Box className='w-[85px] h-[85px] rounded-full bg-white p-[3px] items-center justify-center overflow-hidden -mt-1'>
+        <Box className='w-[90%] h-[90px] rounded-full bg-white p-[3px] items-center justify-center overflow-hidden -mt-1'>
           {avatar ? (
             <Image
               source={{
