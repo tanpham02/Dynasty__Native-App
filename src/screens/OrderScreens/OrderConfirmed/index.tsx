@@ -48,7 +48,7 @@ const OrderConfirmed = () => {
             height: 200,
           }}
           resizeMode='contain'
-          source={require('@/assets/lotties/green-tick.json')}
+          source={require('@/assets/lottie/green-tick.json')}
         />
       </Box>
     </NoneLayout>

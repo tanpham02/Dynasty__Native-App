@@ -4,7 +4,7 @@ import { QUERY_KEY } from '@/constants';
 import { ProductService } from '@/services';
 
 interface FetchProductParams {
-  pageSize: number;
+  pageSize?: number;
   categoryId: string;
   options?: UseInfiniteQueryOptions<any>;
 }

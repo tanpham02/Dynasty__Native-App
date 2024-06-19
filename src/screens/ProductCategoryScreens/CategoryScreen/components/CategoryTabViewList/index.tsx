@@ -1,12 +1,11 @@
 import React, { forwardRef } from 'react';
 import { FlatList } from 'react-native';
 
-import { tabBarRoutes } from '../CategoryTabViewGroup/data';
 import CategoryTabViewItem from '../CategoryTabViewItem';
 import { CategoryTabViewListProps } from './type';
 
 const CategoryTabViewList = (
-  { activeTabKey, onScrollToIndex }: CategoryTabViewListProps,
+  { activeTabKey, tabBarRoutes, onScrollToIndex }: CategoryTabViewListProps,
   categoryTabViewGroupRef: React.Ref<any>,
 ) => {
   return (

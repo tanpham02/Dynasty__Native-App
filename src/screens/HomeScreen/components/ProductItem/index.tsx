@@ -1,11 +1,9 @@
-import { Canvas, RoundedRect, Shadow } from '@shopify/react-native-skia';
 import { Image, Text, View } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
+import { Svg } from '@/assets';
+import styles from '@/styles';
 import { formatMoneyVND, getFullImageUrl, widthScreen } from '@/utils';
 import { ProductItemProps } from './type';
-import styles from '@/styles';
-import { Svg } from '@/assets';
 
 const ProductItem = ({ name, price, image }: ProductItemProps) => {
   return (
