@@ -14,7 +14,7 @@ const ProductList = ({ categoryId }: { categoryId: string }) => {
   const productList = useMemo(() => products?.pages.flatMap((item) => item.data), [products]);
 
   return (
-    <Box className='relative top-[55px] left-0 right-0 bottom-0 bg-white flex-1'>
+    <Box className='relative top-[55px] pb-[55px] left-0 right-0 bottom-0 bg-white flex-1'>
       {isFetchingProducts ? (
         <ProductListSkeleton />
       ) : productList && productList.length > 0 ? (
