@@ -1,4 +1,4 @@
-import { Box, FlatList } from 'native-base';
+import { Box, FlatList, ScrollView } from 'native-base';
 
 import { RefreshControl } from '@/components';
 import { useFetchProducts } from '@/hooks';
@@ -6,6 +6,7 @@ import { ProductListSkeleton } from '@/screens/ProductCategoryScreens/CategorySc
 import LottieView from 'lottie-react-native';
 import { useMemo } from 'react';
 import ProductItem from '../ProductItem';
+import { heightScreen } from '@/utils';
 
 const ProductList = ({ categoryId }: { categoryId: string }) => {
   const { data: products, isFetching: isFetchingProducts, refetch: refetchProduct } = useFetchProducts({ categoryId });
@@ -13,7 +14,7 @@ const ProductList = ({ categoryId }: { categoryId: string }) => {
   const productList = useMemo(() => products?.pages.flatMap((item) => item.data), [products]);
 
   return (
-    <Box className='relative top-[55px] left-0 right-0 bottom-0 bg-white flex-1'>
+    <Box className='relative top-[55px] pb-[55px] left-0 right-0 bottom-0 bg-white flex-1'>
       {isFetchingProducts ? (
         <ProductListSkeleton />
       ) : productList && productList.length > 0 ? (

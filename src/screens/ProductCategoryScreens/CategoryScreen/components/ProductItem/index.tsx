@@ -1,9 +1,10 @@
-import { Box, Image } from 'native-base';
+import { Box } from 'native-base';
 import React, { useEffect, useRef, useState } from 'react';
 import { Animated, GestureResponderEvent, Pressable, Text, TouchableOpacity } from 'react-native';
 import FastImage from 'react-native-fast-image';
 
 import { Svg } from '@/assets';
+import DefaultImage from '@/assets/images/default-image.png';
 import { PATH_SCREEN } from '@/constants';
 import { ProductType } from '@/models/productModel';
 import styles from '@/styles';
@@ -11,10 +12,9 @@ import { getFullImageUrl, navigate } from '@/utils';
 import { formatCurrencyByLocale } from '@/utils/numberUtils';
 import { ProductTypeIconList } from '../ProductList/data';
 import { ProductItemProps } from './type';
-import DefaultImage from '@/assets/images/default-image.png';
 
 const ProductItem = (props: Partial<ProductItemProps>) => {
-  const { index, name, description, types, image, price, categoryId, length } = props;
+  const { _id, index, name, information, types, image, price, categoryId, length } = props;
 
   const animation = useRef(new Animated.Value(0)).current;
 
@@ -46,7 +46,10 @@ const ProductItem = (props: Partial<ProductItemProps>) => {
     }).start();
   };
 
-  const handleNavigateProductDetail = () => navigate(PATH_SCREEN.PRODUCT_DETAIL_SCREEN);
+  const handleNavigateProductDetail = () =>
+    navigate(PATH_SCREEN.PRODUCT_DETAIL_SCREEN, {
+      productId: _id,
+    });
 
   useEffect(() => {
     let timerId = null;
@@ -71,9 +74,9 @@ const ProductItem = (props: Partial<ProductItemProps>) => {
     >
       <Box className='p-3 gap-1'>
         <Text className='text-base text-black font-nunito-700'>{name || ''}</Text>
-        {description && (
+        {information && (
           <Text className='text-xs text-gray-9 font-nunito-500' style={{ lineHeight: 17 }} numberOfLines={2}>
-            {description}
+            {information}
           </Text>
         )}
       </Box>
@@ -98,7 +101,7 @@ const ProductItem = (props: Partial<ProductItemProps>) => {
         </Animated.View>
       </Box>
 
-      <Box className='relative pt-[30%]'>
+      <Box className='relative pt-[40%]'>
         <FastImage
           source={
             isErrorImage

@@ -1,14 +1,24 @@
 import { Box, Image, Text } from 'native-base';
 import { useRef, useState } from 'react';
 import { Animated, SafeAreaView, ScrollView } from 'react-native';
+import { useRoute } from '@react-navigation/native';
+import { useQuery } from 'react-query';
 
 import { HeaderBar, MyStatusBar } from '@/components';
+import { ProductService } from '@/services';
 import { useStatusBarForAndroid } from '@/hooks';
 import { default as styleCustom } from '@/styles';
-import { heightScreen } from '@/utils';
+import { getFullImageUrl, heightScreen } from '@/utils';
 import FooterBarContent from './components/FooterBarContent';
 import ProductVariantContentItem from './components/ProductVariantContentItem';
 import ProductVariantTabList from './components/ProductVariantTabList';
+import { QUERY_KEY } from '@/constants';
+
+interface RouteCustomType {
+  params?: {
+    productId?: string;
+  };
+}
 
 const HEADER_MAX_HEIGHT = heightScreen * 0.36; // 36%
 const HEADER_MIN_HEIGHT = heightScreen * 0.2; // 20%
@@ -19,6 +29,9 @@ const data = ['Kích thước', 'Đế', 'Nước sốt', 'Topping'];
 const ProductDetail = () => {
   useStatusBarForAndroid('white');
 
+  const route: RouteCustomType = useRoute();
+  const productId = route.params?.productId;
+
   const scrollOffsetY = useRef(new Animated.Value(0)).current;
   const scrollRef = useRef<ScrollView>();
   const isScrolling = useRef<boolean>(false);
@@ -26,6 +39,14 @@ const ProductDetail = () => {
   const [showHeaderMain, setShowHeaderMain] = useState<boolean>(false);
   const [activeTabKey, setActiveTabKey] = useState<number>(0);
   const flatListItemLayout = useRef<{ current: { [key: string]: Object } }>();
+
+  const { data: productDetail, isFetching: isFetchingProductDetail } = useQuery(
+    [QUERY_KEY.PRODUCT_DETAIL, productId],
+    async () => await ProductService.getProductDetail(productId),
+    {
+      enabled: Boolean(productId),
+    },
+  );
 
   const animatedHeightHeader = scrollOffsetY.interpolate({
     inputRange: [0, SCROLL_DISTANCE],
@@ -129,13 +150,13 @@ const ProductDetail = () => {
                 borderColor: '#c6c6c6',
                 margin: -1,
               }}
-              className='bg-third pb-4 flex flex-col px-4 relative z-999999'
+              className='bg-third pb-4 flex flex-col px-4 relative'
             >
               <HeaderBar headerClass='absolute' />
               <Box style={{ width: 180, height: 180 }} className='mx-auto -my-[5%]'>
                 <Image
                   source={{
-                    uri: 'https://thepizzacompany.vn/images/thumbs/000/0002252_garden-salad_300.png',
+                    uri: getFullImageUrl(productDetail?.image),
                   }}
                   alt='image'
                   style={{
@@ -146,10 +167,9 @@ const ProductDetail = () => {
                 />
               </Box>
               <Box className='w-full'>
-                <Text className='text-gray-10 font-nunito-700 text-lg mb-1'>Mỳ Ý Cay Hải Sản</Text>
+                <Text className='text-gray-10 font-nunito-700 text-lg mb-1'>{productDetail?.name || ''}</Text>
                 <Text className='text-gray-11 font-nunito-500 text-[13px]' numberOfLines={2}>
-                  Mỳ Ý rán với các loại hải sản tươi ngon cùng ớt và tỏi \\ Mỳ Ý rán với các loại hải sản tươi ngon cùng
-                  ớt và tỏi \\ ớt và tỏi \\ ớt và tỏi \\ ớt và tỏi \\
+                  {productDetail?.information || ''}
                 </Text>
               </Box>
             </Animated.View>
