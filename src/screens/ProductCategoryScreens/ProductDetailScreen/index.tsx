@@ -29,6 +29,7 @@ const data = ['Kích thước', 'Đế', 'Nước sốt', 'Topping'];
 const ProductDetail = () => {
   useStatusBarForAndroid('white');
 
+  //TODO: use getParams function instead of use this hook (recommend)
   const route: RouteCustomType = useRoute();
   const productId = route.params?.productId;
 
@@ -40,6 +41,8 @@ const ProductDetail = () => {
   const [activeTabKey, setActiveTabKey] = useState<number>(0);
   const flatListItemLayout = useRef<{ current: { [key: string]: Object } }>();
 
+  // TODO: MOVE BELOW CODE TO API HOOK (RECOMMEND)
+  // NOTE: START
   const { data: productDetail, isFetching: isFetchingProductDetail } = useQuery(
     [QUERY_KEY.PRODUCT_DETAIL, productId],
     async () => await ProductService.getProductDetail(productId),
@@ -47,7 +50,9 @@ const ProductDetail = () => {
       enabled: Boolean(productId),
     },
   );
+  // NOTE: END
 
+  // FIXME: YOUR CODE BELLOW ARE REPEAT
   const animatedHeightHeader = scrollOffsetY.interpolate({
     inputRange: [0, SCROLL_DISTANCE],
     outputRange: [HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT],
@@ -61,6 +66,7 @@ const ProductDetail = () => {
   });
 
   const onScrollHeader = (scrollYValue: number) => {
+    // FIXME: USE CONDITION scrollYValue >= SCROLL_DISTANCE TO SET VALUE OF setShowHeaderMain INSTEAD SEPARATE TWO CONDITION
     if (scrollYValue >= SCROLL_DISTANCE) {
       setShowHeaderMain(true);
     } else {

@@ -1,5 +1,6 @@
 import { Box, FlatList, ScrollView } from 'native-base';
 
+// TODO: SORT YOUR IMPORT
 import { RefreshControl } from '@/components';
 import { useFetchProducts } from '@/hooks';
 import { ProductListSkeleton } from '@/screens/ProductCategoryScreens/CategoryScreen/components';
@@ -13,6 +14,7 @@ const ProductList = ({ categoryId }: { categoryId: string }) => {
 
   const productList = useMemo(() => products?.pages.flatMap((item) => item.data), [products]);
 
+  // TODO: ARE YOU FORGET HANDLE LOAD MORE PRODUCT?
   return (
     <Box className='relative top-[55px] pb-[55px] left-0 right-0 bottom-0 bg-white flex-1'>
       {isFetchingProducts ? (

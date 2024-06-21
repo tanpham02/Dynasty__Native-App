@@ -34,8 +34,11 @@ const CategoryTabViewGroup = () => {
           key: category._id,
           name: category.name,
         })),
+        // TODO: USE SPECIAL KEY FOR FAVORITE PRODUCT
         { key: 'favorite', name: 'Favorite', icon: FavoriteListIcon },
       ];
+
+    //TODO: MISSING RETURN EMPTY VALUE
   }, [categoriesData]);
 
   const renderTabBar = () => (
@@ -56,6 +59,7 @@ const CategoryTabViewGroup = () => {
       icon?: ImageSourcePropType;
     };
   }) => {
+    // TODO: USE SPECIAL KEY FOR FAVORITE PRODUCT
     if (route.key.includes('favorite')) return <ProductFavoriteList />;
     return <ProductList categoryId={route.key} />;
   };

@@ -17,7 +17,7 @@ const ProductItemSkeleton = () => {
         </Box>
         <Skeleton className='w-5 h-5 rounded-full' />
       </Box>
-      <Skeleton className='h-[120px] rounded-lg'></Skeleton>
+      <Skeleton className='h-[120px] rounded-lg' />
       <Box className='flex-row gap-x-3 justify-between items-center'>
         <Box className='flex-1 gap-y-2'>
           <Skeleton className='w-1/2 h-[20px]' />
